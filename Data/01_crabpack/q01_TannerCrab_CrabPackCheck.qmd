@@ -1,0 +1,420 @@
+---
+title: "Comparison of NMFS survey results from `crabpack` with the 2024 Tanner crab assessment"
+author: "William T. Stockhausen"
+institute: NOAA/NMFS/AFSC
+date: '`r format(Sys.time(), "%b %e, %Y")`'
+fontsize: 11pt 
+number-sections: true
+reference-location: document
+bibliography: '`r path.expand("~/Work/Projects/Bibliography/AllRefs.bib")`'
+csl: '`r system.file("files/CJFAS.csl",package="wtsQMD")`'
+link-citations: true
+crossref:
+  chapters: false      # prepend label reference numbers by chater number?
+  fig-title: Figure    # for caption: default is "Figure")
+  tbl-title: Table     # for caption: default is "Table")
+  title-delim: "."     # for caption: default is ":")
+  fig-prefix: Figure   # for in-text (use [-@fig-ref] to drop prefix in text)
+  tbl-prefix: Table    # for in-text (use [-@tbl-ref] to drop prefix in text)
+  fig-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  tbl-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  subref-labels: alpha a # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  ref-hyperlink: true    # references are hyperlinked if true
+format: 
+  html: 
+    df-print: paged
+    toc: true
+    toc-location: right
+    fig-width: 8
+    fig-asp: 1.4
+    fig-dpi: 100
+    embed-resources: true
+    include-in-header: 
+      - '`r system.file("files/in-line_math_mode.html",package="wtsQMD")`'
+  pdf:
+    documentclass: scrartcl
+    toc: false
+    fig_crop: false
+    keep-tex: false
+    geometry:
+      - left=1.0in
+      - right=1.0in
+      - top=1.0in
+      - bottom=1.0in
+      - textwidth=6.5in
+      - showframe=false
+    include-in-header: 
+      - text: |
+          \usepackage{placeins}
+          \extrafloats{500}
+          \maxdeadcycles=10000
+      - file: '`r system.file("files/ltx_ExtraLatexIncludes.tex",package="wtsQMD")`'
+echo: false
+warning: false
+results: 'hide'
+keep-md: false
+keep-yaml: false
+editor: source
+editor_options: 
+  chunk_output_type: console
+concordance: true
+params:
+  setup: !expr 'system.file("files/qmd_setup.R",package="wtsQMD")'
+  dirAsmt: "~/Work/StockAssessments-Crab/Assessments/TannerCrab/2024-09_TannerCrab/AssessmentData/Data_Surveys_NMFS"
+  testing: false
+---
+<!-- IMPORTANT: if used as a child doc, all chunk labels must be unique within the overall document -->
+
+<!-- 
+  NOTEs: 
+     * child_path$peek() gives path to current script.
+     * before starting a child document, do 
+         "child_path$push(file.path(child_path$peek(),rel_path))" first, 
+         where rel_path is the relative path to the child
+     * after a child document has finished, do "child_path$pop()" to return to current path value
+-->
+
+<!-- if not child doc, set up required objects -->
+```{r}
+#| label: SurveyData_setup
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: "asis"
+  testing = params$testing;
+  if (testing) cat(params$setup,"\n\n")
+  source(params$setup);
+  if (testing) cat("root = ",root,"\n\n")
+```
+
+```{r}
+#| label: setup_SurveyData
+#| results: 'asis'
+  require(crabpack);
+  require(ggplot2);
+  require(kableExtra);
+  require(tables);
+
+  #--constants
+  MILLION  = 1000000;
+  THOUSAND = 1000;
+
+  #--survey years to include
+  yrs = 1975:2024;
+```
+
+```{r getSurveyData}
+  dirTC = params$dirAsmt;
+  lstTC = wtsUtilities::getObj(file.path(dirTC,"rda_SrvData.NMFS.DBI.RData"));
+  
+  #--Tanner crab data for crabpack----
+  #----old: lstCP = readRDS("./EBS_specimen/tanner_specimen_2024.rds");
+  if (FALSE){
+    lstCP = get_specimen_data(species="TANNER",
+                              region="EBS",
+                              district="ALL",
+                              channel="API");
+    wtsUtilities::saveObj(lstCP,"rda_crabpack_specimen_data.TannerCrab.RData");
+  } else {
+    lstCP = wtsUtilities::getObj("rda_crabpack_specimen_data.TannerCrab.RData");
+  }
+```
+
+```{r calcSurveyABs}
+  #--Biomass and abundance----
+  ##--get TCSAM02 biomass/abundance time series
+  dfrT_ABs = lstTC$lstABs$ABs$EBS |> 
+                dplyr::select(y=YEAR,x=SEX,m=MATURITY,
+                              abd=totABUNDANCE,abdCV=cvABUNDANCE,
+                              bio=totBIOMASS,bioCV=cvBIOMASS) |> 
+                dplyr::mutate(type="asmt",
+                              abd=MILLION*abd,  #--convert from millions to ones
+                              bio=THOUSAND*bio);#--convert from 1,000's t to t
+  
+  ##--get crabpack biomass/abundance time series----
+  dfrC_ABMs = calc_bioabund(lstCP,
+                          species="TANNER",
+                          region="EBS",
+                          years=1975:2024,
+                          sex="male",
+                          size_min=24.5,
+                          spatial_level="region") |> 
+          dplyr::select(y=YEAR,
+                        abd=ABUNDANCE,abdCV=ABUNDANCE_CV,
+                        bio=BIOMASS_MT,bioCV=BIOMASS_MT_CV) |> 
+          dplyr::mutate(x="MALE",m="UNDETERMINED",type="crabpack");
+  #head(dfrC_ABMs);
+  dfrC_ABFIs = calc_bioabund(lstCP,
+                          species="TANNER",
+                          region="EBS",
+                          years=1975:2024,
+                          sex="female",
+                          crab_category="immature_female",
+                          female_maturity="morphometric",
+                          size_min=24.5,
+                          spatial_level="region") |> 
+                dplyr::select(y=YEAR,
+                              abd=ABUNDANCE,abdCV=ABUNDANCE_CV,
+                              bio=BIOMASS_MT,bioCV=BIOMASS_MT_CV) |> 
+                dplyr::mutate(x="FEMALE",m="IMMATURE",type="crabpack");
+  #head(dfrC_ABFIs);
+  dfrC_ABFMs = calc_bioabund(lstCP,
+                          species="TANNER",
+                          region="EBS",
+                          years=1975:2024,
+                          sex="female",
+                          crab_category="mature_female",
+                          female_maturity="morphometric",
+                          size_min=24.5,
+                          spatial_level="region") |> 
+                dplyr::select(y=YEAR,
+                              abd=ABUNDANCE,abdCV=ABUNDANCE_CV,
+                              bio=BIOMASS_MT,bioCV=BIOMASS_MT_CV) |> 
+                dplyr::mutate(x="FEMALE",m="MATURE",type="crabpack");
+  #head(dfrC_ABFMs);
+  ##--combine datafraames
+  dfrABs = dplyr::bind_rows(dfrT_ABs,dfrC_ABMs,dfrC_ABFIs,dfrC_ABFMs);
+  #head(dfrABs);
+
+  #--calculate differences in abundance
+  dfrAsp = dfrABs |> dplyr::select(y,x,m,abd,type) |> 
+              tidyr::pivot_wider(names_from="type",values_from="abd") |> 
+              dplyr::mutate(diff=asmt-crabpack,
+                            pdif=2*100*diff/(asmt+crabpack));
+  #--calculate differences in biomass
+  dfrBsp = dfrABs |> dplyr::select(y,x,m,bio,type) |> 
+              tidyr::pivot_wider(names_from="type",values_from="bio") |> 
+              dplyr::mutate(diff=asmt-crabpack,
+                            pdif=2*100*diff/(asmt+crabpack));
+```
+
+## Introduction
+
+The ASFC's Shellfish Assessment Program has introduced `crabpack`, a new R package [@ref-R] to access NMFS EBS crab survey data and subsequently estimate annual abundance, biomass, and size compositions by year for several population categories (e.g., sex, maturity state). The [tcsamSurveyData](https://github.com/wStockhausen/tcsamSurveyData) R package has been used previously with survey haul data files downloaded from [AKFIN](https://akfin.psmfc.org) Answers to provide similar information for the Tanner crab assessment [e.g., @TannerCrab2024]. Here, the two approaches are compared for EBS-wide abundance, biomass, and size compositions for NMFS EBS crab survey data from 1975 to 2024.
+
+## Survey abundance estimates
+
+Estimates of EBS-wide abundance from the NMFS bottom trawl survey for male and female Tanner crab by maturity state are compared by year in [@fig-SrvAbd] for calculations made in the 2024 assessment [@TannerCrab2024] and with the `crabpack` R package. Absolute differences and percent differences between the two methods are shown, respectively, in Figures [-@fig-SrvAbdAbsDif] and [-@fig-SrvAbdPctDif]. The percent differences are also shown in Table [-@tbl-SrvAbdPctDif] to two decimal places. The figures and table show excellent agreement between the two methods in all survey years except 1979, when estimates from the two methods differ substantially (> 10%). The estimates from the assessment are less than those from `crabpack` in 1979. The differences in the two methods apparently reflect differences in the hauls included in the calculation (`crabpack` appears to include hauls at corner stations that were only conducted in 1979, while these were excluded in the standardized time series used in the assessment).
+
+```{r}
+#| label: fig_SrvAbd
+#| results: asis
+#| fig-width: 6.5
+#| fig-asp: 1.25
+  p1 = ggplot(dfrABs |> dplyr::mutate(abd=abd/1000000,xm=tolower(paste(m,x))),
+              aes(x=y,y=abd,ymin=abd*(1-abdCV),ymax=abd*(1+abdCV),colour=type,fill=type,shape=type)) + 
+       geom_ribbon(alpha=0.3,colour=NA) + geom_line() + geom_point(fill=NA,size=3) + 
+       scale_fill_manual(values=c("gold","blue"),aesthetics=c("colour","fill")) + 
+       scale_shape_manual(values=c(24,25)) + 
+       facet_grid(xm~.) + 
+       labs(y="Abundance (millions)") + 
+       wtsPlots::getStdTheme() + 
+       theme(axis.title.x=element_blank(),
+             legend.title=element_blank(),
+             legend.position="inside",
+             legend.position.inside=c(0.99,0.99),
+             legend.justification=c(1,1));
+  cap = paste0("Comparison of annual estimates of design-based area-swept abundance ",
+               "from the NMFS EBS bottom trawl survey by the 2024 assessment (*asmt*) and ",
+               "the `crabpack` R package (*crabpack*), by sex and maturity state.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
+
+```{r}
+#| label: fig_SrvAbdAbsDif
+#| results: asis
+#| fig-width: 6.5
+#| fig-asp: 1.25
+p1 = ggplot(dfrAsp |> dplyr::mutate(diff=diff/MILLION,xm=tolower(paste(m,x))),
+            aes(x=y,y=diff)) + 
+     geom_line() + geom_point(fill=NA,size=3) + 
+     geom_hline(yintercept=0,linetype=3) + 
+     scale_fill_manual(values=c("gold","blue"),aesthetics=c("colour","fill")) + 
+     scale_shape_manual(values=c(24,25)) + 
+     facet_grid(xm~.) + 
+     labs(y="Abundance Difference (millions)") + 
+     wtsPlots::getStdTheme() + 
+     theme(axis.title.x=element_blank(),
+           legend.title=element_blank(),
+           legend.position="inside",
+           legend.position.inside=c(0.99,0.99),
+           legend.justification=c(1,1));
+  cap = paste0("Differences in annual estimates of design-based area-swept abundance ",
+               "from the NMFS EBS bottom trawl survey by the 2024 assessment and ",
+               "the `crabpack` R package, by sex and maturity state.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
+
+```{r}
+#| label: fig_SrvAbdPctDif
+#| results: asis
+#| fig-width: 6.5
+#| fig-asp: 1.25
+p2 = ggplot(dfrAsp |> dplyr::mutate(xm=tolower(paste(m,x))),
+            aes(x=y,y=pdif)) + 
+     geom_line() + geom_point(fill=NA,size=3) + 
+     geom_hline(yintercept=0,linetype=3) + 
+     scale_fill_manual(values=c("gold","blue"),aesthetics=c("colour","fill")) + 
+     scale_shape_manual(values=c(24,25)) + 
+     facet_grid(xm~.) + 
+     labs(y="% Difference in Abundance") + 
+     wtsPlots::getStdTheme() + 
+     theme(axis.title.x=element_blank(),
+           legend.title=element_blank(),
+           legend.position="inside",
+           legend.position.inside=c(0.99,0.99),
+           legend.justification=c(1,1));
+  cap = paste0("Percent differences in annual estimates of design-based area-swept abundance ",
+               "from the NMFS EBS bottom trawl survey by the 2024 assessment and ",
+               "the `crabpack` R package, by sex and maturity state.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p2,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
+
+```{r tbl.SrvAbdPctDif}
+#| results: asis
+  tblr = tabular(Factor(y,name="year") ~ Factor(xm)*pdif*mean,
+                 data=dfrAsp |> dplyr::mutate(xm=tolower(paste(m,x)),
+                                               pdif=round(pdif,1)));
+  colLabels(tblr) = colLabels(tblr)[2,];
+  kblr = tblr |> wtsQMD::convert_tblr_to_kbl(col_spec=c(1),!isPDF,
+                                             ltx_font_size=7,replaceNAs="--",adjColSpacing=-4);
+  cap = paste0("Percent difference, by year, in  design-based NMFS survey abundance trends ",
+               "from the 2024 assessment and the `crabpack` R package, by sex and maturity state.");
+  lstTbls = c(lstTbls,
+              wtsQMD::insertKblIntoQMD(kblr,
+                                       lbl="tbl-SrvAbdPctDif", 
+                                       cap=cap,
+                                       ori="P"));
+  rm(tblr,kblr,cap);
+```
+
+## Survey biomass estimates
+
+Estimates of EBS-wide biomass from the NMFS bottom trawl survey for male and female Tanner crab by maturity state are compared by year in [@fig-SrvBio] for calculations made in the 2024 assessment [@TannerCrab2024] and with the `crabpack` R package. Absolute differences and percent differences between the two methods are shown, respectively, in Figures [-@fig-SrvBioAbsDif] and [-@fig-SrvBioPctDif]. The percent differences are also shown in Table [-@tbl-SrvBioPctDif] to two decimal places. 
+
+As with abundance, the figures and table demonstrate excellent agreement between the two methods in all survey years prior to 2016 except 1979, when estimates from the two methods differ substantially (> 10%). Unlike the abundance estimates, the two methods also exhibit small differences (< 5 %) in 2016 and subsequent years. The estimates from the assessment for 2016 and later are larger than those from `crabpack` in all years. The post-2015 differences between the two methods may reflect differences in the size used to calculate the weight of individual crab: the assessment uses carapace width to the first decimal place while `crabpack` apparently uses the carapace width to 1-mm.
+
+```{r}
+#| label: fig_SrvBio
+#| results: asis
+#| fig-width: 6.5
+#| fig-asp: 1.25
+  p1 = ggplot(dfrABs |> dplyr::mutate(bio=bio/THOUSAND,xm=tolower(paste(m,x))),
+              aes(x=y,y=bio,ymin=bio*(1-bioCV),ymax=bio*(1+bioCV),colour=type,fill=type,shape=type)) + 
+       geom_ribbon(alpha=0.3,colour=NA) + geom_line() + geom_point(fill=NA,size=3) + 
+       scale_fill_manual(values=c("gold","blue"),aesthetics=c("colour","fill")) + 
+       scale_shape_manual(values=c(24,25)) + 
+       facet_grid(xm~.,scales="free_y") + 
+       labs(y="Biomass (1000's t)") + 
+       wtsPlots::getStdTheme() + 
+       theme(axis.title.x=element_blank(),
+             legend.title=element_blank(),
+             legend.position="inside",
+             legend.position.inside=c(0.99,0.99),
+             legend.justification=c(1,1));
+  cap = paste0("Comparison of annual estimates of design-based area-swept biomass ",
+               "from the NMFS EBS bottom trawl survey by the 2024 assessment (*asmt*) and ",
+               "the `crabpack` R package (*crabpack*), by sex and maturity state.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
+
+```{r}
+#| label: fig_SrvBioAbsDif
+#| results: asis
+#| fig-width: 6.5
+#| fig-asp: 1.25
+p1 = ggplot(dfrBsp |> dplyr::mutate(diff=diff/THOUSAND,xm=tolower(paste(m,x))),
+            aes(x=y,y=diff)) + 
+     geom_line() + geom_point(fill=NA,size=3) + 
+     geom_hline(yintercept=0,linetype=3) + 
+     scale_fill_manual(values=c("gold","blue"),aesthetics=c("colour","fill")) + 
+     scale_shape_manual(values=c(24,25)) + 
+     facet_grid(xm~.) + 
+     labs(y="Biomass Difference (1,000's t)") + 
+     wtsPlots::getStdTheme() + 
+     theme(axis.title.x=element_blank(),
+           legend.title=element_blank(),
+           legend.position="inside",
+           legend.position.inside=c(0.99,0.99),
+           legend.justification=c(1,1));
+  cap = paste0("Differences in annual estimates of design-based area-swept biomass ",
+               "from the NMFS EBS bottom trawl survey by the 2024 assessment and ",
+               "the `crabpack` R package, by sex and maturity state.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
+
+```{r}
+#| label: fig_SrvBioPctDif
+#| results: asis
+#| fig-width: 6.5
+#| fig-asp: 1.25
+p2 = ggplot(dfrBsp |> dplyr::mutate(xm=tolower(paste(m,x))),
+            aes(x=y,y=pdif)) + 
+     geom_line() + geom_point(fill=NA,size=3) + 
+     geom_hline(yintercept=0,linetype=3) + 
+     scale_fill_manual(values=c("gold","blue"),aesthetics=c("colour","fill")) + 
+     scale_shape_manual(values=c(24,25)) + 
+     facet_grid(xm~.) + 
+     labs(y="% Difference in Biomass") + 
+     wtsPlots::getStdTheme() + 
+     theme(axis.title.x=element_blank(),
+           legend.title=element_blank(),
+           legend.position="inside",
+           legend.position.inside=c(0.99,0.99),
+           legend.justification=c(1,1));
+  cap = paste0("Percent differences in annual estimates of design-based area-swept biomass ",
+               "from the NMFS EBS bottom trawl survey by the 2024 assessment and ",
+               "the `crabpack` R package, by sex and maturity state.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p2,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
+
+```{r tbl.SrvBioPctDif}
+#| results: asis
+  tblr = tabular(Factor(y,name="year") ~ Factor(xm)*pdif*mean,
+                 data=dfrBsp |> dplyr::mutate(xm=tolower(paste(m,x)),
+                                               pdif=round(pdif,1)));
+  colLabels(tblr) = colLabels(tblr)[2,];
+  kbl = tblr |> wtsQMD::convert_tblr_to_kbl(col_spec=c(1),isHTM,
+                                            ltx_font_size=7,replaceNAs="--",adjColSpacing=-4);
+  cap = paste0("Percent difference, by year, in  design-based NMFS survey biomass trends ",
+               "from the 2024 assessment and the `crabpack` R package, by sex and maturity state.");
+  lstTbls = c(lstTbls,
+              wtsQMD::insertKblIntoQMD(kbl,
+                                       lbl="tbl-SrvBioPctDif", 
+                                       cap=cap,
+                                       ori="P"));
+  rm(tblr,kbl,cap);
+```
+
+<!-- references, if not child doc -->
+```{r,eval=!knitr::opts_knit$get("child"),results='asis'}
+  cat("# References {-}\n");
+  cat("::: {#refs}\n");
+  cat(":::\n\n");
+```
+
+<!-- tables, if not child doc and lstTbls is not empty -->
+```{r}
+#| label: tables_SrvData
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printTablesSectionFromList.R",package="wtsQMD"));
+```
+
+<!-- figures, if not child doc and lstFigs is not empty -->
+```{r}
+#| label: figures_SrvData
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printFiguresSectionFromList.R",package="wtsQMD"));
+```

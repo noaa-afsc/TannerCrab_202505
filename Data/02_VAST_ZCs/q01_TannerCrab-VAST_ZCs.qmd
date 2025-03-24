@@ -1,0 +1,297 @@
+---
+title: "Comparison of design-based and VAST size comps from the NMFS EBS bottom trawl survey"
+author: 
+  - name: "William T. Stockhausen"
+  - name: "Jon Richar"
+institute: NOAA/NMFS/AFSC
+date: '`r format(Sys.time(), "%b %e, %Y")`'
+fontsize: 11pt 
+number-sections: true
+reference-location: document
+bibliography: '`r path.expand("~/Work/Projects/Bibliography/AllRefs.bib")`'
+csl: '`r system.file("files/CJFAS.csl",package="wtsQMD")`'
+link-citations: true
+crossref:
+  chapters: false      # prepend label reference numbers by chater number?
+  fig-title: Figure    # for caption: default is "Figure")
+  tbl-title: Table     # for caption: default is "Table")
+  title-delim: "."     # for caption: default is ":")
+  fig-prefix: Figure   # for in-text (use [-@fig-ref] to drop prefix in text)
+  tbl-prefix: Table    # for in-text (use [-@tbl-ref] to drop prefix in text)
+  fig-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  tbl-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  subref-labels: alpha a # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  ref-hyperlink: true    # references are hyperlinked if true
+format: 
+  html: 
+    df-print: paged
+    toc: true
+    toc-location: right
+    fig-width: 8
+    fig-asp: 1.4
+    fig-dpi: 100
+    embed-resources: true
+    include-in-header: 
+      - '`r system.file("files/in-line_math_mode.html",package="wtsQMD")`'
+  pdf:
+    documentclass: scrartcl
+    toc: false
+    fig_crop: false
+    keep-tex: false
+    geometry:
+      - left=1.0in
+      - right=1.0in
+      - top=1.0in
+      - bottom=1.0in
+      - textwidth=6.5in
+      - showframe=false
+    include-in-header: 
+      - text: |
+          \usepackage{placeins}
+          \extrafloats{500}
+          \maxdeadcycles=10000
+      - file: '`r system.file("files/ltx_ExtraLatexIncludes.tex",package="wtsQMD")`'
+echo: false
+warning: false
+results: 'hide'
+keep-md: false
+keep-yaml: false
+editor: source
+editor_options: 
+  chunk_output_type: console
+concordance: true
+params:
+  setup: !expr 'system.file("files/qmd_setup.R",package="wtsQMD")'
+  dirAsmt: "~/Work/StockAssessments-Crab/Assessments/TannerCrab/2024-09_TannerCrab/AssessmentData/Data_Surveys_NMFS"
+  testing: false
+---
+<!-- IMPORTANT: if used as a child doc, all chunk labels must be unique within the overall document -->
+
+<!-- 
+  NOTEs: 
+     * child_path$peek() gives path to current script.
+     * before starting a child document, do 
+         "child_path$push(file.path(child_path$peek(),rel_path))" first, 
+         where rel_path is the relative path to the child
+     * after a child document has finished, do "child_path$pop()" to return to current path value
+-->
+
+<!-- if not child doc, set up required objects -->
+```{r}
+#| label: SurveyData_setup
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: "asis"
+  testing = params$testing;
+  if (testing) cat(params$setup,"\n\n")
+  source(params$setup);
+  if (testing) cat("root = ",root,"\n\n")
+```
+
+```{r}
+#| label: setup_SurveyData
+#| results: 'asis'
+  require(ggplot2);
+  require(kableExtra);
+  require(tables);
+
+  #--folder with this file
+  dirThs = child_path$peek();
+
+  #--constants
+  MILLION  = 1000000;
+  THOUSAND = 1000;
+
+  #--survey years to include
+  yrs = 1975:2024;
+```
+
+```{r getSurveyData}
+  #--get designed-based size comps from 2024 Tanner crab assessment 
+  dirTC = params$dirAsmt;
+  lstTC = wtsUtilities::getObj(file.path(dirTC,"rda_SrvData.NMFS.DBI.RData"));
+  dfrTZCs = lstTC$lstZCs$EBS |>
+              dplyr::select(y=YEAR,x=SEX,m=MATURITY,s=SHELL_CONDITION,z=SIZE,abd=totABUNDANCE) |>
+              dplyr::mutate(x=tolower(x),
+                            m=tolower(m),
+                            m=ifelse(m=="undetermined","all",m)) |>
+              dplyr::group_by(y,x,m,z) |>
+              dplyr::summarize(abd=sum(abd,na.rm=TRUE)) |>
+              dplyr::ungroup();
+  
+  #--get VAST-based size comps from Jon Richar----
+  dirPrj = dirThs; #--assuming this file is run from project folder
+  if (FALSE){
+    #--read datasets----
+    dfrImmFs = readr::read_csv(file.path(dirPrj,"Immaturefemales_allSizeBins_Final.csv")) |>
+                 dplyr::mutate(x="female",m="immature");
+    dfrMatFs = readr::read_csv(file.path(dirPrj,"Maturefemales_allSizeBins_Final.csv")) |>
+                 dplyr::mutate(x="female",m="mature");
+    dfrAllMs = readr::read_csv(file.path(dirPrj,"MaleCB_allSizeBins_Final.csv")) |>
+                 dplyr::mutate(x="male",m="all");
+    #--combine datasets----
+    dfrVZCs = dplyr::bind_rows(dfrImmFs,dfrMatFs,dfrAllMs);
+    rm(dfrImmFs,dfrMatFs,dfrAllMs);
+    #--check dataset----
+    cols = names(dfrVZCs)[2:length(names(dfrVZCs))];
+    cat(cols,"\n",sep=", ");#-row, Category, Time, Stratum, Units, Estimate, Std. Error for Estimate, Std. Error for ln(Estimate), x, m
+    cols = cols[cols %in% c("Category", "Time", "Stratum", "Units","x","m")]
+    for (col in cols){
+      cat(paste0(col,": ",paste(unique(dfrVZCs[[col]]),collapse=", ")),"\n");
+    }
+    dfrVZCs = dfrVZCs |>
+                dplyr::select(y=Time,x,m,z=Category,
+                              abd=Estimate,
+                              seAbd=`Std. Error for Estimate`,
+                              seLnAbd=`Std. Error for ln(Estimate)`)
+    #--save combined dataset
+    wtsUtilities::saveObj(dfrVZCs,file.path(dirPrj,"rda_VastSizeComps.RData"));
+  } else {
+    dfrVZCs = wtsUtilities::getObj(file.path(dirPrj,"rda_VastSizeComps.RData"));
+  }
+
+  #--combine datasets
+  dfrZCs = dplyr::bind_rows(dfrVZCs |> dplyr::mutate(type="VAST"),
+                            dfrTZCs |> dplyr::mutate(type="design",abd=1000000*abd));
+```
+
+```{r definePlotFunction}
+  makePlot2<-function(dfr,x_,m_){
+    p<-ggplot(dfr |> dplyr::filter(x %in% x_,m %in% m_) |> dplyr::mutate(mx=paste(m,x))) +
+        ggridges::geom_density_ridges(aes(x=z,y=y,height=abd,
+                                          colour=type,fill=type,group=as.factor(paste(y,type))),
+                                          stat="identity",alpha=0.2) +
+        scale_x_continuous(breaks=seq(0,200,25)) +
+        labs(x="size (mm CW)",colour="type",fill="type") +
+        wtsPlots::getStdTheme() +
+        theme(axis.title.y=element_blank())
+    return(p);
+  }
+```
+
+## Introduction
+
+Size data from the annual NMFS EBS bottom trawl survey provides important information on the size distribution of Tanner crab on the EBS shelf. Tracking changes in size composition through time allows the Tanner crab assessment model [ e.g., @TannerCrab2024] to estimate growth and natural mortality, determine stock status and recommended harvest levels, and predict legal biomass. To date, the assessment has used design-based estimates of total abundance-at-size in 5-mm sie bins from 25 mm to 180 mm to characterize the annual survey size distributions by sex and maturity state for the Tanner crab stock in the EBS. However, model-based methods provide alternative ways to calculate these size distributions. Recently, one of us (Richar) used VAST ([@VAST2015; @VAST2016a; @VAST2016c]) to estimate the survey size compositions for males, immature females, and mature females. Here, the results from VAST are compared with the design-based size compositions for Tanner crab in the NMFS EBS crab survey data from 1975 to 2024.
+
+## Size compositions
+
+While size compositions estimated using the design-based and VAST methods generally agree with each other in the overall shape, the design-based estimates tend to be somewhat larger than the VAST estimates--most noticeably at peaks in the individual (annual) compositions (Figures [-@fig-MaleZCs]-[-@fig-MatFemaleZCs]). 
+
+```{r}
+#| label: fig_MaleZCs
+#| results: asis
+#| fig-width: 6.5
+#| fig-asp: 1.25
+  p1 = makePlot2(dfrZCs |> dplyr::filter(dplyr::between(z,25,Inf)),"male","all")
+  cap = paste0("Comparison of annual estimates of male Tanner crab size compositions ",
+               "from the NMFS EBS bottom trawl survey using design-based methods (*design*) ",
+               "and VAST.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
+
+```{r}
+#| label: fig_ImmFemaleZCs
+#| results: asis
+#| fig-width: 6.5
+#| fig-asp: 1.25
+  p1 = makePlot2(dfrZCs |> dplyr::filter(dplyr::between(z,25,100)),"female","immature")
+  cap = paste0("Comparison of annual estimates of immature female Tanner crab size compositions ",
+               "from the NMFS EBS bottom trawl survey using design-based methods (*design*) ",
+               "and VAST.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
+
+```{r}
+#| label: fig_MatFemaleZCs
+#| results: asis
+#| fig-width: 6.5
+#| fig-asp: 1.25
+  p1 = makePlot2(dfrZCs |> dplyr::filter(dplyr::between(z,50,125)),"female","mature");
+  cap = paste0("Comparison of annual estimates of mature female Tanner crab size compositions ",
+               "from the NMFS EBS bottom trawl survey using design-based methods (*design*) ",
+               "and VAST.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
+
+## Total abundance comparisons
+
+Comparisons of the time series of summed size compositions by year and population category better reveal the differences in overall scale between the design-based and VAST size compositions ([@fig-TotAbund]). The design-based values can be substantially different from the VAST-based values (>20% difference; [@tbl-AbdPctDif]) and are generally larger for all three population categories, although counter-examples (1979, for example) are evident as well.
+
+```{r}
+#| label: fig_TotAbund
+#| results: asis
+#| fig-width: 6.5
+#| fig-asp: 0.5
+  dfrSum = dfrZCs |>
+             dplyr::group_by(y,x,m,type) |>
+             dplyr::summarize(abd=sum(abd,na.rm=TRUE)/MILLION) |>
+             dplyr::ungroup() |>
+             dplyr::mutate(mx=paste(m,x));
+  p1 = ggplot(dfrSum,aes(x=y,y=abd,colour=type)) +
+        geom_line() + geom_point() + 
+        scale_x_continuous(breaks=seq(0,3000,5)) +
+        labs(y="total abundance (millions)") +
+        facet_grid(mx~.) +
+        wtsPlots::getStdTheme() + 
+        theme(axis.title.y=element_blank());
+  cap = paste0("Comparison of total abundance as derived from the design-based ",
+               "and VAST size compositions, by population category. ",
+               "Note that the design-based value for 2020 is missing because ",
+               "no survey was conducted that year.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
+
+```{r tbl.Abd}
+#| results: asis
+  #--calculate differences in abundance
+  dfrSump = dfrSum |> dplyr::select(y,x,m,abd,type) |> 
+              tidyr::pivot_wider(names_from="type",values_from="abd") |> 
+              dplyr::mutate(diff=design-VAST,
+                            pdif=100*diff/design);
+  #--create table
+  tblr = tabular(Factor(y,name="year") ~ Factor(xm)*pdif*mean,
+                 data=dfrSump |> dplyr::mutate(xm=tolower(paste(m,x)),
+                                               pdif=round(pdif,1)));
+  colLabels(tblr) = colLabels(tblr)[2,];
+  kbl = tblr |> wtsQMD::convert_tblr_to_kbl(col_spec=c(1),isHTM,
+                                            ltx_font_size=7,replaceNAs="--",adjColSpacing=-4);
+  cap = paste0("Percent difference, by year, in  NMFS EBS survey total abundance trends ",
+               "for Tanner crab based on summing the size compositions from ",
+               "the design-based and VAST methods, by sex and maturity state.");
+  lstTbls = c(lstTbls,
+              wtsQMD::insertKblIntoQMD(kbl,
+                                       lbl="tbl-AbdPctDif", 
+                                       cap=cap,
+                                       ori="P"));
+  rm(tblr,kbl,cap);
+```
+
+<!-- references, if not child doc -->
+```{r,eval=!knitr::opts_knit$get("child"),results='asis'}
+  cat("# References {-}\n");
+  cat("::: {#refs}\n");
+  cat(":::\n\n");
+```
+
+<!-- tables, if not child doc and lstTbls is not empty -->
+```{r}
+#| label: tables_SrvData
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printTablesSectionFromList.R",package="wtsQMD"));
+```
+
+<!-- figures, if not child doc and lstFigs is not empty -->
+```{r}
+#| label: figures_SrvData
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printFiguresSectionFromList.R",package="wtsQMD"));
+```
