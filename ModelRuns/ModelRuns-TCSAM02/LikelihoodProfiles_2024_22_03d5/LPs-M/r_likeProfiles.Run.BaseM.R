@@ -139,7 +139,10 @@ for (ic in 1:length(casesDn)){
     rm(mpip,parp);
   }
   setwd(runfldr);
-  system(paste0("./",fn_run),wait=TRUE,ignore.stderr=TRUE,ignore.stdout=TRUE);
+  if (os=="osx")
+    system(paste0("./",fn_run),wait=TRUE,ignore.stderr=TRUE,ignore.stdout=TRUE);
+  if (os=="win")
+    system2(fn_run,wait=TRUE,stderr=TRUE,stdout=FALSE,invisible=TRUE);
   file.remove(fns_run_rm);#--remove unnecessary files
   setwd(top);
 }#--ic
