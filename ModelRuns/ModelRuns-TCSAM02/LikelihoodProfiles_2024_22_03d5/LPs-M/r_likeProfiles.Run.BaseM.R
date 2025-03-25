@@ -13,7 +13,7 @@
 #--6. Make sure correct parameter scale transform is used to convert MPI initial value
 #       to parameter value in all instances (check "NOTE"s)
 
-os<-"osx";#--or "osx"
+os<-"win";#--or "win" or "osx"
 top<-getwd();
 
 #--read MPI template
@@ -41,8 +41,8 @@ fns_run_rm<-readLines(con="r_files_to_remove.txt");
 base<-0.229999993114;#--base case (limits: 0.135335283   2.718281828)
 cases1<-seq(from= 0.24,to= 1.00,by= 0.01);
 cases2<-seq(from= 0.22,to= 0.13,by=-0.01);
-# cases1<-seq(from= 0.24,to= 0.25,by=  0.1);
-# cases2<-seq(from= 0.22,to= 0.21,by=-0.1);
+# cases1<-seq(from= 0.24,to= 0.25,by=  0.01);
+# cases2<-seq(from= 0.22,to= 0.21,by=-0.01);
 cases<-c(base,cases1,cases2);
 wtsUtilities::saveObj(cases,"rda_cases.RData");#--save for other scripts
 #--process cases with parameter incremented positively to upper limit
@@ -88,8 +88,11 @@ for (ic in 1:length(casesUp)){
     rm(mpip,parp);
   }
   setwd(runfldr);
-  system(paste0("./",fn_run),wait=TRUE,ignore.stderr=TRUE,ignore.stdout=TRUE);
-  file.remove(fns_run_rm);#--remove unnecssary files
+  if (os=="osx")
+    system(paste0("./",fn_run),wait=TRUE,ignore.stderr=TRUE,ignore.stdout=TRUE);
+  if (os=="win")
+    system2(fn_run,wait=TRUE,stderr=TRUE,stdout=FALSE,invisible=TRUE);
+  file.remove(fns_run_rm);#--remove unnecessary files
   setwd(top);
 }#--ic
 
