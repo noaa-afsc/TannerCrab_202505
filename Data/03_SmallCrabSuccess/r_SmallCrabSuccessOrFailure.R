@@ -77,6 +77,24 @@ setwd(dirThs);
   #--get TCSAM02 Tanner crab survey results----
   dirHD = "~/Work/StockAssessments-Crab/Assessments/TannerCrab/2024-09_TannerCrab/AssessmentData/Data_Surveys_NMFS";
   lstHD = wtsUtilities::getObj(file.path(dirHD,"rda_SrvData.NMFS.HD.RData"));
+  lstDBI = wtsUtilities::getObj(file.path(dirHD,"rda_SrvData.NMFS.DBI.RData"));
+
+  n = 5;
+  dfrGrps = tibble::tibble(year=c(2003:2007,2008:2012,2017:2021),
+                           grp=c(rep("2003-2007",n),rep("2008-2012",n),rep("2017-2021",n)),
+                           order=factor(c(1:n,1:n,1:n)));
+  dfrZCs = lstDBI$lstZCs$EBS |>
+             dplyr::select(year=YEAR,z=SIZE,totAbd=totABUNDANCE) |>
+             dplyr::group_by(year,z) |>
+             dplyr::summarize(totAbd=sum(totAbd)) |>
+             dplyr::ungroup() |>
+             dplyr::left_join(dfrGrps,by="year") |>
+             dplyr::mutate(yf=factor(year));
+  p = ggplot(dfrZCs |> dplyr::filter(!is.na(grp)),aes(x=z,y=totAbd,colour=order,fill=order,group=yf)) +
+        geom_step() +
+        facet_wrap(~grp,ncol=1) +
+        wtsPlots::getStdTheme();
+  print(p)
 
   ##--create dataframe with environmental data from survey----
   smos$sfED = tcsamSurveyData::calcEnvData.ByStation(lstHD$dfrSD,lstHD$dfrHD) |>
@@ -98,22 +116,25 @@ setwd(dirThs);
                                             byMaturity=FALSE,
                                             byShellCondition=FALSE,
                                             bySize=FALSE) |>
-             dplyr::rename(numCPUE_LTC=numCPUE,
+             dplyr::rename(year=YEAR,
+                           numCPUE_LTC=numCPUE,
                            wgtCPUE_LTC=wgtCPUE);
+  ##--calculate CPUE by haul for "small" Tanner crab
   dfrSTC = tcsamSurveyData::calcCPUE.ByHaul(lstHD$dfrHD,
                                             lstHD$dfrID |> dplyr::filter(SIZE<=40),
                                             bySex=FALSE,
                                             byMaturity=FALSE,
                                             byShellCondition=FALSE,
                                             bySize=FALSE) |>
-             dplyr::rename(numCPUE_STC=numCPUE,
+             dplyr::rename(year=YEAR,
+                           numCPUE_STC=numCPUE,
                            wgtCPUE_STC=wgtCPUE) |>
              dplyr::inner_join(dfrLTC |> dplyr::select(HAULJOIN,numCPUE_LTC,wgtCPUE_LTC),
                                by="HAULJOIN") |>
              dplyr::inner_join(lstHD$dfrHD |> dplyr::select(HAULJOIN,temp=GEAR_TEMPERATURE,depth=BOTTOM_DEPTH),
                                by="HAULJOIN") |>
-             dplyr::mutate(yf5=factor(5*floor(YEAR/5)),
-                           yf=factor(YEAR));
+             dplyr::mutate(yf5=factor(5*floor(year/5)),
+                           yf=factor(year));
 
   #--Explore differences in the spatial distribution of small male crab in the NMFS survey,
   #--to identify if the distribution of small crab encountered in 2003-2005 and 2008-2010,
@@ -121,39 +142,41 @@ setwd(dirThs);
   #--with the cohort first observed in 2017-2019, which did not propagate to larger sizes.
   #--Likewise, the SSC recommends that a comparison of environmental conditions experienced by
   #--small crabs during these periods may help to elucidate why some cohorts appear to propagate and others do not.
+
+  #--plot small TC abundance vs. bottom temperature and large TC abundance
   ggplot(dfrSTC,aes(x=temp,y=numCPUE_STC)) +
-    geom_point(data=dfrSTC |> dplyr::filter(YEAR %in% 2003:2005,numCPUE_STC>0),colour="blue",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(YEAR %in% 2008:2010,numCPUE_STC>0),colour="green",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(YEAR %in% 2017:2019,numCPUE_STC>0),colour="red",alpha=0.5) +
+    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2003:2005,numCPUE_STC>0),colour="blue",alpha=0.5) +
+    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2008:2010,numCPUE_STC>0),colour="green",alpha=0.5) +
+    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2017:2019,numCPUE_STC>0),colour="red",alpha=0.5) +
     scale_y_log10() +
     wtsPlots::getStdTheme();
   ggplot(dfrSTC,aes(x=numCPUE_LTC,y=numCPUE_STC)) +
-    geom_point(data=dfrSTC |> dplyr::filter(YEAR %in% 2003:2005,numCPUE_STC>0),colour="blue",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(YEAR %in% 2008:2010,numCPUE_STC>0),colour="green",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(YEAR %in% 2017:2019,numCPUE_STC>0),colour="red",alpha=0.5) +
+    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2003:2005,numCPUE_STC>0),colour="blue",alpha=0.5) +
+    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2008:2010,numCPUE_STC>0),colour="green",alpha=0.5) +
+    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2017:2019,numCPUE_STC>0),colour="red",alpha=0.5) +
     scale_y_log10() +
     scale_x_log10(limits=c(NA,10000)) +
     wtsPlots::getStdTheme();
   ggplot(dfrSTC,aes(x=1/numCPUE_LTC,y=numCPUE_STC)) +
-    geom_point(data=dfrSTC |> dplyr::filter(YEAR %in% 2003:2005,numCPUE_STC>0),colour="blue",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(YEAR %in% 2008:2010,numCPUE_STC>0),colour="green",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(YEAR %in% 2017:2019,numCPUE_STC>0),colour="red",alpha=0.5) +
+    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2003:2005,numCPUE_STC>0),colour="blue",alpha=0.5) +
+    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2008:2010,numCPUE_STC>0),colour="green",alpha=0.5) +
+    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2017:2019,numCPUE_STC>0),colour="red",alpha=0.5) +
     #scale_y_log10() +
     #scale_x_log10(limits=c(NA,10000)) +
     wtsPlots::getStdTheme();
 
-
-p1 = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(YEAR %in% 2003:2005),
+#--plot 2-d histograms of small TC abundance vs large TC abundance and bottom temperature
+p1 = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(year %in% 2003:2005),
                                   x=numCPUE_LTC,y=temp,weight=numCPUE_STC,
                                   xparams=list(limits=c(0,10000)),
                                   yparams=list(limits=c(-2,10)),
                                   addValues=FALSE)
-p2 = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(YEAR %in% 2008:2010),
+p2 = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(year %in% 2008:2010),
                             x=numCPUE_LTC,y=temp,weight=numCPUE_STC,
                             xparams=list(limits=c(0,10000)),
                             yparams=list(limits=c(-2,10)),
                             addValues=FALSE)
-p3 = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(YEAR %in% 2017:2019),
+p3 = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(year %in% 2017:2019),
                             x=numCPUE_LTC,y=temp,weight=numCPUE_STC,
                             xparams=list(limits=c(0,10000)),
                             yparams=list(limits=c(-2,10)),
@@ -161,3 +184,27 @@ p3 = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(YEAR %in% 2017:2019),
 cowplot::plot_grid(p1,
                    p2,
                    p3,ncol=1)
+
+#--plot spatial patterns of small TC and cold pool for relevant years
+years = c(2003:2005,2008:2010,2017:2019);
+sfSTC = dfrSTC |>
+          dplyr::group_by(year) |>
+          dplyr::mutate(nrmCPUE_STC=numCPUE_STC/sum(numCPUE_STC),
+                        nrmCPUE_LTC=numCPUE_LTC/sum(numCPUE_LTC)) |>
+          dplyr::left_join(smos$lstSrvGrids$grid,by=c("GIS_STATION"="STATION_ID")) |>
+          sf::st_as_sf();
+  p1 = ggplot() + bmls$land + bmls$bathym +
+         geom_sf(data=sfSTC |> dplyr::filter(year %in% years,nrmCPUE_STC>0),
+                          mapping=aes(colour=nrmCPUE_STC,fill=nrmCPUE_STC)) +
+         geom_sf(data=smos$sfCP |> dplyr::filter(year %in% years),
+                           colour="black",fill=NA,linewidth=1) +
+         scale_fill_viridis_c(name="small crab CPUE\n(normalized)",option="plasma",
+                              limits=c(0,NA),oob=scales::squish,direction=-1,
+                              aesthetics=c("colour","fill")) +
+         facet_wrap(~year,ncol=3,scales="fixed") +
+         bmls$map_scale + bmls$theme +
+         theme(legend.position="top",
+               #legend.position.inside=c(0.01,0.01),
+               legend.justification.top=c(0,0),
+               legend.direction="horizontal");
+  dims = wtsUtilities::gg_FixOnePlotDim(p1,width,fitWidth=TRUE);
