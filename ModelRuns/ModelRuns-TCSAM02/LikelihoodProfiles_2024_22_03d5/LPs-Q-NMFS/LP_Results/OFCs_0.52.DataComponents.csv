@@ -1,0 +1,555 @@
+"case","category","fleet","catch.type","data.type","fit.type","nll.type","y","x","m","s","rmse","wgt","nll","objfun"
+"","surveys data","NMFS M","index catch","abundance","BY_X","lognormal","all","male","all maturity states","all shell conditions",3.40553350546,0,187.26911785,0
+"","surveys data","NMFS M","index catch","abundance","BY_X","lognormal","all","female","all maturity states","all shell conditions",0,0,0,0
+"","surveys data","NMFS M","index catch","biomass","BY_X","lognormal","all","male","all maturity states","all shell conditions",2.75358911413,1,90.0578508495,90.0578508495
+"","surveys data","NMFS M","index catch","biomass","BY_X","lognormal","all","female","all maturity states","all shell conditions",0,1,0,0
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1975","male","all maturity states","all shell conditions",64.3840294808,1,19.6079175382,19.6079175382
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1976","male","all maturity states","all shell conditions",158.432533637,1,9.97682748296,9.97682748296
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1977","male","all maturity states","all shell conditions",35.1315160943,1,24.1412109074,24.1412109074
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1978","male","all maturity states","all shell conditions",130.514811979,1,11.578558897,11.578558897
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1979","male","all maturity states","all shell conditions",86.5649036022,1,10.5885135085,10.5885135085
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1980","male","all maturity states","all shell conditions",41.8921547845,1,25.8438077361,25.8438077361
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1981","male","all maturity states","all shell conditions",86.3008258098,1,12.0137273718,12.0137273718
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1982","male","all maturity states","all shell conditions",52.7372978865,1,16.5146211487,16.5146211487
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1983","male","all maturity states","all shell conditions",97.8088096379,1,7.54528631645,7.54528631645
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1984","male","all maturity states","all shell conditions",83.2928482218,1,8.32705638034,8.32705638034
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1985","male","all maturity states","all shell conditions",45.4145927172,1,17.885311538,17.885311538
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1986","male","all maturity states","all shell conditions",92.6221438178,1,11.9271128794,11.9271128794
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1987","male","all maturity states","all shell conditions",65.1590033503,1,13.2314314368,13.2314314368
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1988","male","all maturity states","all shell conditions",281.481001814,1,3.79673913796,3.79673913796
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1989","male","all maturity states","all shell conditions",162.112883192,1,7.42990668046,7.42990668046
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1990","male","all maturity states","all shell conditions",280.002794558,1,3.99871549584,3.99871549584
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1991","male","all maturity states","all shell conditions",230.778110628,1,6.35282088,6.35282088
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1992","male","all maturity states","all shell conditions",151.439507577,1,7.53417629679,7.53417629679
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1993","male","all maturity states","all shell conditions",166.800341765,1,7.46647563068,7.46647563068
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1994","male","all maturity states","all shell conditions",117.234378057,1,11.2602553102,11.2602553102
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1995","male","all maturity states","all shell conditions",138.678514582,1,8.69446478401,8.69446478401
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1996","male","all maturity states","all shell conditions",155.542372547,1,7.27039000951,7.27039000951
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1997","male","all maturity states","all shell conditions",265.322529731,1,3.40428510527,3.40428510527
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1998","male","all maturity states","all shell conditions",155.493179262,1,4.61992576434,4.61992576434
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","1999","male","all maturity states","all shell conditions",110.064814207,1,7.90708074656,7.90708074656
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2000","male","all maturity states","all shell conditions",191.041317492,1,3.70520349599,3.70520349599
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2001","male","all maturity states","all shell conditions",126.589854762,1,6.95016579368,6.95016579368
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2002","male","all maturity states","all shell conditions",85.0316291308,1,8.12452934179,8.12452934179
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2003","male","all maturity states","all shell conditions",97.3567032979,1,7.36294241226,7.36294241226
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2004","male","all maturity states","all shell conditions",151.273136053,1,5.49635607002,5.49635607002
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2005","male","all maturity states","all shell conditions",170.870291725,1,5.88936454427,5.88936454427
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2006","male","all maturity states","all shell conditions",123.572147216,1,7.33191837266,7.33191837266
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2007","male","all maturity states","all shell conditions",99.0702714924,1,9.22528715503,9.22528715503
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2008","male","all maturity states","all shell conditions",126.890958127,1,6.45200946254,6.45200946254
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2009","male","all maturity states","all shell conditions",79.92544285,1,11.5951718051,11.5951718051
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2010","male","all maturity states","all shell conditions",193.152170777,1,4.17782725583,4.17782725583
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2011","male","all maturity states","all shell conditions",119.808123223,1,6.9543883598,6.9543883598
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2012","male","all maturity states","all shell conditions",72.2586433113,1,8.22392550915,8.22392550915
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2013","male","all maturity states","all shell conditions",112.320021936,1,6.46555042498,6.46555042498
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2014","male","all maturity states","all shell conditions",137.86768204,1,8.68539546223,8.68539546223
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2015","male","all maturity states","all shell conditions",197.312763113,1,5.15633122119,5.15633122119
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2016","male","all maturity states","all shell conditions",151.15840475,1,6.20636273736,6.20636273736
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2017","male","all maturity states","all shell conditions",141.171451856,1,8.03485246071,8.03485246071
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2018","male","all maturity states","all shell conditions",129.731526535,1,5.04514388333,5.04514388333
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2019","male","all maturity states","all shell conditions",118.639292849,1,5.18127438873,5.18127438873
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2021","male","all maturity states","all shell conditions",151.317965728,1,4.76008841963,4.76008841963
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2022","male","all maturity states","all shell conditions",212.102870271,1,3.3718895432,3.3718895432
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2023","male","all maturity states","all shell conditions",132.599759991,1,3.52463129092,3.52463129092
+"","surveys data","NMFS M","index catch","n.at.z","BY_X","multinomial","2024","male","all maturity states","all shell conditions",80.6340429274,1,9.19477425435,9.19477425435
+"","surveys data","NMFS F","index catch","abundance","BY_XM","lognormal","all","male","immature","all shell conditions",0,0,0,0
+"","surveys data","NMFS F","index catch","abundance","BY_XM","lognormal","all","male","mature","all shell conditions",0,0,0,0
+"","surveys data","NMFS F","index catch","abundance","BY_XM","lognormal","all","female","immature","all shell conditions",3.13061548219,0,161.574948849,0
+"","surveys data","NMFS F","index catch","abundance","BY_XM","lognormal","all","female","mature","all shell conditions",2.51312435611,0,78.9694611023,0
+"","surveys data","NMFS F","index catch","biomass","BY_XM","lognormal","all","male","immature","all shell conditions",0,1,0,0
+"","surveys data","NMFS F","index catch","biomass","BY_XM","lognormal","all","male","mature","all shell conditions",0,1,0,0
+"","surveys data","NMFS F","index catch","biomass","BY_XM","lognormal","all","female","immature","all shell conditions",2.84472948034,1,120.123995286,120.123995286
+"","surveys data","NMFS F","index catch","biomass","BY_XM","lognormal","all","female","mature","all shell conditions",2.34934740867,1,58.4033754213,58.4033754213
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1975","female","immature","all shell conditions",5.20950772117,1,6.73863199232,6.73863199232
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1975","female","mature","all shell conditions",29.8875432084,1,4.92407059078,4.92407059078
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1976","female","immature","all shell conditions",55.5590836207,1,2.55345860281,2.55345860281
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1976","female","mature","all shell conditions",41.0255915455,1,3.43513282464,3.43513282464
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1977","female","immature","all shell conditions",28.2543964513,1,3.10925617096,3.10925617096
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1977","female","mature","all shell conditions",54.1636015419,1,3.46268276376,3.46268276376
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1978","female","immature","all shell conditions",21.3821692169,1,6.13694884974,6.13694884974
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1978","female","mature","all shell conditions",97.8042220173,1,1.23663602889,1.23663602889
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1979","female","immature","all shell conditions",81.0022665368,1,1.16537050315,1.16537050315
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1979","female","mature","all shell conditions",74.6609714685,1,1.83412277139,1.83412277139
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1980","female","immature","all shell conditions",77.9805282609,1,1.25037985573,1.25037985573
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1980","female","mature","all shell conditions",20.3246157525,1,4.87581295144,4.87581295144
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1981","female","immature","all shell conditions",28.1207538277,1,2.00212888911,2.00212888911
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1981","female","mature","all shell conditions",16.4866791079,1,10.2772516056,10.2772516056
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1982","female","immature","all shell conditions",46.1836221201,1,3.58533469249,3.58533469249
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1982","female","mature","all shell conditions",11.7591010525,1,11.9419240578,11.9419240578
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1983","female","immature","all shell conditions",41.792249615,1,3.14179840105,3.14179840105
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1983","female","mature","all shell conditions",68.5469643211,1,2.76296932716,2.76296932716
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1984","female","immature","all shell conditions",31.8707050117,1,4.08403977164,4.08403977164
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1984","female","mature","all shell conditions",513.741735369,1,0.368124252556,0.368124252556
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1985","female","immature","all shell conditions",139.923720607,1,2.17559308359,2.17559308359
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1985","female","mature","all shell conditions",108.222505518,1,2.57542066172,2.57542066172
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1986","female","immature","all shell conditions",99.8654632697,1,4.074250795,4.074250795
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1986","female","mature","all shell conditions",10.6485208453,1,5.14797750782,5.14797750782
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1987","female","immature","all shell conditions",17.8637530149,1,31.8670456484,31.8670456484
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1987","female","mature","all shell conditions",16.8621072685,1,2.64272033055,2.64272033055
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1988","female","immature","all shell conditions",112.630705408,1,3.16014775637,3.16014775637
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1988","female","mature","all shell conditions",12.038733698,1,9.10899645954,9.10899645954
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1989","female","immature","all shell conditions",38.7764392373,1,4.5070111012,4.5070111012
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1989","female","mature","all shell conditions",21.5517762311,1,3.87020183937,3.87020183937
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1990","female","immature","all shell conditions",53.2801563506,1,3.24119850434,3.24119850434
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1990","female","mature","all shell conditions",63.1246589307,1,1.68080222902,1.68080222902
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1991","female","immature","all shell conditions",20.7879005917,1,5.98151667004,5.98151667004
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1991","female","mature","all shell conditions",227.705828462,1,0.896080780442,0.896080780442
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1992","female","immature","all shell conditions",23.9394882205,1,5.11476540966,5.11476540966
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1992","female","mature","all shell conditions",264.376077774,1,0.484225751388,0.484225751388
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1993","female","immature","all shell conditions",25.6623832364,1,2.83702071945,2.83702071945
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1993","female","mature","all shell conditions",247.855210644,1,0.425935943573,0.425935943573
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1994","female","immature","all shell conditions",18.0722882166,1,5.09836646977,5.09836646977
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1994","female","mature","all shell conditions",264.15385588,1,0.484181804032,0.484181804032
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1995","female","immature","all shell conditions",108.690636099,1,2.22813164184,2.22813164184
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1995","female","mature","all shell conditions",269.482459039,1,0.448570888557,0.448570888557
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1996","female","immature","all shell conditions",77.3653833488,1,3.65667807089,3.65667807089
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1996","female","mature","all shell conditions",114.9058966,1,0.959214669222,0.959214669222
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1997","female","immature","all shell conditions",54.8277151096,1,4.09835602616,4.09835602616
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1997","female","mature","all shell conditions",139.521151743,1,0.528786566664,0.528786566664
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1998","female","immature","all shell conditions",415.542886035,1,0.838928454712,0.838928454712
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1998","female","mature","all shell conditions",68.7479466278,1,0.645693802917,0.645693802917
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1999","female","immature","all shell conditions",62.3118524582,1,5.27165659435,5.27165659435
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","1999","female","mature","all shell conditions",53.8936425522,1,1.17780254344,1.17780254344
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2000","female","immature","all shell conditions",101.712031926,1,1.8024056505,1.8024056505
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2000","female","mature","all shell conditions",18.8932873133,1,2.19785564494,2.19785564494
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2001","female","immature","all shell conditions",131.900917439,1,2.34801991566,2.34801991566
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2001","female","mature","all shell conditions",100.800492121,1,0.662992815947,0.662992815947
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2002","female","immature","all shell conditions",45.4019700318,1,5.57462433298,5.57462433298
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2002","female","mature","all shell conditions",224.799756115,1,0.289320228701,0.289320228701
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2003","female","immature","all shell conditions",59.5562562778,1,3.69806261234,3.69806261234
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2003","female","mature","all shell conditions",78.5297687625,1,1.53722464182,1.53722464182
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2004","female","immature","all shell conditions",26.2237782246,1,7.22646940639,7.22646940639
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2004","female","mature","all shell conditions",112.243067024,1,0.6816139124,0.6816139124
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2005","female","immature","all shell conditions",162.124666158,1,1.47356278945,1.47356278945
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2005","female","mature","all shell conditions",367.019100656,1,0.273928848443,0.273928848443
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2006","female","immature","all shell conditions",67.4572912479,1,3.3378409999,3.3378409999
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2006","female","mature","all shell conditions",259.270681146,1,0.40548444721,0.40548444721
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2007","female","immature","all shell conditions",80.7651062446,1,1.97829945554,1.97829945554
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2007","female","mature","all shell conditions",272.851808151,1,0.42886932605,0.42886932605
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2008","female","immature","all shell conditions",144.361058464,1,1.05314499538,1.05314499538
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2008","female","mature","all shell conditions",233.812629753,1,0.581327785948,0.581327785948
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2009","female","immature","all shell conditions",38.5859091387,1,5.73967142933,5.73967142933
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2009","female","mature","all shell conditions",392.799000682,1,0.209738072158,0.209738072158
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2010","female","immature","all shell conditions",59.8454352862,1,3.70336025498,3.70336025498
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2010","female","mature","all shell conditions",438.89759403,1,0.231565543755,0.231565543755
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2011","female","immature","all shell conditions",46.9158728287,1,6.72544020336,6.72544020336
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2011","female","mature","all shell conditions",65.4740056484,1,0.470888654265,0.470888654265
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2012","female","immature","all shell conditions",92.3414807699,1,3.34709774488,3.34709774488
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2012","female","mature","all shell conditions",29.8290284571,1,1.51840398661,1.51840398661
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2013","female","immature","all shell conditions",97.4058746679,1,2.36171192551,2.36171192551
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2013","female","mature","all shell conditions",168.316850873,1,0.802913740276,0.802913740276
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2014","female","immature","all shell conditions",7.85522178144,1,12.8199282788,12.8199282788
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2014","female","mature","all shell conditions",76.6689969369,1,0.751768213052,0.751768213052
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2015","female","immature","all shell conditions",47.7146882555,1,2.99825858347,2.99825858347
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2015","female","mature","all shell conditions",47.247282838,1,2.19228473391,2.19228473391
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2016","female","immature","all shell conditions",32.5391495048,1,2.90295398741,2.90295398741
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2016","female","mature","all shell conditions",37.3862364129,1,2.55651745472,2.55651745472
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2017","female","immature","all shell conditions",26.8401611669,1,3.75017475839,3.75017475839
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2017","female","mature","all shell conditions",59.5535146097,1,1.30770551274,1.30770551274
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2018","female","immature","all shell conditions",79.061636026,1,1.94647077884,1.94647077884
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2018","female","mature","all shell conditions",25.1628489466,1,1.38349569777,1.38349569777
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2019","female","immature","all shell conditions",47.7940526177,1,4.83597427398,4.83597427398
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2019","female","mature","all shell conditions",15.7397180268,1,3.60592115279,3.60592115279
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2021","female","immature","all shell conditions",82.1443220751,1,2.19143713661,2.19143713661
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2021","female","mature","all shell conditions",149.991453612,1,0.819497839468,0.819497839468
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2022","female","immature","all shell conditions",91.7659068764,1,1.5051635388,1.5051635388
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2022","female","mature","all shell conditions",293.983827437,1,0.295611828616,0.295611828616
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2023","female","immature","all shell conditions",215.862000833,1,1.17388332864,1.17388332864
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2023","female","mature","all shell conditions",82.1741435466,1,0.409038091092,0.409038091092
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2024","female","immature","all shell conditions",72.6091106408,1,5.29475732433,5.29475732433
+"","surveys data","NMFS F","index catch","n.at.z","BY_XM","multinomial","2024","female","mature","all shell conditions",38.7094071577,1,1.73863793969,1.73863793969
+"","surveys data","SBS NMFS M","index catch","abundance","BY_X","lognormal","all","male","all maturity states","all shell conditions",49.2961953585,0,7280.88729064,0
+"","surveys data","SBS NMFS M","index catch","abundance","BY_X","lognormal","all","female","all maturity states","all shell conditions",0,0,0,0
+"","surveys data","SBS NMFS M","index catch","biomass","BY_X","lognormal","all","male","all maturity states","all shell conditions",47.0117273049,0,6620.67845684,0
+"","surveys data","SBS NMFS M","index catch","biomass","BY_X","lognormal","all","female","all maturity states","all shell conditions",0,0,0,0
+"","surveys data","SBS NMFS M","index catch","n.at.z","BY_X","multinomial","2013","male","all maturity states","all shell conditions",38.9339983505,0,16.3809888508,0
+"","surveys data","SBS NMFS M","index catch","n.at.z","BY_X","multinomial","2014","male","all maturity states","all shell conditions",67.1669300566,0,10.805862025,0
+"","surveys data","SBS NMFS M","index catch","n.at.z","BY_X","multinomial","2015","male","all maturity states","all shell conditions",111.757596531,0,8.61474683378,0
+"","surveys data","SBS NMFS M","index catch","n.at.z","BY_X","multinomial","2016","male","all maturity states","all shell conditions",105.711024635,0,7.3309437219,0
+"","surveys data","SBS NMFS M","index catch","n.at.z","BY_X","multinomial","2017","male","all maturity states","all shell conditions",167.765921696,0,7.62318139153,0
+"","surveys data","SBS NMFS F","index catch","abundance","BY_XM","lognormal","all","male","immature","all shell conditions",0,0,0,0
+"","surveys data","SBS NMFS F","index catch","abundance","BY_XM","lognormal","all","male","mature","all shell conditions",0,0,0,0
+"","surveys data","SBS NMFS F","index catch","abundance","BY_XM","lognormal","all","female","immature","all shell conditions",34.2181328391,0,3506.48170103,0
+"","surveys data","SBS NMFS F","index catch","abundance","BY_XM","lognormal","all","female","mature","all shell conditions",28.4755315098,0,2426.34203476,0
+"","surveys data","SBS NMFS F","index catch","biomass","BY_XM","lognormal","all","male","immature","all shell conditions",0,0,0,0
+"","surveys data","SBS NMFS F","index catch","biomass","BY_XM","lognormal","all","male","mature","all shell conditions",0,0,0,0
+"","surveys data","SBS NMFS F","index catch","biomass","BY_XM","lognormal","all","female","immature","all shell conditions",26.6379306372,0,2122.1292773,0
+"","surveys data","SBS NMFS F","index catch","biomass","BY_XM","lognormal","all","female","mature","all shell conditions",25.1633653539,0,1893.06266816,0
+"","surveys data","SBS NMFS F","index catch","n.at.z","BY_XM","multinomial","2013","female","immature","all shell conditions",54.2746974694,0,1.03921563415,0
+"","surveys data","SBS NMFS F","index catch","n.at.z","BY_XM","multinomial","2013","female","mature","all shell conditions",95.8976708805,0,1.23579717073,0
+"","surveys data","SBS NMFS F","index catch","n.at.z","BY_XM","multinomial","2014","female","immature","all shell conditions",21.5207600409,0,1.39381833402,0
+"","surveys data","SBS NMFS F","index catch","n.at.z","BY_XM","multinomial","2014","female","mature","all shell conditions",204.092126201,0,0.224295810686,0
+"","surveys data","SBS NMFS F","index catch","n.at.z","BY_XM","multinomial","2015","female","immature","all shell conditions",27.6681479519,0,3.20363318813,0
+"","surveys data","SBS NMFS F","index catch","n.at.z","BY_XM","multinomial","2015","female","mature","all shell conditions",35.4614269672,0,1.60333141629,0
+"","surveys data","SBS NMFS F","index catch","n.at.z","BY_XM","multinomial","2016","female","immature","all shell conditions",25.6350195683,0,1.59109766848,0
+"","surveys data","SBS NMFS F","index catch","n.at.z","BY_XM","multinomial","2016","female","mature","all shell conditions",17.9347955104,0,3.66815788182,0
+"","surveys data","SBS NMFS F","index catch","n.at.z","BY_XM","multinomial","2017","female","immature","all shell conditions",23.7104479434,0,4.28304070355,0
+"","surveys data","SBS NMFS F","index catch","n.at.z","BY_XM","multinomial","2017","female","mature","all shell conditions",61.015107445,0,1.32616761101,0
+"","surveys data","SBS BSFRF M","index catch","abundance","BY_X","lognormal","all","male","all maturity states","all shell conditions",1.53692782651,0,-2.07496120874,0
+"","surveys data","SBS BSFRF M","index catch","abundance","BY_X","lognormal","all","female","all maturity states","all shell conditions",0,0,0,0
+"","surveys data","SBS BSFRF M","index catch","biomass","BY_X","lognormal","all","male","all maturity states","all shell conditions",1.37511307856,1,-3.27810091223,-3.27810091223
+"","surveys data","SBS BSFRF M","index catch","biomass","BY_X","lognormal","all","female","all maturity states","all shell conditions",0,1,0,0
+"","surveys data","SBS BSFRF M","index catch","n.at.z","BY_X","DirichletMultinomial","2013","male","all maturity states","all shell conditions",27.0001834386,1,63.6057241963,63.6057241963
+"","surveys data","SBS BSFRF M","index catch","n.at.z","BY_X","DirichletMultinomial","2014","male","all maturity states","all shell conditions",163.438436686,1,43.4778263232,43.4778263232
+"","surveys data","SBS BSFRF M","index catch","n.at.z","BY_X","DirichletMultinomial","2015","male","all maturity states","all shell conditions",62.4374807199,1,49.526929005,49.526929005
+"","surveys data","SBS BSFRF M","index catch","n.at.z","BY_X","DirichletMultinomial","2016","male","all maturity states","all shell conditions",122.556818031,1,43.4864684379,43.4864684379
+"","surveys data","SBS BSFRF M","index catch","n.at.z","BY_X","DirichletMultinomial","2017","male","all maturity states","all shell conditions",25.0513490033,1,43.3377161632,43.3377161632
+"","surveys data","SBS BSFRF M","index catch","n.at.z","BY_X","DirichletMultinomial","2018","male","all maturity states","all shell conditions",45.4867012895,1,36.471343072,36.471343072
+"","surveys data","SBS BSFRF F","index catch","abundance","BY_XM","lognormal","all","male","immature","all shell conditions",0,0,0,0
+"","surveys data","SBS BSFRF F","index catch","abundance","BY_XM","lognormal","all","male","mature","all shell conditions",0,0,0,0
+"","surveys data","SBS BSFRF F","index catch","abundance","BY_XM","lognormal","all","female","immature","all shell conditions",1.84271004813,0,2.74967908028,0
+"","surveys data","SBS BSFRF F","index catch","abundance","BY_XM","lognormal","all","female","mature","all shell conditions",1.64862406232,0,1.57253577095,0
+"","surveys data","SBS BSFRF F","index catch","biomass","BY_XM","lognormal","all","male","immature","all shell conditions",0,1,0,0
+"","surveys data","SBS BSFRF F","index catch","biomass","BY_XM","lognormal","all","male","mature","all shell conditions",0,1,0,0
+"","surveys data","SBS BSFRF F","index catch","biomass","BY_XM","lognormal","all","female","immature","all shell conditions",1.14371884369,1,-3.47178607582,-3.47178607582
+"","surveys data","SBS BSFRF F","index catch","biomass","BY_XM","lognormal","all","female","mature","all shell conditions",1.90246669825,1,4.12957720174,4.12957720174
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2013","female","immature","all shell conditions",13.9167666815,1,27.1896493961,27.1896493961
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2013","female","mature","all shell conditions",41.7823410785,1,11.6775764513,11.6775764513
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2014","female","immature","all shell conditions",22.9646513219,1,10.1809708428,10.1809708428
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2014","female","mature","all shell conditions",56.1321271489,1,9.53555742167,9.53555742167
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2015","female","immature","all shell conditions",11.3789514616,1,14.2576861384,14.2576861384
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2015","female","mature","all shell conditions",72.1145599362,1,11.6625359054,11.6625359054
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2016","female","immature","all shell conditions",12.3461692838,1,22.7412617246,22.7412617246
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2016","female","mature","all shell conditions",51.4424285279,1,12.6673997733,12.6673997733
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2017","female","immature","all shell conditions",18.2342920866,1,19.8091386805,19.8091386805
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2017","female","mature","all shell conditions",72.0216002719,1,8.22301447453,8.22301447453
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2018","female","immature","all shell conditions",121.015593958,1,15.5297552518,15.5297552518
+"","surveys data","SBS BSFRF F","index catch","n.at.z","BY_XM","DirichletMultinomial","2018","female","mature","all shell conditions",52.5280601252,1,9.65093704057,9.65093704057
+"","fisheries data","TCF","retained catch","abundance","BY_X","lognormal","all","male","all maturity states","all shell conditions",5.22965724783,0,446.384380317,0
+"","fisheries data","TCF","retained catch","abundance","BY_X","lognormal","all","female","all maturity states","all shell conditions",0,0,0,0
+"","fisheries data","TCF","retained catch","biomass","BY_X","lognormal","all","male","all maturity states","all shell conditions",0.40472249683,1,-151.696941551,-151.696941551
+"","fisheries data","TCF","retained catch","biomass","BY_X","lognormal","all","female","all maturity states","all shell conditions",0,1,0,0
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1980","male","all maturity states","all shell conditions",23.5744994327,1,14.0384510425,14.0384510425
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1981","male","all maturity states","all shell conditions",247.75015877,1,0.796434642043,0.796434642043
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1982","male","all maturity states","all shell conditions",255.35127351,1,1.26108427745,1.26108427745
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1983","male","all maturity states","all shell conditions",27.9171270788,1,1.46836463924,1.46836463924
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1984","male","all maturity states","all shell conditions",121.41588687,1,0.617616818229,0.617616818229
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1988","male","all maturity states","all shell conditions",86.6282388981,1,2.22282810154,2.22282810154
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1989","male","all maturity states","all shell conditions",1029.97238483,1,0.859064009711,0.859064009711
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1990","male","all maturity states","all shell conditions",268.483021464,1,2.51422664128,2.51422664128
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1991","male","all maturity states","all shell conditions",794.068177767,1,0.563207913673,0.563207913673
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1992","male","all maturity states","all shell conditions",115.815777207,1,5.330435707,5.330435707
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1993","male","all maturity states","all shell conditions",174.047160735,1,3.39789520828,3.39789520828
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1994","male","all maturity states","all shell conditions",180.386366134,1,2.61338094031,2.61338094031
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1995","male","all maturity states","all shell conditions",162.925542519,1,2.19543299765,2.19543299765
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","1996","male","all maturity states","all shell conditions",101.102379627,1,0.951210719837,0.951210719837
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2005","male","all maturity states","all shell conditions",7.12132257793,1,0.806047582707,0.806047582707
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2006","male","all maturity states","all shell conditions",65.3624390565,1,0.509020985427,0.509020985427
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2007","male","all maturity states","all shell conditions",102.598459094,1,1.00736792985,1.00736792985
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2008","male","all maturity states","all shell conditions",201.914421858,1,0.286818012708,0.286818012708
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2009","male","all maturity states","all shell conditions",29.292819532,1,1.85608631168,1.85608631168
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2013","male","all maturity states","all shell conditions",313.770725848,1,0.329188559438,0.329188559438
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2014","male","all maturity states","all shell conditions",166.316191576,1,2.49826915074,2.49826915074
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2015","male","all maturity states","all shell conditions",130.396149264,1,4.2764049834,4.2764049834
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2017","male","all maturity states","all shell conditions",54.8043815252,1,1.38707486552,1.38707486552
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2018","male","all maturity states","all shell conditions",29.7494010897,1,1.97594626992,1.97594626992
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2020","male","all maturity states","all shell conditions",17.9525908633,1,3.62444400072,3.62444400072
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2021","male","all maturity states","all shell conditions",4.44247147852,1,7.45482927186,7.45482927186
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2022","male","all maturity states","all shell conditions",34.5619960346,1,2.99827505622,2.99827505622
+"","fisheries data","TCF","retained catch","n.at.z","BY_X","multinomial","2023","male","all maturity states","all shell conditions",180.70439986,1,0.51625233159,0.51625233159
+"","fisheries data","TCF","total catch","abundance","BY_TOTAL","lognormal","all","all sexes","all maturity states","all shell conditions",2.16528089681,0,12.4047015408,0
+"","fisheries data","TCF","total catch","biomass","BY_TOTAL","lognormal","all","all sexes","all maturity states","all shell conditions",1.91603237424,1,3.48247757324,3.48247757324
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1991","male","all maturity states","all shell conditions",2729.69632543,1,-0.163311404793,-0.163311404793
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1991","female","all maturity states","all shell conditions",515.02145263,1,1.95229622592,1.95229622592
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1992","male","all maturity states","all shell conditions",254.814783552,1,9.08260681063,9.08260681063
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1992","female","all maturity states","all shell conditions",1249.76938323,1,-4.44358791516,-4.44358791516
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1993","male","all maturity states","all shell conditions",717.880494492,1,5.39064695,5.39064695
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1993","female","all maturity states","all shell conditions",509.668761991,1,-2.71877616485,-2.71877616485
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1994","male","all maturity states","all shell conditions",602.103489346,1,-3.69929127281,-3.69929127281
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1994","female","all maturity states","all shell conditions",226.288458474,1,5.34614755417,5.34614755417
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1995","male","all maturity states","all shell conditions",101.440670249,1,-10.7284243954,-10.7284243954
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1995","female","all maturity states","all shell conditions",15.6908678037,1,21.32601203,21.32601203
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1996","male","all maturity states","all shell conditions",17.3207320172,1,0.931553708643,0.931553708643
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","1996","female","all maturity states","all shell conditions",314.23516007,1,-0.0592122041429,-0.0592122041429
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2005","male","all maturity states","all shell conditions",55.5136883047,1,0.0543248234696,0.0543248234696
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2005","female","all maturity states","all shell conditions",62.9044923983,1,11.1762893417,11.1762893417
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2006","male","all maturity states","all shell conditions",136.78843771,1,-17.8177217468,-17.8177217468
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2006","female","all maturity states","all shell conditions",17.1339673653,1,44.083182279,44.083182279
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2007","male","all maturity states","all shell conditions",341.454875104,1,0.150262199989,0.150262199989
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2007","female","all maturity states","all shell conditions",669.014979896,1,2.86062529018,2.86062529018
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2008","male","all maturity states","all shell conditions",305.024545493,1,11.787519188,11.787519188
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2008","female","all maturity states","all shell conditions",165.225596746,1,-4.01586194977,-4.01586194977
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2009","male","all maturity states","all shell conditions",61.7883633107,1,26.9601582267,26.9601582267
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2009","female","all maturity states","all shell conditions",34.1502179694,1,-3.23301087619,-3.23301087619
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2013","male","all maturity states","all shell conditions",1363.34765933,1,2.51767020297,2.51767020297
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2013","female","all maturity states","all shell conditions",377.680284828,1,-0.921903414862,-0.921903414862
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2014","male","all maturity states","all shell conditions",125.283034651,1,10.0791414783,10.0791414783
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2014","female","all maturity states","all shell conditions",333.728323621,1,-2.16408137674,-2.16408137674
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2015","male","all maturity states","all shell conditions",95.6744960547,1,10.6718895214,10.6718895214
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2015","female","all maturity states","all shell conditions",404.846703093,1,-1.74256748803,-1.74256748803
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2017","male","all maturity states","all shell conditions",106.827129477,1,-1.09239320056,-1.09239320056
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2017","female","all maturity states","all shell conditions",100.355071015,1,9.18635794993,9.18635794993
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2018","male","all maturity states","all shell conditions",49.6973203931,1,6.30547525506,6.30547525506
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2018","female","all maturity states","all shell conditions",109.211907379,1,10.9953173652,10.9953173652
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2020","male","all maturity states","all shell conditions",40.2566455423,1,7.30298857174,7.30298857174
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2020","female","all maturity states","all shell conditions",130.593343482,1,5.36467150756,5.36467150756
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2021","male","all maturity states","all shell conditions",18.6529241661,1,13.3414610649,13.3414610649
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2021","female","all maturity states","all shell conditions",206.184423229,1,4.06648158302,4.06648158302
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2022","male","all maturity states","all shell conditions",49.8468293389,1,14.4597934627,14.4597934627
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2022","female","all maturity states","all shell conditions",670.054674691,1,-0.376596162906,-0.376596162906
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2023","male","all maturity states","all shell conditions",205.800176664,1,8.25446424536,8.25446424536
+"","fisheries data","TCF","total catch","n.at.z","BY_XE","multinomial","2023","female","all maturity states","all shell conditions",511.369017206,1,-1.94910921138,-1.94910921138
+"","fisheries data","SCF","total catch","abundance","BY_TOTAL","lognormal","all","all sexes","all maturity states","all shell conditions",1.08704680721,0,-35.8199192601,0
+"","fisheries data","SCF","total catch","biomass","BY_TOTAL","lognormal","all","all sexes","all maturity states","all shell conditions",0.151904324735,1,-52.2379836765,-52.2379836765
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1990","male","all maturity states","all shell conditions",45.6507576559,1,21.8017871729,21.8017871729
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1990","female","all maturity states","all shell conditions",124.25719035,1,-3.69529004571,-3.69529004571
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1991","male","all maturity states","all shell conditions",94.5255786198,1,12.8274245038,12.8274245038
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1991","female","all maturity states","all shell conditions",136.710270983,1,-3.52527247144,-3.52527247144
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1992","male","all maturity states","all shell conditions",44.9725647745,1,6.33179159771,6.33179159771
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1992","female","all maturity states","all shell conditions",240.508233187,1,0.587654847256,0.587654847256
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1993","male","all maturity states","all shell conditions",21.2533440719,1,1.46704058899,1.46704058899
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1993","female","all maturity states","all shell conditions",27.0520346698,1,11.4767510329,11.4767510329
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1994","male","all maturity states","all shell conditions",11.9309408159,1,5.12387706339,5.12387706339
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1994","female","all maturity states","all shell conditions",20.5525128579,1,8.1388511735,8.1388511735
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1995","male","all maturity states","all shell conditions",15.3841399344,1,1.35602833281,1.35602833281
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1995","female","all maturity states","all shell conditions",33.1198858595,1,2.65077728758,2.65077728758
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1996","male","all maturity states","all shell conditions",144.052735143,1,0.700377956889,0.700377956889
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1996","female","all maturity states","all shell conditions",385.864571986,1,0.531954315916,0.531954315916
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1997","male","all maturity states","all shell conditions",203.979976883,1,0.624139630837,0.624139630837
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1997","female","all maturity states","all shell conditions",478.413446991,1,0.569316992836,0.569316992836
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1998","male","all maturity states","all shell conditions",243.581555313,1,-1.65414822835,-1.65414822835
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1998","female","all maturity states","all shell conditions",19.3089519774,1,3.34222335667,3.34222335667
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1999","male","all maturity states","all shell conditions",102.620576564,1,-0.00704901849255,-0.00704901849255
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","1999","female","all maturity states","all shell conditions",79.5802789651,1,0.523406792018,0.523406792018
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2000","male","all maturity states","all shell conditions",232.671055981,1,0.85589005234,0.85589005234
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2000","female","all maturity states","all shell conditions",97.9201666394,1,-0.272642887076,-0.272642887076
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2001","male","all maturity states","all shell conditions",750.445812766,1,0.672601389594,0.672601389594
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2001","female","all maturity states","all shell conditions",365.584625211,1,-0.305168589815,-0.305168589815
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2002","male","all maturity states","all shell conditions",47.3723067261,1,0.508400159644,0.508400159644
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2002","female","all maturity states","all shell conditions",105.731405097,1,0.465691124523,0.465691124523
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2003","male","all maturity states","all shell conditions",76.5761034488,1,-0.24629814272,-0.24629814272
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2003","female","all maturity states","all shell conditions",33.9819246209,1,0.964841211902,0.964841211902
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2004","male","all maturity states","all shell conditions",15.4921583308,1,-0.152678986152,-0.152678986152
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2004","female","all maturity states","all shell conditions",5.55300669893,1,5.57409243153,5.57409243153
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2005","male","all maturity states","all shell conditions",132.116262075,1,2.62374313331,2.62374313331
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2005","female","all maturity states","all shell conditions",930.265372883,1,0.555266987688,0.555266987688
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2006","male","all maturity states","all shell conditions",64.9174657656,1,-2.708651176,-2.708651176
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2006","female","all maturity states","all shell conditions",14.3749081717,1,16.4252542015,16.4252542015
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2007","male","all maturity states","all shell conditions",373.79420595,1,-2.35984856645,-2.35984856645
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2007","female","all maturity states","all shell conditions",83.1864427871,1,5.60328975434,5.60328975434
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2008","male","all maturity states","all shell conditions",77.1385400257,1,3.22312495006,3.22312495006
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2008","female","all maturity states","all shell conditions",70.9498676497,1,4.25985015753,4.25985015753
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2009","male","all maturity states","all shell conditions",259.980855535,1,1.40889817635,1.40889817635
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2009","female","all maturity states","all shell conditions",317.585745906,1,0.66758612204,0.66758612204
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2010","male","all maturity states","all shell conditions",221.901340474,1,2.45144776632,2.45144776632
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2010","female","all maturity states","all shell conditions",714.014100537,1,-0.471189484379,-0.471189484379
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2011","male","all maturity states","all shell conditions",116.755431271,1,3.69282038597,3.69282038597
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2011","female","all maturity states","all shell conditions",431.265139897,1,-0.495584523198,-0.495584523198
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2012","male","all maturity states","all shell conditions",86.9234027471,1,5.30813622323,5.30813622323
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2012","female","all maturity states","all shell conditions",435.477281762,1,-0.498912548172,-0.498912548172
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2013","male","all maturity states","all shell conditions",156.477298074,1,3.3314842344,3.3314842344
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2013","female","all maturity states","all shell conditions",2474.92585495,1,-0.443843620035,-0.443843620035
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2014","male","all maturity states","all shell conditions",323.685178767,1,3.18423247414,3.18423247414
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2014","female","all maturity states","all shell conditions",731.758388898,1,0.113706778904,0.113706778904
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2015","male","all maturity states","all shell conditions",224.495323565,1,4.82057379883,4.82057379883
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2015","female","all maturity states","all shell conditions",488.333093485,1,-1.13171578809,-1.13171578809
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2016","male","all maturity states","all shell conditions",513.102283229,1,2.6757955764,2.6757955764
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2016","female","all maturity states","all shell conditions",633.395890558,1,-0.928835304232,-0.928835304232
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2017","male","all maturity states","all shell conditions",562.493423326,1,0.787854076823,0.787854076823
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2017","female","all maturity states","all shell conditions",343.881101224,1,-0.246298234218,-0.246298234218
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2018","male","all maturity states","all shell conditions",372.854340854,1,0.34157041405,0.34157041405
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2018","female","all maturity states","all shell conditions",161.865087475,1,0.572502277843,0.572502277843
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2019","male","all maturity states","all shell conditions",173.487125658,1,1.01801353945,1.01801353945
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2019","female","all maturity states","all shell conditions",197.150863001,1,1.34383730936,1.34383730936
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2020","male","all maturity states","all shell conditions",42.5418507753,1,0.655873237097,0.655873237097
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2020","female","all maturity states","all shell conditions",444.476763846,1,-0.0415860338969,-0.0415860338969
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2021","male","all maturity states","all shell conditions",43.4520202203,1,0.403380847398,0.403380847398
+"","fisheries data","SCF","total catch","n.at.z","BY_XE","multinomial","2021","female","all maturity states","all shell conditions",190.911032132,1,0.0950125611224,0.0950125611224
+"","fisheries data","GF All","total catch","abundance","BY_TOTAL","lognormal","all","all sexes","all maturity states","all shell conditions",0.760102311051,1,-67.8502661685,-67.8502661685
+"","fisheries data","GF All","total catch","biomass","BY_TOTAL","lognormal","all","all sexes","all maturity states","all shell conditions",0.71826367018,1,-69.4275131643,-69.4275131643
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1973","male","all maturity states","all shell conditions",165.517949584,1,-1.35914928669,-1.35914928669
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1973","female","all maturity states","all shell conditions",253.96141278,1,4.1775746625,4.1775746625
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1974","male","all maturity states","all shell conditions",206.26933073,1,-0.478495567318,-0.478495567318
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1974","female","all maturity states","all shell conditions",207.080223158,1,2.60115891574,2.60115891574
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1975","male","all maturity states","all shell conditions",213.933612849,1,-0.227975101805,-0.227975101805
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1975","female","all maturity states","all shell conditions",312.263560135,1,1.2843428172,1.2843428172
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1976","male","all maturity states","all shell conditions",110.4986109,1,-2.59056651596,-2.59056651596
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1976","female","all maturity states","all shell conditions",143.888817448,1,16.9462484295,16.9462484295
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1977","male","all maturity states","all shell conditions",166.503970772,1,1.20319284632,1.20319284632
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1977","female","all maturity states","all shell conditions",327.322104473,1,11.3111079235,11.3111079235
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1978","male","all maturity states","all shell conditions",206.191635779,1,-0.563090173543,-0.563090173543
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1978","female","all maturity states","all shell conditions",227.965097389,1,14.3277204489,14.3277204489
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1979","male","all maturity states","all shell conditions",532.457996077,1,-0.270660998463,-0.270660998463
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1979","female","all maturity states","all shell conditions",644.414179332,1,6.87543795447,6.87543795447
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1980","male","all maturity states","all shell conditions",275.249272864,1,8.38444247515,8.38444247515
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1980","female","all maturity states","all shell conditions",562.727987754,1,-0.68051128469,-0.68051128469
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1981","male","all maturity states","all shell conditions",632.428147545,1,-4.17064155731,-4.17064155731
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1981","female","all maturity states","all shell conditions",65.0242377547,1,12.4942564296,12.4942564296
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1982","male","all maturity states","all shell conditions",372.115431494,1,-1.49851293706,-1.49851293706
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1982","female","all maturity states","all shell conditions",101.871339905,1,15.6568562855,15.6568562855
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1983","male","all maturity states","all shell conditions",136.756929958,1,23.1295983551,23.1295983551
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1983","female","all maturity states","all shell conditions",240.411595624,1,-4.52636303607,-4.52636303607
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1984","male","all maturity states","all shell conditions",273.99347101,1,16.2025636065,16.2025636065
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1984","female","all maturity states","all shell conditions",441.71978897,1,-6.95142745028,-6.95142745028
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1985","male","all maturity states","all shell conditions",254.203272469,1,11.7080497934,11.7080497934
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1985","female","all maturity states","all shell conditions",230.127314412,1,-0.096516077135,-0.096516077135
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1986","male","all maturity states","all shell conditions",391.361008237,1,8.49628572676,8.49628572676
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1986","female","all maturity states","all shell conditions",141.043163767,1,3.49130183273,3.49130183273
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1987","male","all maturity states","all shell conditions",139.521309851,1,12.0975777976,12.0975777976
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1987","female","all maturity states","all shell conditions",603.862568255,1,3.11764085591,3.11764085591
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1988","male","all maturity states","all shell conditions",193.561273468,1,4.96403386541,4.96403386541
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1988","female","all maturity states","all shell conditions",181.389287288,1,11.5703399731,11.5703399731
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1989","male","all maturity states","all shell conditions",522.760689272,1,-1.68827607929,-1.68827607929
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1989","female","all maturity states","all shell conditions",546.298669211,1,8.8841086841,8.8841086841
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1990","male","all maturity states","all shell conditions",694.739007665,1,12.6625109018,12.6625109018
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1990","female","all maturity states","all shell conditions",299.915951048,1,-6.54764378809,-6.54764378809
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1991","male","all maturity states","all shell conditions",306.060894231,1,0.63704552227,0.63704552227
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1991","female","all maturity states","all shell conditions",152.344178064,1,5.01115445842,5.01115445842
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1992","male","all maturity states","all shell conditions",136.495711226,1,4.61315581209,4.61315581209
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1992","female","all maturity states","all shell conditions",74.2703128479,1,1.84664900868,1.84664900868
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1993","male","all maturity states","all shell conditions",50.3614412614,1,4.17289084414,4.17289084414
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1993","female","all maturity states","all shell conditions",79.1366337357,1,-0.0837197288793,-0.0837197288793
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1994","male","all maturity states","all shell conditions",105.78754743,1,2.52245799858,2.52245799858
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1994","female","all maturity states","all shell conditions",336.415779506,1,1.01943675604,1.01943675604
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1995","male","all maturity states","all shell conditions",55.5988637567,1,9.82428624793,9.82428624793
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1995","female","all maturity states","all shell conditions",67.765561027,1,3.72177830735,3.72177830735
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1996","male","all maturity states","all shell conditions",89.7804520324,1,12.8497893906,12.8497893906
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1996","female","all maturity states","all shell conditions",116.40254471,1,-2.40480904195,-2.40480904195
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1997","male","all maturity states","all shell conditions",40.3270040982,1,21.2867349463,21.2867349463
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1997","female","all maturity states","all shell conditions",124.360098818,1,7.95948853661,7.95948853661
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1998","male","all maturity states","all shell conditions",60.8234034249,1,7.17479457303,7.17479457303
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1998","female","all maturity states","all shell conditions",164.818716188,1,9.93848161876,9.93848161876
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1999","male","all maturity states","all shell conditions",115.109561211,1,3.10951051238,3.10951051238
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","1999","female","all maturity states","all shell conditions",490.900946908,1,4.1019432615,4.1019432615
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2000","male","all maturity states","all shell conditions",204.436693787,1,5.04937773268,5.04937773268
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2000","female","all maturity states","all shell conditions",534.313711618,1,0.875834133744,0.875834133744
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2001","male","all maturity states","all shell conditions",180.439926288,1,10.3593586218,10.3593586218
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2001","female","all maturity states","all shell conditions",640.051685914,1,-3.39253626711,-3.39253626711
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2002","male","all maturity states","all shell conditions",110.12854801,1,10.9336057034,10.9336057034
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2002","female","all maturity states","all shell conditions",222.822460749,1,-0.0586057414401,-0.0586057414401
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2003","male","all maturity states","all shell conditions",195.104129262,1,2.96362516982,2.96362516982
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2003","female","all maturity states","all shell conditions",295.712928344,1,4.39530162116,4.39530162116
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2004","male","all maturity states","all shell conditions",123.483174897,1,-4.74180748103,-4.74180748103
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2004","female","all maturity states","all shell conditions",31.6093380959,1,38.0336722447,38.0336722447
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2005","male","all maturity states","all shell conditions",382.588695639,1,3.46979395199,3.46979395199
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2005","female","all maturity states","all shell conditions",685.410961555,1,0.202480486311,0.202480486311
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2006","male","all maturity states","all shell conditions",94.8806090592,1,11.0822222968,11.0822222968
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2006","female","all maturity states","all shell conditions",108.693350942,1,2.77748268557,2.77748268557
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2007","male","all maturity states","all shell conditions",119.197562306,1,7.95798815824,7.95798815824
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2007","female","all maturity states","all shell conditions",122.598585172,1,6.25917733203,6.25917733203
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2008","male","all maturity states","all shell conditions",124.38003549,1,24.8283184941,24.8283184941
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2008","female","all maturity states","all shell conditions",164.056003505,1,-8.10962485846,-8.10962485846
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2009","male","all maturity states","all shell conditions",343.945036957,1,11.7341990405,11.7341990405
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2009","female","all maturity states","all shell conditions",495.424732826,1,-6.59019959963,-6.59019959963
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2010","male","all maturity states","all shell conditions",925.969892816,1,3.38670795338,3.38670795338
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2010","female","all maturity states","all shell conditions",1208.28112645,1,-1.39299765398,-1.39299765398
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2011","male","all maturity states","all shell conditions",57.4316684843,1,15.362327981,15.362327981
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2011","female","all maturity states","all shell conditions",38.4793858368,1,24.289362007,24.289362007
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2012","male","all maturity states","all shell conditions",389.949140736,1,-8.25602266472,-8.25602266472
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2012","female","all maturity states","all shell conditions",119.612431549,1,13.9854744608,13.9854744608
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2013","male","all maturity states","all shell conditions",239.731566482,1,1.24298306233,1.24298306233
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2013","female","all maturity states","all shell conditions",442.732996066,1,9.33628505733,9.33628505733
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2014","male","all maturity states","all shell conditions",872.082438068,1,8.21098468754,8.21098468754
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2014","female","all maturity states","all shell conditions",606.986795092,1,-4.63770520132,-4.63770520132
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2015","male","all maturity states","all shell conditions",192.105642022,1,10.4624223322,10.4624223322
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2015","female","all maturity states","all shell conditions",229.925092033,1,1.08544613628,1.08544613628
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2016","male","all maturity states","all shell conditions",136.949600043,1,-6.16750293409,-6.16750293409
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2016","female","all maturity states","all shell conditions",67.7309323646,1,20.981121392,20.981121392
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2017","male","all maturity states","all shell conditions",56.4537085414,1,24.3741190399,24.3741190399
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2017","female","all maturity states","all shell conditions",108.80568835,1,-6.35421376788,-6.35421376788
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2018","male","all maturity states","all shell conditions",152.365271773,1,7.48166378929,7.48166378929
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2018","female","all maturity states","all shell conditions",208.233015219,1,-1.89833469319,-1.89833469319
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2019","male","all maturity states","all shell conditions",154.736284006,1,-0.286639302633,-0.286639302633
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2019","female","all maturity states","all shell conditions",310.003249454,1,3.85021950487,3.85021950487
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2020","male","all maturity states","all shell conditions",52.7106592797,1,4.5427665174,4.5427665174
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2020","female","all maturity states","all shell conditions",274.609844233,1,3.72947651207,3.72947651207
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2021","male","all maturity states","all shell conditions",151.317712682,1,3.50252131623,3.50252131623
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2021","female","all maturity states","all shell conditions",122.348156454,1,1.84270110382,1.84270110382
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2022","male","all maturity states","all shell conditions",40.4758957009,1,11.3132628046,11.3132628046
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2022","female","all maturity states","all shell conditions",116.010382557,1,2.2789490261,2.2789490261
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2023","male","all maturity states","all shell conditions",8.50904700632,1,10.6139034632,10.6139034632
+"","fisheries data","GF All","total catch","n.at.z","BY_XE","multinomial","2023","female","all maturity states","all shell conditions",80.4877482762,1,2.26757904017,2.26757904017
+"","fisheries data","RKF","total catch","abundance","BY_TOTAL","lognormal","all","all sexes","all maturity states","all shell conditions",0.694856602819,0,-34.2045314195,0
+"","fisheries data","RKF","total catch","biomass","BY_TOTAL","lognormal","all","all sexes","all maturity states","all shell conditions",0.239042500252,1,-36.8686578043,-36.8686578043
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1990","male","all maturity states","all shell conditions",54.7398947778,1,1.57920654948,1.57920654948
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1990","female","all maturity states","all shell conditions",384.595865546,1,-0.207068862602,-0.207068862602
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1991","male","all maturity states","all shell conditions",75.52664135,1,1.94682707548,1.94682707548
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1991","female","all maturity states","all shell conditions",260.239440737,1,-0.426954890485,-0.426954890485
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1992","male","all maturity states","all shell conditions",78.9192984911,1,2.40802231799,2.40802231799
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1992","female","all maturity states","all shell conditions",188.152776078,1,-0.450969183024,-0.450969183024
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1993","male","all maturity states","all shell conditions",124.986802334,1,0.0525897732199,0.0525897732199
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1993","female","all maturity states","all shell conditions",254.878124014,1,2.59919927067,2.59919927067
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1997","male","all maturity states","all shell conditions",15.113290166,1,3.19854594082,3.19854594082
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1997","female","all maturity states","all shell conditions",298.904396905,1,-0.134311657986,-0.134311657986
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1998","male","all maturity states","all shell conditions",38.8588398507,1,0.479723483319,0.479723483319
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1998","female","all maturity states","all shell conditions",1.79769313486e+308,1,0,0
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1999","male","all maturity states","all shell conditions",43.1542043863,1,0.161871506519,0.161871506519
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","1999","female","all maturity states","all shell conditions",1.79769313486e+308,1,0,0
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2000","male","all maturity states","all shell conditions",77.5773769232,1,0.372150388282,0.372150388282
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2000","female","all maturity states","all shell conditions",1164.01516365,1,0.0282185328537,0.0282185328537
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2001","male","all maturity states","all shell conditions",207.27563917,1,0.0904619731304,0.0904619731304
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2001","female","all maturity states","all shell conditions",1.79769313486e+308,1,0,0
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2002","male","all maturity states","all shell conditions",185.208362077,1,0.0448032976157,0.0448032976157
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2002","female","all maturity states","all shell conditions",186.879917565,1,0.190843296384,0.190843296384
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2003","male","all maturity states","all shell conditions",85.3987401063,1,0.191891364149,0.191891364149
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2003","female","all maturity states","all shell conditions",150.071487304,1,0.223592304849,0.223592304849
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2004","male","all maturity states","all shell conditions",36.0807775263,1,0.367977428908,0.367977428908
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2004","female","all maturity states","all shell conditions",82.3536108978,1,0.221070672659,0.221070672659
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2005","male","all maturity states","all shell conditions",42.2135225326,1,0.592805190119,0.592805190119
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2005","female","all maturity states","all shell conditions",96.526342924,1,0.43237305175,0.43237305175
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2006","male","all maturity states","all shell conditions",26.5001756823,1,0.812623443375,0.812623443375
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2006","female","all maturity states","all shell conditions",87.4995973353,1,0.466907451118,0.466907451118
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2007","male","all maturity states","all shell conditions",147.952851957,1,0.104736275617,0.104736275617
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2007","female","all maturity states","all shell conditions",222.649910551,1,0.365637045883,0.365637045883
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2008","male","all maturity states","all shell conditions",38.1577834839,1,3.7775260081,3.7775260081
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2008","female","all maturity states","all shell conditions",2119.60482314,1,0.00875619904208,0.00875619904208
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2009","male","all maturity states","all shell conditions",22.3497743997,1,6.0248093864,6.0248093864
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2009","female","all maturity states","all shell conditions",1884.74771305,1,-0.088860724228,-0.088860724228
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2010","male","all maturity states","all shell conditions",74.0187274,1,0.41871882179,0.41871882179
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2010","female","all maturity states","all shell conditions",1.79769313486e+308,1,0,0
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2011","male","all maturity states","all shell conditions",137.967356458,1,0.099032335279,0.099032335279
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2011","female","all maturity states","all shell conditions",1.79769313486e+308,1,0,0
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2012","male","all maturity states","all shell conditions",153.929805496,1,0.0170000632489,0.0170000632489
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2012","female","all maturity states","all shell conditions",36.3402839167,1,0.396922380621,0.396922380621
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2013","male","all maturity states","all shell conditions",34.3222103698,1,1.77212219734,1.77212219734
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2013","female","all maturity states","all shell conditions",344.107358662,1,0.05353096613,0.05353096613
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2014","male","all maturity states","all shell conditions",53.5150158446,1,1.91113486364,1.91113486364
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2014","female","all maturity states","all shell conditions",448.129110336,1,-0.05197674447,-0.05197674447
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2015","male","all maturity states","all shell conditions",413.247906761,1,-0.483418904981,-0.483418904981
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2015","female","all maturity states","all shell conditions",98.0640519735,1,1.02200690662,1.02200690662
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2016","male","all maturity states","all shell conditions",22.0426947112,1,3.25815248135,3.25815248135
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2016","female","all maturity states","all shell conditions",98.5990996194,1,1.49259383649,1.49259383649
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2017","male","all maturity states","all shell conditions",98.5779018784,1,1.77277762627,1.77277762627
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2017","female","all maturity states","all shell conditions",1124.22614109,1,-0.161036680025,-0.161036680025
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2018","male","all maturity states","all shell conditions",64.3207439979,1,0.858638473104,0.858638473104
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2018","female","all maturity states","all shell conditions",234.922870877,1,-0.0336973656528,-0.0336973656528
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2019","male","all maturity states","all shell conditions",91.3631365594,1,0.122968231146,0.122968231146
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2019","female","all maturity states","all shell conditions",1.79769313486e+308,1,0,0
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2020","male","all maturity states","all shell conditions",0,1,0,0
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2020","female","all maturity states","all shell conditions",0,1,0,0
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2023","male","all maturity states","all shell conditions",35.3508891018,1,0.193598146097,0.193598146097
+"","fisheries data","RKF","total catch","n.at.z","BY_XE","multinomial","2023","female","all maturity states","all shell conditions",1.79769313486e+308,1,0,0
+"","growth data","","","EBS_molt_increment_data","","gamma","2000","male","immature","new shell",0.960476546163,1,280.70927135674,280.70927135674
+"","growth data","","","EBS_molt_increment_data","","gamma","2000","female","immature","new shell",0.528281534109,1,247.82854300556,247.82854300556
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2006","male","","new shell",2.25875153784,1,3.1418597150863,3.1418597150863
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2007","male","","new shell",2.25875153784,1,25.6363963677519,25.6363963677519
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2008","male","","new shell",2.25875153784,1,13.9762876081261,13.9762876081261
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2009","male","","new shell",2.25875153784,1,8.59595273956104,8.59595273956104
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2010","male","","new shell",2.25875153784,1,29.858329727696,29.858329727696
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2011","male","","new shell",2.25875153784,1,2.3035986565688,2.3035986565688
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2012","male","","new shell",2.25875153784,1,21.949701201749,21.949701201749
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2014","male","","new shell",2.25875153784,1,4.8697942563704,4.8697942563704
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2016","male","","new shell",2.25875153784,1,15.270958734416,15.270958734416
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2017","male","","new shell",2.25875153784,1,12.4383134717166,12.4383134717166
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2018","male","","new shell",2.25875153784,1,36.198119703659,36.198119703659
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2019","male","","new shell",2.25875153784,1,22.9579727321345,22.9579727321345
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2021","male","","new shell",2.25875153784,1,6.0987435628311,6.0987435628311
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2022","male","","new shell",2.25875153784,1,8.8291617203729,8.8291617203729
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2023","male","","new shell",2.25875153784,1,54.66726462125,54.66726462125
+"","maturity ogive data","NMFS_M","","EBS_mature_male_ratios","","binomial","2024","male","","new shell",2.25875153784,1,58.9013893010999,58.9013893010999
+"","effort data","SCF","fishery","1","","lognormal","all","male","immature","new shell",0.0997513451196,0,2029.10249126,0
+"","effort data","SCF","fishery","1","","lognormal","all","male","mature","new shell",0.0997513451196,0,2029.10249126,0
+"","effort data","SCF","fishery","1","","lognormal","all","male","immature","old shell",0.0997513451196,0,2029.10249126,0
+"","effort data","SCF","fishery","1","","lognormal","all","male","mature","old shell",0.0997513451196,0,2029.10249126,0
+"","effort data","SCF","fishery","2","","lognormal","all","female","immature","new shell",0.0997513451196,0,2029.10249126,0
+"","effort data","SCF","fishery","2","","lognormal","all","female","mature","new shell",0.0997513451196,0,2029.10249126,0
+"","effort data","SCF","fishery","2","","lognormal","all","female","immature","old shell",0.0997513451196,0,2029.10249126,0
+"","effort data","SCF","fishery","2","","lognormal","all","female","mature","old shell",0.0997513451196,0,2029.10249126,0
+"","effort data","RKF","fishery","3","","lognormal","all","male","immature","new shell",0.0997513451196,0,1841.95226608,0
+"","effort data","RKF","fishery","3","","lognormal","all","male","mature","new shell",0.0997513451196,0,1841.95226608,0
+"","effort data","RKF","fishery","3","","lognormal","all","male","immature","old shell",0.0997513451196,0,1841.95226608,0
+"","effort data","RKF","fishery","3","","lognormal","all","male","mature","old shell",0.0997513451196,0,1841.95226608,0
+"","effort data","RKF","fishery","4","","lognormal","all","female","immature","new shell",0.0997513451196,0,1841.95226608,0
+"","effort data","RKF","fishery","4","","lognormal","all","female","mature","new shell",0.0997513451196,0,1841.95226608,0
+"","effort data","RKF","fishery","4","","lognormal","all","female","immature","old shell",0.0997513451196,0,1841.95226608,0
+"","effort data","RKF","fishery","4","","lognormal","all","female","mature","old shell",0.0997513451196,0,1841.95226608,0

@@ -1,0 +1,151 @@
+"case","category","type","element","level","wgt","nll","objfun"
+"","penalties","growth","negativeGrowth","1",1e+06,0,0
+"","penalties","growth","negativeGrowth","2",1e+06,0,0
+"","penalties","maturity","smoothness","1",1,1.16316552768,1.16316552768
+"","penalties","maturity","smoothness","2",2,0.303843357546,0.607686715092
+"","penalties","maturity","nondecreasing","1",0,11801974577900,0
+"","penalties","maturity","nondecreasing","2",0,0,0
+"","penalties","nonParSelFcns","smoothness","1",100,0,0
+"","penalties","nonParSelFcns","smoothness","2",100,0,0
+"","penalties","nonParSelFcns","smoothness","3",100,0,0
+"","penalties","nonParSelFcns","smoothness","4",100,0,0
+"","penalties","nonParSelFcns","smoothness","5",100,0,0
+"","penalties","nonParSelFcns","smoothness","6",100,0,0
+"","penalties","nonParSelFcns","smoothness","7",100,0,0
+"","penalties","nonParSelFcns","smoothness","8",100,0,0
+"","penalties","nonParSelFcns","smoothness","9",100,0,0
+"","penalties","nonParSelFcns","smoothness","10",100,0,0
+"","penalties","nonParSelFcns","smoothness","11",100,0,0
+"","penalties","nonParSelFcns","smoothness","12",100,0,0
+"","penalties","devsSumSq","pDevsLnR","1",10000,6.52781294058e-17,6.52781294058e-13
+"","penalties","devsSumSq","pDevsLnR","2",10000,3.33047960834e-17,3.33047960834e-13
+"","penalties","devsSumSq","pDevsS1","1",10000,1.06681173099e-09,1.06681173099e-05
+"","penalties","devsSumSq","pDevsLnC","1",10000,8.01103815714e-14,8.01103815714e-10
+"","penalties","devsSumSq","pDevsLnC","2",10000,3.53550443724e-17,3.53550443724e-13
+"","penalties","devsSumSq","pDevsLnC","3",10000,6.6707399179e-15,6.6707399179e-11
+"","penalties","devsSumSq","pDevsLnC","4",10000,2.68172390606e-16,2.68172390606e-12
+"","penalties","F-devs","fisheries","1",0,70.5225328372,0
+"","penalties","F-devs","fisheries","2",0,18.3315623949,0
+"","penalties","F-devs","fisheries","3",0,18.8941964831,0
+"","penalties","F-devs","fisheries","4",0,51.0892297663,0
+"","components","recruitment","recDevs","1",0,-0.553459233111,0
+"","components","recruitment","recDevs","2",0,73.4232467457,0
+"","priors","recruitment","pLnR","1",1,0,0
+"","priors","recruitment","pLnR","2",1,0,0
+"","priors","recruitment","pRCV","1",1,0,0
+"","priors","recruitment","pRX","1",1,0,0
+"","priors","recruitment","pRa","1",1,0,0
+"","priors","recruitment","pRb","1",1,0,0
+"","priors","recruitment","pDevsLnR","1",2,23.7391895738,47.4783791476
+"","priors","recruitment","pDevsLnR","2",1,70.4637462223,70.4637462223
+"","priors","natural mortality","pM","1",1,0,0
+"","priors","natural mortality","pDM1","1",1,4.02951522341,4.02951522341
+"","priors","natural mortality","pDM1","2",1,44.271665583,44.271665583
+"","priors","natural mortality","pDM1","3",1,27.1939888133,27.1939888133
+"","priors","natural mortality","pDM2","1",1,0,0
+"","priors","natural mortality","pDM2","2",1,0,0
+"","priors","growth","pGrA","1",1,0,0
+"","priors","growth","pGrA","2",1,0,0
+"","priors","growth","pGrB","1",1,0,0
+"","priors","growth","pGrB","2",1,0,0
+"","priors","growth","pGrBeta","1",1,0,0
+"","priors","maturity","pvLgtPrM2M","1",1,0,0
+"","priors","maturity","pvLgtPrM2M","2",1,0,0
+"","priors","selectivity functions","pS1","1",1,0,0
+"","priors","selectivity functions","pS1","2",1,0,0
+"","priors","selectivity functions","pS1","3",1,0,0
+"","priors","selectivity functions","pS1","4",1,0,0
+"","priors","selectivity functions","pS1","5",1,0,0
+"","priors","selectivity functions","pS1","6",1,0,0
+"","priors","selectivity functions","pS1","7",1,0,0
+"","priors","selectivity functions","pS1","8",1,0,0
+"","priors","selectivity functions","pS1","9",1,0,0
+"","priors","selectivity functions","pS1","10",1,0,0
+"","priors","selectivity functions","pS1","11",1,0,0
+"","priors","selectivity functions","pS1","12",1,0,0
+"","priors","selectivity functions","pS1","13",1,0,0
+"","priors","selectivity functions","pS1","14",1,0,0
+"","priors","selectivity functions","pS1","15",1,0,0
+"","priors","selectivity functions","pS1","16",1,0,0
+"","priors","selectivity functions","pS1","17",1,0,0
+"","priors","selectivity functions","pS1","18",1,0,0
+"","priors","selectivity functions","pS1","19",1,0,0
+"","priors","selectivity functions","pS1","20",1,0,0
+"","priors","selectivity functions","pS1","21",1,0,0
+"","priors","selectivity functions","pS1","22",1,0,0
+"","priors","selectivity functions","pS1","23",1,0,0
+"","priors","selectivity functions","pS1","24",1,0,0
+"","priors","selectivity functions","pS1","25",1,0,0
+"","priors","selectivity functions","pS1","26",1,0,0
+"","priors","selectivity functions","pS1","27",1,0,0
+"","priors","selectivity functions","pS1","28",1,0,0
+"","priors","selectivity functions","pS1","29",1,0,0
+"","priors","selectivity functions","pS2","1",1,0,0
+"","priors","selectivity functions","pS2","2",1,0,0
+"","priors","selectivity functions","pS2","3",1,0,0
+"","priors","selectivity functions","pS2","4",1,0,0
+"","priors","selectivity functions","pS2","5",1,0,0
+"","priors","selectivity functions","pS2","6",1,0,0
+"","priors","selectivity functions","pS2","7",1,0,0
+"","priors","selectivity functions","pS2","8",1,0,0
+"","priors","selectivity functions","pS2","9",1,0,0
+"","priors","selectivity functions","pS2","10",1,0,0
+"","priors","selectivity functions","pS2","11",1,0,0
+"","priors","selectivity functions","pS2","12",1,0,0
+"","priors","selectivity functions","pS2","13",1,0,0
+"","priors","selectivity functions","pS2","14",1,0,0
+"","priors","selectivity functions","pS2","15",1,0,0
+"","priors","selectivity functions","pS2","16",1,0,0
+"","priors","selectivity functions","pS2","17",1,0,0
+"","priors","selectivity functions","pS2","18",1,0,0
+"","priors","selectivity functions","pS2","19",1,0,0
+"","priors","selectivity functions","pS2","20",1,0,0
+"","priors","selectivity functions","pS2","21",1,0,0
+"","priors","selectivity functions","pS2","22",1,0,0
+"","priors","selectivity functions","pS2","23",1,0,0
+"","priors","selectivity functions","pS2","24",1,0,0
+"","priors","selectivity functions","pS2","25",1,0,0
+"","priors","selectivity functions","pS2","26",1,0,0
+"","priors","selectivity functions","pS2","27",1,0,0
+"","priors","selectivity functions","pS2","28",1,0,0
+"","priors","selectivity functions","pS2","29",1,0,0
+"","priors","selectivity functions","pS3","1",1,0,0
+"","priors","selectivity functions","pS3","2",1,0,0
+"","priors","selectivity functions","pS3","3",1,0,0
+"","priors","selectivity functions","pS4","1",1,0,0
+"","priors","selectivity functions","pS4","2",1,0,0
+"","priors","selectivity functions","pS4","3",1,0,0
+"","priors","selectivity functions","pDevsS1","1",0,0,0
+"","priors","selectivity functions","pvNPSel","1",1,0,0
+"","priors","selectivity functions","pvNPSel","2",1,0,0
+"","priors","selectivity functions","pvNPSel","3",1,0,0
+"","priors","selectivity functions","pvNPSel","4",1,0,0
+"","priors","selectivity functions","pvNPSel","5",1,0,0
+"","priors","selectivity functions","pvNPSel","6",1,0,0
+"","priors","selectivity functions","pvNPSel","7",1,0,0
+"","priors","selectivity functions","pvNPSel","8",1,0,0
+"","priors","selectivity functions","pvNPSel","9",1,0,0
+"","priors","selectivity functions","pvNPSel","10",1,0,0
+"","priors","selectivity functions","pvNPSel","11",1,0,0
+"","priors","selectivity functions","pvNPSel","12",1,0,0
+"","priors","fisheries","pLnC","1",1,0,0
+"","priors","fisheries","pLnC","2",1,0,0
+"","priors","fisheries","pLnC","3",1,0,0
+"","priors","fisheries","pLnC","4",1,0,0
+"","priors","fisheries","pLnC","5",0,0,0
+"","priors","fisheries","pLnC","6",1,0,0
+"","priors","fisheries","pLnC","7",1,0,0
+"","priors","fisheries","pLnC","8",1,0,0
+"","priors","fisheries","pDC2","1",1,0,0
+"","priors","fisheries","pDC2","2",1,0,0
+"","priors","fisheries","pDC2","3",1,0,0
+"","priors","fisheries","pDC2","4",1,0,0
+"","priors","fisheries","pDevsLnC","1",0,110.955828298,0
+"","priors","fisheries","pDevsLnC","2",0,47.7375954574,0
+"","priors","fisheries","pDevsLnC","3",0,65.7600616765,0
+"","priors","fisheries","pDevsLnC","4",0,78.6573857624,0
+"","priors","surveys","pQ","1",1,0,0
+"","priors","surveys","pQ","2",1,-0.796793740349,-0.796793740349
+"","priors","surveys","pQ","3",1,0,0
+"","priors","surveys","pQ","4",1,53.8185200288,53.8185200288
+"","priors","surveys","pQ","5",1,0,0
