@@ -378,42 +378,42 @@ pvCubSplns   #cubic spline selectivity functions
 fisheries   #process name
 PARAMETER_COMBINATIONS
 35   #number of parameter combinations
-#id  FISHERY   YEAR_BLOCK   SEX   MATURITY_STATE   SHELL_CONDITION   pHM   pLnC   pDC1   pDC2   pDC3   pDC4   pDevsLnC   pLnEffX   pLgtRet   idx.SelFcn   idx.RetFcn   useEffX   label   
-1   1   [1948:1964]   MALE   ALL_MATURITY   ALL_SHELL   1   1   0   0   0   0   0   0   0   7   5   0   TCF:_males_pre-1965   
-2   1   [1965:1984;1987:1990]   MALE   ALL_MATURITY   ALL_SHELL   1   2   0   0   0   0   1   0   1   7   5   0   TCF:_males_1965-1990   
-3   1   [1991:1996]   MALE   ALL_MATURITY   ALL_SHELL   1   2   0   0   0   0   1   0   1   8   6   0   TCF:_males_1991-1996   
-4   1   [2005:2009]   MALE   ALL_MATURITY   ALL_SHELL   1   2   0   0   0   0   1   0   2   9   29   0   TCF:_males_2005-2009   
-5   1   [2013:2015;2017:2018;2020:2023]   MALE   ALL_MATURITY   ALL_SHELL   1   2   0   0   0   0   1   0   3   9   30   0   TCF:_males_2013+   
-6   1   [1948:1964]   FEMALE   ALL_MATURITY   ALL_SHELL   1   1   0   1   0   0   0   0   0   10   0   0   TCF:_females_pre-1965   
-7   1   [1965:1984;1987:1996;2005:2009;2013:2015;2017:2018;2020:2023]   FEMALE   ALL_MATURITY   ALL_SHELL   1   2   0   1   0   0   1   0   0   10   0   0   TCF:_females_1965+   
-8   2   [1948:1977]   MALE   ALL_MATURITY   ALL_SHELL   1   3   0   0   0   0   0   0   0   11   0   0   SCF:_males_pre-1978   
-9   2   [1978:1989]   MALE   ALL_MATURITY   ALL_SHELL   1   0   0   0   0   0   0   0   0   11   0   1   SCF:_males_1978-1996   
-10   2   [1990:1996]   MALE   ALL_MATURITY   ALL_SHELL   1   4   0   0   0   0   2   0   0   11   0   0   SCF:_males_1978-1996   
-11   2   [1997:2004]   MALE   ALL_MATURITY   ALL_SHELL   1   4   0   0   0   0   2   0   0   12   0   0   SCF:_males_1997-2004   
-12   2   [2005:2021]   MALE   ALL_MATURITY   ALL_SHELL   1   4   0   0   0   0   2   0   0   13   0   0   SCF:_males_2005+   
-13   2   [1948:1977]   FEMALE   ALL_MATURITY   ALL_SHELL   1   3   0   2   0   0   0   0   0   14   0   0   SCF:_females_pre-1978   
-14   2   [1978:1989]   FEMALE   ALL_MATURITY   ALL_SHELL   1   0   0   0   0   0   0   0   0   14   0   2   SCF:_females_1978-1996   
-15   2   [1990:1996]   FEMALE   ALL_MATURITY   ALL_SHELL   1   4   0   2   0   0   2   0   0   14   0   0   SCF:_females_1978-1996   
-16   2   [1997:2004]   FEMALE   ALL_MATURITY   ALL_SHELL   1   4   0   2   0   0   2   0   0   15   0   0   SCF:_females_1997-2004   
-17   2   [2005:2021]   FEMALE   ALL_MATURITY   ALL_SHELL   1   4   0   2   0   0   2   0   0   16   0   0   SCF:_females_2005+   
-18   3   [1948:1972]   MALE   ALL_MATURITY   ALL_SHELL   2   6   0   0   0   0   0   0   0   17   0   0   GTF:_males_pre-1973   
-19   3   [1973:1986]   MALE   ALL_MATURITY   ALL_SHELL   2   6   0   0   0   0   3   0   0   17   0   0   GTF:_males_1973:1986   
-20   3   [1987:1996]   MALE   ALL_MATURITY   ALL_SHELL   2   6   0   0   0   0   3   0   0   18   0   0   GTF:_males_1987:1996   
-21   3   [1997:2023]   MALE   ALL_MATURITY   ALL_SHELL   2   6   0   0   0   0   3   0   0   19   0   0   GTF:_males_1997+   
-22   3   [1948:1972]   FEMALE   ALL_MATURITY   ALL_SHELL   2   6   0   3   0   0   0   0   0   20   0   0   GTF:_females_pre-1973   
-23   3   [1973:1986]   FEMALE   ALL_MATURITY   ALL_SHELL   2   6   0   3   0   0   3   0   0   20   0   0   GTF:_females_1973:1986   
-24   3   [1987:1996]   FEMALE   ALL_MATURITY   ALL_SHELL   2   6   0   3   0   0   3   0   0   21   0   0   GTF:_females_1987:1996   
-25   3   [1997:2023]   FEMALE   ALL_MATURITY   ALL_SHELL   2   6   0   3   0   0   3   0   0   22   0   0   GTF:_females_1997+   
-26   4   [1948:1952]   MALE   ALL_MATURITY   ALL_SHELL   1   7   0   0   0   0   0   0   0   23   0   0   RKF:_males_pre-1952   
-27   4   [1953:1989]   MALE   ALL_MATURITY   ALL_SHELL   1   0   0   0   0   0   0   0   0   23   0   3   RKF:_males_1953-1991   
-28   4   [1990:1993;1996]   MALE   ALL_MATURITY   ALL_SHELL   1   8   0   0   0   0   4   0   0   23   0   0   RKF:_males_1992-1996   
-29   4   [1997:2004]   MALE   ALL_MATURITY   ALL_SHELL   1   8   0   0   0   0   4   0   0   24   0   0   RKF:_males_1997-2004   
-30   4   [2005:2020;2023]   MALE   ALL_MATURITY   ALL_SHELL   1   8   0   0   0   0   4   0   0   25   0   0   RKF:_males_2005+               #<-need to skip 2021/22, 2022/23
-31   4   [1948:1952]   FEMALE   ALL_MATURITY   ALL_SHELL   1   7   0   4   0   0   0   0   0   26   0   0   RKF:_females_pre-1952   
-32   4   [1953:1989]   FEMALE   ALL_MATURITY   ALL_SHELL   1   0   0   0   0   0   0   0   0   26   0   4   RKF:_females_1953-1991   
-33   4   [1990:1993;1996]   FEMALE   ALL_MATURITY   ALL_SHELL   1   8   0   4   0   0   4   0   0   26   0   0   RKF:_females_1992-1996   
-34   4   [1997:2004]   FEMALE   ALL_MATURITY   ALL_SHELL   1   8   0   4   0   0   4   0   0   27   0   0   RKF:_females_1997-2004   
-35   4   [2005:2020;2023]   FEMALE   ALL_MATURITY   ALL_SHELL   1   8   0   4   0   0   4   0   0   28   0   0   RKF:_females_2005+           #<-need to skip 2021/22, 2022/23
+#id  FISHERY YEAR_BLOCK                  SEX   MATURITY_STATE  SHELL_CND  pHM pLnC pDC1 pDC2 pDC3 pDC4 pDevsLnC pLnEffX pLgtRet idx.SelFcn idx.RetFcn   useEffX   label   
+ 1   1   [1948:1964]                     MALE   ALL_MATURITY   ALL_SHELL   1   1   0   0   0   0   0   0   0   7   5   0   TCF:_males_pre-1965   
+ 2   1   [1965:1984;1987:1990]           MALE   ALL_MATURITY   ALL_SHELL   1   2   0   0   0   0   1   0   1   7   5   0   TCF:_males_1965-1990   
+ 3   1   [1991:1996]                     MALE   ALL_MATURITY   ALL_SHELL   1   2   0   0   0   0   1   0   1   8   6   0   TCF:_males_1991-1996   
+ 4   1   [2005:2009]                     MALE   ALL_MATURITY   ALL_SHELL   1   2   0   0   0   0   1   0   2   9  29   0   TCF:_males_2005-2009   
+ 5   1   [2013:2015;2017:2018;2020:2023] MALE   ALL_MATURITY   ALL_SHELL   1   2   0   0   0   0   1   0   3   9  30   0   TCF:_males_2013+   
+ 6   1   [1948:1964]                   FEMALE   ALL_MATURITY   ALL_SHELL   1   1   0   1   0   0   0   0   0  10   0   0   TCF:_females_pre-1965   
+ 7   1   [1965:1984;1987:1996;2005:2009;2013:2015;2017:2018;2020:2023]   FEMALE   ALL_MATURITY   ALL_SHELL   1   2   0   1   0   0   1   0   0   10   0   0   TCF:_females_1965+   
+ 8   2   [1948:1977]                     MALE   ALL_MATURITY   ALL_SHELL   1   3   0   0   0   0   0   0   0   11   0   0   SCF:_males_pre-1978   
+ 9   2   [1978:1989]                     MALE   ALL_MATURITY   ALL_SHELL   1   0   0   0   0   0   0   0   0   11   0   1   SCF:_males_1978-1996   
+10   2   [1990:1996]                     MALE   ALL_MATURITY   ALL_SHELL   1   4   0   0   0   0   2   0   0   11   0   0   SCF:_males_1978-1996   
+11   2   [1997:2004]                     MALE   ALL_MATURITY   ALL_SHELL   1   4   0   0   0   0   2   0   0   12   0   0   SCF:_males_1997-2004   
+12   2   [2005:2021]                     MALE   ALL_MATURITY   ALL_SHELL   1   4   0   0   0   0   2   0   0   13   0   0   SCF:_males_2005+   
+13   2   [1948:1977]                   FEMALE   ALL_MATURITY   ALL_SHELL   1   3   0   2   0   0   0   0   0   14   0   0   SCF:_females_pre-1978   
+14   2   [1978:1989]                   FEMALE   ALL_MATURITY   ALL_SHELL   1   0   0   0   0   0   0   0   0   14   0   2   SCF:_females_1978-1996   
+15   2   [1990:1996]                   FEMALE   ALL_MATURITY   ALL_SHELL   1   4   0   2   0   0   2   0   0   14   0   0   SCF:_females_1978-1996   
+16   2   [1997:2004]                   FEMALE   ALL_MATURITY   ALL_SHELL   1   4   0   2   0   0   2   0   0   15   0   0   SCF:_females_1997-2004   
+17   2   [2005:2021]                   FEMALE   ALL_MATURITY   ALL_SHELL   1   4   0   2   0   0   2   0   0   16   0   0   SCF:_females_2005+   
+18   3   [1948:1972]                     MALE   ALL_MATURITY   ALL_SHELL   2   6   0   0   0   0   0   0   0   17   0   0   GTF:_males_pre-1973   
+19   3   [1973:1986]                     MALE   ALL_MATURITY   ALL_SHELL   2   6   0   0   0   0   3   0   0   17   0   0   GTF:_males_1973:1986   
+20   3   [1987:1996]                     MALE   ALL_MATURITY   ALL_SHELL   2   6   0   0   0   0   3   0   0   18   0   0   GTF:_males_1987:1996   
+21   3   [1997:2023]                     MALE   ALL_MATURITY   ALL_SHELL   2   6   0   0   0   0   3   0   0   19   0   0   GTF:_males_1997+   
+22   3   [1948:1972]                   FEMALE   ALL_MATURITY   ALL_SHELL   2   6   0   3   0   0   0   0   0   20   0   0   GTF:_females_pre-1973   
+23   3   [1973:1986]                   FEMALE   ALL_MATURITY   ALL_SHELL   2   6   0   3   0   0   3   0   0   20   0   0   GTF:_females_1973:1986   
+24   3   [1987:1996]                   FEMALE   ALL_MATURITY   ALL_SHELL   2   6   0   3   0   0   3   0   0   21   0   0   GTF:_females_1987:1996   
+25   3   [1997:2023]                   FEMALE   ALL_MATURITY   ALL_SHELL   2   6   0   3   0   0   3   0   0   22   0   0   GTF:_females_1997+   
+26   4   [1948:1952]                     MALE   ALL_MATURITY   ALL_SHELL   1   7   0   0   0   0   0   0   0   23   0   0   RKF:_males_pre-1952   
+27   4   [1953:1989]                     MALE   ALL_MATURITY   ALL_SHELL   1   0   0   0   0   0   0   0   0   23   0   3   RKF:_males_1953-1991   
+28   4   [1990:1993;1996]                MALE   ALL_MATURITY   ALL_SHELL   1   8   0   0   0   0   4   0   0   23   0   0   RKF:_males_1992-1996   
+29   4   [1997:2004]                     MALE   ALL_MATURITY   ALL_SHELL   1   8   0   0   0   0   4   0   0   24   0   0   RKF:_males_1997-2004   
+30   4   [2005:2020;2023]                MALE   ALL_MATURITY   ALL_SHELL   1   8   0   0   0   0   4   0   0   25   0   0   RKF:_males_2005+               #<-need to skip 2021/22, 2022/23
+31   4   [1948:1952]                   FEMALE   ALL_MATURITY   ALL_SHELL   1   7   0   4   0   0   0   0   0   26   0   0   RKF:_females_pre-1952   
+32   4   [1953:1989]                   FEMALE   ALL_MATURITY   ALL_SHELL   1   0   0   0   0   0   0   0   0   26   0   4   RKF:_females_1953-1991   
+33   4   [1990:1993;1996]              FEMALE   ALL_MATURITY   ALL_SHELL   1   8   0   4   0   0   4   0   0   26   0   0   RKF:_females_1992-1996   
+34   4   [1997:2004]                   FEMALE   ALL_MATURITY   ALL_SHELL   1   8   0   4   0   0   4   0   0   27   0   0   RKF:_females_1997-2004   
+35   4   [2005:2020;2023]              FEMALE   ALL_MATURITY   ALL_SHELL   1   8   0   4   0   0   4   0   0   28   0   0   RKF:_females_2005+           #<-need to skip 2021/22, 2022/23
 PARAMETERS
 pHM   #handling mortality (0-1)
    2  #number of bounded parameters

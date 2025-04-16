@@ -1,0 +1,705 @@
+case,category,process,label,type,name,index,phase,min_index,max_index,parameter_scale,min_arith,max_arith,init_arith_value,final_arith_value,min_param,max_param,init_param_value,final_param_value,stdv
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_number,pLnR[1],1,1,1,1, ARITHMETIC,0,10,5.77676042291,6.96043590017,0,10,5.77676042291,6.96043590017,0.59702
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_number,pLnR[2],1,1,1,1, ARITHMETIC,0,10,5.61658303952,6.0161693231,0,10,5.61658303952,6.0161693231,0.065583
+22_03d5,population processes,recruitment,full model period, param_init_bounded_number,pRCV[1],1,-5,1,1, LOG,0.135335283,7.389056099,0.496585303791,0.496585303791,-2.00000000175,2.00000000001,-0.700000000001,-0.700000000001,NA
+22_03d5,population processes,recruitment,full model period, param_init_bounded_number,pRX[1],1,-1,1,1, LOGIT,0.268941421,0.731058579,0.5,0.5,-25,25,-1.11022302463e-16,-1.11022302463e-16,NA
+22_03d5,population processes,recruitment,fixed value, param_init_bounded_number,pRa[1],1,5,1,1, LOG,2.718281828,54.59815003,9.33733630138,9.03012993708,0.999999999831,3.99999999994,2.23402101899,2.20056675681,0.03025
+22_03d5,population processes,recruitment,fixed value, param_init_bounded_number,pRb[1],1,5,1,1, LOG,1,54.59815003,3.8647748116,3.89773998,0,3.99999999994,1.35190341685,1.36039689286,0.080652
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,1,1,1,26, ARITHMETIC,-5,5,-0.989165034057,-0.490179615656,-5,5,-0.989165034057,-0.490179615656,1.7896
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,2,1,1,26, ARITHMETIC,-5,5,1.04656496661,-0.489511497153,-5,5,1.04656496661,-0.489511497153,1.6573
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,3,1,1,26, ARITHMETIC,-5,5,0.864414065641,-0.487947313622,-5,5,0.864414065641,-0.487947313622,1.528
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,4,1,1,26, ARITHMETIC,-5,5,-1.56399332156,-0.485176912446,-5,5,-1.56399332156,-0.485176912446,1.4028
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,5,1,1,26, ARITHMETIC,-5,5,-0.93208872612,-0.480785205609,-5,5,-0.93208872612,-0.480785205609,1.283
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,6,1,1,26, ARITHMETIC,-5,5,-1.64084882376,-0.474217797234,-5,5,-1.64084882376,-0.474217797234,1.1704
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,7,1,1,26, ARITHMETIC,-5,5,0.863096990522,-0.46472948775,-5,5,0.863096990522,-0.46472948775,1.0671
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,8,1,1,26, ARITHMETIC,-5,5,-1.77807470667,-0.451327121637,-5,5,-1.77807470667,-0.451327121637,0.97619
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,9,1,1,26, ARITHMETIC,-5,5,0.991573221714,-0.432704610539,-5,5,0.991573221714,-0.432704610539,0.90093
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,10,1,1,26, ARITHMETIC,-5,5,-0.594042306003,-0.407165180484,-5,5,-0.594042306003,-0.407165180484,0.84506
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,11,1,1,26, ARITHMETIC,-5,5,0.867585211335,-0.372518605142,-5,5,0.867585211335,-0.372518605142,0.81196
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,12,1,1,26, ARITHMETIC,-5,5,0.70788332449,-0.325811799155,-5,5,0.70788332449,-0.325811799155,0.80383
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,13,1,1,26, ARITHMETIC,-5,5,0.55148377838,-0.262518696221,-5,5,0.55148377838,-0.262518696221,0.82037
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,14,1,1,26, ARITHMETIC,-5,5,-0.0833738923879,-0.175295820094,-5,5,-0.0833738923879,-0.175295820094,0.85736
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,15,1,1,26, ARITHMETIC,-5,5,-1.08531667681,-0.051863352437,-5,5,-1.08531667681,-0.051863352437,0.90477
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,16,1,1,26, ARITHMETIC,-5,5,0.652357209852,0.129697086024,-5,5,0.652357209852,0.129697086024,0.94336
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,17,1,1,26, ARITHMETIC,-5,5,1.30513351259,0.40903257714,-5,5,1.30513351259,0.40903257714,0.94359
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,18,1,1,26, ARITHMETIC,-5,5,0.463072190837,0.83393744699,-5,5,0.463072190837,0.83393744699,0.88652
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,19,1,1,26, ARITHMETIC,-5,5,2.2021561476,1.38001052733,-5,5,2.2021561476,1.38001052733,0.7875
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,20,1,1,26, ARITHMETIC,-5,5,0.78071166466,1.65368174474,-5,5,0.78071166466,1.65368174474,0.67294
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,21,1,1,26, ARITHMETIC,-5,5,0.729143156062,1.15729777113,-5,5,0.729143156062,1.15729777113,0.68887
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,22,1,1,26, ARITHMETIC,-5,5,-0.265835783531,0.600010631071,-5,5,-0.265835783531,0.600010631071,0.68615
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,23,1,1,26, ARITHMETIC,-5,5,0.8035266439,0.335774193526,-5,5,0.8035266439,0.335774193526,0.66586
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,24,1,1,26, ARITHMETIC,-5,5,-1.38433098841,-0.0924644745145,-5,5,-1.38433098841,-0.0924644745145,0.66935
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,25,1,1,26, ARITHMETIC,-5,5,-1.67026917512,-0.449578109156,-5,5,-1.67026917512,-0.449578109156,0.67042
+22_03d5,population processes,recruitment,historical recruitment period, param_init_bounded_dev_vector,pDevsLnR,26,1,1,26, ARITHMETIC,-5,5,-0.841362649776,-0.105646491866,-5,5,-0.841362649776,-0.105646491866,0.70095
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,1,1,1,50, ARITHMETIC,-5,5,0.9965587701,1.3385512454,-5,5,0.9965587701,1.3385512454,0.31703
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,2,1,1,50, ARITHMETIC,-5,5,3.70397010574,1.9556533648,-5,5,3.70397010574,1.9556533648,0.19684
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,3,1,1,50, ARITHMETIC,-5,5,0.50083448869,1.57220519143,-5,5,0.50083448869,1.57220519143,0.22935
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,4,1,1,50, ARITHMETIC,-5,5,1.76633341645,0.563181472606,-5,5,1.76633341645,0.563181472606,0.42651
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,5,1,1,50, ARITHMETIC,-5,5,-0.501648816274,-0.155816564575,-5,5,-0.501648816274,-0.155816564575,0.5344
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,6,1,1,50, ARITHMETIC,-5,5,-0.744360029527,-0.206975323309,-5,5,-0.744360029527,-0.206975323309,0.40939
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,7,1,1,50, ARITHMETIC,-5,5,-0.894473846096,-0.0397302120622,-5,5,-0.894473846096,-0.0397302120622,0.29338
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,8,1,1,50, ARITHMETIC,-5,5,1.03085131408,-0.192658960003,-5,5,1.03085131408,-0.192658960003,0.28855
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,9,1,1,50, ARITHMETIC,-5,5,-0.155638071028,1.04382119326,-5,5,-0.155638071028,1.04382119326,0.11767
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,10,1,1,50, ARITHMETIC,-5,5,1.77515891739,0.740064994675,-5,5,1.77515891739,0.740064994675,0.17077
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,11,1,1,50, ARITHMETIC,-5,5,0.927852983522,0.881711895029,-5,5,0.927852983522,0.881711895029,0.16636
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,12,1,1,50, ARITHMETIC,-5,5,1.44473139691,0.918111269357,-5,5,1.44473139691,0.918111269357,0.15584
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,13,1,1,50, ARITHMETIC,-5,5,0.195236940455,0.750442537657,-5,5,0.195236940455,0.750442537657,0.16725
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,14,1,1,50, ARITHMETIC,-5,5,-0.751347311555,0.331240549155,-5,5,-0.751347311555,0.331240549155,0.20913
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,15,1,1,50, ARITHMETIC,-5,5,-1.43620438471,-0.40616482276,-5,5,-1.43620438471,-0.40616482276,0.25817
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,16,1,1,50, ARITHMETIC,-5,5,-0.896838456383,-1.11798287322,-5,5,-0.896838456383,-1.11798287322,0.35159
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,17,1,1,50, ARITHMETIC,-5,5,-0.496336675569,-1.40239365401,-5,5,-0.496336675569,-1.40239365401,0.32478
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,18,1,1,50, ARITHMETIC,-5,5,-0.193729449121,-1.31688298915,-5,5,-0.193729449121,-1.31688298915,0.25742
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,19,1,1,50, ARITHMETIC,-5,5,-2.39472405316,-1.31681401615,-5,5,-2.39472405316,-1.31681401615,0.26075
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,20,1,1,50, ARITHMETIC,-5,5,-0.785022099988,-1.14609509781,-5,5,-0.785022099988,-1.14609509781,0.24667
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,21,1,1,50, ARITHMETIC,-5,5,-0.541978913567,-0.649663454793,-5,5,-0.541978913567,-0.649663454793,0.18093
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,22,1,1,50, ARITHMETIC,-5,5,-0.91927289928,-0.878204874525,-5,5,-0.91927289928,-0.878204874525,0.23711
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,23,1,1,50, ARITHMETIC,-5,5,0.341552203617,0.0252381158266,-5,5,0.341552203617,0.0252381158266,0.11943
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,24,1,1,50, ARITHMETIC,-5,5,-0.108712314694,-0.986480201039,-5,5,-0.108712314694,-0.986480201039,0.25069
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,25,1,1,50, ARITHMETIC,-5,5,0.782603090472,0.580641898306,-5,5,0.782603090472,0.580641898306,0.099039
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,26,1,1,50, ARITHMETIC,-5,5,-1.36941278905,-0.572003997784,-5,5,-1.36941278905,-0.572003997784,0.28792
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,27,1,1,50, ARITHMETIC,-5,5,2.40527429482,0.954331006608,-5,5,2.40527429482,0.954331006608,0.10184
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,28,1,1,50, ARITHMETIC,-5,5,-1.02050613158,-0.266277781059,-5,5,-1.02050613158,-0.266277781059,0.29321
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,29,1,1,50, ARITHMETIC,-5,5,0.945277766504,1.05754903274,-5,5,0.945277766504,1.05754903274,0.10636
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,30,1,1,50, ARITHMETIC,-5,5,1.51515871366,0.448148347922,-5,5,1.51515871366,0.448148347922,0.15496
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,31,1,1,50, ARITHMETIC,-5,5,-0.880084090482,-0.666745042154,-5,5,-0.880084090482,-0.666745042154,0.28134
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,32,1,1,50, ARITHMETIC,-5,5,-0.737038074525,-1.12135249256,-5,5,-0.737038074525,-1.12135249256,0.3667
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,33,1,1,50, ARITHMETIC,-5,5,0.565368614564,-0.569227941285,-5,5,0.565368614564,-0.569227941285,0.26419
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,34,1,1,50, ARITHMETIC,-5,5,-0.940383811131,-0.0887655592729,-5,5,-0.940383811131,-0.0887655592729,0.26748
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,35,1,1,50, ARITHMETIC,-5,5,0.740975328134,1.34078213571,-5,5,0.740975328134,1.34078213571,0.096838
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,36,1,1,50, ARITHMETIC,-5,5,0.656395380398,0.328964320839,-5,5,0.656395380398,0.328964320839,0.19633
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,37,1,1,50, ARITHMETIC,-5,5,0.724752407141,-0.408245834182,-5,5,0.724752407141,-0.408245834182,0.20856
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,38,1,1,50, ARITHMETIC,-5,5,-1.77766551389,-1.65968860767,-5,5,-1.77766551389,-1.65968860767,0.38112
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,39,1,1,50, ARITHMETIC,-5,5,-0.360705975309,-0.716075196916,-5,5,-0.360705975309,-0.716075196916,0.15086
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,40,1,1,50, ARITHMETIC,-5,5,-2.38392596956,-1.46655662404,-5,5,-2.38392596956,-1.46655662404,0.23563
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,41,1,1,50, ARITHMETIC,-5,5,-0.137148558809,-1.35922614296,-5,5,-0.137148558809,-1.35922614296,0.21063
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,42,1,1,50, ARITHMETIC,-5,5,-1.99993706526,-0.690300826235,-5,5,-1.99993706526,-0.690300826235,0.14262
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,43,1,1,50, ARITHMETIC,-5,5,-0.0177379137003,0.762070461187,-5,5,-0.0177379137003,0.762070461187,0.073818
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,44,1,1,50, ARITHMETIC,-5,5,-0.696099491507,0.207518454098,-5,5,-0.696099491507,0.207518454098,0.12626
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,45,1,1,50, ARITHMETIC,-5,5,-0.898710621278,0.351335108502,-5,5,-0.898710621278,0.351335108502,0.13876
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,46,1,1,50, ARITHMETIC,-5,5,-2.01274031827,-1.15765682722,-5,5,-2.01274031827,-1.15765682722,0.59142
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,47,1,1,50, ARITHMETIC,-5,5,0.758709801473,1.16241833987,-5,5,0.758709801473,1.16241833987,0.13816
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,48,1,1,50, ARITHMETIC,-5,5,3.08681089972,1.73213670821,-5,5,3.08681089972,1.73213670821,0.13606
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,49,1,1,50, ARITHMETIC,-5,5,0.274363756698,1.46157277239,-5,5,0.274363756698,1.46157277239,0.19115
+22_03d5,population processes,recruitment,current recruitment period, param_init_bounded_dev_vector,pDevsLnR,50,1,1,50, ARITHMETIC,-5,5,0.913613054756,0.0502955200512,-5,5,0.913613054756,0.0502955200512,0.44278
+22_03d5,population processes,natural mortality,base ln-scale M, param_init_bounded_number,pM[1],1,-1,1,1, LOG,0.135335283,2.718281828,0.229999993114,0.229999993114,-2.00000000175,0.999999999831,-1.469676,-1.469676,NA
+22_03d5,population processes,natural mortality,multiplier for immature crab, param_init_bounded_number,pDM1[1],1,4,1,1, ARITHMETIC,0.2,2,0.865354952582,1.10373680141,0.2,2,0.865354952582,1.10373680141,0.045822
+22_03d5,population processes,natural mortality,multiplier for mature males, param_init_bounded_number,pDM1[2],1,4,1,1, ARITHMETIC,0.1,1.9,1.5949310956,1.39074495001,0.1,1.9,1.5949310956,1.39074495001,0.036937
+22_03d5,population processes,natural mortality,multiplier for mature females, param_init_bounded_number,pDM1[3],1,4,1,1, ARITHMETIC,0.1,1.9,1.57334510371,1.37235504319,0.1,1.9,1.57334510371,1.37235504319,0.037281
+22_03d5,population processes,natural mortality,1980-1984 multiplier for mature males, param_init_bounded_number,pDM2[1],1,4,1,1, ARITHMETIC,0.1,10,3.46144641064,2.32465179632,0.1,10,3.46144641064,2.32465179632,0.23526
+22_03d5,population processes,natural mortality,1980-1984 multiplier for mature females, param_init_bounded_number,pDM2[2],1,4,1,1, ARITHMETIC,0.1,10,2.13716750505,1.96185148286,0.1,10,2.13716750505,1.96185148286,0.16314
+22_03d5,population processes,growth,males, param_init_bounded_number,pGrA[1],1,4,1,1, ARITHMETIC,25,40,33.4615022713,32.2650258541,25,40,33.4615022713,32.2650258541,0.24204
+22_03d5,population processes,growth,females, param_init_bounded_number,pGrA[2],1,4,1,1, ARITHMETIC,25,40,34.193899524,33.658337714300004,25,40,34.193899524,33.658337714300004,0.31236
+22_03d5,population processes,growth,males, param_init_bounded_number,pGrB[1],1,4,1,1, ARITHMETIC,130,180,160.415882503,166.347675325,130,180,160.415882503,166.347675325,0.69821
+22_03d5,population processes,growth,females, param_init_bounded_number,pGrB[2],1,4,1,1, ARITHMETIC,110,150,121.218963045,115.101596509,110,150,121.218963045,115.101596509,0.60885
+22_03d5,population processes,growth,both sexes, param_init_bounded_number,pGrBeta[1],1,5,1,1, ARITHMETIC,0.5,2,0.81241613451,0.848782353329,0.5,2,0.81241613451,0.848782353329,0.1016
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,1,4,1,17, ARITHMETIC,-15,15,-2.988083779,-3.16214329044,-15,15,-2.988083779,-3.16214329044,0.21493
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,2,4,1,17, ARITHMETIC,-15,15,-3.56136741782,-3.7220590414,-15,15,-3.56136741782,-3.7220590414,0.31338
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,3,4,1,17, ARITHMETIC,-15,15,-3.01624566991,-3.16399668302,-15,15,-3.01624566991,-3.16399668302,0.26296
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,4,4,1,17, ARITHMETIC,-15,15,-2.13872029086,-2.23035339696,-15,15,-2.13872029086,-2.23035339696,0.12774
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,5,4,1,17, ARITHMETIC,-15,15,-1.34173631868,-1.56371415913,-15,15,-1.34173631868,-1.56371415913,0.11779
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,6,4,1,17, ARITHMETIC,-15,15,-1.236327899,-1.31266427773,-15,15,-1.236327899,-1.31266427773,0.10234
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,7,4,1,17, ARITHMETIC,-15,15,-0.756560289054,-0.791311297155,-15,15,-0.756560289054,-0.791311297155,0.095099
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,8,4,1,17, ARITHMETIC,-15,15,-0.235746134373,-0.280351325686,-15,15,-0.235746134373,-0.280351325686,0.085489
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,9,4,1,17, ARITHMETIC,-15,15,-0.208035857816,-0.196016990858,-15,15,-0.208035857816,-0.196016990858,0.087687
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,10,4,1,17, ARITHMETIC,-15,15,0.141337074818,0.152125727851,-15,15,0.141337074818,0.152125727851,0.088286
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,11,4,1,17, ARITHMETIC,-15,15,0.543886500686,0.583421247182,-15,15,0.543886500686,0.583421247182,0.094047
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,12,4,1,17, ARITHMETIC,-15,15,1.02025730635,1.08766999362,-15,15,1.02025730635,1.08766999362,0.12151
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,13,4,1,17, ARITHMETIC,-15,15,1.62010202762,1.68156643347,-15,15,1.62010202762,1.68156643347,0.14075
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,14,4,1,17, ARITHMETIC,-15,15,2.63980710491,2.70641494798,-15,15,2.63980710491,2.70641494798,0.2618
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,15,4,1,17, ARITHMETIC,-15,15,3.12864002897,3.14681343473,-15,15,3.12864002897,3.14681343473,0.28415
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,16,4,1,17, ARITHMETIC,-15,15,3.7151605262,3.65175652207,-15,15,3.7151605262,3.65175652207,0.46705
+22_03d5,population processes,maturity,males 60-150 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,17,4,1,17, ARITHMETIC,-15,15,4.78628193452,4.6651955685,-15,15,4.78628193452,4.6651955685,1.0629
+22_03d5,population processes,maturity,females 50-105 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,1,4,1,11, ARITHMETIC,-15,15,-5.42471249141,-5.30210973624,-15,15,-5.42471249141,-5.30210973624,1.2185
+22_03d5,population processes,maturity,females 50-105 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,2,4,1,11, ARITHMETIC,-15,15,-4.15907331156,-4.0841550614,-15,15,-4.15907331156,-4.0841550614,0.56399
+22_03d5,population processes,maturity,females 50-105 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,3,4,1,11, ARITHMETIC,-15,15,-2.93088206266,-2.89475312273,-15,15,-2.93088206266,-2.89475312273,0.24599
+22_03d5,population processes,maturity,females 50-105 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,4,4,1,11, ARITHMETIC,-15,15,-1.71102069731,-1.6824218502,-15,15,-1.71102069731,-1.6824218502,0.14588
+22_03d5,population processes,maturity,females 50-105 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,5,4,1,11, ARITHMETIC,-15,15,-0.584029350388,-0.544243926713,-15,15,-0.584029350388,-0.544243926713,0.090183
+22_03d5,population processes,maturity,females 50-105 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,6,4,1,11, ARITHMETIC,-15,15,0.254388399651,0.298149093078,-15,15,0.254388399651,0.298149093078,0.090757
+22_03d5,population processes,maturity,females 50-105 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,7,4,1,11, ARITHMETIC,-15,15,0.572425138759,0.601692038606,-15,15,0.572425138759,0.601692038606,0.10268
+22_03d5,population processes,maturity,females 50-105 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,8,4,1,11, ARITHMETIC,-15,15,1.06318076679,1.09370984141,-15,15,1.06318076679,1.09370984141,0.13726
+22_03d5,population processes,maturity,females 50-105 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,9,4,1,11, ARITHMETIC,-15,15,1.94922465225,2.00114078932,-15,15,1.94922465225,2.00114078932,0.2301
+22_03d5,population processes,maturity,females 50-105 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,10,4,1,11, ARITHMETIC,-15,15,2.90393321821,2.96094037753,-15,15,2.90393321821,2.96094037753,0.45833
+22_03d5,population processes,maturity,females 50-105 mmCW (entire model period), param_init_bounded_vector,pvLgtPrM2M,11,4,1,11, ARITHMETIC,-15,15,3.92242200002,3.9636429225,-15,15,3.92242200002,3.9636429225,1.0386
+22_03d5,selectivity,selectivity,"size at 1 for NMFS survey selectivity (males, pre-1982)", param_init_bounded_number,pS1[1],1,-1,1,1, ARITHMETIC,80,180,179,179,80,180,179,179,NA
+22_03d5,selectivity,selectivity,"size at 1 for NMFS survey selectivity (males, 1982+)", param_init_bounded_number,pS1[2],1,-1,1,1, ARITHMETIC,80,180,179,179,80,180,179,179,NA
+22_03d5,selectivity,selectivity,"size at 1 for NMFS survey selectivity (females, pre-1982)", param_init_bounded_number,pS1[3],1,-1,1,1, ARITHMETIC,70,130,129.9,129.9,70,130,129.9,129.9,NA
+22_03d5,selectivity,selectivity,"size at 1 for NMFS survey selectivity (females, 1982+)", param_init_bounded_number,pS1[4],1,-1,1,1, ARITHMETIC,70,130,129.9,129.9,70,130,129.9,129.9,NA
+22_03d5,selectivity,selectivity,z50 for TCF retention (pre-1991), param_init_bounded_number,pS1[5],1,1,1,1, ARITHMETIC,85,160,145.96844978,139.10145721,85,160,145.96844978,139.10145721,0.65453
+22_03d5,selectivity,selectivity,z50 for TCF retention (1991-1996), param_init_bounded_number,pS1[6],1,1,1,1, ARITHMETIC,85,160,134.338995547,138.537479487,85,160,134.338995547,138.537479487,1.2191
+22_03d5,selectivity,selectivity,DUMMY VALUE, param_init_bounded_number,pS1[7],1,-1,1,1, ARITHMETIC,4,5,4.5,4.5,4,5,4.5,4.5,NA
+22_03d5,selectivity,selectivity,ln(z50) for TCF selectivity (males), param_init_bounded_number,pS1[8],1,1,1,1, ARITHMETIC,4,5,4.8826859007,4.83755350801,4,5,4.8826859007,4.83755350801,0.0059003
+22_03d5,selectivity,selectivity,z50 for TCF selectivity (females), param_init_bounded_number,pS1[9],1,1,1,1, ARITHMETIC,80,150,89.847046426,92.8986467737,80,150,89.847046426,92.8986467737,2.2411
+22_03d5,selectivity,selectivity,"ascending z-at-1 for SCF selectivity (males, pre-1997)", param_init_bounded_number,pS1[10],1,2,1,1, ARITHMETIC,80,180,159.155041809,160.332830294,80,180,159.155041809,160.332830294,2.3738
+22_03d5,selectivity,selectivity,"ascending z-at-1 for SCF selectivity (males, 1997-2004)", param_init_bounded_number,pS1[11],1,2,1,1, ARITHMETIC,80,180,120.605057461,119.671097472,80,180,120.605057461,119.671097472,6.9751
+22_03d5,selectivity,selectivity,"ascending z-at-1 for SCF selectivity (males, 2005+)", param_init_bounded_number,pS1[12],1,2,1,1, ARITHMETIC,80,180,135.506761006,125.307311593,80,180,135.506761006,125.307311593,1.2908
+22_03d5,selectivity,selectivity,"ascending z50 for SCF selectivity (females, pre-1997)", param_init_bounded_number,pS1[13],1,2,1,1, ARITHMETIC,50,150,68.9627711577,81.2782202251,50,150,68.9627711577,81.2782202251,6.8525
+22_03d5,selectivity,selectivity,"ascending z50 for SCF selectivity (females, 1997-2004)", param_init_bounded_number,pS1[14],1,2,1,1, ARITHMETIC,50,120,77.7045188385,72.8496558757,50,120,77.7045188385,72.8496558757,4.3289
+22_03d5,selectivity,selectivity,"ascending z50 for SCF selectivity (females, 2005+)", param_init_bounded_number,pS1[15],1,2,1,1, ARITHMETIC,50,120,96.7618232778,100.935807922,50,120,96.7618232778,100.935807922,8.5034
+22_03d5,selectivity,selectivity,"z50 for GF.AllGear selectivity (males, pre-1987)", param_init_bounded_number,pS1[16],1,2,1,1, ARITHMETIC,40,180,67.0548935212,61.7432478689,40,180,67.0548935212,61.7432478689,3.1381
+22_03d5,selectivity,selectivity,"z50 for GF.AllGear selectivity (males, 1987-1996)", param_init_bounded_number,pS1[17],1,2,1,1, ARITHMETIC,40,180,56.4206039084,72.5000460984,40,180,56.4206039084,72.5000460984,6.521
+22_03d5,selectivity,selectivity,"z50 for GF.AllGear selectivity (males, 1997+)", param_init_bounded_number,pS1[18],1,2,1,1, ARITHMETIC,40,180,93.2874778961,97.2437595716,40,180,93.2874778961,97.2437595716,2.4934
+22_03d5,selectivity,selectivity,"z50 for GF.AllGear selectivity (females, pre-1987)", param_init_bounded_number,pS1[19],1,2,1,1, ARITHMETIC,25,180,63.072684457,44.5688080139,25,180,63.072684457,44.5688080139,1.8494
+22_03d5,selectivity,selectivity,"z50 for GF.AllGear selectivity (females, 1987-1996)", param_init_bounded_number,pS1[20],1,2,1,1, ARITHMETIC,25,180,51.5911033608,41.3868619174,25,180,51.5911033608,41.3868619174,2.3472
+22_03d5,selectivity,selectivity,"z50 for GF.AllGear selectivity (females, 1997+)", param_init_bounded_number,pS1[21],1,2,1,1, ARITHMETIC,25,180,71.2488079572,86.2846969709,25,180,71.2488079572,86.2846969709,2.9706
+22_03d5,selectivity,selectivity,"size at 1 for RKF selectivity (males, pre-1997)", param_init_bounded_number,pS1[22],1,-3,1,1, ARITHMETIC,95,180,179.9,179.9,95,180,179.9,179.9,NA
+22_03d5,selectivity,selectivity,"size at 1 for RKF selectivity (males, 1997-2004)", param_init_bounded_number,pS1[23],1,-3,1,1, ARITHMETIC,95,180,179.9,179.9,95,180,179.9,179.9,NA
+22_03d5,selectivity,selectivity,"size at 1 for RKF selectivity (males, 2005+)", param_init_bounded_number,pS1[24],1,-3,1,1, ARITHMETIC,95,180,179.9,179.9,95,180,179.9,179.9,NA
+22_03d5,selectivity,selectivity,"size at 1 for RKF selectivity (females, pre-1997)", param_init_bounded_number,pS1[25],1,-3,1,1, ARITHMETIC,100,140,139.9,139.9,100,140,139.9,139.9,NA
+22_03d5,selectivity,selectivity,"size at 1 for RKF selectivity (females, 1997-2004)", param_init_bounded_number,pS1[26],1,3,1,1, ARITHMETIC,100,140,129.285500103,136.174373358,100,140,129.285500103,136.174373358,38.791
+22_03d5,selectivity,selectivity,"size at 1 for RKF selectivity (females, 2005+)", param_init_bounded_number,pS1[27],1,3,1,1, ARITHMETIC,100,140,130.28085113,134.765927606,100,140,130.28085113,134.765927606,22.278
+22_03d5,selectivity,selectivity,z50 for TCF retention (2005-2009), param_init_bounded_number,pS1[28],1,1,1,1, ARITHMETIC,85,160,136.181763177,137.640173201,85,160,136.181763177,137.640173201,0.27689
+22_03d5,selectivity,selectivity,z50 for TCF retention (2013+), param_init_bounded_number,pS1[29],1,1,1,1, ARITHMETIC,85,160,133.884524306,125.085636363,85,160,133.884524306,125.085636363,0.78038
+22_03d5,selectivity,selectivity,"width for NMFS survey selectivity (males, pre-1982)", param_init_bounded_number,pS2[1],1,1,1,1, ARITHMETIC,10,100,61.1731197106,64.1781765575,10,100,61.1731197106,64.1781765575,2.2362
+22_03d5,selectivity,selectivity,"width for NMFS survey selectivity (males, 1982+)", param_init_bounded_number,pS2[2],1,1,1,1, ARITHMETIC,10,100,84.9878829861,84.9891152819,10,100,84.9878829861,84.9891152819,2.3601
+22_03d5,selectivity,selectivity,"width for NMFS survey selectivity (females, pre-1982)", param_init_bounded_number,pS2[3],1,1,1,1, ARITHMETIC,10,100,51.1871696584,40.3930160283,10,100,51.1871696584,40.3930160283,2.0578
+22_03d5,selectivity,selectivity,"width for NMFS survey selectivity (females, 1982+)", param_init_bounded_number,pS2[4],1,1,1,1, ARITHMETIC,10,100,87.62792412,73.166130919,10,100,87.62792412,73.166130919,4.5898
+22_03d5,selectivity,selectivity,slope for TCF retention (pre-1991), param_init_bounded_number,pS2[5],1,1,1,1, ARITHMETIC,0.2,1,0.782193118982,0.695897431337,0.2,1,0.782193118982,0.695897431337,0.17234
+22_03d5,selectivity,selectivity,slope for TCF retention (1997+), param_init_bounded_number,pS2[6],1,1,1,1, ARITHMETIC,0.2,2,1.26842268316,1.00445845344,0.2,2,1.26842268316,1.00445845344,0.74228
+22_03d5,selectivity,selectivity,"slope for TCF selectivity (males, pre-1997)", param_init_bounded_number,pS2[7],1,1,1,1, ARITHMETIC,0.05,0.75,0.176734288424,0.121183623165,0.05,0.75,0.176734288424,0.121183623165,0.0065678
+22_03d5,selectivity,selectivity,"slope for TCF selectivity (males, 1997+)", param_init_bounded_number,pS2[8],1,1,1,1, ARITHMETIC,0.1,0.4,0.155594099012,0.172986683231,0.1,0.4,0.155594099012,0.172986683231,0.0070952
+22_03d5,selectivity,selectivity,slope for TCF selectivity (females), param_init_bounded_number,pS2[9],1,1,1,1, ARITHMETIC,0.05,0.75,0.113799929243,0.196098173397,0.05,0.75,0.113799929243,0.196098173397,0.024852
+22_03d5,selectivity,selectivity,"ascending width for SCF selectivity (males, pre-1997)", param_init_bounded_number,pS2[10],1,2,1,1, ARITHMETIC,1,50,35.2852003129,32.6501107461,1,50,35.2852003129,32.6501107461,1.5113
+22_03d5,selectivity,selectivity,"ascending width for SCF selectivity (males, 1997-2004)", param_init_bounded_number,pS2[11],1,2,1,1, ARITHMETIC,1,50,21.7521127986,16.1433440826,1,50,21.7521127986,16.1433440826,3.5358
+22_03d5,selectivity,selectivity,"ascending width for SCF selectivity (males, 2005+)", param_init_bounded_number,pS2[12],1,2,1,1, ARITHMETIC,1,50,10.9037858332,14.7121972575,1,50,10.9037858332,14.7121972575,0.70356
+22_03d5,selectivity,selectivity,"slope for SCF selectivity (females, pre-1997)", param_init_bounded_number,pS2[13],1,2,1,1, ARITHMETIC,0.05,0.5,0.153783016019,0.137089528407,0.05,0.5,0.153783016019,0.137089528407,0.065308
+22_03d5,selectivity,selectivity,"slope for SCF selectivity (females, 1997-2004)", param_init_bounded_number,pS2[14],1,2,1,1, ARITHMETIC,0.05,0.5,0.270656553478,0.317115557478,0.05,0.5,0.270656553478,0.317115557478,0.23504
+22_03d5,selectivity,selectivity,"slope for SCF selectivity (females, 2005+)", param_init_bounded_number,pS2[15],1,2,1,1, ARITHMETIC,0.05,0.5,0.112540570876,0.0988217968512,0.05,0.5,0.112540570876,0.0988217968512,0.023656
+22_03d5,selectivity,selectivity,"slope for GF.AllGear selectivity (males, pre-1987)", param_init_bounded_number,pS2[16],1,2,1,1, ARITHMETIC,0.01,0.5,0.032715998195,0.0894261822044,0.01,0.5,0.032715998195,0.0894261822044,0.010191
+22_03d5,selectivity,selectivity,"slope for GF.AllGear selectivity (males, 1987-1996)", param_init_bounded_number,pS2[17],1,2,1,1, ARITHMETIC,0.01,0.5,0.0396803118537,0.0466805438974,0.01,0.5,0.0396803118537,0.0466805438974,0.0072684
+22_03d5,selectivity,selectivity,"slope for GF.AllGear selectivity (males, 1997+)", param_init_bounded_number,pS2[18],1,2,1,1, ARITHMETIC,0.01,0.5,0.138751049982,0.0605785325016,0.01,0.5,0.138751049982,0.0605785325016,0.0024746
+22_03d5,selectivity,selectivity,"slope for GF.AllGear selectivity (females, pre-1987)", param_init_bounded_number,pS2[19],1,2,1,1, ARITHMETIC,0.01,0.5,0.100129175282,0.134276627127,0.01,0.5,0.100129175282,0.134276627127,0.018738
+22_03d5,selectivity,selectivity,"slope for GF.AllGear selectivity (females, 1987-1996)", param_init_bounded_number,pS2[20],1,2,1,1, ARITHMETIC,0.01,0.5,0.162767843639,0.156316917111,0.01,0.5,0.162767843639,0.156316917111,0.049416
+22_03d5,selectivity,selectivity,"slope for GF.AllGear selectivity (females, 1997+)", param_init_bounded_number,pS2[21],1,2,1,1, ARITHMETIC,0.01,0.5,0.0841194432213,0.067735377658,0.01,0.5,0.0841194432213,0.067735377658,0.0041923
+22_03d5,selectivity,selectivity,"width for RKF selectivity (males, pre-1997)", param_init_bounded_number,pS2[22],1,3,1,1, ARITHMETIC,5,100,18.3591236016,19.7347816213,5,100,18.3591236016,19.7347816213,0.78568
+22_03d5,selectivity,selectivity,"width for RKF selectivity (males, 1997-2004)", param_init_bounded_number,pS2[23],1,3,1,1, ARITHMETIC,5,100,19.9257705995,27.7065990038,5,100,19.9257705995,27.7065990038,2.0898
+22_03d5,selectivity,selectivity,"width for RKF selectivity (males, 2005+)", param_init_bounded_number,pS2[24],1,3,1,1, ARITHMETIC,5,100,31.0053585513,27.2047692022,5,100,31.0053585513,27.2047692022,0.94952
+22_03d5,selectivity,selectivity,"width for RKF selectivity (males, pre-1997)", param_init_bounded_number,pS2[25],1,3,1,1, ARITHMETIC,5,100,29.8941689766,17.9511625276,5,100,29.8941689766,17.9511625276,2.3246000000000002
+22_03d5,selectivity,selectivity,"width for RKF selectivity (males, 1997-2004)", param_init_bounded_number,pS2[26],1,3,1,1, ARITHMETIC,5,100,27.9610636599,18.7924455424,5,100,27.9610636599,18.7924455424,14.627
+22_03d5,selectivity,selectivity,"width for RKF selectivity (males, 2005+)", param_init_bounded_number,pS2[27],1,3,1,1, ARITHMETIC,5,100,23.1524254588,17.8732941731,5,100,23.1524254588,17.8732941731,7.7989
+22_03d5,selectivity,selectivity,slope for TCF retention (2005-2009), param_init_bounded_number,pS2[28],1,-1,1,1, ARITHMETIC,0.2,2,1.99,1.99,0.2,2,1.99,1.99,NA
+22_03d5,selectivity,selectivity,slope for TCF retention (2013+), param_init_bounded_number,pS2[29],1,1,1,1, ARITHMETIC,0.2,2,0.513733498539,0.331218239119,0.2,2,0.513733498539,0.331218239119,0.065739
+22_03d5,selectivity,selectivity,"scaled increment for descending z-at-1 for SCF selectivity (males, pre-1997)", param_init_bounded_number,pS3[1],1,-2,1,1, ARITHMETIC,0,1,0.001,0.001,0,1,0.001,0.001,NA
+22_03d5,selectivity,selectivity,"scaled increment for descending z-at-1 for SCF selectivity (males, 1997-2004)", param_init_bounded_number,pS3[2],1,-2,1,1, ARITHMETIC,0,1,0.001,0.001,0,1,0.001,0.001,NA
+22_03d5,selectivity,selectivity,"scaled increment for descending z-at-1 for SCF selectivity (males, 2005+)", param_init_bounded_number,pS3[3],1,-2,1,1, ARITHMETIC,0,1,0.001,0.001,0,1,0.001,0.001,NA
+22_03d5,selectivity,selectivity,"descending width for SCF selectivity (males, pre-1997)", param_init_bounded_number,pS4[1],1,-2,1,1, ARITHMETIC,1,30,1.1,1.1,1,30,1.1,1.1,NA
+22_03d5,selectivity,selectivity,"descending width for SCF selectivity (males, 1997-2004)", param_init_bounded_number,pS4[2],1,2,1,1, ARITHMETIC,1,30,23.1124833959,19.8192283125,1,30,23.1124833959,19.8192283125,9.4205
+22_03d5,selectivity,selectivity,"descending width for SCF selectivity (males, 2005+)", param_init_bounded_number,pS4[3],1,2,1,1, ARITHMETIC,1,30,11.7044861111,13.1689990642,1,30,11.7044861111,13.1689990642,1.3459
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,1,2,1,20, ARITHMETIC,-0.5,0.5,0.0848921701568,0.113775311581,-0.5,0.5,0.0848921701568,0.113775311581,0.014431
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,2,2,1,20, ARITHMETIC,-0.5,0.5,0.179537429836,0.091580304866,-0.5,0.5,0.179537429836,0.091580304866,0.013955
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,3,2,1,20, ARITHMETIC,-0.5,0.5,0.121494031827,0.129718924051,-0.5,0.5,0.121494031827,0.129718924051,0.013085
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,4,2,1,20, ARITHMETIC,-0.5,0.5,0.123708424763,0.13052222999,-0.5,0.5,0.123708424763,0.13052222999,0.018117
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,5,2,1,20, ARITHMETIC,-0.5,0.5,0.13690015761,0.105774210035,-0.5,0.5,0.13690015761,0.105774210035,0.021139
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,6,2,1,20, ARITHMETIC,-0.5,0.5,0.119682818879,0.206879729686,-0.5,0.5,0.119682818879,0.206879729686,0.020622
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,7,2,1,20, ARITHMETIC,-0.5,0.5,-0.0174492409923,-0.027816918023,-0.5,0.5,-0.0174492409923,-0.027816918023,0.01354
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,8,2,1,20, ARITHMETIC,-0.5,0.5,-0.075914090457300007,-0.0121838250238,-0.5,0.5,-0.075914090457300007,-0.0121838250238,0.013318
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,9,2,1,20, ARITHMETIC,-0.5,0.5,-2.55081108868e-4,-0.0786269605456,-0.5,0.5,-2.55081108868e-4,-0.0786269605456,0.013012
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,10,2,1,20, ARITHMETIC,-0.5,0.5,0.0756806142446,0.0383618817762,-0.5,0.5,0.0756806142446,0.0383618817762,0.011026
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,11,2,1,20, ARITHMETIC,-0.5,0.5,0.249749957637,0.154770948441,-0.5,0.5,0.249749957637,0.154770948441,0.011352
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,12,2,1,20, ARITHMETIC,-0.5,0.5,0.00388916077306,-0.00700434944659,-0.5,0.5,0.00388916077306,-0.00700434944659,0.013575
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,13,2,1,20, ARITHMETIC,-0.5,0.5,-0.212437418052,-0.060336725829,-0.5,0.5,-0.212437418052,-0.060336725829,0.011777
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,14,2,1,20, ARITHMETIC,-0.5,0.5,-0.0100247954148,-0.0950393351986,-0.5,0.5,-0.0100247954148,-0.0950393351986,0.013395
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,15,2,1,20, ARITHMETIC,-0.5,0.5,-0.102939448629,-0.0624690108154,-0.5,0.5,-0.102939448629,-0.0624690108154,0.015318
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,16,2,1,20, ARITHMETIC,-0.5,0.5,-0.264523155066,-0.108441584091,-0.5,0.5,-0.264523155066,-0.108441584091,0.013917
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,17,2,1,20, ARITHMETIC,-0.5,0.5,-0.0482540829504,-0.16016875989,-0.5,0.5,-0.0482540829504,-0.16016875989,0.015884
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,18,2,1,20, ARITHMETIC,-0.5,0.5,-0.153966743412,-0.147243533049,-0.5,0.5,-0.153966743412,-0.147243533049,0.013999
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,19,2,1,20, ARITHMETIC,-0.5,0.5,-0.101987742315,-0.132473682245,-0.5,0.5,-0.101987742315,-0.132473682245,0.012648
+22_03d5,selectivity,selectivity,"ln(z50 devs) for TCF selectivity (males, 1991+)", param_init_bounded_dev_vector,pDevsS1,20,2,1,20, ARITHMETIC,-0.5,0.5,-0.107782967329,-0.079482075296,-0.5,0.5,-0.107782967329,-0.079482075296,0.012492
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,1,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,2,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,3,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,4,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,5,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,6,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,7,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,8,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,9,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,10,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,11,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,12,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,13,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,14,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,15,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,16,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,17,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,18,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,19,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,20,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,21,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,22,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,23,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,24,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,25,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,26,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,27,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,28,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,29,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,30,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,31,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2013)", param_init_bounded_vector,pvNPSel,32,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,1,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,2,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,3,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,4,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,5,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,6,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,7,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,8,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,9,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,10,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,11,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,12,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,13,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,14,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,15,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,16,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,17,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,18,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,19,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,20,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,21,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,22,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,23,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,24,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,25,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,26,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,27,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,28,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,29,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,30,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,31,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2014)", param_init_bounded_vector,pvNPSel,32,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,1,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,2,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,3,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,4,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,5,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,6,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,7,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,8,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,9,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,10,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,11,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,12,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,13,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,14,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,15,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,16,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,17,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,18,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,19,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,20,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,21,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,22,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,23,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,24,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,25,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,26,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,27,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,28,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,29,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,30,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,31,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2015)", param_init_bounded_vector,pvNPSel,32,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,1,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,2,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,3,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,4,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,5,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,6,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,7,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,8,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,9,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,10,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,11,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,12,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,13,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,14,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,15,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,16,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,17,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,18,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,19,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,20,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,21,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,22,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,23,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,24,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,25,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,26,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,27,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,28,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,29,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,30,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,31,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2016)", param_init_bounded_vector,pvNPSel,32,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,1,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,2,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,3,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,4,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,5,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,6,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,7,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,8,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,9,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,10,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,11,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,12,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,13,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,14,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,15,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,16,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,17,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,18,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,19,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,20,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,21,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,22,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,23,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,24,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,25,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,26,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,27,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,28,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,29,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,30,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,31,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2017)", param_init_bounded_vector,pvNPSel,32,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,1,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,2,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,3,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,4,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,5,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,6,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,7,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,8,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,9,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,10,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,11,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,12,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,13,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,14,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,15,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,16,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,17,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,18,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,19,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,20,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2013)", param_init_bounded_vector,pvNPSel,21,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,1,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,2,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,3,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,4,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,5,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,6,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,7,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,8,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,9,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,10,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,11,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,12,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,13,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,14,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,15,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,16,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,17,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,18,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,19,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,20,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2014)", param_init_bounded_vector,pvNPSel,21,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,1,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,2,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,3,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,4,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,5,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,6,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,7,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,8,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,9,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,10,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,11,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,12,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,13,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,14,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,15,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,16,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,17,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,18,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,19,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,20,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2015)", param_init_bounded_vector,pvNPSel,21,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,1,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,2,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,3,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,4,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,5,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,6,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,7,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,8,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,9,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,10,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,11,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,12,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,13,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,14,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,15,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,16,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,17,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,18,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,19,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,20,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2016)", param_init_bounded_vector,pvNPSel,21,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,1,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,2,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,3,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,4,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,5,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,6,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,7,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,8,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,9,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,10,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,11,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,12,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,13,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,14,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,15,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,16,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,17,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,18,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,19,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,20,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2017)", param_init_bounded_vector,pvNPSel,21,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,1,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,2,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,3,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,4,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,5,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,6,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,7,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,8,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,9,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,10,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,11,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,12,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,13,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,14,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,15,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,16,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,17,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,18,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,19,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,20,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,21,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,22,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,23,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,24,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,25,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,26,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,27,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,28,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,29,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,30,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,31,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (males, 2018)", param_init_bounded_vector,pvNPSel,32,-1,1,32, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,1,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,2,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,3,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,4,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,5,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,6,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,7,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,8,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,9,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,10,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,11,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,12,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,13,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,14,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,15,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,16,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,17,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,18,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,19,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,20,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,selectivity,selectivity,"BSFRF availability (females, 2018)", param_init_bounded_vector,pvNPSel,21,-1,1,21, ARITHMETIC,-15,15,0,0,-15,15,0,0,NA
+22_03d5,fisheries,fisheries,handling mortality for pot fisheries, param_init_bounded_number,pHM[1],1,-1,1,1, ARITHMETIC,0,1,0.321,0.321,0,1,0.321,0.321,NA
+22_03d5,fisheries,fisheries,handling mortality for groundfish trawl fisheries, param_init_bounded_number,pHM[2],1,-1,1,1, ARITHMETIC,0,1,0.8,0.8,0,1,0.8,0.8,NA
+22_03d5,fisheries,fisheries,"TCF: base capture rate, pre-1965 (=0.05)", param_init_bounded_number,pLnC[1],1,-1,1,1, ARITHMETIC,-10,2,-2.995732274,-2.995732274,-10,2,-2.995732274,-2.995732274,NA
+22_03d5,fisheries,fisheries,"TCF: base capture rate, 1965+", param_init_bounded_number,pLnC[2],1,1,1,1, ARITHMETIC,-10,2,-0.0564606596072,-1.49966833227,-10,2,-0.0564606596072,-1.49966833227,0.11841
+22_03d5,fisheries,fisheries,"SCF: base capture rate, pre-1978 (=0.01)", param_init_bounded_number,pLnC[3],1,-2,1,1, ARITHMETIC,-10,2,-4.605170186,-4.605170186,-10,2,-4.605170186,-4.605170186,NA
+22_03d5,fisheries,fisheries,"SCF: base capture rate, 1992+", param_init_bounded_number,pLnC[4],1,2,1,1, ARITHMETIC,-10,2,-3.20744398329,-3.73038960724,-10,2,-3.20744398329,-3.73038960724,0.068073
+22_03d5,fisheries,fisheries,DUMMY CAPTURE RATE, param_init_bounded_number,pLnC[5],1,-2,1,1, ARITHMETIC,-10,2,-4.180723944,-4.180723944,-10,2,-4.180723944,-4.180723944,NA
+22_03d5,fisheries,fisheries,"GTF: base capture rate, ALL YEARS", param_init_bounded_number,pLnC[6],1,2,1,1, ARITHMETIC,-10,2,-5.24862700447,-5.03250134898,-10,2,-5.24862700447,-5.03250134898,0.056672
+22_03d5,fisheries,fisheries,"RKF: base capture rate, pre-1953 (=0.02)", param_init_bounded_number,pLnC[7],1,-2,1,1, ARITHMETIC,-10,2,-3.912023005,-3.912023005,-10,2,-3.912023005,-3.912023005,NA
+22_03d5,fisheries,fisheries,"RKF: base capture rate, 1992+", param_init_bounded_number,pLnC[8],1,2,1,1, ARITHMETIC,-10,2,-3.72853096527,-4.79774718559,-10,2,-3.72853096527,-4.79774718559,0.11177
+22_03d5,fisheries,fisheries,TCF: female offset, param_init_bounded_number,pDC2[1],1,1,1,1, ARITHMETIC,-5,0,-2.21945842628,-2.79779548984,-5,0,-2.21945842628,-2.79779548984,0.20424
+22_03d5,fisheries,fisheries,SCF: female offset, param_init_bounded_number,pDC2[2],1,2,1,1, ARITHMETIC,-5,0,-2.9693760305,-2.66996342426,-5,0,-2.9693760305,-2.66996342426,0.33758
+22_03d5,fisheries,fisheries,GTF: female offset, param_init_bounded_number,pDC2[3],1,2,1,1, ARITHMETIC,-5,0,-0.746725988369,-1.04424066002,-5,0,-0.746725988369,-1.04424066002,0.092519
+22_03d5,fisheries,fisheries,RKF: female offset, param_init_bounded_number,pDC2[4],1,2,1,1, ARITHMETIC,-5,0,-2.36256450892,-2.41764335139,-5,0,-2.36256450892,-2.41764335139,0.84034
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,1,1,1,44, ARITHMETIC,-5,5,-1.18492850975,-1.28734772628,-5,5,-1.18492850975,-1.28734772628,0.88847
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,2,1,1,44, ARITHMETIC,-5,5,-0.299289316248,-1.07620785867,-5,5,-0.299289316248,-1.07620785867,0.73547
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,3,1,1,44, ARITHMETIC,-5,5,-0.607821163837,0.769384888267,-5,5,-0.607821163837,0.769384888267,0.67529
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,4,1,1,44, ARITHMETIC,-5,5,0.188691986165,1.35084091781,-5,5,0.188691986165,1.35084091781,0.65413
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,5,1,1,44, ARITHMETIC,-5,5,3.90236807388,2.5204051748,-5,5,3.90236807388,2.5204051748,0.93473
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,6,1,1,44, ARITHMETIC,-5,5,4.19661441846,4.17732436742,-5,5,4.19661441846,4.17732436742,0.73285
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,7,1,1,44, ARITHMETIC,-5,5,2.87081980898,4.72300720643,-5,5,2.87081980898,4.72300720643,0.66734
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,8,1,1,44, ARITHMETIC,-5,5,2.8676188603,2.21192304709,-5,5,2.8676188603,2.21192304709,1.1649
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,9,1,1,44, ARITHMETIC,-5,5,-1.05133760484,0.131176884672,-5,5,-1.05133760484,0.131176884672,0.33816
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,10,1,1,44, ARITHMETIC,-5,5,-1.54263671752,-0.210450716374,-5,5,-1.54263671752,-0.210450716374,0.21296
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,11,1,1,44, ARITHMETIC,-5,5,-0.0948824653244,-0.0737948445171,-5,5,-0.0948824653244,-0.0737948445171,0.17895
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,12,1,1,44, ARITHMETIC,-5,5,1.92415788465,0.690376895329,-5,5,1.92415788465,0.690376895329,0.17526
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,13,1,1,44, ARITHMETIC,-5,5,1.24563662801,1.45426549779,-5,5,1.24563662801,1.45426549779,0.20375
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,14,1,1,44, ARITHMETIC,-5,5,2.16366551986,1.72306275539,-5,5,2.16366551986,1.72306275539,0.28176
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,15,1,1,44, ARITHMETIC,-5,5,2.45653348594,2.14597471501,-5,5,2.45653348594,2.14597471501,0.34871
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,16,1,1,44, ARITHMETIC,-5,5,1.58650981625,1.91367283272,-5,5,1.58650981625,1.91367283272,0.25423
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,17,1,1,44, ARITHMETIC,-5,5,1.76856052681,0.255612057003,-5,5,1.76856052681,0.255612057003,0.14775
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,18,1,1,44, ARITHMETIC,-5,5,-1.15533577043,-0.880433412698,-5,5,-1.15533577043,-0.880433412698,0.12821
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,19,1,1,44, ARITHMETIC,-5,5,-3.63441457896,-2.30584828362,-5,5,-3.63441457896,-2.30584828362,0.12913
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,20,1,1,44, ARITHMETIC,-5,5,-0.385924248393,-0.987902103913,-5,5,-0.385924248393,-0.987902103913,0.14126
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,21,1,1,44, ARITHMETIC,-5,5,-0.471381305963,-1.34571294412,-5,5,-0.471381305963,-1.34571294412,0.12264
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,22,1,1,44, ARITHMETIC,-5,5,-0.703892954002,-0.388263963486,-5,5,-0.703892954002,-0.388263963486,0.12212
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,23,1,1,44, ARITHMETIC,-5,5,-0.0986638304717,0.795735284679,-5,5,-0.0986638304717,0.795735284679,0.12394
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,24,1,1,44, ARITHMETIC,-5,5,1.88993904353,1.56322822167,-5,5,1.88993904353,1.56322822167,0.1314
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,25,1,1,44, ARITHMETIC,-5,5,3.07871139924,1.90661700675,-5,5,3.07871139924,1.90661700675,0.15999
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,26,1,1,44, ARITHMETIC,-5,5,2.43815325347,2.23501803645,-5,5,2.43815325347,2.23501803645,0.17002
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,27,1,1,44, ARITHMETIC,-5,5,0.976825328082,1.78686168023,-5,5,0.976825328082,1.78686168023,0.16646
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,28,1,1,44, ARITHMETIC,-5,5,0.21484399097,1.0279151483,-5,5,0.21484399097,1.0279151483,0.17742
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,29,1,1,44, ARITHMETIC,-5,5,0.545348964209,0.431327432841,-5,5,0.545348964209,0.431327432841,0.17074
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,30,1,1,44, ARITHMETIC,-5,5,-0.170226243825,0.368531417098,-5,5,-0.170226243825,0.368531417098,0.22552
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,31,1,1,44, ARITHMETIC,-5,5,-2.06625962286,-2.33166122492,-5,5,-2.06625962286,-2.33166122492,0.12342
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,32,1,1,44, ARITHMETIC,-5,5,-0.86254383777,-1.70759782621,-5,5,-0.86254383777,-1.70759782621,0.12337
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,33,1,1,44, ARITHMETIC,-5,5,-2.8662413329,-1.8851347582,-5,5,-2.8662413329,-1.8851347582,0.12326
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,34,1,1,44, ARITHMETIC,-5,5,-2.69312981865,-2.03925068868,-5,5,-2.69312981865,-2.03925068868,0.1231
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,35,1,1,44, ARITHMETIC,-5,5,-3.1570344859,-2.05061182091,-5,5,-3.1570344859,-2.05061182091,0.14531
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,36,1,1,44, ARITHMETIC,-5,5,-1.02294093091,-1.90038369849,-5,5,-1.02294093091,-1.90038369849,0.12587
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,37,1,1,44, ARITHMETIC,-5,5,0.160524362941,-0.627925364712,-5,5,0.160524362941,-0.627925364712,0.12246
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,38,1,1,44, ARITHMETIC,-5,5,-1.00960979817,-0.327408601724,-5,5,-1.00960979817,-0.327408601724,0.12146
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,39,1,1,44, ARITHMETIC,-5,5,-0.69561856682,-2.03295732333,-5,5,-0.69561856682,-2.03295732333,0.12163
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,40,1,1,44, ARITHMETIC,-5,5,-1.14600920427,-1.87493453007,-5,5,-1.14600920427,-1.87493453007,0.12154
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,41,1,1,44, ARITHMETIC,-5,5,-2.4119909343,-2.06473813756,-5,5,-2.4119909343,-2.06473813756,0.12291
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,42,1,1,44, ARITHMETIC,-5,5,-1.79696116918,-2.42286407748,-5,5,-1.79696116918,-2.42286407748,0.12409
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,43,1,1,44, ARITHMETIC,-5,5,-2.2517639458,-2.10478158123,-5,5,-2.2517639458,-2.10478158123,0.12457
+22_03d5,fisheries,fisheries,"TCF: 1965-1984, 1987-1996, 2005-2009, 2013-2015, 2017-2018", param_init_bounded_dev_vector,pDevsLnC,44,1,1,44, ARITHMETIC,-5,5,-1.09468499466,-2.25605002995,-5,5,-1.09468499466,-2.25605002995,0.12356
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,1,2,1,32, ARITHMETIC,-5,5,2.87064619683,1.494948082,-5,5,2.87064619683,1.494948082,0.19639
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,2,2,1,32, ARITHMETIC,-5,5,0.858114901803,1.74489476788,-5,5,0.858114901803,1.74489476788,0.19853
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,3,2,1,32, ARITHMETIC,-5,5,1.97095949692,0.734472207336,-5,5,1.97095949692,0.734472207336,0.19403
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,4,2,1,32, ARITHMETIC,-5,5,1.22204057927,1.11954069551,-5,5,1.22204057927,1.11954069551,0.18505
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,5,2,1,32, ARITHMETIC,-5,5,0.812420026898,0.548936991208,-5,5,0.812420026898,0.548936991208,0.18391
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,6,2,1,32, ARITHMETIC,-5,5,0.214428216639,0.475288924252,-5,5,0.214428216639,0.475288924252,0.18668
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,7,2,1,32, ARITHMETIC,-5,5,0.6381084751,1.32061330893,-5,5,0.6381084751,1.32061330893,0.19692
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,8,2,1,32, ARITHMETIC,-5,5,0.4680205064,1.08303171396,-5,5,0.4680205064,1.08303171396,0.20654
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,9,2,1,32, ARITHMETIC,-5,5,0.812951517897,0.149187865406,-5,5,0.812951517897,0.149187865406,0.19541
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,10,2,1,32, ARITHMETIC,-5,5,-0.224800559655,-1.46236666965,-5,5,-0.224800559655,-1.46236666965,0.21198
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,11,2,1,32, ARITHMETIC,-5,5,-0.867272948944,-0.717707085908,-5,5,-0.867272948944,-0.717707085908,0.21529
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,12,2,1,32, ARITHMETIC,-5,5,0.21191264184,-0.26408853294,-5,5,0.21191264184,-0.26408853294,0.21228
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,13,2,1,32, ARITHMETIC,-5,5,-2.2976657469,-1.55036774794,-5,5,-2.2976657469,-1.55036774794,0.21315
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,14,2,1,32, ARITHMETIC,-5,5,-2.67519380906,-2.66728507988,-5,5,-2.67519380906,-2.66728507988,0.24295
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,15,2,1,32, ARITHMETIC,-5,5,-1.55841093626,-1.97886399249,-5,5,-1.55841093626,-1.97886399249,0.1913
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,16,2,1,32, ARITHMETIC,-5,5,-0.639803201499,-0.0133726429186,-5,5,-0.639803201499,-0.0133726429186,0.1975
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,17,2,1,32, ARITHMETIC,-5,5,-0.185310774979,0.131477802107,-5,5,-0.185310774979,0.131477802107,0.19047
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,18,2,1,32, ARITHMETIC,-5,5,-0.403186349252,0.168323357225,-5,5,-0.403186349252,0.168323357225,0.1941
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,19,2,1,32, ARITHMETIC,-5,5,0.632586448036,-0.458451140613,-5,5,0.632586448036,-0.458451140613,0.19579
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,20,2,1,32, ARITHMETIC,-5,5,0.984145833643,-0.0727967037514,-5,5,0.984145833643,-0.0727967037514,0.19761
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,21,2,1,32, ARITHMETIC,-5,5,0.294000276602,0.0308375979276,-5,5,0.294000276602,0.0308375979276,0.19842
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,22,2,1,32, ARITHMETIC,-5,5,-0.334439660123,0.584090684595,-5,5,-0.334439660123,0.584090684595,0.19731
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,23,2,1,32, ARITHMETIC,-5,5,-0.118515502288,0.287517249926,-5,5,-0.118515502288,0.287517249926,0.19682
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,24,2,1,32, ARITHMETIC,-5,5,-0.459271387496,0.212478562619,-5,5,-0.459271387496,0.212478562619,0.19611
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,25,2,1,32, ARITHMETIC,-5,5,1.25808455452,1.04318711853,-5,5,1.25808455452,1.04318711853,0.19075
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,26,2,1,32, ARITHMETIC,-5,5,0.832439109186,0.841300380205,-5,5,0.832439109186,0.841300380205,0.19261
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,27,2,1,32, ARITHMETIC,-5,5,0.0963141758594,0.666807998253,-5,5,0.0963141758594,0.666807998253,0.19491
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,28,2,1,32, ARITHMETIC,-5,5,-0.743402742367,0.0441771178366,-5,5,-0.743402742367,0.0441771178366,0.19771
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,29,2,1,32, ARITHMETIC,-5,5,-0.29125136967,0.0532350011233,-5,5,-0.29125136967,0.0532350011233,0.19813
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,30,2,1,32, ARITHMETIC,-5,5,0.110085194525,0.375034479456,-5,5,0.110085194525,0.375034479456,0.19764
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,31,2,1,32, ARITHMETIC,-5,5,-2.21332608768,-1.6196629559,-5,5,-2.21332608768,-1.6196629559,0.21204
+22_03d5,fisheries,fisheries,SCF: 1992+, param_init_bounded_dev_vector,pDevsLnC,32,2,1,32, ARITHMETIC,-5,5,-1.27540707581,-2.30441934395,-5,5,-1.27540707581,-2.30441934395,0.22815
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,1,2,1,51, ARITHMETIC,-5,5,2.47325400153,1.59860691738,-5,5,2.47325400153,1.59860691738,0.16463
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,2,2,1,51, ARITHMETIC,-5,5,0.772060416236,1.83097219916,-5,5,0.772060416236,1.83097219916,0.15752
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,3,2,1,51, ARITHMETIC,-5,5,0.335448078619,1.01784909002,-5,5,0.335448078619,1.01784909002,0.15527
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,4,2,1,51, ARITHMETIC,-5,5,1.20555078834,0.612163982537,-5,5,1.20555078834,0.612163982537,0.15369
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,5,2,1,51, ARITHMETIC,-5,5,1.00399895346,0.250760581269,-5,5,1.00399895346,0.250760581269,0.15376
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,6,2,1,51, ARITHMETIC,-5,5,1.14553900439,0.0472832845965,-5,5,1.14553900439,0.0472832845965,0.15518
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,7,2,1,51, ARITHMETIC,-5,5,0.180645626673,0.536811063575,-5,5,0.180645626673,0.536811063575,0.15847
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,8,2,1,51, ARITHMETIC,-5,5,-0.0853210556286,0.0568186071502,-5,5,-0.0853210556286,0.0568186071502,0.15558
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,9,2,1,51, ARITHMETIC,-5,5,-1.05833335886,-0.015265675114,-5,5,-1.05833335886,-0.015265675114,0.14956
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,10,2,1,51, ARITHMETIC,-5,5,-0.812631124066,-0.860124700843,-5,5,-0.812631124066,-0.860124700843,0.14734
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,11,2,1,51, ARITHMETIC,-5,5,-0.0644988557544,-0.380531231434,-5,5,-0.0644988557544,-0.380531231434,0.14965
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,12,2,1,51, ARITHMETIC,-5,5,-0.188106668379,-0.0833827710834,-5,5,-0.188106668379,-0.0833827710834,0.15469
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,13,2,1,51, ARITHMETIC,-5,5,-1.10044456849,-0.482227301762,-5,5,-1.10044456849,-0.482227301762,0.15204
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,14,2,1,51, ARITHMETIC,-5,5,0.640285559253,-0.292699363789,-5,5,0.640285559253,-0.292699363789,0.1475
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,15,2,1,51, ARITHMETIC,-5,5,-1.63668293392,-0.44264194661,-5,5,-1.63668293392,-0.44264194661,0.15442
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,16,2,1,51, ARITHMETIC,-5,5,-1.13486307774,-0.933932078484,-5,5,-1.13486307774,-0.933932078484,0.15296
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,17,2,1,51, ARITHMETIC,-5,5,-0.102086847506,-0.519789409905,-5,5,-0.102086847506,-0.519789409905,0.15177
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,18,2,1,51, ARITHMETIC,-5,5,0.34513938551,-0.111377892304,-5,5,0.34513938551,-0.111377892304,0.15133
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,19,2,1,51, ARITHMETIC,-5,5,-0.0765049159554,0.668338215936,-5,5,-0.0765049159554,0.668338215936,0.15075
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,20,2,1,51, ARITHMETIC,-5,5,1.3069451528,0.929072614814,-5,5,1.3069451528,0.929072614814,0.15094
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,21,2,1,51, ARITHMETIC,-5,5,-0.603532249558,0.645032818513,-5,5,-0.603532249558,0.645032818513,0.15062999999999999
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,22,2,1,51, ARITHMETIC,-5,5,1.17608077644,1.08272039687,-5,5,1.17608077644,1.08272039687,0.15128
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,23,2,1,51, ARITHMETIC,-5,5,-0.0495558894793,0.995832942295,-5,5,-0.0495558894793,0.995832942295,0.15128
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,24,2,1,51, ARITHMETIC,-5,5,-0.027760160619,1.17407651099,-5,5,-0.027760160619,1.17407651099,0.15292
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,25,2,1,51, ARITHMETIC,-5,5,1.18318302336,1.61369036603,-5,5,1.18318302336,1.61369036603,0.14834
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,26,2,1,51, ARITHMETIC,-5,5,0.206993505242,1.47467463849,-5,5,0.206993505242,1.47467463849,0.14687
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,27,2,1,51, ARITHMETIC,-5,5,0.544497134264,0.946657778338,-5,5,0.544497134264,0.946657778338,0.14613
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,28,2,1,51, ARITHMETIC,-5,5,-0.0927507900377,0.982764761694,-5,5,-0.0927507900377,0.982764761694,0.1463
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,29,2,1,51, ARITHMETIC,-5,5,1.9361494419,1.20582636586,-5,5,1.9361494419,1.20582636586,0.14636
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,30,2,1,51, ARITHMETIC,-5,5,1.48303760702,0.499898967567,-5,5,1.48303760702,0.499898967567,0.14621
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,31,2,1,51, ARITHMETIC,-5,5,-0.991630320363,-0.0447817558066,-5,5,-0.991630320363,-0.0447817558066,0.14596
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,32,2,1,51, ARITHMETIC,-5,5,1.25208065925,0.246370468155,-5,5,1.25208065925,0.246370468155,0.14583
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,33,2,1,51, ARITHMETIC,-5,5,0.0192643341399,-0.0845758554573,-5,5,0.0192643341399,-0.0845758554573,0.14585
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,34,2,1,51, ARITHMETIC,-5,5,0.120773102766,-0.111125614449,-5,5,0.120773102766,-0.111125614449,0.14591
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,35,2,1,51, ARITHMETIC,-5,5,1.11739950698,-0.020268316761,-5,5,1.11739950698,-0.020268316761,0.1458
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,36,2,1,51, ARITHMETIC,-5,5,-0.160289925425,-0.353392092243,-5,5,-0.160289925425,-0.353392092243,0.14544
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,37,2,1,51, ARITHMETIC,-5,5,0.544099748207,-0.720886311969,-5,5,0.544099748207,-0.720886311969,0.1447
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,38,2,1,51, ARITHMETIC,-5,5,-1.18497875393,-1.05337125612,-5,5,-1.18497875393,-1.05337125612,0.14442
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,39,2,1,51, ARITHMETIC,-5,5,0.566272826601,-0.744180369902,-5,5,0.566272826601,-0.744180369902,0.14449
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,40,2,1,51, ARITHMETIC,-5,5,-2.30476991872,-1.2283480734,-5,5,-2.30476991872,-1.2283480734,0.14505
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,41,2,1,51, ARITHMETIC,-5,5,0.195780059327,-0.668305094219,-5,5,0.195780059327,-0.668305094219,0.1453
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,42,2,1,51, ARITHMETIC,-5,5,-0.714277704403,-0.585596947178,-5,5,-0.714277704403,-0.585596947178,0.14477
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,43,2,1,51, ARITHMETIC,-5,5,-2.15935913165,-0.717100475004,-5,5,-2.15935913165,-0.717100475004,0.14436
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,44,2,1,51, ARITHMETIC,-5,5,-2.10662354536,-0.618463211991,-5,5,-2.10662354536,-0.618463211991,0.14431
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,45,2,1,51, ARITHMETIC,-5,5,0.0820242019571,-1.18105477229,-5,5,0.0820242019571,-1.18105477229,0.14413
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,46,2,1,51, ARITHMETIC,-5,5,-0.207242871541,-0.874832138166,-5,5,-0.207242871541,-0.874832138166,0.14442
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,47,2,1,51, ARITHMETIC,-5,5,-1.52076418389,-0.752088850181,-5,5,-1.52076418389,-0.752088850181,0.14493
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,48,2,1,51, ARITHMETIC,-5,5,-0.59116204413,-0.846428618959,-5,5,-0.59116204413,-0.846428618959,0.14609
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,49,2,1,51, ARITHMETIC,-5,5,-1.16973436331,-0.905257841934,-5,5,-1.16973436331,-0.905257841934,0.1466
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,50,2,1,51, ARITHMETIC,-5,5,-0.383245160278,-1.25372836646,-5,5,-0.383245160278,-1.25372836646,0.14624
+22_03d5,fisheries,fisheries,GF.AllGear: 1973+, param_init_bounded_dev_vector,pDevsLnC,51,2,1,51, ARITHMETIC,-5,5,0.690647524732,-1.5304643025,-5,5,0.690647524732,-1.5304643025,0.14668
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,1,2,1,30, ARITHMETIC,-5,5,1.870083348,3.87532242771,-5,5,1.870083348,3.87532242771,0.23202
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,2,2,1,30, ARITHMETIC,-5,5,3.60899498348,3.56652564552,-5,5,3.60899498348,3.56652564552,0.24654
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,3,2,1,30, ARITHMETIC,-5,5,4.46893506942,3.35910201407,-5,5,4.46893506942,3.35910201407,0.24918
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,4,2,1,30, ARITHMETIC,-5,5,4.19540430669,4.26935882114,-5,5,4.19540430669,4.26935882114,0.23301
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,5,2,1,30, ARITHMETIC,-5,5,3.3297825205,2.31612475904,-5,5,3.3297825205,2.31612475904,0.24353
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,6,2,1,30, ARITHMETIC,-5,5,1.52478436904,1.04102736521,-5,5,1.52478436904,1.04102736521,0.26418
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,7,2,1,30, ARITHMETIC,-5,5,0.906768586117,0.788235567971,-5,5,0.906768586117,0.788235567971,0.26485
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,8,2,1,30, ARITHMETIC,-5,5,0.569804108889,0.367327006127,-5,5,0.569804108889,0.367327006127,0.27533
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,9,2,1,30, ARITHMETIC,-5,5,0.919788473674,0.143559394783,-5,5,0.919788473674,0.143559394783,0.28199
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,10,2,1,30, ARITHMETIC,-5,5,0.449017028359,-0.451420958075,-5,5,0.449017028359,-0.451420958075,0.34622000000000003
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,11,2,1,30, ARITHMETIC,-5,5,-0.822164904832,-0.259527325634,-5,5,-0.822164904832,-0.259527325634,0.28408
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,12,2,1,30, ARITHMETIC,-5,5,-0.171983323895,-0.556894962551,-5,5,-0.171983323895,-0.556894962551,0.2912
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,13,2,1,30, ARITHMETIC,-5,5,0.2554699525,-0.876620447297,-5,5,0.2554699525,-0.876620447297,0.30104
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,14,2,1,30, ARITHMETIC,-5,5,-2.17325929494,-1.23240872162,-5,5,-2.17325929494,-1.23240872162,0.33182
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,15,2,1,30, ARITHMETIC,-5,5,-2.64339916892,-1.72694612241,-5,5,-2.64339916892,-1.72694612241,0.43457
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,16,2,1,30, ARITHMETIC,-5,5,-1.68792819241,-1.18053013811,-5,5,-1.68792819241,-1.18053013811,0.26328
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,17,2,1,30, ARITHMETIC,-5,5,-1.41324756467,0.205523298478,-5,5,-1.41324756467,0.205523298478,0.21924
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,18,2,1,30, ARITHMETIC,-5,5,-0.0694858894681,-0.263093759066,-5,5,-0.0694858894681,-0.263093759066,0.22231
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,19,2,1,30, ARITHMETIC,-5,5,-1.31514521557,-1.92539060558,-5,5,-1.31514521557,-1.92539060558,0.4169
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,20,2,1,30, ARITHMETIC,-5,5,-3.14587222772,-2.36287808741,-5,5,-3.14587222772,-2.36287808741,0.69603
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,21,2,1,30, ARITHMETIC,-5,5,-0.655154285467,-1.32175102811,-5,5,-0.655154285467,-1.32175102811,0.32453
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,22,2,1,30, ARITHMETIC,-5,5,0.0111820677233,-0.289218389179,-5,5,0.0111820677233,-0.289218389179,0.229
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,23,2,1,30, ARITHMETIC,-5,5,-0.818071101435,0.369958976857,-5,5,-0.818071101435,0.369958976857,0.22069
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,24,2,1,30, ARITHMETIC,-5,5,0.653296264856,-0.0431871961721,-5,5,0.653296264856,-0.0431871961721,0.2182
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,25,2,1,30, ARITHMETIC,-5,5,-0.642892979442,-0.080586069694,-5,5,-0.642892979442,-0.080586069694,0.2199
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,26,2,1,30, ARITHMETIC,-5,5,0.0540068179602,0.133597674089,-5,5,0.0540068179602,0.133597674089,0.22212
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,27,2,1,30, ARITHMETIC,-5,5,-1.3646254215,-0.565331553654,-5,5,-1.3646254215,-0.565331553654,0.25188
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,28,2,1,30, ARITHMETIC,-5,5,-1.2494776138,-1.78644413905,-5,5,-1.2494776138,-1.78644413905,0.68428
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,29,2,1,30, ARITHMETIC,-5,5,-3.75068208638,-2.67787665123,-5,5,-3.75068208638,-2.67787665123,1.3251
+22_03d5,fisheries,fisheries,RKF: 1992+, param_init_bounded_dev_vector,pDevsLnC,30,2,1,30, ARITHMETIC,-5,5,-0.893928626771,-2.83555675515,-5,5,-0.893928626771,-2.83555675515,1.0636
+22_03d5,fisheries,fisheries,TCF: logit-scale max retention (pre-1997), param_init_bounded_number,pLgtRet[1],1,-3,1,1, ARITHMETIC,0,15,14.9,14.9,0,15,14.9,14.9,NA
+22_03d5,fisheries,fisheries,TCF: logit-scale max retention (2005-2009), param_init_bounded_number,pLgtRet[2],1,-3,1,1, ARITHMETIC,0,15,14.9,14.9,0,15,14.9,14.9,NA
+22_03d5,fisheries,fisheries,TCF: logit-scale max retention (2013+), param_init_bounded_number,pLgtRet[3],1,-3,1,1, ARITHMETIC,0,15,14.9,14.9,0,15,14.9,14.9,NA
+22_03d5,surveys,surveys,"NMFS trawl survey: males, 1975-1981", param_init_bounded_number,pQ[1],1,5,1,1, LOG,0.01,1.1,0.466867232543,0.492608510829,-4.60517018599,0.0953101798043,-0.761710360357,-0.708040516082,0.10577
+22_03d5,surveys,surveys,"NMFS trawl survey: males, 1982+", param_init_bounded_number,pQ[2],1,5,1,1, LOG,0.01,1.1,0.58556088713,0.504896426945,-4.60517018599,0.0953101798043,-0.535185109669,-0.683401965901,0.048147
+22_03d5,surveys,surveys,"NMFS trawl survey: females, 1975-1981", param_init_bounded_number,pQ[3],1,5,1,1, LOG,0.01,1.1,0.441933801158,0.332896334693,-4.60517018599,0.0953101798043,-0.816595179257,-1.0999241447,0.13175
+22_03d5,surveys,surveys,"NMFS trawl survey: females, 1982+", param_init_bounded_number,pQ[4],1,5,1,1, LOG,0.01,1.1,0.11599003017,0.27217000863,-4.60517018599,0.0953101798043,-2.15425103838,-1.30132837621,0.071414
+22_03d5,surveys,surveys,BSFRF SBS, param_init_bounded_number,pQ[5],1,-5,1,1, LOG,0.5,1.5,1,1,-0.69314718056,0.405465108108,0,0,NA
+22_03d5,likelihood,Dirichlet-Multinomial,ln(theta) parameter for BSFRF SBS M, param_init_bounded_number,pLnDirMul[1],1,-5,1,1, ARITHMETIC,-5,11,10.68,10.68,-5,11,10.68,10.68,NA
+22_03d5,likelihood,Dirichlet-Multinomial,ln(theta) parameter for BSFRF SBS F, param_init_bounded_number,pLnDirMul[2],1,-5,1,1, ARITHMETIC,-5,11,10.99,10.99,-5,11,10.99,10.99,NA

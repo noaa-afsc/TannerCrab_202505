@@ -1,0 +1,449 @@
+---
+title: "Model Comparisons"
+author: "William T. Stockhausen"
+institute: "AFSC/NMFS/NOAA"
+date: '`r format(Sys.time(), "%b %e, %Y")`'
+fontsize: 11pt 
+number-sections: true
+number-depth: 3
+reference-location: document
+reference-section-title: References
+bibliography: /Users/williamstockhausen/Work/Projects/Bibliography/AllRefs.bib
+csl: '`r system.file("files/CJFAS.csl",package="wtsQMD")`'
+link-citations: true
+crossref:
+  chapters: false      # prepend label reference numbers by chater number?
+  fig-title: Figure    # for caption: default is "Figure")
+  tbl-title: Table     # for caption: default is "Table")
+  title-delim: "."     # for caption: default is ":")
+  fig-prefix: Figure   # for in-text (use [-@fig-ref] to drop prefix in text)
+  tbl-prefix: Table    # for in-text (use [-@tbl-ref] to drop prefix in text)
+  fig-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  tbl-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  subref-labels: alpha a # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  ref-hyperlink: true    # references are hyperlinked if true
+format: 
+  html: 
+    df-print: paged
+    toc: true
+    toc-location: right
+    fig-width: 6.5
+    fig-asp: 0.6
+    fig-dpi: 100
+    embed-resources: true
+  pdf:
+    documentclass: scrartcl
+    toc: false
+    fig_crop: false
+    keep-tex: false
+    fig-width: 6.5
+    fig-asp: 0.6
+    fig-dpi: 100
+    geometry:
+      - left=1.0in
+      - right=1.0in
+      - top=1.0in
+      - bottom=1.0in
+      - textwidth=6.5in
+      - showframe=false
+    include-in-header: 
+      - text: |
+          \usepackage{placeins}
+          \extrafloats{500}
+          \maxdeadcycles=10000
+      - file: "/Users/williamstockhausen/Work/Programming/R/Library/wtsQMD/files/ltx_ExtraLatexIncludes.tex"
+echo: false
+warning: false
+results: 'hide'
+keep-md: false
+keep-yaml: false
+editor: source
+editor_options: 
+  chunk_output_type: console
+concordance: true
+params:
+  setup: !expr 'system.file("files/qmd_setup.R",package="wtsQMD")'
+  testing: false
+  reorderTables: false   #--issue with finding "range" of table values  (don't use)
+  reorderFigures: false  #--issue with finding "range" of figure values (don't use)
+---
+<!-- IMPORTANT: if used as a child doc, all chunk labels must be unique within the overall document -->
+
+<!-- 
+  NOTEs: 
+     * child_path$peek() gives path to current script.
+     * before starting a child document, do 
+         "child_path$push(file.path(child_path$peek(),rel_path))" first, 
+         where rel_path is the relative path to the child
+     * after a child document has finished, do "child_path$pop()" to return to current path value
+-->
+
+<!-- if not child doc, set up required objects -->
+```{r}
+#| label: ModComps_setup
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: "asis"
+  testing = params$testing;
+  if (testing) cat(params$setup,"\n\n")
+  source(params$setup);
+  if (testing) cat("root = ",root,"\n\n")
+  reorderTables  = params$reorderTables;
+  reorderFigures = params$reorderFigures;
+```
+
+```{r}
+#| label: setup_ModComps
+#| results: 'asis'
+  require(ggplot2);
+  require(kableExtra);
+  require(tables);
+  Sum = wtsUtilities::Sum;
+  old_thm = ggplot2::theme_set(cowplot::theme_cowplot(font_size = 10) +
+                               cowplot::background_grid() +
+                               cowplot::panel_border());
+  thm = wtsPlots::getStdTheme();
+  options("readr.show_col_types"=FALSE);
+  if (testing) cat("dirThs =",child_path$peek(),"\n\n")
+  #--NOTE: take out or modify the following as necessary
+  if (!exists("s")){
+    if (rstudioapi::isAvailable())
+      fn = file.path(rstudioapi::getActiveProject(),"rda_ProjectSetup.RData");
+    if (child_path$peek()!="")
+      fn = file.path(child_path$peek(),"../rda_AssessmentSetup.RData");
+    #--for debugging: ;
+    if (file.exists(fn)) s = wtsUtilities::getObj(fn);
+  }
+  #--
+  dirThs = child_path$peek();                #--path to "this" folder
+  dirPrj = file.path(child_path$peek(),"..");#--path to project folder from "this" folder
+  if (!exists("tblno")) tblno = 0;
+  tblno = tblno+1;
+```
+
+```{r ModComps-GetPlottingInfo}
+#--get plotting information----
+  if (!exists("PLOT_OBJECTS")){
+    #--PLOT OBJECTS---------------------------------------
+    require(ggplot2);
+    require(rCompTCMs);
+    source(file.path(s$dirs$RCode,"r_FigureFunctions.R"));
+    std_theme = wtsPlots::getStdTheme();
+    ggT = ggplot2::theme(plot.title=ggplot2::element_text(size=10,
+                                                          margin=ggplot2::margin()),
+                         panel.spacing = grid::unit(0.01,"in"),
+                         legend.position="none", 
+                         plot.margin=ggplot2::margin(0,0,0,1));
+    ggL = ggplot2::labs(title=NULL,subtitle=NULL);
+    colour_scale=ggplot2::scale_color_hue();
+    fill_scale  =ggplot2::scale_fill_hue();
+    PLOT_OBJECTS = "PLOT_OBJECTS";#--make flag to prevent doing this again
+  }
+```
+
+# Comparisons between TCSAM02 and GMACS models {#sec-ModComps} 
+
+Results from the GMACS models are compared with the proposed TCSAM02 model 22.03d in this section on a rather qualitative basis, because the computer code to provide a more detailed, quantitative comparison has not been developed yet. The GMACS model G24.06 is highlighted in the plots because it incorporates the most information regarding the temporal variability of processes affecting stock dynamics (the terminal molt to maturity) and observations (survey selectivity). 
+
+Fits to the NMFS survey biomass indices (Figures [-@fig-ModComps-SrvFitM] and [-@fig-ModComps-SrvFitF]) show fairly good agreement among the models, but none track the full dynamic range of the design-based indices (the VAST-based indices that are fit by G24.07 are not shown, but they follow similar patterns). In particular, the models substantially underpredict the high biomasses in the late 1980's-early 1990's. The GMACS model G24.07 fits the survey biomass time series much more poorly than the other models, based on standardized residuals that include the uncertainty in the observed data, because it was fit to the VAST-based indices that have smaller cv's (Figures [-@fig-ModComps-SrvResidsAM]-[-@fig-ModComps-SrvResidsMF]). This model provides slightly better fits than the TCSAM02 model, as well as the other GMACS models, when judged from the perspective of statistics that do not include the uncertainty associated with the observations (i.e., the MAD, MARE, and RMSE statistics included in the figures), but this is to be expected because the smaller VAST cv's place more weight on fitting the survey observations than do the design-based cv's. From this perspective, the TCSAM02 model 22.03d and the other GMACS models perform similarly, with none of the models standing out across all statistics and data types.
+
+When comparing the models across predictions of of various stock trends (recruitment, MMB, abundnce, Figures [-@fig-ModComps-Rec]-[-@fig-ModComps-PopAbd]), GMACS models G24.02 and G24.02a stand out as outliers in terms of overall scale (G24.02 higher than the rest, G24.02a lower than the rest). For the remainder, the largest differences between the TCSAM02 model and the GMACS models occur principally for mature males (either MMB or abundance) in the 1980s. These differences reflect: 1) the startup of the GMACS models, which are initialized in 1982 and 2) the estimated "high mortality" period included in the TCSAM02 model from 1980-1984 to better follow the drops in survey biomass from 1975-1986 for mature males and females (see Figures [-@fig-ModComps-SrvFitM] and [-@fig-ModComps-SrvFitF]).
+
+```{r ModComps-GetModelResullts}
+#--get TCSAM02 models results----
+if (!exists("models"))
+  models = wtsUtilities::getObj(s$ModCompPths$fnModels);
+compare  = "22.03d";
+obs_case = "22.03d";
+
+#--get GMACS models results----
+require(wtsGMACS);
+dirGMACS = file.path(dirPrj,"Models-GMACS","ModelRunsResults","00_ModelComparisons")
+reslst = wtsUtilities::getObj(file.path(dirGMACS,"rda_ModelsResLst.RData"));
+dfrConvInfo = wtsGMACS::extractModelConvergenceInfo(reslst);
+nConv = sum(dfrConvInfo$`std errors?`=="yes");
+noConv = (dfrConvInfo |> dplyr::filter(`std errors?`=="no"))$case;
+```
+
+```{r ModComps-GetSurveyBiomassFits}
+#----------------------------surveys (biomass)--------------------------------------------
+##--TCSAM02
+mdfr<-rCompTCMs::extractMDFR.Fits.BiomassData(objs=models[compare],
+                                              fleets=c("NMFS M",
+                                                       "NMFS F"),
+                                              fleet.type="survey",
+                                              catch.type="index",
+                                              ci=0.95); 
+#--GMACS
+#----mdfr$facets<-paste0(mdfr$x,"\n",mdfr$m,"\n",mdfr$s);
+dfrIndxFit = wtsGMACS::extractRep1Results(reslst,"Index_fit_summary") |> 
+               dplyr::filter(!(case %in% noConv)) |>
+               dplyr::mutate(
+                dplyr::across(c(year,obs,base_CV,actual_CV,q,prd,prsn_res),
+                              as.numeric)
+               ) |> 
+               dplyr::mutate(lba=qlnorm(0.025,log(obs),sqrt(log(1+actual_CV^2))),
+                             uba=qlnorm(0.025,log(obs),sqrt(log(1+actual_CV^2)),lower.tail=FALSE));
+```
+
+```{r}
+#| label: fig-ModComps-SrvFitM 
+#| fig-cap: Comparison of TCSAM02 (22.03d) and GMACS models (G24...) fits to NMFS survey biomass for males. Results from models 22.03d and G24.06 are highlighted using thicker lines.
+#| fig-width: 9.0
+#| fig-asp: 0.667
+#--males
+p1 = makePlot.FitACD(obs_case,mdfr |> 
+                       dplyr::filter(fleet=="NMFS M",dplyr::between(y,1975,Inf))); 
+tmp1 = mdfr |> dplyr::filter(fleet=="NMFS M",dplyr::between(y,1975,Inf),type=="predicted");
+tmp2 = dfrIndxFit |> dplyr::filter(fleet=="NMFSAM");
+p1 = p1 + geom_line(data=tmp2,mapping=aes(x=year,y=prd,color=case)) + 
+          geom_line(data=tmp2 |>dplyr::filter(case=="G24_06"),mapping=aes(x=year,y=prd,color=case),linewidth=1.0) + 
+          geom_line(data=tmp1,linewidth=1.0) + 
+          wtsPlots::getStdTheme();
+lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,ori="L"));
+rm(p1,tmp1,tmp2);
+```  
+
+```{r}
+#| label: fig-ModComps-SrvFitF 
+#| fig-cap: Comparison of TCSAM02 (22.03d) and GMACS models (G24...) fits to NMFS survey female biomass, by maturity state. Results from models 22.03d and G24.06 are highlighted using thicker lines.
+#| fig-width: 9.0
+#| fig-asp: 0.667
+#--females
+p1 = makePlot.FitACD(obs_case,mdfr |> 
+                       dplyr::filter(fleet=="NMFS F",dplyr::between(y,1975,Inf)));
+tmp1 = mdfr |> dplyr::filter(fleet=="NMFS F",dplyr::between(y,1975,Inf),type=="predicted") |> 
+                     dplyr::mutate(facets=paste0(x,"\n",m,"\n","all shell"));
+tmp2 = dfrIndxFit |> dplyr::filter(fleet %in% c("NMFSIF","NMFSMF")) |> 
+                     dplyr::mutate(facets=paste0(sex,"\n",maturity,"\n","all shell"));
+p1 = p1 + geom_line(data=tmp2,mapping=aes(x=year,y=prd,color=case)) + 
+          geom_line(data=tmp2 |>dplyr::filter(case=="G24_06"),mapping=aes(x=year,y=prd,color=case),linewidth=1.0) + 
+          geom_line(data=tmp1,linewidth=1.0) + 
+          wtsPlots::getStdTheme();
+lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,ori="L"));
+rm(p1,tmp1,tmp2);
+```  
+
+```{r ModComps-GetTCSAM02SrvResids}
+##--residuals comparisons----
+#--TCSAM02
+mdfr = rCompTCMs::extractFits.AllScores.ACD(
+                     objs=models[compare],verbose=TRUE,
+                     fleets=c("NMFS M",
+                              "NMFS F",
+                              "SBS BSFRF M",
+                              "SBS BSFRF F"),
+                     fleet.type="survey",
+                     catch.type="index",
+                     data.type="biomass");
+```
+
+```{r}
+#| label: fig-ModComps-SrvResidsAM 
+#| fig-cap: Comparison of TCSAM02 (22.03d) and GMACS models (G24...) residuals diagnostics for fits to NMFS survey biomass for males.
+#| fig-width: 6.5
+#| fig-asp: 1.0
+##----NMFS males----
+tmpT = mdfr |> dplyr::filter(y!=2020,y>1981,fleet=="NMFS M",x=="male");
+#p1 = makeAll.FitACD.MARE(tmp,ggL,ggT,std_theme);  if (testing) print(p1);
+tmp0 = dfrIndxFit |> dplyr::filter(fleet=="NMFSAM");
+tmp1 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity,val=prsn_res) |> 
+         dplyr::mutate(type="z-score");
+tmp2 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity,val=obs) |> 
+         dplyr::mutate(type="observed");
+tmp3 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity,val=prd) |> 
+         dplyr::mutate(type="predicted");
+tmp4 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity) |> 
+         dplyr::mutate(type="sdobs",val=NA_real_);
+tmp5 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity) |> 
+         dplyr::mutate(type="stdv",val=NA_real_);
+tmp6 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity) |> 
+         dplyr::mutate(type="useFlgs",val=1);
+tmpG = dplyr::bind_rows(tmp1,tmp2,tmp3,tmp4,tmp5,tmp6) |> 
+        dplyr::mutate(s="undetermined");
+tmpA = dplyr::bind_rows(tmpT,tmpG);
+p1 = makeAll.FitACD.MARE(tmpA,ggL,ggT,std_theme,scales="fixed");
+lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,ori="P"));
+rm(p1,dfrA,dfrG,dfrT,tmp0,tmp1,tmp2,tmp3,tmp4,tmp5,tmp6);
+```  
+
+```{r}
+#| label: fig-ModComps-SrvResidsIF 
+#| fig-cap: Comparison of TCSAM02 (22.03d) and GMACS models (G24...) residuals diagnostics for fits to NMFS survey biomass for immature females.
+#| fig-width: 6.5
+#| fig-asp: 1.0
+##----NMFS immature females----
+tmpT = mdfr |> dplyr::filter(y!=2020,y>1981,fleet=="NMFS F",x=="female",m=="immature");
+#p1 = makeAll.FitACD.MARE(tmp,ggL,ggT,std_theme);  if (testing) print(p1);
+tmp0 = dfrIndxFit |> dplyr::filter(fleet=="NMFSIF");
+tmp1 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity,val=prsn_res) |> 
+         dplyr::mutate(type="z-score");
+tmp2 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity,val=obs) |> 
+         dplyr::mutate(type="observed");
+tmp3 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity,val=prd) |> 
+         dplyr::mutate(type="predicted");
+tmp4 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity) |> 
+         dplyr::mutate(type="sdobs",val=NA_real_);
+tmp5 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity) |> 
+         dplyr::mutate(type="stdv",val=NA_real_);
+tmp6 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity) |> 
+         dplyr::mutate(type="useFlgs",val=1);
+tmpG = dplyr::bind_rows(tmp1,tmp2,tmp3,tmp4,tmp5,tmp6) |> 
+        dplyr::mutate(s="undetermined");
+tmpA = dplyr::bind_rows(tmpT,tmpG);
+p1 = makeAll.FitACD.MARE(tmpA,ggL,ggT,std_theme,scales="fixed");
+lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,ori="P"));
+rm(p1,dfrA,dfrG,dfrT,tmp0,tmp1,tmp2,tmp3,tmp4,tmp5,tmp6);
+```  
+
+```{r}
+#| label: fig-ModComps-SrvResidsMF 
+#| fig-cap: Comparison of TCSAM02 (22.03d) and GMACS models (G24...) residuals diagnostics for fits to NMFS survey biomass for mature females.
+#| fig-width: 6.5
+#| fig-asp: 1.0
+##----NMFS mature females----
+tmpT = mdfr |> dplyr::filter(y!=2020,y>1981,fleet=="NMFS F",x=="female",m=="mature");
+#p1 = makeAll.FitACD.MARE(tmp,ggL,ggT,std_theme);  if (testing) print(p1);
+tmp0 = dfrIndxFit |> dplyr::filter(fleet=="NMFSMF");
+tmp1 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity,val=prsn_res) |> 
+         dplyr::mutate(type="z-score");
+tmp2 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity,val=obs) |> 
+         dplyr::mutate(type="observed");
+tmp3 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity,val=prd) |> 
+         dplyr::mutate(type="predicted");
+tmp4 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity) |> 
+         dplyr::mutate(type="sdobs",val=NA_real_);
+tmp5 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity) |> 
+         dplyr::mutate(type="stdv",val=NA_real_);
+tmp6 = tmp0 |> dplyr::select(case,fleet,y=year,x=sex,m=maturity) |> 
+         dplyr::mutate(type="useFlgs",val=1);
+tmpG = dplyr::bind_rows(tmp1,tmp2,tmp3,tmp4,tmp5,tmp6) |> 
+        dplyr::mutate(s="undetermined");
+tmpA = dplyr::bind_rows(tmpT,tmpG);
+p1 = makeAll.FitACD.MARE(tmpA,ggL,ggT,std_theme,scales="fixed");
+lstFigs = c(lstFigs,wtsQMD::printGGplot(p1));
+rm(p1,dfrA,dfrG,dfrT,tmp0,tmp1,tmp2,tmp3,tmp4,tmp5,tmp6);
+rm(dfrIndxFit,mdfr);
+```  
+
+```{r}
+#| label: fig-ModComps-Rec 
+#| fig-cap: Comparison of TCSAM02 (22.03d) and GMACS models (G24...) predicted recruitment time series. Results from models 22.03d and G24.06 are highlighted using thicker lines.
+#| fig-asp: 0.6
+#--recruitment----
+#--TCSAM02
+dfrT = rCompTCMs::extractMDFR.Pop.Recruitment(models[compare]) |>
+         dplyr::select(case,y,val,lb=lci,ub=uci);
+#--GMACS
+dfrG = wtsGMACS::extractRep1Results(reslst,"Summary") |> 
+          dplyr::filter(!(case %in% noConv)) |> 
+          dplyr::select(case,y=year,rec_male,`log(rec_male)`,`SD(log(rec_male))`) |>
+          dplyr::mutate(dplyr::across(2:5,as.numeric)) |> 
+          dplyr::mutate(val=2*rec_male,
+                        lb=2*qlnorm(0.10,log(rec_male),`SD(log(rec_male))`),
+                        ub=2*qlnorm(0.10,log(rec_male),`SD(log(rec_male))`,lower.tail=FALSE)
+                       ) |> 
+          dplyr::select(case,y,val,lb,ub);
+dfrA = dplyr::bind_rows(dfrT,dfrG); 
+p = ggplot(dfrA |> dplyr::filter(y>1981),
+           mapping=aes(x=y,y=val,ymin=lb,ymax=ub,colour=case,fill=case)) +
+    geom_line() + 
+    geom_line(data=dfrA |> dplyr::filter(y>1981,case=="G24_06"),linewidth=1.0) +
+    geom_line(data=dfrA |> dplyr::filter(y>1981,case=="22.03d"),linewidth=1.0) +
+    geom_hline(yintercept=0) + 
+    labs(x="year",y="estimated recruitment (millions)") + 
+    wtsPlots::getStdTheme();
+lstFigs = c(lstFigs,wtsQMD::printGGplot(p));
+rm(p,dfrA,dfrG,dfrT);
+```  
+
+```{r}
+#| label: fig-ModComps-MMB 
+#| fig-cap: Comparison of TCSAM02 (22.03d) and GMACS models (G24...) predicted MMB trend. Results from models 22.03d and G24.06 are highlighted using thicker lines.
+#| fig-asp: 0.6
+#--MMB----
+#--TCSAM02
+dfrT = rCompTCMs::extractMDFR.Pop.MatureBiomass(models[compare]) |> 
+         dplyr::filter(x=="male") |> 
+         dplyr::select(case,y,val,lb=lci,ub=uci);
+#--GMACS
+dfrG = wtsGMACS::extractRep1Results(reslst,"Summary") |> 
+          dplyr::filter(!(case %in% noConv)) |> 
+          dplyr::select(case,y=year,SSB,`log(SSB)`,`SD(log(SSB))`) |> #--this is MMB, right?
+          dplyr::mutate(dplyr::across(2:5,as.numeric)) |> 
+          dplyr::mutate(val=SSB,
+                        lb=qlnorm(0.10,log(SSB),`SD(log(SSB))`),
+                        ub=qlnorm(0.10,log(SSB),`SD(log(SSB))`,lower.tail=FALSE)
+                       ) |> 
+          dplyr::select(case,y,val,lb,ub);
+dfrA = dplyr::bind_rows(dfrT,dfrG); 
+p = ggplot(dfrA |> dplyr::filter(y>1981),
+           mapping=aes(x=y,y=val,ymin=lb,ymax=ub,colour=case,fill=case)) +
+    geom_line() + 
+    geom_line(data=dfrA |> dplyr::filter(y>1981,case=="G24_06"),linewidth=1.0) +
+    geom_line(data=dfrA |> dplyr::filter(y>1981,case=="22.03d"),linewidth=1.0) +
+    geom_hline(yintercept=0) + 
+    labs(x="year",y="estimated MMB (1,000's t)") + 
+    wtsPlots::getStdTheme();
+lstFigs = c(lstFigs,wtsQMD::printGGplot(p));
+rm(p,dfrA,dfrG,dfrT);
+```  
+
+
+```{r}
+#| label: fig-ModComps-PopAbd 
+#| fig-cap: Comparison of TCSAM02 (22.03d) and GMACS models (G24...) predicted population abundance trends by sex and maturity state. Results from models 22.03d and G24.06 are highlighted using thicker lines.
+#| fig-asp: 1.2
+#--Population abundance----
+#--TCSAM02
+dfrT = rCompTCMs::extractMDFR.Pop.Abundance(models[compare],cast="x+m") |> 
+         dplyr::select(case,y,x,m,val);
+#--GMACS
+dfrG = wtsGMACS::extractRep1Results(reslst,"N_YXMSZ") |> 
+                dplyr::filter(!(case %in% noConv)) |> 
+                tidyr::pivot_longer(cols=!c(case,year,sex,maturity,shell_con),
+                                    names_to="size",
+                                    values_to="est") |> 
+                dplyr::mutate(dplyr::across(c(year,size,est),
+                                            as.numeric),
+                              xm=paste(maturity,sex)
+                             ) |> 
+               dplyr::group_by(case,year,sex,maturity) |> 
+               dplyr::summarize(val=sum(est)) |> 
+               dplyr::ungroup() |> 
+               dplyr::select(case,y=year,x=sex,m=maturity,val);
+dfrA = dplyr::bind_rows(dfrT,dfrG); 
+p = ggplot(dfrA |> dplyr::filter(y>1981),
+           mapping=aes(x=y,y=val,colour=case,fill=case)) +
+    geom_line() + 
+    geom_line(data=dfrA |> dplyr::filter(y>1981,case=="G24_06"),linewidth=1.0) +
+    geom_line(data=dfrA |> dplyr::filter(y>1981,case=="22.03d"),linewidth=1.0) +
+    geom_hline(yintercept=0) + 
+    facet_wrap(~paste(m,x),ncol=1,scales="free_y") + 
+    labs(x="year",y="estimated abundance (millions)") + 
+    wtsPlots::getStdTheme();
+lstFigs = c(lstFigs,wtsQMD::printGGplot(p));
+rm(p,dfrA,dfrG,dfrT);
+```  
+
+<!-- references -->
+```{r,eval=!knitr::opts_knit$get("child")&!isPDF,results='asis'}
+  cat("# References {-}\n");
+  cat("::: {#refs}\n");
+  cat(":::\n\n");
+```
+
+<!-- tables, if not child doc and lstTbls is not empty -->
+```{r}
+#| label: tables_ModComps
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printTablesSectionFromList.R",package="wtsQMD"));
+```
+
+<!-- figures, if not child doc and lstFigs is not empty -->
+```{r}
+#| label: figures_ModComps
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printFiguresSectionFromList.R",package="wtsQMD"));
+```
