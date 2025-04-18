@@ -49,57 +49,71 @@
 0.683007003234
 # M_pars_est[5]:
 0.548580302700
-# S_pars_est[1]:
+# S_pars_est[1]:#--TCF males logistic z50
 4.81462715331
-# S_pars_est[2]:
+# S_pars_est[2]:#--TCF males logistic as.width
 1.93214041239
-# S_pars_est[3]:
-4.65229716150
-# S_pars_est[4]:
+# S_pars_est[3]:#--SCF DoubleNormal asc wid base
 1.83964933657
-# S_pars_est[5]:
+# S_pars_est[4]:#--SCF DoubleNormal z50 base
+4.65229716150
+# S_pars_est[5]:#--SCF DoubleNormal dsc wid base
+1.83964933657
+# S_pars_est[6]:#--SCF DoubleNormal asc wid BG 6 block 1
+1.83964933657
+# S_pars_est[7]:#--SCF DoubleNormal asc wid BG 6 block 2
+1.83964933657
+# S_pars_est[8]:#--SCF DoubleNormal z50 BG 6 block 1
+4.65229716150
+# S_pars_est[9]:#--SCF DoubleNormal z50 BG 6 block 2
+4.65229716150
+# S_pars_est[10]:#--SCF DoubleNormal dsc wid BG 6 block 1
+1.83964933657
+# S_pars_est[11]:#--SCF DoubleNormal dsc wid BG 6 block 2
+1.83964933657
+# S_pars_est[1]:#--RKF males logistic z50
 4.99131653628
-# S_pars_est[6]:
+# S_pars_est[13]:#--RKF males logistic as.width
 2.26448339154
-# S_pars_est[7]:
+# S_pars_est[14]:#--GFA males logistic z50
 4.60341678808
-# S_pars_est[8]:
+# S_pars_est[15]:#--GFA males logistic asc wid
 3.03522272619
-# S_pars_est[9]:
-4.94524438033
-# S_pars_est[10]:
+# S_pars_est[16]:#--asc normal width: NMFS males base (1975-1981)
 3.42881692442
-# S_pars_est[11]:
-4.86920798534
-# S_pars_est[12]:
+# S_pars_est[17]:#--asc normal mode: NMFS males base (1975-1981)
+4.94524438033
+# S_pars_est[18]:#--asc normal width: NMFS males base 1982+
 3.91202300365
-# S_pars_est[13]:
+# S_pars_est[19]:#--asc normal mode: NMFS males base 1982+
+4.86920798534
+# S_pars_est[20]:#--TCF females logistic z50 bse
 4.78642668035
-# S_pars_est[14]:
+# S_pars_est[21]:#--TCF females logistic wid base
 1.93387960091
-# S_pars_est[15]:
+# S_pars_est[22]:#--SCF females logistic z50
 4.92793000864
-# S_pars_est[16]:
+# S_pars_est[23]:#--SCF females logistic wid
 2.45995152973
-# S_pars_est[17]:
+# S_pars_est[24]:#--RKF females logistic z50
 4.89978601148
-# S_pars_est[18]:
+# S_pars_est[25]:#--RKF females logistic wid
 1.87592757348
-# S_pars_est[19]:
-4.77269310869
-# S_pars_est[20]:
-2.96986107610
-# S_pars_est[21]:
-4.52594036442
-# S_pars_est[22]:
+# S_pars_est[26]:#--GFA females logistic z50
+4.1
+# S_pars_est[27]:#--GFA females logistic wid
+3
+# S_pars_est[28]:#--asc normal width: NMFS females base 1982+
 2.60107150462
-# S_pars_est[23]:
-4.73144038581
-# S_pars_est[24]:
-3.49378722335
-# S_pars_est[25]:
+# S_pars_est[29]:#--asc normal mode: NMFS females base 1982+
+4.52594036442
+# S_pars_est[30]:#--asc normal width: NMFS females 1982+
+3
+# S_pars_est[31]:#--asc normal mode: NMFS females 1982+
+4.1
+# S_pars_est[32]: #--asc logistic z50: retained TCF
 4.93206703433
-# S_pars_est[26]:
+# S_pars_est[33]: #--asc logistic wid: retained TCF
 1.39070078793
 # log_fbar[1]:
 -1.96457128982
@@ -183,13 +197,17 @@
 0.00000000000
 # log_vn[15]:
 0.00000000000
-# survey_q[1]:
+# survey_q[1]:  # iq 1: Index 1: NMFS males base
 0.817196730750
-# survey_q[2]:
+# survey_q[2]:  # iq 2: Index 1: NMFS males block 1
+0.817196730750
+# survey_q[3]:  # iq 3: Index 2: NMFS imm females base
 0.711858603406
-# survey_q[3]:
+# survey_q[4]:  # iq 4: Index 2: NMFS imm females block 1
+0.711858603406
+# survey_q[5]:
 1.00000000000
-# survey_q[4]:
+# survey_q[6]:
 1.00000000000
 # log_add_cv[1]:
 -9.21034037198

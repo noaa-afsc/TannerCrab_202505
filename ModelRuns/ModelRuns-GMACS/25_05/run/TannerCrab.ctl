@@ -9,19 +9,17 @@
 ##--no block groups																			
 
 # Block_Groups to be used in the model (Block_Group 0 is the year range)
-2
-#8
+8
 # Number of blocks per Block_Group (after the first block, i.e. 1 means two blocks)
 ##--group 0 (styr-endyr): base for all (no other groups: recruitment, growth, M2M)
 1 #--group 1: M      1980-84
 1 #--group 2: NMFS   1982-2024
-
-#8 #--group 2: TCF males
-#7 #--group 3: TCF females
-#5 #--group 4: SCF
-#7 #--group 5: RKF
-#3 #--group 6: GFA
-#6 #--group 8: BSFRF
+5 #--group 3: TCF selectivity
+3 #--group 4: TCF male retention
+0 #--group 5: TCF females
+2 #--group 6: SCF    1997-2004, 2005+
+2 #--group 7: RKF    1997-2004, 2005+
+2 #--group 8: GFA    1988-1996, 1997+
 
 
 # Block_Group definitions  (0 is last year)
@@ -31,56 +29,34 @@
 ## Block_Group 1: M
 1980 1984 #--1: elevated mortality period
 
-## Block_Group 2: NMFS (2 blocks or 1?)
-1982 2024 #--1: current catchability/selectivity (leaving 1975-1981 as "base")
+## Block_Group 2: NMFS 
+1982 2024 #--1: current catchability/selectivity (leaving 1948/1975-1981 as "base")
 
-## Block_Group 2: TCF male selectivity/retention
-#1948 1964  #--1: pre-directed fisheries
-#1965 1984  #--2: retained catch biomass
-#1987 1990  #--3: 
-#1991 1996  #--4: 
-#2005 2009  #--5: 
-#2013 2015  #--6: 
-#2017 2018  #--7: 
-#2020 2023  #--8: 
+## Block_Group 3: TCF male selectivity
+1991 1996  #--1
+2005 2009  #--2
+2013 2015  #--3
+2017 2018  #--4
+2020 2023  #--5
 
-## Block_Group 3: TCF female selectivity
-#1948 1964  #--1: pre-directed fisheries
-#1965 1984  #--2: retained catch biomass period
-#1987 1996  #--3: 
-#2005 2009  #--4: 
-#2013 2015  #--5: 
-#2017 2018  #--6: 
-#2020 2023  #--7: 
+## Block_Group 4: TCF male Retention
+1991 1996  #--1
+2005 2009  #--2
+2013 2013  #--3
 
-## Block_Group 4: SCF males and females
-#1948 1977 #--1
-#1978 1989 #--2
-#1990 1996 #--3
-#1997 2004 #--4
-#2005 2021 #--5
+## Block_Group 5: TCF female selectivity
 
-## Block_Group 5: RKC males and females
-#1948 1952 #--1
-#1953 1989 #--2
-#1990 1993 #--3
-#1996 1996 #--4
-#1997 2004 #--5
-#2005 2020 #--6
-#2023 2023 #--7
+## Block_Group 6: SCF males and females
+1997 2004 #--1
+2005 2023 #--2
 
-## Block_Group 6: GFA males and females 
-#1948 1986 #--1
-#1987 1996 #--2
-#1997 2023 #--3
+## Block_Group 7: RKC males and females
+1997 2004 #--1
+2005 2023 #--2
 
-## Block_Group 8: BSFRF
-#2013 2013 #--1
-#2014 2014 #--2
-#2015 2015 #--3
-#2016 2016 #--4
-#2017 2017 #--5
-#2018 2018 #--6
+## Block_Group 8: GFA males and females 
+1987 1996 #--2
+1997 2023 #--3
 
 
 ## ———————————————————————————————————————————————————————————————————————————————————— ##																					
@@ -315,11 +291,11 @@
        0       0       0       0       2       0       1       0       0       0       0   0.3000       0  # ig 4: sex*maturity state: female & immature
 
 #      Initial    Lower_bound    Upper_bound  Prior_type        Prior_1        Prior_2      Phase 
-    0.2300000      0.10000000     1.50000000      1            0.2300000      0.0045400      4 #--  male,   mature
-    0.0000000     -1.00000000     1.00000000      1            0.0000000      0.2500000      4 #--  male,   mature block group 1 (1980-84)
-    0.0000000     -1.00000000     1.00000000      1            0.0000000      0.2500000      4 #--  male, immature
-    0.0000000     -1.00000000     1.00000000      1            0.0000000      0.2500000      4 #--female,   mature
-    0.0000000     -1.00000000     1.00000000      1            0.0000000      0.2500000      4 #--female,   mature block group 1 (1980-84)
+    0.2300000      0.10000000     1.50000000      1            0.2300000      0.0045400      4 #1--  male,   mature
+    0.0000000     -1.00000000     2.00000000      1            0.0000000      0.2500000      4 #2--  male,   mature block group 1 (1980-84)
+    0.0000000     -1.00000000     1.00000000      1            0.0000000      0.2500000      4 #3--  male, immature
+    0.0000000     -1.00000000     2.00000000      1            0.0000000      0.2500000      4 #4--female,   mature
+    0.0000000     -1.00000000     1.00000000      1            0.0000000      0.2500000      4 #5--female,   mature block group 1 (1980-84)
 #--not used because this is mirrored to ig 2
 #   0.000000      -1.0000000      1.0000000       1            0.0000000      0.2500000      4 #--female, immature
  
@@ -343,17 +319,18 @@
 # ##  12: Spline with 0 until one size-class and 1 after another
 # ##      Inputs: knots (in length units); values at knots (0-1) - at least one should have phase -1
 # ##  13: Stacked logistic
+# ##  14. Ascending normal (2 parameters: ascending width, size at mode)
 ## Selectivity specifications --
 # ## Extra (type 1): number of selectivity parameters to estimated
 ## 1   2   3   4   5   6   
 ##  TCF   SCF   RKF   GFA   NMFS   BSFRF   
       1    1     1     1     1       1   # sex specific selectivity
-      2    2     2     2     2      11   #   males:   selectivity type (slx_type_in, to mirror, make negative and equal to the fleet to be mirrored)
-      2    2     2     2     2      11   # females:   selectivity type (slx_type_in, to mirror, make negative and equal to the fleet to be mirrored)
+      2    4     2     2    14      11   #   males:   selectivity type (slx_type_in, to mirror, make negative and equal to the fleet to be mirrored)
+      2    2     2     2    14      11   # females:   selectivity type (slx_type_in, to mirror, make negative and equal to the fleet to be mirrored)
       0    0     0     0     0       0   # within another gear
       0    0     0     0     0       0   #   males:   extra parameters for each pattern by fleet
       0    0     0     0     0       0   # females:   extra parameters for each pattern by fleet
-      1    1     1     1     0       0   #   males:   determines if maximum selectivity at size is forced to equal 1 or not
+      1    0     1     1     0       0   #   males:   determines if maximum selectivity at size is forced to equal 1 or not
       1    1     1     1     0       0   # females:   determines if maximum selectivity at size is forced to equal 1 or not
       0    0     0     0     0       0   #   males:   size-class index at which selectivity is 1 (ignored if max-sxl-at-size above is 1)
       0    0     0     0     0       0   # females:   size-class index at which selectivity is 1 (ignored if max-sxl-at-size above is 1)
@@ -373,46 +350,99 @@
 #Initial	Lower_bound	Upper_bound	Prior_type	Prior_1	Prior_2	Phase	Block	Block_fn	Env_L	EnvL_var	RW	RW_Block	Sigma
 #--male selectivity
 #Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
-100     5     150   0   100   999   4    0     0     0     0     0    0       0.3  #--z50:   TCF males
- 20     1      50   0    20   999   4    0     0     0     0     0    0       0.3  #--width: TCF males
+100     5     150   0   100   999   4    0     0     0     0     1    3       0.3  #1--z50:   TCF males logistic z50 base
+ 20     1      50   0    20   999   4    0     0     0     0     0    0       0.3  #2--width: TCF males logistic wid base 
+# EXTRA PARS:  Initial   LB     UB  PrTyp  Pr1   Pr2  Phz  Relative
+#                 100     5     150   0     100   999   4      0       #3--z50:   TCF males logistic z50 BG 4, block 1
+#                 100     5     150   0     100   999   4      0       #4--z50:   TCF males logistic z50 BG 4, block 2
+#                  20     1      50   0      20   999   4      0       #5--width: TCF males logistic wid BG 4, block 1
+#                  20     1      50   0      20   999   4      0       #6--width: TCF males logistic wid BG 4, block 2
+
+#Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma   
+ 20     1      50   0    20   999   4    6     0     0     0     0    0       0.3  #7--ascending width:  SCF males block group 4 base
+100     5     150   0   100   999   4    6     0     0     0     0    0       0.3  #8--z50:              SCF males block group 4 base
+ 20     1      50   0    20   999   4    6     0     0     0     0    0       0.3  #9--descending width: SCF males block group 4 base
+# EXTRA PARS:  Initial   LB     UB  PrTyp  Pr1   Pr2  Phz  Relative
+                   20     1      50   0     20   999   4     0     #10--ascending width:  SCF males block group 4 block 1
+                   20     1      50   0     20   999   4     0     #11--ascending width:  SCF males block group 4 block 2
+                  100     5     150   0    100   999   4     0     #12--z50:              SCF males block group 4 block 1
+                  100     5     150   0    100   999   4     0     #13--z50:              SCF males block group 4 block 2
+                   20     1      50   0     20   999   4     0     #14--descending width: SCF males block group 4 block 1
+                   20     1      50   0     20   999   4     0     #15--descending width: SCF males block group 4 block 2
+
 #Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
-100     5     150   0     1   999   4    0     0     0     0     0    0       0.3  #--z50:   SCF males
- 20     1      50   0    50   999   4    0     0     0     0     0    0       0.3  #--width: SCF males
+100     5     170   0   100   999   4    7     0     0     0     0    0       0.3  #16--z50:   RKF males
+ 20     1      50   0    20   999   4    7     0     0     0     0    0       0.3  #17--width: RKF males
+# EXTRA PARS:  Initial   LB     UB  PrTyp  Pr1   Pr2  Phz  Relative
+                 100     5     170    0    100   999   4      0     #16--z50:   RKF males
+                 100     5     170    0    100   999   4      0     #16--z50:   RKF males
+                  20     1      50    0     20   999   4      0     #17--width: RKF males
+                  20     1      50    0     20   999   4      0     #17--width: RKF males
+
 #Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
-100     5     150   0     1   999   4    0     0     0     0     0    0       0.3  #--z50:   RKF males
- 20     1      50   0    50   999   4    0     0     0     0     0    0       0.3  #--width: RKF males
+100     5     150   0   100   999   4    8     0     0     0     0    0       0.3  #18--z50:   GFA males
+ 20     1      50   0    20   999   4    8     0     0     0     0    0       0.3  #19--width: GFA males
+# EXTRA PARS:  Initial   LB     UB  PrTyp  Pr1   Pr2  Phz  Relative
+                 100     5     150    0    100   999   4      0     #18--z50:   GFA males
+                 100     5     150    0    100   999   4      0     #18--z50:   GFA males
+                  20     1      50    0     20   999   4      0     #19--width: GFA males
+                  20     1      50    0     20   999   4      0     #19--width: GFA males
+
 #Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
-100     5     150   0     1   999   4    0     0     0     0     0    0       0.3  #--z50:   GFA males
- 20     1      50   0    50   999   4    0     0     0     0     0    0       0.3  #--width: GFA males
-#Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
-100     5     150   0     1   999   4    2     0     0     0     0    0       0.3  #--z50:   NMFS males base (1975-1981)
- 20     1      50   0    50   999   4    2     0     0     0     0    0       0.3  #--width: NMFS males base (1975-1981)
+ 20     1      50   0    20   999   4    2     0     0     0     0    0       0.3  #20--asc. width: NMFS males base (1975-1981)
+100     5     160   0   100   999   4    2     0     0     0     0    0       0.3  #21--mode z50:   NMFS males base (1975-1981)
 # EXTRA PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2     Phase  Relative
-           100.000000     5.000000   150.000000      0        100.000000   999.000000      4       0     # Sel_NMFS_male_Logistic_mean_block_group_1_block_1
-            20.000000     1.000000    50.000000      0         50.000000   999.000000      4       0     # Sel_NMFS_male_Logistic_cv_block_group_1_block_1
+            20.000000     1.000000    50.000000      0         20.000000   999.000000      4       0     # 22 Sel_NMFS_male_asc_normal_cv_block_group_1_block_1
+           100.000000     5.000000   150.000000      0        100.000000   999.000000      4       0     # 23 Sel_NMFS_male_asc_normal_mode_block_group_1_block_1
 #--females
 #Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
-60      5     150   0     1   999   4    0     0     0     0     0    0       0.3  #--z50:   TCF females
- 20     1      50   0    50   999   4    0     0     0     0     0    0       0.3  #--width: TCF females
+60      5     150   0    60   999   4    0     0     0     0     0    0       0.3  #24--z50:   TCF females
+ 20     1      50   0    20   999   4    0     0     0     0     0    0       0.3  #25--width: TCF females
+
 #Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
-60      5     150   0     1   999   4    0     0     0     0     0    0       0.3  #--z50:   SCF females
- 20     1      50   0    50   999   4    0     0     0     0     0    0       0.3  #--width: SCF females
+60      5     150   0    60   999   4    6     0     0     0     0    0       0.3  #26--z50:   SCF females
+ 20     1      50   0    20   999   4    6     0     0     0     0    0       0.3  #27--width: SCF females
+# EXTRA PARS:  Initial   LB     UB  PrTyp  Pr1   Pr2  Phz  Relative
+                  60      5     150   0    60    999   4      0     #26--z50:   SCF females
+                  60      5     150   0    60    999   4      0     #26--z50:   SCF females
+                  20      1      50   0    20    999   4      0     #27--width: SCF females
+                  20      1      50   0    20    999   4      0     #27--width: SCF females
+
 #Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
-60      5     150   0     1   999   4    0     0     0     0     0    0       0.3  #--z50:   RKF females
- 20     1      50   0    50   999   4    0     0     0     0     0    0       0.3  #--width: RKF females
+60      5     150   0    60   999   4    7     0     0     0     0    0       0.3  #28--z50:   RKF females
+ 20     1      50   0    20   999   4    7     0     0     0     0    0       0.3  #29--width: RKF females
+# EXTRA PARS:  Initial   LB     UB  PrTyp  Pr1   Pr2  Phz  Relative
+                  60      5     150   0    60    999   4      0     #28--z50:   RKF females
+                  60      5     150   0    60    999   4      0     #28--z50:   RKF females
+                  20      1      50   0    20    999   4      0     #29--width: RKF females
+                  20      1      50   0    20    999   4      0     #29--width: RKF females
+
 #Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
-60      5     150   0     1   999   4    0     0     0     0     0    0       0.3  #--z50:   GFA females
- 20     1      50   0    50   999   4    0     0     0     0     0    0       0.3  #--width: GFA females
+60      5     150   0    60   999   4    8     0     0     0     0    0       0.3  #30--z50:   GFA females
+ 20     1      50   0    20   999   4    8     0     0     0     0    0       0.3  #31--width: GFA females
+# EXTRA PARS:  Initial   LB     UB  PrTyp  Pr1   Pr2  Phz  Relative
+                  60      5     150   0    60    999   4      0     #30--z50:   GFA females
+                  60      5     150   0    60    999   4      0     #30--z50:   GFA females
+                  20      1      50   0    20    999   4      0     #31--width: GFA females
+                  20      1      50   0    20    999   4      0     #31--width: GFA females
+
 #Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
-60      5     150   0     1   999   4    2     0     0     0     0    0       0.3  #--z50:   NMFS females
- 20     1      50   0    50   999   4    2     0     0     0     0    0       0.3  #--width: NMFS females
+ 20     1      50   0    20   999   4    2     0     0     0     0    0       0.3  #32--asc. width: NMFS females base
+60      5     150   0    60   999   4    2     0     0     0     0    0       0.3  #33--mode z50:   NMFS females base
 # EXTRA PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Relative
-              60.000000   5.000000   150.000000       0       60.000000   999.000000    4       0       # Sel_NMFS_female_Logistic_mean_block_group_1_block_1
-              20.000000   1.000000    50.000000       0       20.000000   999.000000    4       0       # Sel_NMFS_female_Logistic_cv_block_group_1_block_1
+              20.000000   1.000000    50.000000       0       20.000000   999.000000    4       0       #34 Sel_NMFS_female_asc_normal_cv_block_group_1_block_1
+              60.000000   5.000000   150.000000       0       60.000000   999.000000    4       0       #35 Sel_NMFS_female_asc_normal_mode_block_group_1_block_1
 #--Retention
 #Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
-125     5     150   0     1   999   4    0     0     0     0     0    0       0.3  #--z50:   TCF males
- 20     1      50   0    50   999   4    0     0     0     0     0    0       0.3  #--width: TCF males
+125     5     160   0   125   999   4    4     0     0     0     0    0       0.3  #56--z50:   TCF males base
+ 20     1      50   0    20   999   4    4     0     0     0     0    0       0.3  #57--width: TCF males ase 
+# EXTRA PARS:  Initial   LB     UB  PrTyp  Pr1   Pr2  Phz  Relative
+                 125     5     160    0    125   999   4       0     #58--z50:   TCF males BG3, block 1 1991-1996
+                 125     5     160    0    125   999   4       0     #59--z50:   TCF males BG3, block 2 2005-2009
+                 125     5     160    0    125   999   4       0     #59--z50:   TCF males BG3, block 3 2013-2023
+                  20     1      50    0     20   999   4       0     #60--width: TCF males BG3, block 1
+                  20     1      50    0     20   999   4       0     #61--width: TCF males BG3, block 2
+                  20     1      50    0     20   999   4       0     #61--width: TCF males BG3, block 3
 
 # pre-specified selectivity/retention (ordered by type, sex, fleet and year)
 ##--BSFRF males
@@ -587,12 +617,12 @@
 # RW_blk  : Block number for random walks
 # Sigma_RW: Sigma for the random walk parameters
 ## Analytic? LAMBDA Emphasis Mirror block Env_L EnvL_Var  RW RW_blk Sigma_RW
-      0        1        1      0     0     0        0      0    0       0.3    # Index 1: NMFS males
-      0        1        1      0     0     0        0      0    0       0.3    # Index 1: NMFS immature females
-      0        1        1      2     0     0        0      0    0       0.3    # Index 1: NMFS mature females
-      0        1        1      0     0     0        0      0    0       0.3    # Index 2: BSFRF males
-      0        1        1      0     0     0        0      0    0       0.3    # Index 2: BSFRF immature females
-      0        1        1      5     0     0        0      0    0       0.3    # Index 2: BSFRF mature females
+      0        1        1      0     2     0        0      0    0       0.3    # Index 1: NMFS males        (BG 2 has 1 block, so 1 additional q)
+      0        1        1      0     2     0        0      0    0       0.3    # Index 2: NMFS imm females  (BG 2 has 1 block, so 1 additional q)
+      0        1        1      2     0     0        0      0    0       0.3    # Index 3: NMFS mat females  (no q, mirrored to imm. females)
+      0        1        1      0     0     0        0      0    0       0.3    # Index 4: BSFRF males       (1 q)
+      0        1        1      0     0     0        0      0    0       0.3    # Index 5: BSFRF imm females (1 q)
+      0        1        1      5     0     0        0      0    0       0.3    # Index 6: BSFRF matfemales  (no q, mirrored)
 ### ———————————————————————————————————————————————————————————————————————————————————— ##
 ## CATCHABILITY PARAMETERS: VALUES                                                      ##
 ## prior: 0 = uniform, 1 = normal, 2 = lognormal, 3 = beta, 4 = gamma                   ##
@@ -600,10 +630,12 @@
 ##     and p2 are ignored). ival must be > 0                                            ##
 ## ———————————————————————————————————————————————————————————————————————————————————— ##
 ## ival     lb       ub       prior        p1     p2     phz
-   1.0     0.01      1.1        1        0.8     0.03     5	  # Index 1: NMFS males
-   1.0     0.01      1.1        1        0.8     0.03     5    # Index 1: NMFS females
-   1.0     0.01      1.1        1        0.8     0.3    -5    # Index 2: BSFRF males
-   1.0     0.01      1.1        1        0.8     0.3    -5    # Index 2: BSFRF females
+   0.8     0.01      1.1        1        0.8     0.3     5	  # iq 1: Index 1: NMFS males             base
+   0.8     0.01      1.1        1        0.8     0.3     5   # iq 2: Index 1: NMFS males             block 1 (BG 2)
+   0.8     0.01      1.1        1        0.8     0.3     5   # iq 3: Index 2: NMFS imm females       base
+   0.8     0.01      1.1        1        0.8     0.3     5   # iq 4: Index 2: NMFS imm females       block 1 (BG 2)
+   1.0     0.01      1.1        1        0.8     0.3    -5    # iq 5: Index 4: BSFRF males base       (no block group)
+   1.0     0.01      1.1        1        0.8     0.3    -5    # iq 6: Index 5: BSFRF imm females base (no block group)
 ## 
 ## ———————————————————————————————————————————————————————————————————————————————————— ##
 ## ADDITIONAL CV FOR SURVEYS/INDICES: CONTROLS                                          ##

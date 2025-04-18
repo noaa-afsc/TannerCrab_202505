@@ -1,16 +1,42 @@
-## GMACS Version 2.20.24; ** WTS **; Compiled 2025-04-07
+## GMACS Version 2.20.25; ** WTS **; Compiled 2025-04-17
 
 # Block structure
 # Number of block groups
-2
+8
 # Block structure (number of blocks per block group)
 1 # block group 1
 1 # block group 2
+5 # block group 3
+3 # block group 4
+0 # block group 5
+2 # block group 6
+2 # block group 7
+2 # block group 8
 # The blocks
 #Block 1: 
 1980 1984 # block_group_1_block_1
 #Block 2: 
 1982 2024 # block_group_2_block_1
+#Block 3: 
+1991 1996 # block_group_3_block_1
+2005 2009 # block_group_3_block_2
+2013 2015 # block_group_3_block_3
+2017 2018 # block_group_3_block_4
+2020 2023 # block_group_3_block_5
+#Block 4: 
+1991 1996 # block_group_4_block_1
+2005 2009 # block_group_4_block_2
+2013 2013 # block_group_4_block_3
+#Block 5: 
+#Block 6: 
+1997 2004 # block_group_6_block_1
+2005 2023 # block_group_6_block_2
+#Block 7: 
+1997 2004 # block_group_7_block_1
+2005 2023 # block_group_7_block_2
+#Block 8: 
+1987 1996 # block_group_8_block_1
+1997 2023 # block_group_8_block_2
 
 ##  ------------------------------------------------------------------------------------ ##
 ##  OTHER  CONTROLS
@@ -234,9 +260,9 @@
 
 #      Initial    Lower_bound    Upper_bound  Prior_type        Prior_1        Prior_2  Phase 
     0.23000000     0.10000000     1.50000000           1     0.23000000     0.00454000      4 # M_base_male_mature
-    0.00000000    -1.00000000     1.00000000           1     0.00000000     0.25000000      4 # M_male_mature_block_group_1_block_1
+    0.00000000    -1.00000000     2.00000000           1     0.00000000     0.25000000      4 # M_male_mature_block_group_1_block_1
     0.00000000    -1.00000000     1.00000000           1     0.00000000     0.25000000      4 # M_base_male_immature
-    0.00000000    -1.00000000     1.00000000           1     0.00000000     0.25000000      4 # M_base_female_mature
+    0.00000000    -1.00000000     2.00000000           1     0.00000000     0.25000000      4 # M_base_female_mature
     0.00000000    -1.00000000     1.00000000           1     0.00000000     0.25000000      4 # M_female_mature_block_group_1_block_1
 
 ## ==================================================================================== ##
@@ -262,16 +288,17 @@
 # ##  12: Spline with 0 until one size-class and 1 after another
 # ##      Inputs: knots (in length units); values at knots (0-1) - at least one should have phase -1
 # ##  13: Stacked logistic
+# ##  14: Ascending normal (2 parameters: ascending width; size at mode)
 ## Selectivity specifications --
 # ## Extra (type 1): number of selectivity parameters to estimated
 # #  TCF SCF RKF GFA NMFS BSFRF
  1 1 1 1 1 1 # is selectivity sex=specific? (1=Yes; 0=No)
- 2 2 2 2 2 11 # male selectivity type
- 2 2 2 2 2 11 # female selectivity type
+ 2 4 2 2 14 11 # male selectivity type
+ 2 2 2 2 14 11 # female selectivity type
  0 0 0 0 0 0 # selectivity within another gear
  0 0 0 0 0 0 # male extra parameters for each pattern
  0 0 0 0 0 0 # female extra parameters for each pattern
- 1 1 1 1 0 0 # male: is maximum selectivity at size forced to equal 1 (1) or not (0)
+ 1 0 1 1 0 0 # male: is maximum selectivity at size forced to equal 1 (1) or not (0)
  1 1 1 1 0 0 # female: is maximum selectivity at size forced to equal 1 (1) or not (0)
  0 0 0 0 0 0 # size-class at which selectivity is forced to equal 1 (ignored if the previous input is 1)
  0 0 0 0 0 0 # size-class at which selectivity is forced to equal 1 (ignored if the previous input is 1)
@@ -307,73 +334,106 @@
 
 # Inputs for type*sex*fleet: selectivity male TCF
 # MAIN PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Block Blk_fn  Env_L Env_vr     RW RW_Blk RW_Sigma
-           100.000000     5.000000   150.000000          0   100.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_TCF_male_base_Logistic_mean
+           100.000000     5.000000   150.000000          0   100.000000   999.000000      4      0      0      0      0      1      3   0.3000 # Sel_TCF_male_base_Logistic_mean
             20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_TCF_male_base_Logistic_cv
-# NO EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+# EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
 
 # Inputs for type*sex*fleet: selectivity male SCF
 # MAIN PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Block Blk_fn  Env_L Env_vr     RW RW_Blk RW_Sigma
-           100.000000     5.000000   150.000000          0     1.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_SCF_male_base_Logistic_mean
-            20.000000     1.000000    50.000000          0    50.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_SCF_male_base_Logistic_cv
-# NO EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      6      0      0      0      0      0   0.3000 # Sel_SCF_male_base_Double_normal_par_1
+           100.000000     5.000000   150.000000          0   100.000000   999.000000      4      6      0      0      0      0      0   0.3000 # Sel_SCF_male_base_Double_normal_par_2
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      6      0      0      0      0      0   0.3000 # Sel_SCF_male_base_Double_normal_par_3
+# EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_SCF_male_Double_normal_par_1_block_group_6_block_1
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_SCF_male_Double_normal_par_1_block_group_6_block_2
+           100.000000     5.000000   150.000000          0   100.000000   999.000000      4      0 # Sel_SCF_male_Double_normal_par_2_block_group_6_block_1
+           100.000000     5.000000   150.000000          0   100.000000   999.000000      4      0 # Sel_SCF_male_Double_normal_par_2_block_group_6_block_2
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_SCF_male_Double_normal_par_3_block_group_6_block_1
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_SCF_male_Double_normal_par_3_block_group_6_block_2
 
 # Inputs for type*sex*fleet: selectivity male RKF
 # MAIN PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Block Blk_fn  Env_L Env_vr     RW RW_Blk RW_Sigma
-           100.000000     5.000000   150.000000          0     1.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_RKF_male_base_Logistic_mean
-            20.000000     1.000000    50.000000          0    50.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_RKF_male_base_Logistic_cv
-# NO EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+           100.000000     5.000000   170.000000          0   100.000000   999.000000      4      7      0      0      0      0      0   0.3000 # Sel_RKF_male_base_Logistic_mean
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      7      0      0      0      0      0   0.3000 # Sel_RKF_male_base_Logistic_cv
+# EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+           100.000000     5.000000   170.000000          0   100.000000   999.000000      4      0 # Sel_RKF_male_Logistic_mean_block_group_7_block_1
+           100.000000     5.000000   170.000000          0   100.000000   999.000000      4      0 # Sel_RKF_male_Logistic_mean_block_group_7_block_2
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_RKF_male_Logistic_cv_block_group_7_block_1
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_RKF_male_Logistic_cv_block_group_7_block_2
 
 # Inputs for type*sex*fleet: selectivity male GFA
 # MAIN PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Block Blk_fn  Env_L Env_vr     RW RW_Blk RW_Sigma
-           100.000000     5.000000   150.000000          0     1.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_GFA_male_base_Logistic_mean
-            20.000000     1.000000    50.000000          0    50.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_GFA_male_base_Logistic_cv
-# NO EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+           100.000000     5.000000   150.000000          0   100.000000   999.000000      4      8      0      0      0      0      0   0.3000 # Sel_GFA_male_base_Logistic_mean
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      8      0      0      0      0      0   0.3000 # Sel_GFA_male_base_Logistic_cv
+# EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+           100.000000     5.000000   150.000000          0   100.000000   999.000000      4      0 # Sel_GFA_male_Logistic_mean_block_group_8_block_1
+           100.000000     5.000000   150.000000          0   100.000000   999.000000      4      0 # Sel_GFA_male_Logistic_mean_block_group_8_block_2
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_GFA_male_Logistic_cv_block_group_8_block_1
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_GFA_male_Logistic_cv_block_group_8_block_2
 
 # Inputs for type*sex*fleet: selectivity male NMFS
 # MAIN PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Block Blk_fn  Env_L Env_vr     RW RW_Blk RW_Sigma
-           100.000000     5.000000   150.000000          0     1.000000   999.000000      4      2      0      0      0      0      0   0.3000 # Sel_NMFS_male_base_Logistic_mean
-            20.000000     1.000000    50.000000          0    50.000000   999.000000      4      2      0      0      0      0      0   0.3000 # Sel_NMFS_male_base_Logistic_cv
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      2      0      0      0      0      0   0.3000 # Sel_NMFS_male_base_Ascending_normal_par_1
+           100.000000     5.000000   160.000000          0   100.000000   999.000000      4      2      0      0      0      0      0   0.3000 # Sel_NMFS_male_base_Ascending_normal_par_2
 # EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
-           100.000000     5.000000   150.000000          0   100.000000   999.000000      4      0 # Sel_NMFS_male_Logistic_mean_block_group_2_block_1
-            20.000000     1.000000    50.000000          0    50.000000   999.000000      4      0 # Sel_NMFS_male_Logistic_cv_block_group_2_block_1
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_NMFS_male_Ascending_normal_par_1_block_group_2_block_1
+           100.000000     5.000000   150.000000          0   100.000000   999.000000      4      0 # Sel_NMFS_male_Ascending_normal_par_2_block_group_2_block_1
 
 # Inputs for type*sex*fleet: selectivity female TCF
 # MAIN PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Block Blk_fn  Env_L Env_vr     RW RW_Blk RW_Sigma
-            60.000000     5.000000   150.000000          0     1.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_TCF_female_base_Logistic_mean
-            20.000000     1.000000    50.000000          0    50.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_TCF_female_base_Logistic_cv
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_TCF_female_base_Logistic_mean
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_TCF_female_base_Logistic_cv
 # NO EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
 
 # Inputs for type*sex*fleet: selectivity female SCF
 # MAIN PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Block Blk_fn  Env_L Env_vr     RW RW_Blk RW_Sigma
-            60.000000     5.000000   150.000000          0     1.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_SCF_female_base_Logistic_mean
-            20.000000     1.000000    50.000000          0    50.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_SCF_female_base_Logistic_cv
-# NO EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      6      0      0      0      0      0   0.3000 # Sel_SCF_female_base_Logistic_mean
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      6      0      0      0      0      0   0.3000 # Sel_SCF_female_base_Logistic_cv
+# EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      0 # Sel_SCF_female_Logistic_mean_block_group_6_block_1
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      0 # Sel_SCF_female_Logistic_mean_block_group_6_block_2
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_SCF_female_Logistic_cv_block_group_6_block_1
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_SCF_female_Logistic_cv_block_group_6_block_2
 
 # Inputs for type*sex*fleet: selectivity female RKF
 # MAIN PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Block Blk_fn  Env_L Env_vr     RW RW_Blk RW_Sigma
-            60.000000     5.000000   150.000000          0     1.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_RKF_female_base_Logistic_mean
-            20.000000     1.000000    50.000000          0    50.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_RKF_female_base_Logistic_cv
-# NO EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      7      0      0      0      0      0   0.3000 # Sel_RKF_female_base_Logistic_mean
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      7      0      0      0      0      0   0.3000 # Sel_RKF_female_base_Logistic_cv
+# EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      0 # Sel_RKF_female_Logistic_mean_block_group_7_block_1
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      0 # Sel_RKF_female_Logistic_mean_block_group_7_block_2
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_RKF_female_Logistic_cv_block_group_7_block_1
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_RKF_female_Logistic_cv_block_group_7_block_2
 
 # Inputs for type*sex*fleet: selectivity female GFA
 # MAIN PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Block Blk_fn  Env_L Env_vr     RW RW_Blk RW_Sigma
-            60.000000     5.000000   150.000000          0     1.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_GFA_female_base_Logistic_mean
-            20.000000     1.000000    50.000000          0    50.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Sel_GFA_female_base_Logistic_cv
-# NO EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      8      0      0      0      0      0   0.3000 # Sel_GFA_female_base_Logistic_mean
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      8      0      0      0      0      0   0.3000 # Sel_GFA_female_base_Logistic_cv
+# EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      0 # Sel_GFA_female_Logistic_mean_block_group_8_block_1
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      0 # Sel_GFA_female_Logistic_mean_block_group_8_block_2
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_GFA_female_Logistic_cv_block_group_8_block_1
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_GFA_female_Logistic_cv_block_group_8_block_2
 
 # Inputs for type*sex*fleet: selectivity female NMFS
 # MAIN PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Block Blk_fn  Env_L Env_vr     RW RW_Blk RW_Sigma
-            60.000000     5.000000   150.000000          0     1.000000   999.000000      4      2      0      0      0      0      0   0.3000 # Sel_NMFS_female_base_Logistic_mean
-            20.000000     1.000000    50.000000          0    50.000000   999.000000      4      2      0      0      0      0      0   0.3000 # Sel_NMFS_female_base_Logistic_cv
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      2      0      0      0      0      0   0.3000 # Sel_NMFS_female_base_Ascending_normal_par_1
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      2      0      0      0      0      0   0.3000 # Sel_NMFS_female_base_Ascending_normal_par_2
 # EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
-            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      0 # Sel_NMFS_female_Logistic_mean_block_group_2_block_1
-            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_NMFS_female_Logistic_cv_block_group_2_block_1
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Sel_NMFS_female_Ascending_normal_par_1_block_group_2_block_1
+            60.000000     5.000000   150.000000          0    60.000000   999.000000      4      0 # Sel_NMFS_female_Ascending_normal_par_2_block_group_2_block_1
 
 # Inputs for type*sex*fleet: retention male TCF
 # MAIN PARS:  Initial  Lower_bound  Upper_bound Prior_type     Prior_1      Prior_2  Phase  Block Blk_fn  Env_L Env_vr     RW RW_Blk RW_Sigma
-           125.000000     5.000000   150.000000          0     1.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Ret_TCF_male_base_Logistic_mean
-            20.000000     1.000000    50.000000          0    50.000000   999.000000      4      0      0      0      0      0      0   0.3000 # Ret_TCF_male_base_Logistic_cv
-# NO EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+           125.000000     5.000000   160.000000          0   125.000000   999.000000      4      4      0      0      0      0      0   0.3000 # Ret_TCF_male_base_Logistic_mean
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      4      0      0      0      0      0   0.3000 # Ret_TCF_male_base_Logistic_cv
+# EXTRA PARS: Initial  Lower_bound  Upper_bound Prior_type      Prior_1     Prior_2  Phase    Reltve 
+           125.000000     5.000000   160.000000          0   125.000000   999.000000      4      0 # Ret_TCF_male_Logistic_mean_block_group_4_block_1
+           125.000000     5.000000   160.000000          0   125.000000   999.000000      4      0 # Ret_TCF_male_Logistic_mean_block_group_4_block_2
+           125.000000     5.000000   160.000000          0   125.000000   999.000000      4      0 # Ret_TCF_male_Logistic_mean_block_group_4_block_3
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Ret_TCF_male_Logistic_cv_block_group_4_block_1
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Ret_TCF_male_Logistic_cv_block_group_4_block_2
+            20.000000     1.000000    50.000000          0    20.000000   999.000000      4      0 # Ret_TCF_male_Logistic_cv_block_group_4_block_3
 
 # pre-specified selectivity/retention (ordered by type, sex, fleet and year)
 # Pre-specified values for selectivity for males for BSFRF
@@ -544,25 +604,26 @@
 # Lambda: the weight lambda
 # Emphasis: the weighting emphasis
 # Block: Block number for time-varying q
-# Block_fn: 0:absolute values; 1:exponential
 # Env_L: Environmental link - options are 0: none; 1:additive; 2:multiplicative; 3:exponential
 # EnvL_var: Environmental variable
 # RW: 0 for no random walk changes; 1 otherwise
 # RW_blk: Block number for random walks
 # Sigma_RW: Sigma for the random walk parameters
-## Analytic  Lambda Emphass  Mirror   Block   Env_L EnvL_Vr      RW  RW_blk Sigma_RW
-          0       1       1       0       0       0       0       0       0   0.3000 
-          0       1       1       0       0       0       0       0       0   0.3000 
-          0       1       1       2       0       0       0       0       0   0.3000 
-          0       1       1       0       0       0       0       0       0   0.3000 
-          0       1       1       0       0       0       0       0       0   0.3000 
-          0       1       1       5       0       0       0       0       0   0.3000 
+## Analytic  Lambda Emphasis  Mirror   Block   Env_L EnvL_Vr      RW  RW_blk Sigma_RW
+          0       1       1       0       2       0       0       0       0   0.3000 #--Survey 1
+          0       1       1       0       2       0       0       0       0   0.3000 #--Survey 2
+          0       1       1       2       0       0       0       0       0   0.3000 #--Survey 3
+          0       1       1       0       0       0       0       0       0   0.3000 #--Survey 4
+          0       1       1       0       0       0       0       0       0   0.3000 #--Survey 5
+          0       1       1       5       0       0       0       0       0   0.3000 #--Survey 6
 # Catchability (parameters)
 #      Initial    Lower_bound    Upper_bound  Prior_type        Prior_1        Prior_2  Phase 
-    1.00000000     0.01000000     1.10000000           1     0.80000000     0.03000000      5 # Survey_q_parameter_1
-    1.00000000     0.01000000     1.10000000           1     0.80000000     0.03000000      5 # Survey_q_parameter_2
-    1.00000000     0.01000000     1.10000000           1     0.80000000     0.30000000     -5 # Survey_q_parameter_3
-    1.00000000     0.01000000     1.10000000           1     0.80000000     0.30000000     -5 # Survey_q_parameter_4
+    0.80000000     0.01000000     1.10000000           1     0.80000000     0.30000000      5 # Survey_q_parameter_1_for_Survey_1_in_block_group_2
+    0.80000000     0.01000000     1.10000000           1     0.80000000     0.30000000      5 # Survey_q_parameter_2_for_Survey_1_in_block_group_2
+    0.80000000     0.01000000     1.10000000           1     0.80000000     0.30000000      5 # Survey_q_parameter_3_for_Survey_2_in_block_group_2
+    0.80000000     0.01000000     1.10000000           1     0.80000000     0.30000000      5 # Survey_q_parameter_4_for_Survey_2_in_block_group_2
+    1.00000000     0.01000000     1.10000000           1     0.80000000     0.30000000     -5 # Survey_q_parameter_5_for_Survey_4_in_block_group_0
+    1.00000000     0.01000000     1.10000000           1     0.80000000     0.30000000     -5 # Survey_q_parameter_6_for_Survey_5_in_block_group_0
 
 ## ==================================================================================== ##
 ## ADDITIONAL CV PARAMETER CONTROLS                                                     ##

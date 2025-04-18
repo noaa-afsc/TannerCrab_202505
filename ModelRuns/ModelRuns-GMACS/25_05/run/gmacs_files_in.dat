@@ -1,5 +1,5 @@
 # TheHeader
-## GMACS Version 2.20.24; ** WTS **; Compiled 2025-04-07
+## GMACS Version 2.20.25; ** WTS **; Compiled 2025-04-17
 # datafile
 TannerCrab.dat
 # controlfile
@@ -31,7 +31,7 @@ EBS_Tanner_crab
 10 # Maximum phase (stop the estimation after this phase)
 -1 # Maximum number of function calls
 1 # Calculate reference points (0=no)
-1 # use pin file (0=no, 1=yes)
+0 # use pin file (0=no, 1=yes)
 0 # VERBOSE FLAG (0 = off, 1 = on, 2 = objective func; 3 diagnostics)
 # dataeof
 9999

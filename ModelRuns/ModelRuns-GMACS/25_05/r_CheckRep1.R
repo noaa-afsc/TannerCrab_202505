@@ -14,7 +14,7 @@ if (TRUE){
   resGMACS = wtsUtilities::getObj("rda_GMACS_reslstALt.RData");
 } else {
   resGMACS = wtsGMACS::readModelResultsAlt(fldrs,TRUE);
-  wtsUtilities::saveObj(resGMACS,"rda_GMACS_reslstALt.RData");
+  wtsUtilities::saveObj(resGMACS,"rda_GMACS_reslstAlt.RData");
 }
 
 
@@ -172,18 +172,22 @@ tmp =  dfrSel |> dplyr::filter(fleet %in% "TCF",type=="capture",x=="male")
 compareSelFcns(tmp,"Selectivity",sub="TCF males");
 tmp =  dfrSel |> dplyr::filter(fleet %in% "TCF",type=="capture",x=="female")
 compareSelFcns(tmp,"Selectivity",sub="TCF females");
+
 tmp =  dfrSel |> dplyr::filter(fleet %in% "SCF",type=="capture",x=="male")
 compareSelFcns(tmp,"Selectivity",sub="SCF males");
 tmp =  dfrSel |> dplyr::filter(fleet %in% "SCF",type=="capture",x=="female")
 compareSelFcns(tmp,"Selectivity",sub="SCF females");
+
 tmp =  dfrSel |> dplyr::filter(fleet %in% "RKF",type=="capture",x=="male")
 compareSelFcns(tmp,"Selectivity",sub="RKF males");
 tmp =  dfrSel |> dplyr::filter(fleet %in% "RKF",type=="capture",x=="female")
 compareSelFcns(tmp,"Selectivity",sub="RKF females");
+
 tmp =  dfrSel |> dplyr::filter(fleet %in% "GFA",type=="capture",x=="male")
 compareSelFcns(tmp,"Selectivity",sub="GFA males");
 tmp =  dfrSel |> dplyr::filter(fleet %in% "GFA",type=="capture",x=="female")
 compareSelFcns(tmp,"Selectivity",sub="GFA females");
+
 tmp =  dfrSel |> dplyr::filter(fleet %in% "NMFS",type=="capture",x=="male")
 compareSelFcns(tmp,"Selectivity",sub="NMFS males");
 tmp =  dfrSel |> dplyr::filter(fleet %in% "NMFS",type=="capture",x=="female")
