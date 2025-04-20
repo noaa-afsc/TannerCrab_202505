@@ -113,7 +113,9 @@ Because growth stops when a Tanner crab undergoes terminal molt [@TamoneEtAl2007
 Developing annual, size-specific maturity ogives reflecting the probability of having undergone terminal molt for female Tanner crab from NMFS EBS bottom trawl data is relatively straightforward because, as noted above, categorizing females as to maturity state is unambiguous and is part of the routine data collected for every female sampled in the survey. If $N_{y,z,i}$ is the number of immature female crab in size bin $z$ in the expanded size composition for year $y$ and $N_{y,z,m}$ is the corresponding number of mature new shell female crab, then 
 
 $$p_y = \frac{N_{y,z,m}}{N_{y,z,m}+N_{y,z,i}}$$
-is an empirical estimate of the probability of immature females of size $z$ that underwent terminal molt in year $y$ ([@fig-EMOs-FemaleMaturityOgives]). The survey was not conducted in 2020, so the values for this year were estimated using the size-specific means of the preceding and succeeding two years.
+is an empirical estimate of the probability of immature females of size $z$ that underwent terminal molt in year $y$. 
+
+Empirical estimates for annual female maturity ogives are shown in [@fig-EMOs-FemaleMaturityOgives] using a 5-mm CW bin size for the full survey time series (starting in 1975). The survey was not conducted in 2020, so the values for this year were estimated using the size-specific means of the preceding and succeeding two years. Since survey gear and area standardization in 1982, the size at which 50% of new shell (recently molted) females have undergone the terminal molt to maturity has exhibited interannual variability on top of a longterm decline of ~ 7 mm CW.
 
 ```{r EMOs_GetMaturityData-Females}
 #--calculate female maturity ogives from survey data----
@@ -128,8 +130,8 @@ dfrFOs = lstTC$lstZCs$EBS |>
            tidyr::pivot_wider(names_from=m,values_from=c(numIndivs,totAbd)) |>
            dplyr::mutate(nTot=numIndivs_IMMATURE+numIndivs_MATURE,
                          prMature=totAbd_MATURE/(totAbd_IMMATURE+totAbd_MATURE)) |>
-           dplyr::mutate(prMature=ifelse(!is.nan(prMature),prMature,0*(z<=80)+1*(z>=100))) |>       #--replace NaNs
-           dplyr::mutate(prMature=ifelse((prMature==0)&(y==2006)&(z==115)&(nTot==1),1,prMature)) |> #--replace single observed crab
+           dplyr::mutate(prMature=ifelse(!is.nan(prMature),prMature,0*(z<=80)+1*(z>=100))) |>       #--replace NaNs for small and large crab
+           dplyr::mutate(prMature=ifelse((prMature==0)&(y==2006)&(z==115)&(nTot==1),1,prMature)) |> #--replace instance of single observed crab
            dplyr::select(y,z,nTot,prMature);
 tmp = dfrFOs |> dplyr::filter(y %in% 2018:2022) |> 
         dplyr::group_by(z) |> 
@@ -143,7 +145,10 @@ dfrFOs = dplyr::bind_rows(dfrFOs,tmp) |>
 if (FALSE){
   #--extract relevant results and export to csv----
   dfrTmp = dfrFOs |> dplyr::select(y,z,p=prMature) |>
-             tidyr::pivot_wider(names_from=z,values_from=p);
+             tidyr::pivot_wider(names_from=z,values_from=p,values_fill=NaN);
+  dfrTmp1 = dfrTmp |> tidyr::pivot_longer(2:ncol(dfrTmp),names_to="z",values_to="p") |> 
+              dplyr::summarize(hasNaN=any(is.nan(p)));
+  if (dfrTmp1$hasNaN) warning("Exported female maturity ogives contain NaNs. Entries should be interpolated.")
   readr::write_csv(dfrTmp,file=file.path(dirThs,"csv_MaturityOgives-Females-Empirical.csv"));
 }
 rm(dirTC,lstTC,dfrTmp);
@@ -173,7 +178,48 @@ rm(dirTC,lstTC,dfrTmp);
   rm(p1,cap,lbl,pth)
 ```
 
+```{r}
+#| label: fig_EMOs-FemaleZ50s
+#| results: asis
+#| fig-width: 6.5
+#| fig-asp: 0.8
+  ###--calculate size-at-50% maturity----
+  tmpp = dfrFOs |> dplyr::mutate(dp50p=prMature-0.50) |> 
+           dplyr::filter(dp50p>=0) |>
+           dplyr::group_by(y,yf) |> 
+           dplyr::arrange(dp50p,z,.by_group=TRUE) |> 
+           dplyr::mutate(rank=dplyr::row_number()) |> 
+           dplyr::filter(rank==1) |> 
+           dplyr::ungroup() |>
+           dplyr::select(y,zmx=z,pmx=prMature);
+  tmpm = dfrFOs |> dplyr::mutate(dp50m=0.50-prMature) |> 
+           dplyr::filter(dp50m>=0) |>
+           dplyr::group_by(y,yf) |> 
+           dplyr::arrange(dp50m,z,.by_group=TRUE) |> 
+           dplyr::mutate(rank=dplyr::row_number()) |> 
+           dplyr::filter(rank==1) |> 
+           dplyr::ungroup() |>
+           dplyr::select(y,zmn=z,pmn=prMature);
+  tmp = tmpp |> dplyr::inner_join(tmpm,by=c("y")) |> 
+          dplyr::mutate(m=(pmx-pmn)/(zmx-zmn),
+                        z50=zmn+(0.5-pmn)/m,
+                        yf=factor(y));
+  p1 = ggplot(tmp,aes(x=y,y=z50)) + 
+        geom_point() + geom_smooth(data=tmp |> dplyr::filter(y>1981)) + 
+        labs(x="survey year",y="estimated size at 50% mature") + 
+        wtsPlots::getStdTheme();
+  cap = paste0("Annual size-at-50% mature for new shell female Tanner crab (points), based on the empirical female maturity ogives ",
+               "shown in the previous figure. Line and shading provide a smoothed estimate of the longterm trend following ",
+               "survey gear and area standardization in 1982.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(p1,cap,lbl,pth)
+```
+
 ## Empirical maturity ogives for male Tanner crab
+
+Determining the fraction of male crab which have undergone the terminal molt-to-maturity in a year currently relies on a statistical analysis of chela height/carapace width data collected during the NMFS EBS bottom trawl survey that year [@RicharAndFoy2022]. Chela heights prior to 2006, when collected, were measured to the nearest 1-mm while those since have been measured to the nearest 0.1-mm. The measurements accurate to only 1-mm introduce substantial quantization effects into the data and are not included in the results J. Richar (AFSC Kodiak) provides to the author. In addition, the results are provided at 10-mm size intervals while the assessment is conducted using 5-mm size bins. Consequently, I fit Richar's estimates, weighted by the number of crab measured in each 10-mm size bin, using a smooth function of size and annual "factor smooth" ("fs") curves using the R package `mgcv` ([@mgcv]) to interpolate his results to 5-mm size bins and estimate a mean curve applicable to years in which appropriate chela height data were not collected ([@fig_EMOs-MaleMaturityOgives]). The model fit the Richar's results quite well, with an $R^2$ of 97.1%.
 
 ```{r EMOs_GetMaturityData-Males}
   #--read in male maturity ogive data from Jon Richar----
@@ -186,7 +232,7 @@ rm(dirTC,lstTC,dfrTmp);
   mdl = mgcv::gam(prMature~s(size,k=5) + ti(size,yf,bs="fs",k=5),family=binomial(),
                   data=dfrMOs,weights=N,
                   method="REML");
-  summary(mdl);
+  if (FALSE) summary(mdl);
   #--predict ogives for all years, all sizes----
   dfrMOsp = tidyr::expand_grid(yf=factor(1975:2024),
                                size=seq(27.5,182.5,5));
@@ -205,55 +251,56 @@ rm(dirTC,lstTC,dfrTmp);
 ```
 
 ```{r}
-#| label: fig_EMOs-MaleMaturityOgives
-#| results: asis
-#| fig-width: 6.5
-#| fig-asp: 1.25
-  p0 = ggplot(dfrMOs,aes(x=size,y=prMature,size=N,colour=yf,fill=yf)) +
-        geom_point() + geom_line(size=1) +
-        scale_size_area() +
-        wtsPlots::getStdTheme();
-  cap = paste0("Male maturity ogives estimated by J. Richar (AFSC) from statistical analysis ",
-               "of chela height/carapace width data from the NMFS EBS bottom trawl survey. ",
-               "Chela height data to 0.1 mm accuracy are only available for Tanner crab for the years shown.");
-  lbl = wtsQMD::getLabel();
-  pth = wtsQMD::getFigFN();
-  lstFigs = c(lstFigs,wtsQMD::printGGplot(p0,lbl=lbl,cap=cap,pth=pth,ori="P"));
-  rm(p0,cap,lbl,pth)
+# #| label: fig_EMOs-MaleMaturityOgives
+# #| results: false
+# #| fig-width: 6.5
+# #| fig-asp: 1.25
+#   p0 = ggplot(dfrMOs,aes(x=size,y=prMature,size=N,colour=yf,fill=yf)) +
+#         geom_point() + geom_line(size=1) +
+#         scale_size_area() +
+#         wtsPlots::getStdTheme();
+#   cap = paste0("Male maturity ogives estimated by J. Richar (AFSC) from statistical analysis ",
+#                "of chela height/carapace width data from the NMFS EBS bottom trawl survey. ",
+#                "Chela height data to 0.1 mm accuracy are only available for Tanner crab for the years shown.");
+#   lbl = wtsQMD::getLabel();
+#   pth = wtsQMD::getFigFN();
+#   lstFigs = c(lstFigs,wtsQMD::printGGplot(p0,lbl=lbl,cap=cap,pth=pth,ori="P"));
+#   rm(p0,cap,lbl,pth)
 ```
 
-```{r fig_EMOs-DHARMaResidualsForMaleMaturityOgives} 
-#| results: asis
-#| fig-cap: "DHARMa residuals from the `mgcv` for males. Left: quantile-quantile plot for observed and expected residuals under the null hypothesis. Right: quantile deviations for residuals."
-#| fig-width: 9
-#| fig-asp: 0.6
-  simResMdl = DHARMa::simulateResiduals(mdl);
-  lstFigs = c(lstFigs,wtsQMD::printRGraphics(expression(plot(simResMdl)),ori="L"));
-  rm(simResMdl);
+```{r} 
+# #| label:  fig_EMOs-DHARMaResidualsForMaleMaturityOgives
+# #| results: false
+# #| fig-cap: "DHARMa residuals from the `mgcv` for males. Left: quantile-quantile plot for observed and expected residuals under the null hypothesis. Right: quantile deviations for residuals."
+# #| fig-width: 9
+# #| fig-asp: 0.6
+#   simResMdl = DHARMa::simulateResiduals(mdl);
+#   lstFigs = c(lstFigs,wtsQMD::printRGraphics(expression(plot(simResMdl)),ori="L"));
+#   rm(simResMdl);
 ```
 
 ```{r}
-#| label: fig_EMOs-FitsToMaleMaturityOgives
-#| results: asis
-#| fig-width: 6.5
-#| fig-asp: 1.25
-  phat = predict(mdl,type="response",se.fit=TRUE,unconditional=TRUE);
-  dfr = dfrMOs;
-  dfr$fit = phat$fit;
-  dfr$se  = phat$se.fit;
-  p1 = ggplot(dfr,aes(x=size,y=fit,colour=yf,fill=yf)) +
-        geom_ribbon(mapping=aes(ymin=fit-se,ymax=fit+se,colour=NULL),alpha=0.2) +
-        geom_point(data=dfr,mapping=aes(x=size,y=prMature,size=N,colour=yf,fill=yf),inherit.aes=FALSE) +
-        geom_line() +
-        scale_size_area() +
-        wtsPlots::getStdTheme();
-  cap = paste0("Smooth fits using `mgcv` to male maturity ogives estimated by J. Richar (AFSC) from statistical analysis ",
-               "of chela height/carapace width data from the NMFS EBS bottom trawl survey. ",
-               "Chela height data to 0.1 mm accuracy are only available for Tanner crab for the years shown.");
-  lbl = wtsQMD::getLabel();
-  pth = wtsQMD::getFigFN();
-  lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
-  rm(phat,dfr,p1,cap,lbl,pth)
+# #| label: fig_EMOs-FitsToMaleMaturityOgives
+# #| results: asis
+# #| fig-width: 6.5
+# #| fig-asp: 1.25
+#   phat = predict(mdl,type="response",se.fit=TRUE,unconditional=TRUE);
+#   dfr = dfrMOs;
+#   dfr$fit = phat$fit;
+#   dfr$se  = phat$se.fit;
+#   p1 = ggplot(dfr,aes(x=size,y=fit,colour=yf,fill=yf)) +
+#         geom_ribbon(mapping=aes(ymin=fit-se,ymax=fit+se,colour=NULL),alpha=0.2) +
+#         geom_point(data=dfr,mapping=aes(x=size,y=prMature,size=N,colour=yf,fill=yf),inherit.aes=FALSE) +
+#         geom_line() +
+#         scale_size_area() +
+#         wtsPlots::getStdTheme();
+#   cap = paste0("Smooth fits using `mgcv` to male maturity ogives estimated by J. Richar (AFSC) from statistical analysis ",
+#                "of chela height/carapace width data from the NMFS EBS bottom trawl survey. ",
+#                "Chela height data to 0.1 mm accuracy are only available for Tanner crab for the years shown.");
+#   lbl = wtsQMD::getLabel();
+#   pth = wtsQMD::getFigFN();
+#   lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+#   rm(phat,dfr,p1,cap,lbl,pth)
 ```
 ```{r}
 #| label: fig_EMOs-EmpiricalMaleMaturityOgives
@@ -262,7 +309,7 @@ rm(dirTC,lstTC,dfrTmp);
 #| fig-asp: 1.25
   p2 = ggplot(dfrMOsp |> dplyr::filter(y %in% dfrMOs$year),aes(x=size,y=fit,colour=yf,fill=yf)) +
         geom_point(data=dfrMOs,mapping=aes(y=prMature,colour=yf,fill=yf,size=N)) +
-        scale_size_area(guide="none") +
+        scale_size_area(name="number\nmeasured") +
         geom_ribbon(data=dfrMOsp |> dplyr::filter((!(y %in% dfrMOs$year))),
                     mapping=aes(x=size,ymin=fit-se,ymax=fit+se),colour=NA,alpha=0.3,inherit.aes=FALSE) +
         geom_line(data=dfrMOsp |> dplyr::filter((!(y %in% dfrMOs$year))),
@@ -271,11 +318,13 @@ rm(dirTC,lstTC,dfrTmp);
         labs(x="size (mm CW)",y="Pr(mature)",colour="observed\nyear",fill="observed\nyear") +
         wtsPlots::getStdTheme() +
         theme(legend.position="inside",
+              legend.byrow=FALSE,
+              legend.box="horizontal",
               legend.position.inside=c(0.01,0.99),
               legend.justification.inside=c(0.01,0.99));
   cap = paste0("Smooth fits using `mgcv` to male maturity ogives estimated by J. Richar (AFSC) from statistical analysis ",
                "of chela height/carapace width data from the NMFS EBS bottom trawl survey. ",
-               "Chela height data to 0.1 mm accuracy are only for Tanner crab for certain years shown; ",
+               "Chela height data to 0.1 mm accuracy are only available for Tanner crab for the years shown. ",
                "Estimates for other years reflect the main smooth term in the `mgcv` model.");
   lbl = wtsQMD::getLabel();
   pth = wtsQMD::getFigFN();

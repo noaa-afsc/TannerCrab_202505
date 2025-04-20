@@ -79,9 +79,10 @@ setwd(dirThs);
   lstHD = wtsUtilities::getObj(file.path(dirHD,"rda_SrvData.NMFS.HD.RData"));
   lstDBI = wtsUtilities::getObj(file.path(dirHD,"rda_SrvData.NMFS.DBI.RData"));
 
+  ##--plot size compositions by cohort----
   n = 5;
   dfrGrps = tibble::tibble(year=c(2003:2007,2008:2012,2017:2021),
-                           grp=c(rep("2003-2007",n),rep("2008-2012",n),rep("2017-2021",n)),
+                           cohort=c(rep("2003-2005",n),rep("2008-2010",n),rep("2017-2019",n)),
                            order=factor(c(1:n,1:n,1:n)));
   dfrZCs = lstDBI$lstZCs$EBS |>
              dplyr::select(year=YEAR,z=SIZE,totAbd=totABUNDANCE) |>
@@ -90,11 +91,25 @@ setwd(dirThs);
              dplyr::ungroup() |>
              dplyr::left_join(dfrGrps,by="year") |>
              dplyr::mutate(yf=factor(year));
-  p = ggplot(dfrZCs |> dplyr::filter(!is.na(grp)),aes(x=z,y=totAbd,colour=order,fill=order,group=yf)) +
+  p = ggplot(dfrZCs |> dplyr::filter(!is.na(cohort)),aes(x=z,y=totAbd,colour=order,fill=order,group=yf)) +
         geom_step() +
-        facet_wrap(~grp,ncol=1) +
+        facet_wrap(~cohort,ncol=1) +
         wtsPlots::getStdTheme();
   print(p)
+  p = ggplot(dfrZCs |> dplyr::filter(!is.na(cohort)),aes(x=z,y=totAbd,colour=order,fill=order,group=yf)) +
+        geom_line() +
+        facet_wrap(~cohort,ncol=1) +
+        wtsPlots::getStdTheme();
+  print(p)
+  wtsSizeComps::plotSizeCompsAsRidges(dfrZCs |> dplyr::filter(!is.na(cohort)) |> dplyr::mutate(group=cohort),
+                                      sizes_in="z",
+                                      values_in="totAbd",
+                                      y_positions="year",
+                                      group_by=c("cohort","year"),
+                                      xlim=c(25,150),
+                                      ylim=c(2004,2022),
+                                      colour="cohort",
+                                      fill="cohort");
 
   ##--create dataframe with environmental data from survey----
   smos$sfED = tcsamSurveyData::calcEnvData.ByStation(lstHD$dfrSD,lstHD$dfrHD) |>
@@ -134,7 +149,8 @@ setwd(dirThs);
              dplyr::inner_join(lstHD$dfrHD |> dplyr::select(HAULJOIN,temp=GEAR_TEMPERATURE,depth=BOTTOM_DEPTH),
                                by="HAULJOIN") |>
              dplyr::mutate(yf5=factor(5*floor(year/5)),
-                           yf=factor(year));
+                           yf=factor(year)) |>
+             dplyr::left_join(dfrGrps,by="year");
 
   #--Explore differences in the spatial distribution of small male crab in the NMFS survey,
   #--to identify if the distribution of small crab encountered in 2003-2005 and 2008-2010,
@@ -144,43 +160,64 @@ setwd(dirThs);
   #--small crabs during these periods may help to elucidate why some cohorts appear to propagate and others do not.
 
   #--plot small TC abundance vs. bottom temperature and large TC abundance
-  ggplot(dfrSTC,aes(x=temp,y=numCPUE_STC)) +
-    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2003:2005,numCPUE_STC>0),colour="blue",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2008:2010,numCPUE_STC>0),colour="green",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2017:2019,numCPUE_STC>0),colour="red",alpha=0.5) +
+  ggplot(dfrSTC |> dplyr::filter(!is.na(cohort),numCPUE_STC>0),aes(x=temp,y=numCPUE_STC,colour=cohort)) +
+    geom_point(alpha=0.5) +
+    geom_smooth() +
     scale_y_log10() +
-    wtsPlots::getStdTheme();
-  ggplot(dfrSTC,aes(x=numCPUE_LTC,y=numCPUE_STC)) +
-    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2003:2005,numCPUE_STC>0),colour="blue",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2008:2010,numCPUE_STC>0),colour="green",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2017:2019,numCPUE_STC>0),colour="red",alpha=0.5) +
+    labs(x="temperature degC",y="small crab CPUE (number/sq. nmi.)") +
+    wtsPlots::getStdTheme() +
+    theme(legend.position="inside",
+          legend.position.inside=c(0.01,0.99),
+          legend.justification.inside=c(0,1));
+
+  ggplot(dfrSTC |> dplyr::filter(!is.na(cohort),numCPUE_STC>0),aes(x=numCPUE_LTC,y=numCPUE_STC,colour=cohort)) +
+    geom_point(alpha=0.5) +
+    geom_smooth() +
     scale_y_log10() +
     scale_x_log10(limits=c(NA,10000)) +
-    wtsPlots::getStdTheme();
-  ggplot(dfrSTC,aes(x=1/numCPUE_LTC,y=numCPUE_STC)) +
-    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2003:2005,numCPUE_STC>0),colour="blue",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2008:2010,numCPUE_STC>0),colour="green",alpha=0.5) +
-    geom_point(data=dfrSTC |> dplyr::filter(year %in% 2017:2019,numCPUE_STC>0),colour="red",alpha=0.5) +
+    labs(x="large crab CPUE (number/sq. nmi.)",y="small crab CPUE (number/sq. nmi.)") +
+    wtsPlots::getStdTheme() +
+    theme(legend.position="inside",
+          legend.position.inside=c(0.01,0.99),
+          legend.justification.inside=c(0,1));
+
+  ggplot(dfrSTC |> dplyr::filter(!is.na(cohort),numCPUE_STC>0),aes(x=1/numCPUE_LTC,y=1/numCPUE_STC,colour=cohort)) +
+    geom_point(alpha=0.5) +
+    geom_smooth() +
     #scale_y_log10() +
     #scale_x_log10(limits=c(NA,10000)) +
-    wtsPlots::getStdTheme();
+    labs(x="1/(large crab CPUE) (sq. nmi./number)",y="small crab CPUE (number/sq. nmi.)") +
+    wtsPlots::getStdTheme() +
+    theme(legend.position="inside",
+          legend.position.inside=c(0.01,0.99),
+          legend.justification.inside=c(0,1));
+
 
 #--plot 2-d histograms of small TC abundance vs large TC abundance and bottom temperature
 p1 = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(year %in% 2003:2005),
                                   x=numCPUE_LTC,y=temp,weight=numCPUE_STC,
                                   xparams=list(limits=c(0,10000)),
                                   yparams=list(limits=c(-2,10)),
-                                  addValues=FALSE)
+                                  addValues=FALSE,
+                                  xlab="large crab CPUE (number/sq. nmi.)",
+                                  ylab="temp. (deg C)",
+                                 );
 p2 = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(year %in% 2008:2010),
-                            x=numCPUE_LTC,y=temp,weight=numCPUE_STC,
-                            xparams=list(limits=c(0,10000)),
-                            yparams=list(limits=c(-2,10)),
-                            addValues=FALSE)
+                                  x=numCPUE_LTC,y=temp,weight=numCPUE_STC,
+                                  xparams=list(limits=c(0,10000)),
+                                  yparams=list(limits=c(-2,10)),
+                                  addValues=FALSE,
+                                  xlab="large crab CPUE (number/sq. nmi.)",
+                                  ylab="temp. (deg C)",
+                                 );
 p3 = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(year %in% 2017:2019),
-                            x=numCPUE_LTC,y=temp,weight=numCPUE_STC,
-                            xparams=list(limits=c(0,10000)),
-                            yparams=list(limits=c(-2,10)),
-                            addValues=FALSE)
+                                  x=numCPUE_LTC,y=temp,weight=numCPUE_STC,
+                                  xparams=list(limits=c(0,10000)),
+                                  yparams=list(limits=c(-2,10)),
+                                  addValues=FALSE,
+                                  xlab="large crab CPUE (number/sq. nmi.)",
+                                  ylab="temp. (deg C)",
+                                 );
 cowplot::plot_grid(p1,
                    p2,
                    p3,ncol=1)
@@ -207,4 +244,12 @@ sfSTC = dfrSTC |>
                #legend.position.inside=c(0.01,0.01),
                legend.justification.top=c(0,0),
                legend.direction="horizontal");
-  dims = wtsUtilities::gg_FixOnePlotDim(p1,width,fitWidth=TRUE);
+  #dims = wtsUtilities::gg_FixOnePlotDim(p1,width,fitWidth=TRUE);
+print(p1);
+
+lst=list(bmls=bmls,smos=smos,
+         dfrGrps=dfrGrps,dfrZCs=dfrZCs,
+         dfrSTC=dfrSTC,dfrLTC=dfrLTC,
+         sfSTC=sfSTC);
+wtsUtilities::saveObj(lst,"rda_SmallCrabSuccess.RData");
+

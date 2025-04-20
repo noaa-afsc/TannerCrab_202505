@@ -1,0 +1,308 @@
+---
+title: "Success or Failure of small Tanner crab"
+author: "William T. Stockhausen"
+institute: NOAA/NMFS/AFSC
+date: '`r format(Sys.time(), "%b %e, %Y")`'
+fontsize: 11pt 
+number-sections: true
+reference-location: document
+bibliography: '`r path.expand("~/Work/Projects/Bibliography/AllRefs.bib")`'
+csl: '`r system.file("files/CJFAS.csl",package="wtsQMD")`'
+link-citations: true
+crossref:
+  chapters: false      # prepend label reference numbers by chater number?
+  fig-title: Figure    # for caption: default is "Figure")
+  tbl-title: Table     # for caption: default is "Table")
+  title-delim: "."     # for caption: default is ":")
+  fig-prefix: Figure   # for in-text (use [-@fig-ref] to drop prefix in text)
+  tbl-prefix: Table    # for in-text (use [-@tbl-ref] to drop prefix in text)
+  fig-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  tbl-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  subref-labels: alpha a # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  ref-hyperlink: true    # references are hyperlinked if true
+format: 
+  html: 
+    df-print: paged
+    toc: true
+    toc-location: right
+    fig-width: 8
+    fig-asp: 1.4
+    fig-dpi: 100
+    embed-resources: true
+    include-in-header: 
+      - '`r system.file("files/in-line_math_mode.html",package="wtsQMD")`'
+  pdf:
+    documentclass: scrartcl
+    toc: false
+    fig_crop: false
+    keep-tex: true
+    geometry:
+      - left=1.0in
+      - right=1.0in
+      - top=1.0in
+      - bottom=1.0in
+      - textwidth=6.5in
+      - showframe=false
+    include-in-header: 
+      - text: |
+          \usepackage{placeins}
+          \extrafloats{500}
+          \maxdeadcycles=10000
+      - file: '`r system.file("files/ltx_ExtraLatexIncludes.tex",package="wtsQMD")`'
+echo: false
+warning: false
+results: 'hide'
+keep-md: true
+keep-yaml: false
+editor: source
+editor_options: 
+  chunk_output_type: console
+concordance: true
+params:
+  setup: !expr 'system.file("files/qmd_setup.R",package="wtsQMD")'
+  dirAsmt: "~/Work/StockAssessments-Crab/Assessments/TannerCrab/2024-09_TannerCrab/AssessmentData/Data_Surveys_NMFS"
+  testing: false
+---
+<!-- IMPORTANT: if used as a child doc, all chunk labels must be unique within the overall document -->
+
+<!-- 
+  NOTEs: 
+     * child_path$peek() gives path to current script folder.
+     * before starting a child document, do 
+         "child_path$push(file.path(child_path$peek(),rel_path))" first, 
+         where rel_path is the relative path to the child
+     * after a child document has finished, do "child_path$pop()" to return to current path value
+-->
+
+<!-- if not child doc, set up required objects -->
+```{r}
+#| label: SmallCrabSuccess_setup
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: "asis"
+  testing = params$testing;
+  if (testing) cat(params$setup,"\n\n")
+  source(params$setup);
+  if (testing) cat("root = ",root,"\n\n")
+```
+
+```{r}
+#| label: setup_SCsxs
+#| results: 'asis'
+  require(crabpack);
+  require(ggplot2);
+  require(kableExtra);
+  require(tables);
+  
+  #--path to folder containing "this" file
+  dirThs = child_path$peek();
+  if (rstudioapi::isAvailable()) dirThs = dirname(rstudioapi::getActiveDocumentContext()$path)
+
+  #--constants
+  MILLION  = 1000000;
+  THOUSAND = 1000;
+```
+
+```{r SCsxs_getList}
+  lst = wtsUtilities::getObj(file.path(dirThs,"rda_SmallCrabSuccess.RData"))
+```
+
+## Introduction
+
+Small Tanner crab crab encountered during the NMFS EBS bottom trawl surveys in 2003-2005 and 2008-2010 successfully propagated to larger sizes while the cohort first observed in 2017-2019 did not. The SSC requested that the author explore whether the successful cohorts showed differences in habitat use compared with the unsuccessful one that may have contributed to their success. Furthermore, the SSC recommended that a comparison of environmental conditions experienced by
+small crabs during these periods may help to elucidate why some cohorts appear to propagate and others do not. Here, I ...
+
+
+```{r}
+#| label: fig_SCsxs-ZCs
+#| results: asis
+#| fig-width: 6.5 
+#| fig-asp: 1.2
+  dfrZCs = lst$dfrZCs;
+  p = wtsSizeComps::plotSizeCompsAsRidges(
+        dfrZCs |> dplyr::filter(!is.na(cohort)) |> dplyr::mutate(group=cohort),
+        sizes_in="z",
+        values_in="totAbd",
+        y_positions="year",
+        group_by=c("cohort","year"),
+        xlim=c(25,150),
+        ylim=c(2004,2022),
+        colour="cohort",
+        fill="cohort");
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Progression of Tanner crab size compositions for successful (2003-2005; 2008-2010) and  ",
+               "unsuccessful (2017-2021) pseudocohorts from the NMFS EBS bottom trawl survey across five years.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(p,lbl,cap,pth,dfrZCs);
+```
+
+```{r}
+#| label: fig_SCsxs-SCAvT
+#| results: asis
+#| fig-width: 6.5 
+#| fig-asp: 1.0
+  dfrSTC = lst$dfrSTC;
+  p = ggplot(dfrSTC |> dplyr::filter(!is.na(cohort),numCPUE_STC>0),aes(x=temp,y=numCPUE_STC,colour=cohort)) +
+        geom_point(alpha=0.5) +
+        geom_smooth() + 
+        scale_y_log10() +
+        labs(x="temperature degC",y="small crab CPUE (number/sq. nmi.)") +
+        wtsPlots::getStdTheme() +
+        theme(legend.position="inside",
+              legend.position.inside=c(0.01,0.99),
+              legend.justification.inside=c(0,1));
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Small crab haul-specific CPUE plotted against bottom temperature for the ",
+               "successful 2003-2005 and 2008-2010 pseudocohorts and the unsuccessful 2017-2019 one. ",
+               "Lines and shading represent smooth fits to the CPUE data as a funtion of temperature.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(p,lbl,cap,pth);
+```
+
+```{r}
+#| label: fig_SCsxs-SCAvLCA
+#| results: asis
+#| fig-width: 6.5 
+#| fig-asp: 1.0
+  p = ggplot(dfrSTC |> dplyr::filter(!is.na(cohort),numCPUE_STC>0),aes(x=numCPUE_LTC,y=numCPUE_STC,colour=cohort)) +
+        geom_point(alpha=0.5) + 
+        geom_smooth() + 
+        scale_y_log10() +
+        scale_x_log10(limits=c(NA,10000)) +
+        labs(x="large crab CPUE (number/sq. nmi.)",y="small crab CPUE (number/sq. nmi.)") +
+        wtsPlots::getStdTheme() +
+        theme(legend.position="inside",
+              legend.position.inside=c(0.01,0.99),
+              legend.justification.inside=c(0,1));
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Small crab haul-specific CPUE plotted against large crab haul-specific CPUE for the ",
+               "successful 2003-2005 and 2008-2010 pseudocohorts and the unsuccessful 2017-2019 one. ",
+               "Lines and shading represent smooth fits to the small crab CPUE data as a function of ",
+               "the large crab CPUE data.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(p,lbl,cap,pth);
+```
+
+```{r}
+#| label: fig_SCsxs-H2Ds1
+#| results: asis
+#| fig-width: 6.5 
+#| fig-asp: 1.0
+  p = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(year %in% 2003:2005),
+                                  x=numCPUE_LTC,y=temp,weight=numCPUE_STC,
+                                  xparams=list(limits=c(0,10000)),
+                                  yparams=list(limits=c(-2,10)),
+                                  addValues=FALSE,
+                                  xlab="large crab CPUE (number/sq. nmi.)",
+                                  ylab="temp. (deg C)",
+                                 );
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Relative abundance of small crab as a function of large crab CPUE and temperature for the ",
+               "successful 2003-2005 pseudocohort.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(p,lbl,cap,pth);
+```
+
+```{r}
+#| label: fig_SCsxs-H2Ds2
+#| results: asis
+#| fig-width: 6.5 
+#| fig-asp: 1.0
+  p = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(year %in% 2008:2010),
+                                  x=numCPUE_LTC,y=temp,weight=numCPUE_STC,
+                                  xparams=list(limits=c(0,10000)),
+                                  yparams=list(limits=c(-2,10)),
+                                  addValues=FALSE,
+                                  xlab="large crab CPUE (number/sq. nmi.)",
+                                  ylab="temp. (deg C)",
+                                 );
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Relative abundance of small crab as a function of large crab CPUE and temperature for the ",
+               "successful 2008-2010 pseudocohort.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(p,lbl,cap,pth);
+```
+
+```{r}
+#| label: fig_SCsxs-H2Ds3
+#| results: asis
+#| fig-width: 6.5 
+#| fig-asp: 1.0
+  p = wtsPlots::ggMarginal_Hist2D(dfrSTC |> dplyr::filter(year %in% 2017:2019),
+                                  x=numCPUE_LTC,y=temp,weight=numCPUE_STC,
+                                  xparams=list(limits=c(0,10000)),
+                                  yparams=list(limits=c(-2,10)),
+                                  addValues=FALSE,
+                                  xlab="large crab CPUE (number/sq. nmi.)",
+                                  ylab="temp. (deg C)",
+                                 );
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Relative abundance of small crab as a function of large crab CPUE and temperature for the ",
+               "unsuccessful 2017-2019 pseudocohort.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(p,lbl,cap,pth);
+```
+
+```{r}
+#| label: fig_SCsxs-Maps
+#| results: asis
+#| fig-width: 6.5 
+#| fig-asp: 1.0
+  years = c(2003:2005,2008:2010,2017:2019);
+  sfSTC = dfrSTC |>
+            dplyr::group_by(year) |>
+            dplyr::mutate(nrmCPUE_STC=numCPUE_STC/sum(numCPUE_STC),
+                          nrmCPUE_LTC=numCPUE_LTC/sum(numCPUE_LTC)) |>
+            dplyr::left_join(lst$smos$lstSrvGrids$grid,by=c("GIS_STATION"="STATION_ID")) |>
+            sf::st_as_sf();
+  p = ggplot() + lst$bmls$land + lst$bmls$bathym +
+         geom_sf(data=sfSTC |> dplyr::filter(year %in% years,nrmCPUE_STC>0),
+                          mapping=aes(colour=nrmCPUE_STC,fill=nrmCPUE_STC)) +
+         geom_sf(data=lst$smos$sfCP |> dplyr::filter(year %in% years),
+                           colour="black",fill=NA,linewidth=1) +
+         scale_fill_viridis_c(name="small crab CPUE\n(normalized)",option="plasma",
+                              limits=c(0,NA),oob=scales::squish,direction=-1,
+                              aesthetics=c("colour","fill")) +
+         facet_wrap(~year,ncol=3,scales="fixed") +
+         lst$bmls$map_scale + lst$bmls$theme +
+         theme(legend.position="top",
+               #legend.position.inside=c(0.01,0.01),
+               legend.justification.top=c(0,0),
+               legend.direction="horizontal");
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Relative abundance of small crab (color scale) at NMF EBS bottom trawl survey stations for the  ",
+               "two successful (2003-2005, 2008-2010) and one unsuccessful (2017-2019) psuedocohort. The annual ",
+               "extent of 2 deg C or colder 'cold pool' water (as determined by bottom temperature at the survey stations) is ",
+               "indicated by the black outline.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(p,lbl,cap,pth,dfrSTC,sfSTC,lst);
+```
+
+<!-- references, if not child doc -->
+```{r,eval=!knitr::opts_knit$get("child"),results='asis'}
+  cat("# References {-}\n");
+  cat("::: {#refs}\n");
+  cat(":::\n\n");
+```
+
+<!-- tables, if not child doc and lstTbls is not empty -->
+```{r}
+#| label: tables_SCsxs
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printTablesSectionFromList.R",package="wtsQMD"));
+```
+
+<!-- figures, if not child doc and lstFigs is not empty -->
+```{r}
+#| label: figures_SCsxs
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printFiguresSectionFromList.R",package="wtsQMD"));
+```
