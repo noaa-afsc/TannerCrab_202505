@@ -1,0 +1,555 @@
+case,category,fleet,catch.type,data.type,fit.type,nll.type,y,x,m,s,rmse,wgt,nll,objfun
+,surveys data,NMFS M,index catch,abundance,BY_X,lognormal,all,male,all maturity states,all shell conditions,3.40695331042,0,187.506091713,0
+,surveys data,NMFS M,index catch,abundance,BY_X,lognormal,all,female,all maturity states,all shell conditions,0,0,0,0
+,surveys data,NMFS M,index catch,biomass,BY_X,lognormal,all,male,all maturity states,all shell conditions,2.75359373388,1,90.0584741738,90.0584741738
+,surveys data,NMFS M,index catch,biomass,BY_X,lognormal,all,female,all maturity states,all shell conditions,0,1,0,0
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1975,male,all maturity states,all shell conditions,101.510173731,1,23.8886547367,23.8886547367
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1976,male,all maturity states,all shell conditions,187.433252098,1,10.4344542281,10.4344542281
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1977,male,all maturity states,all shell conditions,63.1909980547,1,26.1899335629,26.1899335629
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1978,male,all maturity states,all shell conditions,150.814364872,1,12.5481643969,12.5481643969
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1979,male,all maturity states,all shell conditions,149.509274883,1,10.537615569,10.537615569
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1980,male,all maturity states,all shell conditions,39.3074219152,1,31.0129991227,31.0129991227
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1981,male,all maturity states,all shell conditions,108.318510633,1,11.8715715313,11.8715715313
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1982,male,all maturity states,all shell conditions,85.8754695844,1,16.7688461637,16.7688461637
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1983,male,all maturity states,all shell conditions,191.196338125,1,8.52092129206,8.52092129206
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1984,male,all maturity states,all shell conditions,115.665613842,1,9.06658856108,9.06658856108
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1985,male,all maturity states,all shell conditions,58.7385121719,1,18.1732375311,18.1732375311
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1986,male,all maturity states,all shell conditions,104.774171427,1,12.9693601355,12.9693601355
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1987,male,all maturity states,all shell conditions,79.4231016679,1,13.2106238256,13.2106238256
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1988,male,all maturity states,all shell conditions,347.897263057,1,3.77426032352,3.77426032352
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1989,male,all maturity states,all shell conditions,156.579813732,1,7.94254617818,7.94254617818
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1990,male,all maturity states,all shell conditions,293.313883975,1,4.76303384622,4.76303384622
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1991,male,all maturity states,all shell conditions,223.325629026,1,7.16371774288,7.16371774288
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1992,male,all maturity states,all shell conditions,165.809881355,1,8.92354722357,8.92354722357
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1993,male,all maturity states,all shell conditions,184.302522632,1,7.7283180016,7.7283180016
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1994,male,all maturity states,all shell conditions,134.620379665,1,11.480709316,11.480709316
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1995,male,all maturity states,all shell conditions,139.36855868,1,9.612693407,9.612693407
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1996,male,all maturity states,all shell conditions,197.193645982,1,7.71096203244,7.71096203244
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1997,male,all maturity states,all shell conditions,258.197592659,1,3.80445534104,3.80445534104
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1998,male,all maturity states,all shell conditions,220.851781857,1,4.97388420732,4.97388420732
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,1999,male,all maturity states,all shell conditions,152.396375662,1,8.33432267355,8.33432267355
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2000,male,all maturity states,all shell conditions,207.192147942,1,4.24536555061,4.24536555061
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2001,male,all maturity states,all shell conditions,156.879363687,1,6.72940756865,6.72940756865
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2002,male,all maturity states,all shell conditions,96.2427179548,1,7.86993506838,7.86993506838
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2003,male,all maturity states,all shell conditions,115.491693582,1,8.8621762261,8.8621762261
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2004,male,all maturity states,all shell conditions,178.863772614,1,6.63793631412,6.63793631412
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2005,male,all maturity states,all shell conditions,214.419138433,1,6.37150232288,6.37150232288
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2006,male,all maturity states,all shell conditions,203.93231238,1,7.71133107238,7.71133107238
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2007,male,all maturity states,all shell conditions,221.76983401,1,10.8638741188,10.8638741188
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2008,male,all maturity states,all shell conditions,273.271876718,1,7.05225495106,7.05225495106
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2009,male,all maturity states,all shell conditions,92.9596119169,1,12.2534154149,12.2534154149
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2010,male,all maturity states,all shell conditions,224.375715592,1,4.5138009738,4.5138009738
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2011,male,all maturity states,all shell conditions,200.411857873,1,7.50961543776,7.50961543776
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2012,male,all maturity states,all shell conditions,225.549469639,1,8.8882324032,8.8882324032
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2013,male,all maturity states,all shell conditions,239.385288705,1,8.07615833577,8.07615833577
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2014,male,all maturity states,all shell conditions,286.154364183,1,9.14964444707,9.14964444707
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2015,male,all maturity states,all shell conditions,526.028515301,1,5.69171052696,5.69171052696
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2016,male,all maturity states,all shell conditions,395.42542074199997,1,7.21020560829,7.21020560829
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2017,male,all maturity states,all shell conditions,155.292948011,1,8.86754374008,8.86754374008
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2018,male,all maturity states,all shell conditions,174.803941743,1,5.77612762054,5.77612762054
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2019,male,all maturity states,all shell conditions,148.1337754,1,6.24192009425,6.24192009425
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2021,male,all maturity states,all shell conditions,270.436187218,1,5.98657713654,5.98657713654
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2022,male,all maturity states,all shell conditions,225.721598021,1,4.48522595019,4.48522595019
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2023,male,all maturity states,all shell conditions,317.275186001,1,4.45170090225,4.45170090225
+,surveys data,NMFS M,index catch,n.at.z,BY_X,multinomial,2024,male,all maturity states,all shell conditions,139.055434215,1,10.2457450227,10.2457450227
+,surveys data,NMFS F,index catch,abundance,BY_XM,lognormal,all,male,immature,all shell conditions,0,0,0,0
+,surveys data,NMFS F,index catch,abundance,BY_XM,lognormal,all,male,mature,all shell conditions,0,0,0,0
+,surveys data,NMFS F,index catch,abundance,BY_XM,lognormal,all,female,immature,all shell conditions,3.13317418442,0,161.967614578,0
+,surveys data,NMFS F,index catch,abundance,BY_XM,lognormal,all,female,mature,all shell conditions,2.49142249258,0,76.3085652796,0
+,surveys data,NMFS F,index catch,biomass,BY_XM,lognormal,all,male,immature,all shell conditions,0,1,0,0
+,surveys data,NMFS F,index catch,biomass,BY_XM,lognormal,all,male,mature,all shell conditions,0,1,0,0
+,surveys data,NMFS F,index catch,biomass,BY_XM,lognormal,all,female,immature,all shell conditions,2.84175866002,1,119.710103691,119.710103691
+,surveys data,NMFS F,index catch,biomass,BY_XM,lognormal,all,female,mature,all shell conditions,2.32323106897,1,55.4136245748,55.4136245748
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1975,female,immature,all shell conditions,17.0158875583,1,7.72691569251,7.72691569251
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1975,female,mature,all shell conditions,34.3780701714,1,5.65236263373,5.65236263373
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1976,female,immature,all shell conditions,50.5440585277,1,2.8289196228,2.8289196228
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1976,female,mature,all shell conditions,42.602292613,1,4.52379296177,4.52379296177
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1977,female,immature,all shell conditions,28.0458846483,1,3.69844890581,3.69844890581
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1977,female,mature,all shell conditions,76.4250497598,1,4.74757031453,4.74757031453
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1978,female,immature,all shell conditions,26.0842061203,1,6.23363190647,6.23363190647
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1978,female,mature,all shell conditions,135.929315143,1,1.57739073248,1.57739073248
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1979,female,immature,all shell conditions,87.1652615557,1,1.56816114683,1.56816114683
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1979,female,mature,all shell conditions,71.1473910528,1,2.40667456242,2.40667456242
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1980,female,immature,all shell conditions,144.220018678,1,1.24859348262,1.24859348262
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1980,female,mature,all shell conditions,22.9726246443,1,4.68153884469,4.68153884469
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1981,female,immature,all shell conditions,35.1822753798,1,2.2253146641,2.2253146641
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1981,female,mature,all shell conditions,22.0066600454,1,10.6186564293,10.6186564293
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1982,female,immature,all shell conditions,47.832303251,1,4.00073482051,4.00073482051
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1982,female,mature,all shell conditions,20.3661830317,1,12.2515027844,12.2515027844
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1983,female,immature,all shell conditions,70.9513167699,1,3.40291122316,3.40291122316
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1983,female,mature,all shell conditions,80.8265769448,1,2.52947914433,2.52947914433
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1984,female,immature,all shell conditions,32.1897260566,1,4.77965799189,4.77965799189
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1984,female,mature,all shell conditions,237.853140326,1,1.36975978468,1.36975978468
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1985,female,immature,all shell conditions,145.824923477,1,2.76293533118,2.76293533118
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1985,female,mature,all shell conditions,153.149141852,1,3.79575051827,3.79575051827
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1986,female,immature,all shell conditions,107.698520548,1,4.18496461786,4.18496461786
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1986,female,mature,all shell conditions,15.4106710543,1,5.35405467824,5.35405467824
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1987,female,immature,all shell conditions,20.975501378,1,33.3090824839,33.3090824839
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1987,female,mature,all shell conditions,30.5233064406,1,3.0204461837,3.0204461837
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1988,female,immature,all shell conditions,165.301592484,1,3.30670752805,3.30670752805
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1988,female,mature,all shell conditions,17.8453511442,1,9.89074843913,9.89074843913
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1989,female,immature,all shell conditions,38.9250603938,1,4.68809694487,4.68809694487
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1989,female,mature,all shell conditions,38.3322751257,1,4.38943796946,4.38943796946
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1990,female,immature,all shell conditions,58.223761803,1,3.3883853552,3.3883853552
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1990,female,mature,all shell conditions,111.205579432,1,2.36206562618,2.36206562618
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1991,female,immature,all shell conditions,20.2083308249,1,6.23435448099,6.23435448099
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1991,female,mature,all shell conditions,294.255594205,1,1.26480936288,1.26480936288
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1992,female,immature,all shell conditions,29.1450843707,1,5.36562480182,5.36562480182
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1992,female,mature,all shell conditions,437.483922928,1,0.86424149876,0.86424149876
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1993,female,immature,all shell conditions,52.5569678034,1,2.73860129984,2.73860129984
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1993,female,mature,all shell conditions,331.79675363,1,0.567864221145,0.567864221145
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1994,female,immature,all shell conditions,26.0251567916,1,5.78144421759,5.78144421759
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1994,female,mature,all shell conditions,377.039020229,1,0.813269681435,0.813269681435
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1995,female,immature,all shell conditions,100.276162681,1,2.81301894584,2.81301894584
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1995,female,mature,all shell conditions,530.820012766,1,0.548268272521,0.548268272521
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1996,female,immature,all shell conditions,81.7172514619,1,3.77587851535,3.77587851535
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1996,female,mature,all shell conditions,237.832907969,1,1.18954498845,1.18954498845
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1997,female,immature,all shell conditions,54.7645378992,1,4.24415547738,4.24415547738
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1997,female,mature,all shell conditions,274.482822388,1,0.69974753096,0.69974753096
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1998,female,immature,all shell conditions,395.467323801,1,1.02767196768,1.02767196768
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1998,female,mature,all shell conditions,150.705154845,1,0.937969191452,0.937969191452
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1999,female,immature,all shell conditions,69.4914513209,1,5.13621205662,5.13621205662
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,1999,female,mature,all shell conditions,60.3538543069,1,1.19411583395,1.19411583395
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2000,female,immature,all shell conditions,123.487130619,1,1.85100848487,1.85100848487
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2000,female,mature,all shell conditions,33.8024438787,1,2.34592457425,2.34592457425
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2001,female,immature,all shell conditions,142.57084749,1,2.44098903656,2.44098903656
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2001,female,mature,all shell conditions,115.597074156,1,0.76235051954,0.76235051954
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2002,female,immature,all shell conditions,49.684212966,1,6.0542742595,6.0542742595
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2002,female,mature,all shell conditions,407.208367403,1,0.383350552704,0.383350552704
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2003,female,immature,all shell conditions,59.5449853326,1,3.99991223527,3.99991223527
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2003,female,mature,all shell conditions,96.7598361616,1,1.79202756356,1.79202756356
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2004,female,immature,all shell conditions,37.3429148533,1,8.80612310892,8.80612310892
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2004,female,mature,all shell conditions,95.5995731409,1,1.13233312794,1.13233312794
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2005,female,immature,all shell conditions,307.322648808,1,1.92873513558,1.92873513558
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2005,female,mature,all shell conditions,623.751509517,1,0.54556742863,0.54556742863
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2006,female,immature,all shell conditions,63.5567878346,1,3.80608057464,3.80608057464
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2006,female,mature,all shell conditions,415.228148255,1,0.601712229328,0.601712229328
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2007,female,immature,all shell conditions,88.8877630535,1,2.22698214216,2.22698214216
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2007,female,mature,all shell conditions,207.081231323,1,0.763065278897,0.763065278897
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2008,female,immature,all shell conditions,133.644126109,1,1.13376672703,1.13376672703
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2008,female,mature,all shell conditions,544.399300181,1,0.511329457485,0.511329457485
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2009,female,immature,all shell conditions,37.4409397957,1,6.1420803379,6.1420803379
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2009,female,mature,all shell conditions,445.000434536,1,0.41875351459,0.41875351459
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2010,female,immature,all shell conditions,62.8967710967,1,4.07850730649,4.07850730649
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2010,female,mature,all shell conditions,1368.76798102,1,0.204809794889,0.204809794889
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2011,female,immature,all shell conditions,45.2083080854,1,7.25397936905,7.25397936905
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2011,female,mature,all shell conditions,129.354416661,1,0.596527363786,0.596527363786
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2012,female,immature,all shell conditions,89.7190564588,1,3.78761002738,3.78761002738
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2012,female,mature,all shell conditions,52.1240298964,1,1.79761709738,1.79761709738
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2013,female,immature,all shell conditions,96.5238281913,1,2.43759013752,2.43759013752
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2013,female,mature,all shell conditions,221.333028139,1,0.777078517428,0.777078517428
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2014,female,immature,all shell conditions,13.3553987259,1,13.2406967205,13.2406967205
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2014,female,mature,all shell conditions,128.366408037,1,1.05932146798,1.05932146798
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2015,female,immature,all shell conditions,68.5828564311,1,2.8600424316,2.8600424316
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2015,female,mature,all shell conditions,77.3277286343,1,2.00991318634,2.00991318634
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2016,female,immature,all shell conditions,62.9234860278,1,2.86561985762,2.86561985762
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2016,female,mature,all shell conditions,62.5548015262,1,2.36737046307,2.36737046307
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2017,female,immature,all shell conditions,28.3088429469,1,4.20870989536,4.20870989536
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2017,female,mature,all shell conditions,87.543491179,1,1.20678140941,1.20678140941
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2018,female,immature,all shell conditions,81.4251709798,1,2.23347853513,2.23347853513
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2018,female,mature,all shell conditions,70.8951467817,1,1.6013323357,1.6013323357
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2019,female,immature,all shell conditions,47.8004871397,1,5.12304388522,5.12304388522
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2019,female,mature,all shell conditions,33.8301915647,1,4.15272203925,4.15272203925
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2021,female,immature,all shell conditions,78.0954462852,1,2.45870635833,2.45870635833
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2021,female,mature,all shell conditions,166.255999892,1,0.88551725084,0.88551725084
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2022,female,immature,all shell conditions,101.428929807,1,1.83650363711,1.83650363711
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2022,female,mature,all shell conditions,340.247063831,1,0.368053737829,0.368053737829
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2023,female,immature,all shell conditions,221.686978459,1,1.39868487149,1.39868487149
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2023,female,mature,all shell conditions,237.885298245,1,0.628098958868,0.628098958868
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2024,female,immature,all shell conditions,75.9267619878,1,5.62026828263,5.62026828263
+,surveys data,NMFS F,index catch,n.at.z,BY_XM,multinomial,2024,female,mature,all shell conditions,77.3342606331,1,1.8895966265,1.8895966265
+,surveys data,SBS NMFS M,index catch,abundance,BY_X,lognormal,all,male,all maturity states,all shell conditions,49.2961032069,0,7280.86003433,0
+,surveys data,SBS NMFS M,index catch,abundance,BY_X,lognormal,all,female,all maturity states,all shell conditions,0,0,0,0
+,surveys data,SBS NMFS M,index catch,biomass,BY_X,lognormal,all,male,all maturity states,all shell conditions,47.0128381258,0,6620.99179021,0
+,surveys data,SBS NMFS M,index catch,biomass,BY_X,lognormal,all,female,all maturity states,all shell conditions,0,0,0,0
+,surveys data,SBS NMFS M,index catch,n.at.z,BY_X,multinomial,2013,male,all maturity states,all shell conditions,64.1044828045,0,16.8708330403,0
+,surveys data,SBS NMFS M,index catch,n.at.z,BY_X,multinomial,2014,male,all maturity states,all shell conditions,153.839347571,0,10.4151416363,0
+,surveys data,SBS NMFS M,index catch,n.at.z,BY_X,multinomial,2015,male,all maturity states,all shell conditions,275.61729352,0,8.35013482343,0
+,surveys data,SBS NMFS M,index catch,n.at.z,BY_X,multinomial,2016,male,all maturity states,all shell conditions,288.162499053,0,8.39341209603,0
+,surveys data,SBS NMFS M,index catch,n.at.z,BY_X,multinomial,2017,male,all maturity states,all shell conditions,177.569722308,0,8.48047212382,0
+,surveys data,SBS NMFS F,index catch,abundance,BY_XM,lognormal,all,male,immature,all shell conditions,0,0,0,0
+,surveys data,SBS NMFS F,index catch,abundance,BY_XM,lognormal,all,male,mature,all shell conditions,0,0,0,0
+,surveys data,SBS NMFS F,index catch,abundance,BY_XM,lognormal,all,female,immature,all shell conditions,34.2221159509,0,3507.29951652,0
+,surveys data,SBS NMFS F,index catch,abundance,BY_XM,lognormal,all,female,mature,all shell conditions,28.4736556941,0,2426.02155622,0
+,surveys data,SBS NMFS F,index catch,biomass,BY_XM,lognormal,all,male,immature,all shell conditions,0,0,0,0
+,surveys data,SBS NMFS F,index catch,biomass,BY_XM,lognormal,all,male,mature,all shell conditions,0,0,0,0
+,surveys data,SBS NMFS F,index catch,biomass,BY_XM,lognormal,all,female,immature,all shell conditions,26.6486045071,0,2123.83559794,0
+,surveys data,SBS NMFS F,index catch,biomass,BY_XM,lognormal,all,female,mature,all shell conditions,25.1585459587,0,1892.33510462,0
+,surveys data,SBS NMFS F,index catch,n.at.z,BY_XM,multinomial,2013,female,immature,all shell conditions,39.6737818391,0,1.75426643825,0
+,surveys data,SBS NMFS F,index catch,n.at.z,BY_XM,multinomial,2013,female,mature,all shell conditions,77.2846973318,0,1.9815978569,0
+,surveys data,SBS NMFS F,index catch,n.at.z,BY_XM,multinomial,2014,female,immature,all shell conditions,21.1541757022,0,1.57704000203,0
+,surveys data,SBS NMFS F,index catch,n.at.z,BY_XM,multinomial,2014,female,mature,all shell conditions,157.55230635,0,1.07670860386,0
+,surveys data,SBS NMFS F,index catch,n.at.z,BY_XM,multinomial,2015,female,immature,all shell conditions,23.9264482094,0,4.2902098144,0
+,surveys data,SBS NMFS F,index catch,n.at.z,BY_XM,multinomial,2015,female,mature,all shell conditions,40.2836913873,0,1.83089760635,0
+,surveys data,SBS NMFS F,index catch,n.at.z,BY_XM,multinomial,2016,female,immature,all shell conditions,77.4187021388,0,1.54533468693,0
+,surveys data,SBS NMFS F,index catch,n.at.z,BY_XM,multinomial,2016,female,mature,all shell conditions,36.3832178773,0,3.78046505487,0
+,surveys data,SBS NMFS F,index catch,n.at.z,BY_XM,multinomial,2017,female,immature,all shell conditions,24.2106630609,0,5.16727039278,0
+,surveys data,SBS NMFS F,index catch,n.at.z,BY_XM,multinomial,2017,female,mature,all shell conditions,68.2271994418,0,1.22074929896,0
+,surveys data,SBS BSFRF M,index catch,abundance,BY_X,lognormal,all,male,all maturity states,all shell conditions,1.51810362326,0,-2.2474868076,-0
+,surveys data,SBS BSFRF M,index catch,abundance,BY_X,lognormal,all,female,all maturity states,all shell conditions,0,0,0,0
+,surveys data,SBS BSFRF M,index catch,biomass,BY_X,lognormal,all,male,all maturity states,all shell conditions,1.56708594928,1,-1.5836337314,-1.5836337314
+,surveys data,SBS BSFRF M,index catch,biomass,BY_X,lognormal,all,female,all maturity states,all shell conditions,0,1,0,0
+,surveys data,SBS BSFRF M,index catch,n.at.z,BY_X,DirichletMultinomial,2013,male,all maturity states,all shell conditions,43.7068903739,1,77.3733715683,77.3733715683
+,surveys data,SBS BSFRF M,index catch,n.at.z,BY_X,DirichletMultinomial,2014,male,all maturity states,all shell conditions,303.863742279,1,57.3789607675,57.3789607675
+,surveys data,SBS BSFRF M,index catch,n.at.z,BY_X,DirichletMultinomial,2015,male,all maturity states,all shell conditions,82.1711043006,1,59.4682045583,59.4682045583
+,surveys data,SBS BSFRF M,index catch,n.at.z,BY_X,DirichletMultinomial,2016,male,all maturity states,all shell conditions,195.520214491,1,48.5717655238,48.5717655238
+,surveys data,SBS BSFRF M,index catch,n.at.z,BY_X,DirichletMultinomial,2017,male,all maturity states,all shell conditions,23.6144971083,1,48.6660535229,48.6660535229
+,surveys data,SBS BSFRF M,index catch,n.at.z,BY_X,DirichletMultinomial,2018,male,all maturity states,all shell conditions,46.8463871296,1,40.6028849662,40.6028849662
+,surveys data,SBS BSFRF F,index catch,abundance,BY_XM,lognormal,all,male,immature,all shell conditions,0,0,0,0
+,surveys data,SBS BSFRF F,index catch,abundance,BY_XM,lognormal,all,male,mature,all shell conditions,0,0,0,0
+,surveys data,SBS BSFRF F,index catch,abundance,BY_XM,lognormal,all,female,immature,all shell conditions,1.67970023863,0,1.0271167908,0
+,surveys data,SBS BSFRF F,index catch,abundance,BY_XM,lognormal,all,female,mature,all shell conditions,1.77053720467,0,2.8230578537,0
+,surveys data,SBS BSFRF F,index catch,biomass,BY_XM,lognormal,all,male,immature,all shell conditions,0,1,0,0
+,surveys data,SBS BSFRF F,index catch,biomass,BY_XM,lognormal,all,male,mature,all shell conditions,0,1,0,0
+,surveys data,SBS BSFRF F,index catch,biomass,BY_XM,lognormal,all,female,immature,all shell conditions,1.12309059211,1,-3.6120670218,-3.6120670218
+,surveys data,SBS BSFRF F,index catch,biomass,BY_XM,lognormal,all,female,mature,all shell conditions,1.9859032365,1,5.10287358213,5.10287358213
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2013,female,immature,all shell conditions,12.602290793,1,28.4448703855,28.4448703855
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2013,female,mature,all shell conditions,37.5202553012,1,14.2825624604,14.2825624604
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2014,female,immature,all shell conditions,21.5011247536,1,10.653159167,10.653159167
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2014,female,mature,all shell conditions,35.5140051152,1,13.170412725,13.170412725
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2015,female,immature,all shell conditions,15.6327445111,1,15.5780710481,15.5780710481
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2015,female,mature,all shell conditions,94.7888154922,1,16.2882143713,16.2882143713
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2016,female,immature,all shell conditions,13.6831336138,1,24.5073817029,24.5073817029
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2016,female,mature,all shell conditions,60.6107550905,1,15.9795718343,15.9795718343
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2017,female,immature,all shell conditions,18.2409174181,1,24.2841136999,24.2841136999
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2017,female,mature,all shell conditions,107.926012364,1,15.4436738047,15.4436738047
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2018,female,immature,all shell conditions,127.265842841,1,18.9526657093,18.9526657093
+,surveys data,SBS BSFRF F,index catch,n.at.z,BY_XM,DirichletMultinomial,2018,female,mature,all shell conditions,90.2527102917,1,26.7186646395,26.7186646395
+,fisheries data,TCF,retained catch,abundance,BY_X,lognormal,all,male,all maturity states,all shell conditions,5.13377062145,0,424.522669322,0
+,fisheries data,TCF,retained catch,abundance,BY_X,lognormal,all,female,all maturity states,all shell conditions,0,0,0,0
+,fisheries data,TCF,retained catch,biomass,BY_X,lognormal,all,male,all maturity states,all shell conditions,0.408773784629,1,-151.624435984,-151.624435984
+,fisheries data,TCF,retained catch,biomass,BY_X,lognormal,all,female,all maturity states,all shell conditions,0,1,0,0
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1980,male,all maturity states,all shell conditions,22.6798875128,1,15.5235735478,15.5235735478
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1981,male,all maturity states,all shell conditions,186.55193571,1,1.32261309206,1.32261309206
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1982,male,all maturity states,all shell conditions,377.555863896,1,1.27379926894,1.27379926894
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1983,male,all maturity states,all shell conditions,43.7527148125,1,1.51765374413,1.51765374413
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1984,male,all maturity states,all shell conditions,147.666365872,1,0.653845608618,0.653845608618
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1988,male,all maturity states,all shell conditions,146.622019841,1,3.17584590714,3.17584590714
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1989,male,all maturity states,all shell conditions,1110.70125213,1,0.691695708136,0.691695708136
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1990,male,all maturity states,all shell conditions,222.834575419,1,3.96175195173,3.96175195173
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1991,male,all maturity states,all shell conditions,646.180910311,1,0.935880077665,0.935880077665
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1992,male,all maturity states,all shell conditions,240.806936883,1,4.79445250862,4.79445250862
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1993,male,all maturity states,all shell conditions,224.351261267,1,2.87924409521,2.87924409521
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1994,male,all maturity states,all shell conditions,580.544565672,1,3.88423692291,3.88423692291
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1995,male,all maturity states,all shell conditions,727.095550108,1,2.69514413289,2.69514413289
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,1996,male,all maturity states,all shell conditions,580.500604783,1,0.678446752596,0.678446752596
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2005,male,all maturity states,all shell conditions,18.9449294475,1,1.11252533492,1.11252533492
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2006,male,all maturity states,all shell conditions,92.9000642743,1,0.781164594501,0.781164594501
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2007,male,all maturity states,all shell conditions,265.863541655,1,0.883496380454,0.883496380454
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2008,male,all maturity states,all shell conditions,228.204511812,1,0.392059633309,0.392059633309
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2009,male,all maturity states,all shell conditions,30.7105950653,1,1.97230580036,1.97230580036
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2013,male,all maturity states,all shell conditions,331.10957603,1,0.693481323152,0.693481323152
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2014,male,all maturity states,all shell conditions,380.577429479,1,2.25128304331,2.25128304331
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2015,male,all maturity states,all shell conditions,269.579241171,1,3.68101483378,3.68101483378
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2017,male,all maturity states,all shell conditions,125.900417077,1,1.42431623497,1.42431623497
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2018,male,all maturity states,all shell conditions,82.1724084291,1,1.95291708932,1.95291708932
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2020,male,all maturity states,all shell conditions,36.5083965835,1,3.17501244247,3.17501244247
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2021,male,all maturity states,all shell conditions,11.2569047964,1,8.98314087794,8.98314087794
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2022,male,all maturity states,all shell conditions,63.4529795825,1,3.4499396617700002,3.4499396617700002
+,fisheries data,TCF,retained catch,n.at.z,BY_X,multinomial,2023,male,all maturity states,all shell conditions,299.717655149,1,1.39100234397,1.39100234397
+,fisheries data,TCF,total catch,abundance,BY_TOTAL,lognormal,all,all sexes,all maturity states,all shell conditions,2.27493825432,0,17.2737285293,0
+,fisheries data,TCF,total catch,biomass,BY_TOTAL,lognormal,all,all sexes,all maturity states,all shell conditions,1.98994273944,1,6.36939804432,6.36939804432
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1991,male,all maturity states,all shell conditions,1812.53025875,1,1.18635894242,1.18635894242
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1991,female,all maturity states,all shell conditions,508.866727606,1,1.06991265899,1.06991265899
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1992,male,all maturity states,all shell conditions,272.357967686,1,8.50405527422,8.50405527422
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1992,female,all maturity states,all shell conditions,1213.12604621,1,-4.2280501103,-4.2280501103
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1993,male,all maturity states,all shell conditions,912.621985023,1,5.69658517751,5.69658517751
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1993,female,all maturity states,all shell conditions,452.479624294,1,-3.13890792722,-3.13890792722
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1994,male,all maturity states,all shell conditions,596.368106952,1,-3.31760269265,-3.31760269265
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1994,female,all maturity states,all shell conditions,256.301700015,1,4.80448536986,4.80448536986
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1995,male,all maturity states,all shell conditions,98.8818821353,1,-10.2551634447,-10.2551634447
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1995,female,all maturity states,all shell conditions,17.5175163705,1,20.2875732357,20.2875732357
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1996,male,all maturity states,all shell conditions,20.7606087312,1,0.880115225265,0.880115225265
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,1996,female,all maturity states,all shell conditions,401.975634266,1,-0.107536944811,-0.107536944811
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2005,male,all maturity states,all shell conditions,63.7284765651,1,-1.17410345181,-1.17410345181
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2005,female,all maturity states,all shell conditions,56.6880395351,1,11.8222470742,11.8222470742
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2006,male,all maturity states,all shell conditions,139.32955233,1,-18.2405048224,-18.2405048224
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2006,female,all maturity states,all shell conditions,16.5273578742,1,44.7537797799,44.7537797799
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2007,male,all maturity states,all shell conditions,504.722929126,1,-1.09503361949,-1.09503361949
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2007,female,all maturity states,all shell conditions,528.725637796,1,3.37949211841,3.37949211841
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2008,male,all maturity states,all shell conditions,348.638474987,1,11.0934540367,11.0934540367
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2008,female,all maturity states,all shell conditions,172.258296175,1,-3.9464298269800002,-3.9464298269800002
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2009,male,all maturity states,all shell conditions,66.350786649,1,27.3312869104,27.3312869104
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2009,female,all maturity states,all shell conditions,31.782070724,1,-3.29733071321,-3.29733071321
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2013,male,all maturity states,all shell conditions,1745.08522914,1,2.12530350357,2.12530350357
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2013,female,all maturity states,all shell conditions,398.64365886,1,-0.689910383773,-0.689910383773
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2014,male,all maturity states,all shell conditions,157.300406035,1,8.67857415981,8.67857415981
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2014,female,all maturity states,all shell conditions,380.396042018,1,-2.03218310886,-2.03218310886
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2015,male,all maturity states,all shell conditions,117.317288666,1,9.04136994792,9.04136994792
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2015,female,all maturity states,all shell conditions,471.334542016,1,-1.57989116637,-1.57989116637
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2017,male,all maturity states,all shell conditions,134.281984574,1,-2.43530220346,-2.43530220346
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2017,female,all maturity states,all shell conditions,84.756144767,1,9.94729914815,9.94729914815
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2018,male,all maturity states,all shell conditions,57.4180822358,1,4.36925866452,4.36925866452
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2018,female,all maturity states,all shell conditions,94.2357579259,1,11.8847440734,11.8847440734
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2020,male,all maturity states,all shell conditions,43.4392206531,1,6.41103790143,6.41103790143
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2020,female,all maturity states,all shell conditions,108.196876243,1,5.94313193532,5.94313193532
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2021,male,all maturity states,all shell conditions,19.196393466,1,12.6809375251,12.6809375251
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2021,female,all maturity states,all shell conditions,170.608735848,1,4.57868269432,4.57868269432
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2022,male,all maturity states,all shell conditions,56.2809149088,1,12.8425841273,12.8425841273
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2022,female,all maturity states,all shell conditions,765.8033972,1,-0.0497205236898,-0.0497205236898
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2023,male,all maturity states,all shell conditions,275.742618507,1,6.81708232306,6.81708232306
+,fisheries data,TCF,total catch,n.at.z,BY_XE,multinomial,2023,female,all maturity states,all shell conditions,598.166063266,1,-1.77628395248,-1.77628395248
+,fisheries data,SCF,total catch,abundance,BY_TOTAL,lognormal,all,all sexes,all maturity states,all shell conditions,1.10405992934,0,-35.2234781961,-0
+,fisheries data,SCF,total catch,biomass,BY_TOTAL,lognormal,all,all sexes,all maturity states,all shell conditions,0.141759963754,1,-52.2856482613,-52.2856482613
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1990,male,all maturity states,all shell conditions,69.6857305735,1,21.8267235432,21.8267235432
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1990,female,all maturity states,all shell conditions,106.741308024,1,-3.27482347244,-3.27482347244
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1991,male,all maturity states,all shell conditions,140.78299776,1,12.6397683833,12.6397683833
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1991,female,all maturity states,all shell conditions,125.101470736,1,-3.31098819421,-3.31098819421
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1992,male,all maturity states,all shell conditions,45.8108464292,1,7.8545474991,7.8545474991
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1992,female,all maturity states,all shell conditions,320.853058509,1,0.714288674599,0.714288674599
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1993,male,all maturity states,all shell conditions,47.155470737900004,1,2.90216859878,2.90216859878
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1993,female,all maturity states,all shell conditions,29.1146479117,1,11.5343690327,11.5343690327
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1994,male,all maturity states,all shell conditions,23.2200818923,1,6.38413856259,6.38413856259
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1994,female,all maturity states,all shell conditions,21.8953548997,1,8.74152317178,8.74152317178
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1995,male,all maturity states,all shell conditions,38.9474472202,1,1.89033915338,1.89033915338
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1995,female,all maturity states,all shell conditions,36.2672679178,1,2.73005054263,2.73005054263
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1996,male,all maturity states,all shell conditions,162.783168526,1,1.27255156591,1.27255156591
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1996,female,all maturity states,all shell conditions,577.637427743,1,0.712897058399,0.712897058399
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1997,male,all maturity states,all shell conditions,331.900778058,1,0.309732722758,0.309732722758
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1997,female,all maturity states,all shell conditions,289.977432549,1,1.09598038469,1.09598038469
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1998,male,all maturity states,all shell conditions,391.97042851,1,-1.73445506787,-1.73445506787
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1998,female,all maturity states,all shell conditions,15.8145734702,1,3.87489206059,3.87489206059
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1999,male,all maturity states,all shell conditions,209.644312354,1,-0.132620444361,-0.132620444361
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,1999,female,all maturity states,all shell conditions,62.3439446132,1,0.679876957341,0.679876957341
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2000,male,all maturity states,all shell conditions,417.076965476,1,0.775145596762,0.775145596762
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2000,female,all maturity states,all shell conditions,120.865937494,1,-0.224416758407,-0.224416758407
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2001,male,all maturity states,all shell conditions,918.021133797,1,0.534861525866,0.534861525866
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2001,female,all maturity states,all shell conditions,341.652437869,1,-0.0455160916502,-0.0455160916502
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2002,male,all maturity states,all shell conditions,52.883984455,1,0.529935541536,0.529935541536
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2002,female,all maturity states,all shell conditions,79.8798212447,1,0.611556686798,0.611556686798
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2003,male,all maturity states,all shell conditions,87.2156929653,1,-0.213489478997,-0.213489478997
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2003,female,all maturity states,all shell conditions,27.5712512471,1,1.10885470257,1.10885470257
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2004,male,all maturity states,all shell conditions,24.9081620384,1,-0.0317086558772,-0.0317086558772
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2004,female,all maturity states,all shell conditions,4.93037223578,1,6.1044496172,6.1044496172
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2005,male,all maturity states,all shell conditions,136.474285283,1,3.21509456742,3.21509456742
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2005,female,all maturity states,all shell conditions,1470.22494081,1,0.591500150609,0.591500150609
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2006,male,all maturity states,all shell conditions,62.0728814102,1,-2.0142600167,-2.0142600167
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2006,female,all maturity states,all shell conditions,15.1278173908,1,16.054984594,16.054984594
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2007,male,all maturity states,all shell conditions,316.373647658,1,-1.81369020353,-1.81369020353
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2007,female,all maturity states,all shell conditions,99.31542824,1,5.1256390417,5.1256390417
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2008,male,all maturity states,all shell conditions,103.632338296,1,3.74135550709,3.74135550709
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2008,female,all maturity states,all shell conditions,78.8511580206,1,4.43527030143,4.43527030143
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2009,male,all maturity states,all shell conditions,707.19533536,1,1.45272098708,1.45272098708
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2009,female,all maturity states,all shell conditions,520.308600625,1,0.770538275756,0.770538275756
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2010,male,all maturity states,all shell conditions,376.188586176,1,2.32365754689,2.32365754689
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2010,female,all maturity states,all shell conditions,1127.59827425,1,-0.451585325399,-0.451585325399
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2011,male,all maturity states,all shell conditions,193.128329187,1,3.79210908679,3.79210908679
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2011,female,all maturity states,all shell conditions,1280.7744439,1,-0.365144888303,-0.365144888303
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2012,male,all maturity states,all shell conditions,202.211852413,1,5.31630179155,5.31630179155
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2012,female,all maturity states,all shell conditions,1249.77639192,1,-0.392255770364,-0.392255770364
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2013,male,all maturity states,all shell conditions,272.300502325,1,3.29427439007,3.29427439007
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2013,female,all maturity states,all shell conditions,2474.96322112,1,-0.47843538035,-0.47843538035
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2014,male,all maturity states,all shell conditions,462.781428132,1,3.51264592627,3.51264592627
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2014,female,all maturity states,all shell conditions,1405.32641419,1,0.0713274780997,0.0713274780997
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2015,male,all maturity states,all shell conditions,393.874651565,1,5.08044256976,5.08044256976
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2015,female,all maturity states,all shell conditions,575.629522282,1,-1.126010278,-1.126010278
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2016,male,all maturity states,all shell conditions,1087.03579842,1,2.92222450241,2.92222450241
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2016,female,all maturity states,all shell conditions,801.971008164,1,-0.935666722718,-0.935666722718
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2017,male,all maturity states,all shell conditions,538.098517925,1,0.883471033711,0.883471033711
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2017,female,all maturity states,all shell conditions,751.129467761,1,-0.21700109524,-0.21700109524
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2018,male,all maturity states,all shell conditions,602.338108124,1,0.27163300618,0.27163300618
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2018,female,all maturity states,all shell conditions,302.910591793,1,0.767152977869,0.767152977869
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2019,male,all maturity states,all shell conditions,230.200314484,1,0.989811985568,0.989811985568
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2019,female,all maturity states,all shell conditions,276.917780036,1,1.49647663991,1.49647663991
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2020,male,all maturity states,all shell conditions,57.6933306341,1,0.703517901697,0.703517901697
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2020,female,all maturity states,all shell conditions,392.204294251,1,-0.03738760423,-0.03738760423
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2021,male,all maturity states,all shell conditions,54.0969408251,1,0.467423285274,0.467423285274
+,fisheries data,SCF,total catch,n.at.z,BY_XE,multinomial,2021,female,all maturity states,all shell conditions,353.427784674,1,0.0929853332698,0.0929853332698
+,fisheries data,GF All,total catch,abundance,BY_TOTAL,lognormal,all,all sexes,all maturity states,all shell conditions,0.762347241428,1,-67.7631124407,-67.7631124407
+,fisheries data,GF All,total catch,biomass,BY_TOTAL,lognormal,all,all sexes,all maturity states,all shell conditions,0.722131318675,1,-69.2854541558,-69.2854541558
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1973,male,all maturity states,all shell conditions,160.524624163,1,-1.20945228361,-1.20945228361
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1973,female,all maturity states,all shell conditions,269.627530288,1,4.24537947321,4.24537947321
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1974,male,all maturity states,all shell conditions,220.794378555,1,-0.311377983299,-0.311377983299
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1974,female,all maturity states,all shell conditions,211.900480257,1,2.58241873654,2.58241873654
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1975,male,all maturity states,all shell conditions,210.172265101,1,-0.0672649884554,-0.0672649884554
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1975,female,all maturity states,all shell conditions,310.209307446,1,1.3389939722,1.3389939722
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1976,male,all maturity states,all shell conditions,109.659736466,1,-2.41236992628,-2.41236992628
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1976,female,all maturity states,all shell conditions,154.689815319,1,17.0358005522,17.0358005522
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1977,male,all maturity states,all shell conditions,177.912424305,1,0.990665876758,0.990665876758
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1977,female,all maturity states,all shell conditions,342.684594888,1,11.4613130179,11.4613130179
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1978,male,all maturity states,all shell conditions,235.468774654,1,-0.630568707241,-0.630568707241
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1978,female,all maturity states,all shell conditions,213.870399319,1,14.9098504898,14.9098504898
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1979,male,all maturity states,all shell conditions,789.179240866,1,-0.902786956509,-0.902786956509
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1979,female,all maturity states,all shell conditions,978.920627798,1,6.2524186033,6.2524186033
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1980,male,all maturity states,all shell conditions,367.474320987,1,7.91197392497,7.91197392497
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1980,female,all maturity states,all shell conditions,704.160815282,1,-0.716128107422,-0.716128107422
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1981,male,all maturity states,all shell conditions,524.502732568,1,-4.1288254334,-4.1288254334
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1981,female,all maturity states,all shell conditions,68.0144636174,1,12.28309409,12.28309409
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1982,male,all maturity states,all shell conditions,504.297440782,1,-1.24830621037,-1.24830621037
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1982,female,all maturity states,all shell conditions,102.201785492,1,16.7272453539,16.7272453539
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1983,male,all maturity states,all shell conditions,300.124791527,1,22.5842873462,22.5842873462
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1983,female,all maturity states,all shell conditions,348.043802475,1,-3.93510669968,-3.93510669968
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1984,male,all maturity states,all shell conditions,524.384412208,1,14.9337464564,14.9337464564
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1984,female,all maturity states,all shell conditions,433.877776098,1,-6.34591622149,-6.34591622149
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1985,male,all maturity states,all shell conditions,249.476105982,1,11.7553648617,11.7553648617
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1985,female,all maturity states,all shell conditions,234.475835704,1,-0.0234915275839,-0.0234915275839
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1986,male,all maturity states,all shell conditions,423.786079238,1,8.48049479577,8.48049479577
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1986,female,all maturity states,all shell conditions,137.032562303,1,3.80939461034,3.80939461034
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1987,male,all maturity states,all shell conditions,223.392675089,1,12.0623291244,12.0623291244
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1987,female,all maturity states,all shell conditions,650.611146123,1,3.8010900502,3.8010900502
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1988,male,all maturity states,all shell conditions,279.057977589,1,4.33611529026,4.33611529026
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1988,female,all maturity states,all shell conditions,207.12475864,1,10.9439370535,10.9439370535
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1989,male,all maturity states,all shell conditions,450.724646781,1,-2.10638119375,-2.10638119375
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1989,female,all maturity states,all shell conditions,795.439705181,1,9.06757506641,9.06757506641
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1990,male,all maturity states,all shell conditions,793.429722742,1,11.1633397084,11.1633397084
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1990,female,all maturity states,all shell conditions,361.317642472,1,-5.36647151027,-5.36647151027
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1991,male,all maturity states,all shell conditions,310.230908188,1,0.0911049336954,0.0911049336954
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1991,female,all maturity states,all shell conditions,275.393801173,1,5.48917892591,5.48917892591
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1992,male,all maturity states,all shell conditions,169.933411434,1,4.53731105677,4.53731105677
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1992,female,all maturity states,all shell conditions,75.4871850116,1,2.29248361836,2.29248361836
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1993,male,all maturity states,all shell conditions,51.8898688771,1,4.18457611721,4.18457611721
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1993,female,all maturity states,all shell conditions,84.7367309322,1,0.0279028745114,0.0279028745114
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1994,male,all maturity states,all shell conditions,147.073119531,1,3.14107712724,3.14107712724
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1994,female,all maturity states,all shell conditions,475.670575588,1,1.90516189347,1.90516189347
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1995,male,all maturity states,all shell conditions,53.7912445952,1,10.1359676906,10.1359676906
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1995,female,all maturity states,all shell conditions,78.8337109328,1,4.31937893337,4.31937893337
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1996,male,all maturity states,all shell conditions,141.823570293,1,11.9152972508,11.9152972508
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1996,female,all maturity states,all shell conditions,364.149201457,1,-1.59079787828,-1.59079787828
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1997,male,all maturity states,all shell conditions,42.7871426254,1,21.8616343123,21.8616343123
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1997,female,all maturity states,all shell conditions,146.334740403,1,8.73412964575,8.73412964575
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1998,male,all maturity states,all shell conditions,99.2550165721,1,7.31670741776,7.31670741776
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1998,female,all maturity states,all shell conditions,206.26055402,1,10.4947125981,10.4947125981
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1999,male,all maturity states,all shell conditions,290.755007793,1,4.04299645199,4.04299645199
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,1999,female,all maturity states,all shell conditions,615.749817843,1,4.80726226775,4.80726226775
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2000,male,all maturity states,all shell conditions,313.822141841,1,5.50954924181,5.50954924181
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2000,female,all maturity states,all shell conditions,657.20023739,1,1.34169028031,1.34169028031
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2001,male,all maturity states,all shell conditions,407.164953752,1,10.4527257545,10.4527257545
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2001,female,all maturity states,all shell conditions,1412.74413825,1,-2.65234984608,-2.65234984608
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2002,male,all maturity states,all shell conditions,319.072790334,1,12.4681477419,12.4681477419
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2002,female,all maturity states,all shell conditions,878.53557592,1,0.579942141199,0.579942141199
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2003,male,all maturity states,all shell conditions,201.06989174,1,3.19183726498,3.19183726498
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2003,female,all maturity states,all shell conditions,353.719596135,1,4.54490899706,4.54490899706
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2004,male,all maturity states,all shell conditions,110.089187174,1,-2.89070108571,-2.89070108571
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2004,female,all maturity states,all shell conditions,30.955110749,1,39.5902532268,39.5902532268
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2005,male,all maturity states,all shell conditions,750.885059511,1,4.56245863861,4.56245863861
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2005,female,all maturity states,all shell conditions,1803.98049134,1,0.623358252252,0.623358252252
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2006,male,all maturity states,all shell conditions,202.576018292,1,12.009656512,12.009656512
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2006,female,all maturity states,all shell conditions,155.878278412,1,2.96632916121,2.96632916121
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2007,male,all maturity states,all shell conditions,178.396691457,1,9.02017853536,9.02017853536
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2007,female,all maturity states,all shell conditions,111.160803561,1,9.28713214274,9.28713214274
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2008,male,all maturity states,all shell conditions,134.644525777,1,26.1314951096,26.1314951096
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2008,female,all maturity states,all shell conditions,168.153058549,1,-7.79195390537,-7.79195390537
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2009,male,all maturity states,all shell conditions,430.202529682,1,11.9165777467,11.9165777467
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2009,female,all maturity states,all shell conditions,462.027674717,1,-6.3453249513,-6.3453249513
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2010,male,all maturity states,all shell conditions,997.453625438,1,3.600989575,3.600989575
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2010,female,all maturity states,all shell conditions,868.662483593,1,-1.0120753393,-1.0120753393
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2011,male,all maturity states,all shell conditions,59.7589152105,1,16.3331236881,16.3331236881
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2011,female,all maturity states,all shell conditions,52.9271986687,1,26.0121631122,26.0121631122
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2012,male,all maturity states,all shell conditions,371.997228074,1,-8.07469540764,-8.07469540764
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2012,female,all maturity states,all shell conditions,127.485619457,1,13.7455759923,13.7455759923
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2013,male,all maturity states,all shell conditions,232.557900457,1,1.72023424045,1.72023424045
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2013,female,all maturity states,all shell conditions,647.73767634,1,8.37430443714,8.37430443714
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2014,male,all maturity states,all shell conditions,732.245608621,1,8.60655978137,8.60655978137
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2014,female,all maturity states,all shell conditions,579.709840322,1,-5.13180088588,-5.13180088588
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2015,male,all maturity states,all shell conditions,226.725399245,1,11.1808233253,11.1808233253
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2015,female,all maturity states,all shell conditions,226.505229622,1,1.39664438092,1.39664438092
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2016,male,all maturity states,all shell conditions,211.248771547,1,-4.63568544456,-4.63568544456
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2016,female,all maturity states,all shell conditions,71.6438141154,1,21.6208158581,21.6208158581
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2017,male,all maturity states,all shell conditions,67.4755838478,1,24.9666477184,24.9666477184
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2017,female,all maturity states,all shell conditions,133.944374817,1,-6.5413609365,-6.5413609365
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2018,male,all maturity states,all shell conditions,191.609261441,1,7.48268998384,7.48268998384
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2018,female,all maturity states,all shell conditions,195.987039313,1,-1.61113430333,-1.61113430333
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2019,male,all maturity states,all shell conditions,522.354838053,1,0.184828364846,0.184828364846
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2019,female,all maturity states,all shell conditions,323.723378922,1,4.37512371988,4.37512371988
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2020,male,all maturity states,all shell conditions,171.147107654,1,4.93527755653,4.93527755653
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2020,female,all maturity states,all shell conditions,341.387865713,1,3.84204665379,3.84204665379
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2021,male,all maturity states,all shell conditions,514.002803901,1,4.72361732852,4.72361732852
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2021,female,all maturity states,all shell conditions,277.715602079,1,2.24999401302,2.24999401302
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2022,male,all maturity states,all shell conditions,126.067731636,1,12.0626154948,12.0626154948
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2022,female,all maturity states,all shell conditions,419.895143587,1,2.9048846981,2.9048846981
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2023,male,all maturity states,all shell conditions,28.153585442,1,10.877355642,10.877355642
+,fisheries data,GF All,total catch,n.at.z,BY_XE,multinomial,2023,female,all maturity states,all shell conditions,79.718826493,1,2.47987148678,2.47987148678
+,fisheries data,RKF,total catch,abundance,BY_TOTAL,lognormal,all,all sexes,all maturity states,all shell conditions,0.693055359463,0,-34.2420309276,-0
+,fisheries data,RKF,total catch,biomass,BY_TOTAL,lognormal,all,all sexes,all maturity states,all shell conditions,0.235133729681,1,-36.8964594957,-36.8964594957
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1990,male,all maturity states,all shell conditions,53.7742137252,1,1.78796575471,1.78796575471
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1990,female,all maturity states,all shell conditions,335.735619779,1,-0.192765109626,-0.192765109626
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1991,male,all maturity states,all shell conditions,69.7419546724,1,2.28532230669,2.28532230669
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1991,female,all maturity states,all shell conditions,232.607507305,1,-0.430287334512,-0.430287334512
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1992,male,all maturity states,all shell conditions,77.4397287119,1,2.5068317718,2.5068317718
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1992,female,all maturity states,all shell conditions,178.586057315,1,-0.463437286331,-0.463437286331
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1993,male,all maturity states,all shell conditions,127.451174221,1,0.272308521166,0.272308521166
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1993,female,all maturity states,all shell conditions,294.209918841,1,2.67095725166,2.67095725166
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1997,male,all maturity states,all shell conditions,16.1088188963,1,3.37778622413,3.37778622413
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1997,female,all maturity states,all shell conditions,260.57970759,1,-0.113774027657,-0.113774027657
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1998,male,all maturity states,all shell conditions,38.9041326679,1,0.504835713599,0.504835713599
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1998,female,all maturity states,all shell conditions,17976931348600011e292,1,-0,-0
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1999,male,all maturity states,all shell conditions,62.3469200716,1,0.201625791363,0.201625791363
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,1999,female,all maturity states,all shell conditions,17976931348600011e292,1,-0,-0
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2000,male,all maturity states,all shell conditions,186.474221255,1,0.471268713078,0.471268713078
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2000,female,all maturity states,all shell conditions,936.574298347,1,0.0465192140805,0.0465192140805
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2001,male,all maturity states,all shell conditions,179.397861652,1,0.163014998338,0.163014998338
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2001,female,all maturity states,all shell conditions,17976931348600011e292,1,-0,-0
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2002,male,all maturity states,all shell conditions,168.89799706,1,0.100670752276,0.100670752276
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2002,female,all maturity states,all shell conditions,196.620402127,1,0.199162159767,0.199162159767
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2003,male,all maturity states,all shell conditions,99.6690966002,1,0.264739019837,0.264739019837
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2003,female,all maturity states,all shell conditions,173.562846102,1,0.207355696072,0.207355696072
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2004,male,all maturity states,all shell conditions,51.0894603176,1,0.401450557334,0.401450557334
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2004,female,all maturity states,all shell conditions,77.5594013988,1,0.242583250164,0.242583250164
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2005,male,all maturity states,all shell conditions,71.0201646092,1,0.788684448718,0.788684448718
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2005,female,all maturity states,all shell conditions,86.6052214982,1,0.465631484988,0.465631484988
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2006,male,all maturity states,all shell conditions,35.5549681628,1,0.952140760795,0.952140760795
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2006,female,all maturity states,all shell conditions,83.0057746502,1,0.492112902378,0.492112902378
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2007,male,all maturity states,all shell conditions,199.554622635,1,0.222386993319,0.222386993319
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2007,female,all maturity states,all shell conditions,203.916284208,1,0.39619357253,0.39619357253
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2008,male,all maturity states,all shell conditions,44.7672918945,1,4.0071069621,4.0071069621
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2008,female,all maturity states,all shell conditions,2897.73220997,1,0.0151883470931,0.0151883470931
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2009,male,all maturity states,all shell conditions,21.8283033113,1,6.62318258356,6.62318258356
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2009,female,all maturity states,all shell conditions,1573.10854868,1,-0.0709173341192,-0.0709173341192
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2010,male,all maturity states,all shell conditions,75.1634430946,1,0.496289688679,0.496289688679
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2010,female,all maturity states,all shell conditions,17976931348600011e292,1,-0,-0
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2011,male,all maturity states,all shell conditions,111.268489827,1,0.172474456963,0.172474456963
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2011,female,all maturity states,all shell conditions,17976931348600011e292,1,-0,-0
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2012,male,all maturity states,all shell conditions,108.984848934,1,0.180110335958,0.180110335958
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2012,female,all maturity states,all shell conditions,36.1698474366,1,0.418988104717,0.418988104717
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2013,male,all maturity states,all shell conditions,61.1761787206,1,1.61240316885,1.61240316885
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2013,female,all maturity states,all shell conditions,418.326241568,1,0.0635968289502,0.0635968289502
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2014,male,all maturity states,all shell conditions,101.33908791,1,1.90252180307,1.90252180307
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2014,female,all maturity states,all shell conditions,458.186467256,1,-0.0497182623819,-0.0497182623819
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2015,male,all maturity states,all shell conditions,532.278314888,1,-0.446047433543,-0.446047433543
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2015,female,all maturity states,all shell conditions,103.437393804,1,1.01915895795,1.01915895795
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2016,male,all maturity states,all shell conditions,41.6418278927,1,3.55659735701,3.55659735701
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2016,female,all maturity states,all shell conditions,96.6109585457,1,1.57374491867,1.57374491867
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2017,male,all maturity states,all shell conditions,133.562845506,1,2.19665435334,2.19665435334
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2017,female,all maturity states,all shell conditions,1159.97851683,1,-0.135079575292,-0.135079575292
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2018,male,all maturity states,all shell conditions,133.838123484,1,0.907631645524,0.907631645524
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2018,female,all maturity states,all shell conditions,223.612701276,1,-0.0289326325596,-0.0289326325596
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2019,male,all maturity states,all shell conditions,181.546441896,1,0.191299414158,0.191299414158
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2019,female,all maturity states,all shell conditions,17976931348600011e292,1,-0,-0
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2020,male,all maturity states,all shell conditions,0,1,-0,-0
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2020,female,all maturity states,all shell conditions,0,1,-0,-0
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2023,male,all maturity states,all shell conditions,85.7005474354,1,0.239806954767,0.239806954767
+,fisheries data,RKF,total catch,n.at.z,BY_XE,multinomial,2023,female,all maturity states,all shell conditions,17976931348600011e292,1,-0,-0
+,growth data,,,EBS_molt_increment_data,,gamma,2000,male,immature,new shell,0.965265083816,1,275.10701323673993,275.10701323673993
+,growth data,,,EBS_molt_increment_data,,gamma,2000,female,immature,new shell,0.561520124845,1,243.18276614395998,243.18276614395998
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2006,male,,new shell,2.32870083316,1,3.4922246895883005,3.4922246895883005
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2007,male,,new shell,2.32870083316,1,26.806902077957865,26.806902077957865
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2008,male,,new shell,2.32870083316,1,14.514237688786455,14.514237688786455
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2009,male,,new shell,2.32870083316,1,9.345583984248183,9.345583984248183
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2010,male,,new shell,2.32870083316,1,33.538020281653004,33.538020281653004
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2011,male,,new shell,2.32870083316,1,2.3279339424531997,2.3279339424531997
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2012,male,,new shell,2.32870083316,1,21.13038830231058,21.13038830231058
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2014,male,,new shell,2.32870083316,1,5.66011167919959,5.66011167919959
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2016,male,,new shell,2.32870083316,1,14.832270005292,14.832270005292
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2017,male,,new shell,2.32870083316,1,13.0412912561391,13.0412912561391
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2018,male,,new shell,2.32870083316,1,35.935499296572004,35.935499296572004
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2019,male,,new shell,2.32870083316,1,23.3611709291621,23.3611709291621
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2021,male,,new shell,2.32870083316,1,5.918225361366599,5.918225361366599
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2022,male,,new shell,2.32870083316,1,8.034984797323823,8.034984797323823
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2023,male,,new shell,2.32870083316,1,54.78004706724112,54.78004706724112
+,maturity ogive data,NMFS_M,,EBS_mature_male_ratios,,binomial,2024,male,,new shell,2.32870083316,1,59.208901931439,59.208901931439
+,effort data,SCF,fishery,1,,lognormal,all,male,immature,new shell,0.0997513451196,0,1980.73687034,0
+,effort data,SCF,fishery,1,,lognormal,all,male,mature,new shell,0.0997513451196,0,1980.73687034,0
+,effort data,SCF,fishery,1,,lognormal,all,male,immature,old shell,0.0997513451196,0,1980.73687034,0
+,effort data,SCF,fishery,1,,lognormal,all,male,mature,old shell,0.0997513451196,0,1980.73687034,0
+,effort data,SCF,fishery,2,,lognormal,all,female,immature,new shell,0.0997513451196,0,1980.73687034,0
+,effort data,SCF,fishery,2,,lognormal,all,female,mature,new shell,0.0997513451196,0,1980.73687034,0
+,effort data,SCF,fishery,2,,lognormal,all,female,immature,old shell,0.0997513451196,0,1980.73687034,0
+,effort data,SCF,fishery,2,,lognormal,all,female,mature,old shell,0.0997513451196,0,1980.73687034,0
+,effort data,RKF,fishery,3,,lognormal,all,male,immature,new shell,0.0997513451196,0,1943.62182537,0
+,effort data,RKF,fishery,3,,lognormal,all,male,mature,new shell,0.0997513451196,0,1943.62182537,0
+,effort data,RKF,fishery,3,,lognormal,all,male,immature,old shell,0.0997513451196,0,1943.62182537,0
+,effort data,RKF,fishery,3,,lognormal,all,male,mature,old shell,0.0997513451196,0,1943.62182537,0
+,effort data,RKF,fishery,4,,lognormal,all,female,immature,new shell,0.0997513451196,0,1943.62182537,0
+,effort data,RKF,fishery,4,,lognormal,all,female,mature,new shell,0.0997513451196,0,1943.62182537,0
+,effort data,RKF,fishery,4,,lognormal,all,female,immature,old shell,0.0997513451196,0,1943.62182537,0
+,effort data,RKF,fishery,4,,lognormal,all,female,mature,old shell,0.0997513451196,0,1943.62182537,0
