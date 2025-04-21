@@ -14,12 +14,12 @@ if (!is.null(dirPrj)){
 }
 
 #--read gmacs.rep1 and Gmacsall.out files----
-fldrs = list("25_06"="run_no_par");
+fldrs = list("25_06t"="testing");
 if (TRUE){
-  resGMACS = wtsUtilities::getObj("rda_GMACS_reslstAlt.RData");
+  resGMACS = wtsUtilities::getObj("rda_GMACS_reslstAltt.RData");
 } else {
   resGMACS = wtsGMACS::readModelResultsAlt(fldrs,TRUE);
-  wtsUtilities::saveObj(resGMACS,"rda_GMACS_reslstAlt.RData");
+  wtsUtilities::saveObj(resGMACS,"rda_GMACS_reslstAltt.RData");
 }
 
 #--model configuration----
