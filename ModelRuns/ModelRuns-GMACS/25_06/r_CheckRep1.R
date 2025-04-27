@@ -5,21 +5,18 @@ dirThs = dirname(rstudioapi::getActiveDocumentContext()$path);
 setwd(dirThs);
 
 #--get TCSAM02 22_03d5 model results
-if (!is.null(dirPrj)){
-  resTCSAM02 = list(tcsam02=
-                      wtsUtilities::getObj(file.path(dirPrj,"ModelRuns/ModelRuns-TCSAM02/2024_22_03d5/best_results/Results.RData")));
-} else {
-  fn = normalizePath(file.path(dirThs,"../../ModelRuns-TCSAM02/2024_22_03d5/best_results/Results.RData"));
-  resTCSAM02 = list(tcsam02=wtsUtilities::getObj(fn));
-}
+resTCSAM02 = list(tcsam02=
+                    wtsUtilities::getObj(file.path(dirPrj,"ModelRuns/ModelRuns-TCSAM02/2024_22_03d5/best_results/Results.RData")));
+
 #--read gmacs.rep1 and Gmacsall.out files----
-fldrs = list("25_06"="run_no_par");
+fldrs = list("25_06"="runBestHess");
 if (TRUE){
   resGMACS = wtsUtilities::getObj("rda_GMACS_reslstAlt.RData");
 } else {
   resGMACS = wtsGMACS::readModelResultsAlt(fldrs,TRUE);
   wtsUtilities::saveObj(resGMACS,"rda_GMACS_reslstAlt.RData");
 }
+
 
 #--model configuration----
 rep = resGMACS[[1]]$rep;   # rep1 results
@@ -257,12 +254,12 @@ dfrPrM2M = rep$prMature |>
                 tidyr::pivot_longer(cols=!c(year,sex),
                                     names_to="size",values_to="est") |>
                 dplyr::mutate(dplyr::across(c(year,size,est),as.numeric));
-ggplot(dfrPrM2M,# |> dplyr::filter(year==1982),
-       aes(x=size,y=est,colour=sex,group=year)) +
+ggplot(dfrPrM2M |> dplyr::filter(year==1982),
+       aes(x=size,y=est,colour=sex)) +
   geom_point() + geom_line() +
   scale_y_continuous(limits=c(0,NA))+
   labs(y="Estimated Pr(terminal molt)") +
-  facet_wrap(~sex,ncol=1) +
+#  facet_wrap(~sex,ncol=1) +
   wtsPlots::getStdTheme();
 
 #--natural mortality----

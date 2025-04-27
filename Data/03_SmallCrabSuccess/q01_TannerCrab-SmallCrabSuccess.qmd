@@ -95,7 +95,7 @@ params:
   
   #--path to folder containing "this" file
   dirThs = child_path$peek();
-  if (rstudioapi::isAvailable()) dirThs = dirname(rstudioapi::getActiveDocumentContext()$path)
+  if (rstudioapi::isAvailable()) dirThs = dirname(rstudioapi::getActiveDocumentContext()$path);
 
   #--constants
   MILLION  = 1000000;
@@ -106,7 +106,7 @@ params:
   lst = wtsUtilities::getObj(file.path(dirThs,"rda_SmallCrabSuccess.RData"))
 ```
 
-## Introduction
+## Small crab success {#sec-SCsxs}
 
 Small Tanner crab crab encountered during the NMFS EBS bottom trawl surveys in 2003-2005 and 2008-2010 successfully propagated to larger sizes while the cohort first observed in 2017-2019 did not. The SSC requested that the author explore whether the successful cohorts showed differences in habitat use compared with the unsuccessful one that may have contributed to their success. Furthermore, the SSC recommended that a comparison of environmental conditions experienced by
 small crabs during these periods may help to elucidate why some cohorts appear to propagate and others do not. Here, I ...

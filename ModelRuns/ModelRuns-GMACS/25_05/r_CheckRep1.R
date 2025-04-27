@@ -9,7 +9,7 @@ resTCSAM02 = list(tcsam02=
                     wtsUtilities::getObj(file.path(dirPrj,"ModelRuns/ModelRuns-TCSAM02/2024_22_03d5/best_results/Results.RData")));
 
 #--read gmacs.rep1 and Gmacsall.out files----
-fldrs = list("25_05"="run");
+fldrs = list("25_05"="runBestHess");
 if (TRUE){
   resGMACS = wtsUtilities::getObj("rda_GMACS_reslstALt.RData");
 } else {

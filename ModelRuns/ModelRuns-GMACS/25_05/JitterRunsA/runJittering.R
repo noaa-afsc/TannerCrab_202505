@@ -2,10 +2,10 @@
 require(wtsGMACS);
 
 wtsGMACS::runJitter(path2out=".",
-                    path2exe=".",
+                    path2exe="/Users/williamstockhausen/Work/Programming/GMACS-project/GMACS_tpl-cpp_code/_build",
                     path2dat=".",
-                    numRuns=500,
-                    minPhase=4,
+                    numRuns=200,
+                    minPhase=8,
                     calcOFL=FALSE,
                     calcOFLJitter=FALSE,
                     test=FALSE);

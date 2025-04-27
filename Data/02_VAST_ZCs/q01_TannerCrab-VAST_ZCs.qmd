@@ -78,7 +78,7 @@ params:
 
 <!-- if not child doc, set up required objects -->
 ```{r}
-#| label: SurveyData_setup
+#| label: VAST-ZCs_setup
 #| eval: !expr '!knitr::opts_knit$get("child")'
 #| results: "asis"
   testing = params$testing;
@@ -88,7 +88,7 @@ params:
 ```
 
 ```{r}
-#| label: setup_SurveyData
+#| label: setup_VAST-ZCs
 #| results: 'asis'
   require(ggplot2);
   require(kableExtra);
@@ -96,6 +96,7 @@ params:
 
   #--folder with this file
   dirThs = child_path$peek();
+  if (rstudioapi::isAvailable()) dirThs = dirname(rstudioapi::getActiveDocumentContext()$path);
 
   #--constants
   MILLION  = 1000000;
@@ -105,7 +106,7 @@ params:
   yrs = 1975:2024;
 ```
 
-```{r getSurveyData}
+```{r VAST-ZCs-getSurveyData}
   #--get designed-based size comps from 2024 Tanner crab assessment 
   dirTC = params$dirAsmt;
   lstTC = wtsUtilities::getObj(file.path(dirTC,"rda_SrvData.NMFS.DBI.RData"));
@@ -154,7 +155,7 @@ params:
                             dfrTZCs |> dplyr::mutate(type="design",abd=1000000*abd));
 ```
 
-```{r definePlotFunction}
+```{r VAST-ZCs-definePlotFunction}
   makePlot2<-function(dfr,x_,m_){
     p<-ggplot(dfr |> dplyr::filter(x %in% x_,m %in% m_) |> dplyr::mutate(mx=paste(m,x))) +
         ggridges::geom_density_ridges(aes(x=z,y=y,height=abd,
@@ -168,16 +169,16 @@ params:
   }
 ```
 
-## Introduction
+## VAST size compositions {#sec-VAST-ZCs}
 
-Size data from the annual NMFS EBS bottom trawl survey provides important information on the size distribution of Tanner crab on the EBS shelf. Tracking changes in size composition through time allows the Tanner crab assessment model [ e.g., @TannerCrab2024] to estimate growth and natural mortality, determine stock status and recommended harvest levels, and predict legal biomass. To date, the assessment has used design-based estimates of total abundance-at-size in 5-mm sie bins from 25 mm to 180 mm to characterize the annual survey size distributions by sex and maturity state for the Tanner crab stock in the EBS. However, model-based methods provide alternative ways to calculate these size distributions. Recently, one of us (Richar) used VAST ([@VAST2015; @VAST2016a; @VAST2016c]) to estimate the survey size compositions for males, immature females, and mature females. Here, the results from VAST are compared with the design-based size compositions for Tanner crab in the NMFS EBS crab survey data from 1975 to 2024.
+Size data from the annual NMFS EBS bottom trawl survey provides important information on the size distribution of Tanner crab on the EBS shelf. Tracking changes in size composition through time allows the Tanner crab assessment model [ e.g., @TannerCrab2024] to estimate growth and natural mortality, determine stock status and recommended harvest levels, and predict legal biomass. To date, the assessment has used design-based estimates of total abundance-at-size in 5-mm size bins from 25 mm to 180 mm to characterize the annual survey size distributions by sex and maturity state for the Tanner crab stock in the EBS. However, model-based methods provide alternative ways to calculate these size distributions. Recently, J. Richar (AFSC-SAP) used `VAST` (the Vector Autogressive Spatiotemporal R package; [@VAST2015; @VAST2016a; @VAST2016c]) to estimate the survey size compositions for males, immature females, and mature females. Here, the results from `VAST` are compared with the design-based size compositions for Tanner crab in the NMFS EBS crab survey data from 1975 to 2024.
 
-## Size compositions
+### Size compositions
 
-While size compositions estimated using the design-based and VAST methods generally agree with each other in the overall shape, the design-based estimates tend to be somewhat larger than the VAST estimates--most noticeably at peaks in the individual (annual) compositions (Figures [-@fig-MaleZCs]-[-@fig-MatFemaleZCs]). 
+While size compositions estimated using the design-based and `VAST` methods generally agree with each other in the overall shape, the design-based estimates tend to be somewhat larger than the `VAST` estimates--most noticeably at peaks in the individual (annual) compositions (Figures [-@fig-VAST-ZCs-MaleZCs]-[-@fig-VAST-ZCs-MatFemaleZCs]). 
 
 ```{r}
-#| label: fig_MaleZCs
+#| label: fig_VAST-ZCs-MaleZCs
 #| results: asis
 #| fig-width: 6.5
 #| fig-asp: 1.25
@@ -191,7 +192,7 @@ While size compositions estimated using the design-based and VAST methods genera
 ```
 
 ```{r}
-#| label: fig_ImmFemaleZCs
+#| label: fig_VAST-ZCs-ImmFemaleZCs
 #| results: asis
 #| fig-width: 6.5
 #| fig-asp: 1.25
@@ -205,7 +206,7 @@ While size compositions estimated using the design-based and VAST methods genera
 ```
 
 ```{r}
-#| label: fig_MatFemaleZCs
+#| label: fig_VAST-ZCs-MatFemaleZCs
 #| results: asis
 #| fig-width: 6.5
 #| fig-asp: 1.25
@@ -218,12 +219,12 @@ While size compositions estimated using the design-based and VAST methods genera
   lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
 ```
 
-## Total abundance comparisons
+### Total abundance comparisons
 
-Comparisons of the time series of summed size compositions by year and population category better reveal the differences in overall scale between the design-based and VAST size compositions ([@fig-TotAbund]). The design-based values can be substantially different from the VAST-based values (>20% difference; [@tbl-AbdPctDif]) and are generally larger for all three population categories, although counter-examples (1979, for example) are evident as well.
+Comparisons of the time series of summed size compositions by year and population category better reveal the differences in overall scale between the design-based and `VAST` size compositions ([@fig-VAST-ZCs-TotAbund]). The design-based values can be substantially different from the `VAST`-based values (>20% difference; [@tbl-VAST-ZCs-AbdPctDif]) and are generally larger for all three population categories, although counter-examples (1979, for example) are evident as well.
 
 ```{r}
-#| label: fig_TotAbund
+#| label: fig_VAST-ZCs-TotAbund
 #| results: asis
 #| fig-width: 6.5
 #| fig-asp: 0.5
@@ -248,7 +249,7 @@ Comparisons of the time series of summed size compositions by year and populatio
   lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
 ```
 
-```{r tbl.Abd}
+```{r tbl.VAST-ZCs-AbdPctDif}
 #| results: asis
   #--calculate differences in abundance
   dfrSump = dfrSum |> dplyr::select(y,x,m,abd,type) |> 
@@ -267,7 +268,7 @@ Comparisons of the time series of summed size compositions by year and populatio
                "the design-based and VAST methods, by sex and maturity state.");
   lstTbls = c(lstTbls,
               wtsQMD::insertKblIntoQMD(kbl,
-                                       lbl="tbl-AbdPctDif", 
+                                       lbl="tbl-VAST-ZCs-AbdPctDif", 
                                        cap=cap,
                                        ori="P"));
   rm(tblr,kbl,cap);
@@ -282,7 +283,7 @@ Comparisons of the time series of summed size compositions by year and populatio
 
 <!-- tables, if not child doc and lstTbls is not empty -->
 ```{r}
-#| label: tables_SrvData
+#| label: tables_VAST-ZCs
 #| eval: !expr '!knitr::opts_knit$get("child")'
 #| results: asis
   source(system.file("files/printTablesSectionFromList.R",package="wtsQMD"));
@@ -290,7 +291,7 @@ Comparisons of the time series of summed size compositions by year and populatio
 
 <!-- figures, if not child doc and lstFigs is not empty -->
 ```{r}
-#| label: figures_SrvData
+#| label: figures_VAST-ZCs
 #| eval: !expr '!knitr::opts_knit$get("child")'
 #| results: asis
   source(system.file("files/printFiguresSectionFromList.R",package="wtsQMD"));

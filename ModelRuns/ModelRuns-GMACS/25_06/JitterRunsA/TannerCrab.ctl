@@ -422,6 +422,7 @@
 0   0   0   0.001603581   0   0.007081806   0.008005409   0.105021545   0.297214218   0.5118577   0.636599816   0.793937309   0.97163049   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   #--   2022
 0   0   0   0   5.50E-04   0   0   0.016505654   0.099686199   0.391482887   0.529961856   0.741474237   0.941606305   0.987512774   1   1   1   1   1   1   1   1   1   1   1   1   1   1   #--   2023
 0   0   9.60E-04   0.004808251   0.007029317   0.00975419   0.011341972   0.041482635   0.247614077   0.535214697   0.689392742   0.600178634   0.682688087   0.950088999   0.969862576   1   1   1   1   1   1   1   1   1   1   1   1   1   #--   2024
+
 ## ==================================================================================== ##
 ## NATURAL MORTALITIY PARAMETER CONTROLS                                                ##
 ## ==================================================================================== ##
@@ -478,7 +479,7 @@
 # ##  14. Ascending normal (2 parameters: ascending width, size at mode)
 ## Selectivity specifications --
 # ## Extra (type 1): number of selectivity parameters to estimated
-## 1   2   3   4   5   6   
+##   1     2     3     4     5      6   
 ##  TCF   SCF   RKF   GFA   NMFS   BSFRF   
       1    1     1     1     1       1   # sex specific selectivity
       2    4     2     2    14      11   #   males:   selectivity type (slx_type_in, to mirror, make negative and equal to the fleet to be mirrored)
@@ -490,6 +491,7 @@
       1    1     1     1     0       0   # females:   determines if maximum selectivity at size is forced to equal 1 or not
       0    0     0     0     0       0   #   males:   size-class index at which selectivity is 1 (ignored if max-sxl-at-size above is 1)
       0    0     0     0     0       0   # females:   size-class index at which selectivity is 1 (ignored if max-sxl-at-size above is 1)
+## Retention specifications --
 ##  TCF   SCF   RKF   GFA   NMFS   BSFRF   
       1    0     0     0     0      0   # sex specific retention
       2    5     5     5     5      5   #   males: retention type
@@ -505,6 +507,7 @@
 ## ==================================================================================== ##
 #Initial	Lower_bound	Upper_bound	Prior_type	Prior_1	Prior_2	Phase	Block	Block_fn	Env_L	EnvL_var	RW	RW_Block	Sigma
 #--male selectivity
+#  1     2      3    4    5    6    7    8     9     10    11    12    13      14
 #Init   LB     UB   PrT  Pr1  Pr1  Phz  Blk  BlkFn  EnvL  EnvLV  RW  RW_Blk  Sigma  
 100     5     150   0   100   999   4    0     0     0     0     1    3       0.3  #1--z50:   TCF males logistic z50 base
  20     1      50   0    20   999   4    0     0     0     0     0    0       0.3  #2--width: TCF males logistic wid base 
@@ -773,12 +776,12 @@
 # RW_blk  : Block number for random walks
 # Sigma_RW: Sigma for the random walk parameters
 ## Analytic? LAMBDA Emphasis Mirror block Env_L EnvL_Var  RW RW_blk Sigma_RW
-      0        1        1      0     2     0        0      0    0       0.3    # Index 1: NMFS males        (BG 2 has 1 block, so 1 additional q)
-      0        1        1      0     2     0        0      0    0       0.3    # Index 2: NMFS imm females  (BG 2 has 1 block, so 1 additional q)
-      0        1        1      2     0     0        0      0    0       0.3    # Index 3: NMFS mat females  (no q, mirrored to imm. females)
-      0        1        1      0     0     0        0      0    0       0.3    # Index 4: BSFRF males       (1 q)
-      0        1        1      0     0     0        0      0    0       0.3    # Index 5: BSFRF imm females (1 q)
-      0        1        1      5     0     0        0      0    0       0.3    # Index 6: BSFRF matfemales  (no q, mirrored)
+      0        1        1      0     2     0        0      0    0       0.3    # Relative Abundance Index 1: NMFS males        (BG 2 has 1 block, so 1 additional q)
+      0        1        1      0     2     0        0      0    0       0.3    # Relative Abundance Index 2: NMFS imm females  (BG 2 has 1 block, so 1 additional q)
+      0        1        1      2     0     0        0      0    0       0.3    # Relative Abundance Index 3: NMFS mat females  (no q, mirrored to imm. females)
+      0        1        1      0     0     0        0      0    0       0.3    # Relative Abundance Index 4: BSFRF males       (1 q)
+      0        1        1      4     0     0        0      0    0       0.3    # Relative Abundance Index 5: BSFRF imm females (1 q)
+      0        1        1      4     0     0        0      0    0       0.3    # Relative Abundance Index 6: BSFRF matfemales  (no q, mirrored)
 ### ———————————————————————————————————————————————————————————————————————————————————— ##
 ## CATCHABILITY PARAMETERS: VALUES                                                      ##
 ## prior: 0 = uniform, 1 = normal, 2 = lognormal, 3 = beta, 4 = gamma                   ##
@@ -786,12 +789,11 @@
 ##     and p2 are ignored). ival must be > 0                                            ##
 ## ———————————————————————————————————————————————————————————————————————————————————— ##
 ## ival     lb       ub       prior        p1     p2     phz
-   0.8     0.01      1.1        1        0.8     0.3     5	  # iq 1: Index 1: NMFS males             base
-   0.8     0.01      1.1        1        0.8     0.3     5   # iq 2: Index 1: NMFS males             block 1 (BG 2)
-   0.8     0.01      1.1        1        0.8     0.3     5   # iq 3: Index 2: NMFS imm females       base
-   0.8     0.01      1.1        1        0.8     0.3     5   # iq 4: Index 2: NMFS imm females       block 1 (BG 2)
-   1.0     0.01      1.1        1        0.8     0.3    -5    # iq 5: Index 4: BSFRF males base       (no block group)
-   1.0     0.01      1.1        1        0.8     0.3    -5    # iq 6: Index 5: BSFRF imm females base (no block group)
+   0.8     0.01      1.1        1        0.8     0.2     5	  # q_par 1: Relative Abundance Index 1: NMFS males             base
+   0.9     0.01      1.1        0        0.8     0.2     5    # q_par 2: Relative Abundance Index 1: NMFS males             block 1 (BG 2)
+   0.8     0.01      1.1        1        0.8     0.2     5    # q_par 3: Relative Abundance Index 2: NMFS imm females       base
+   0.8     0.01      1.1        1        0.8     0.2     5    # q_par 4: Relative Abundance Index 2: NMFS imm females       block 1 (BG 2)
+   1.0     0.01      1.1        0        0.8     0.3    -5    # q_par 5: Relative Abundance Index 4: BSFRF males base       (no block group)
 ## 
 ## ———————————————————————————————————————————————————————————————————————————————————— ##
 ## ADDITIONAL CV FOR SURVEYS/INDICES: CONTROLS                                          ##
@@ -807,12 +809,12 @@
 # Sigma_RW: Sigma for the random walk parameters                                        ##
 ## ———————————————————————————————————————————————————————————————————————————————————— ##
 ##   Mirror   Block   Env_L EnvL_Vr     RW   RW_blk Sigma_RW
-       0       0       0       0        0       0   0.3   # Index 1: NMFS males
-       0       0       0       0        0       0   0.3   # Index 1: NMFS immature females
-       2       0       0       0        0       0   0.3   # Index 1: NMFS mature females
-       0       0       0       0        0       0   0.3   # Index 2: BSFRF males
-       0       0       0       0        0       0   0.3   # Index 2: BSFRF immature females
-       5       0       0       0        0       0   0.3   # Index 2: BSFRF mature females
+       0       0       0       0        0       0   0.3   # Relative Abundance Index 1: NMFS males
+       0       0       0       0        0       0   0.3   # Relative Abundance Index 2: NMFS immature females
+       2       0       0       0        0       0   0.3   # Relative Abundance Index 3: NMFS mature females
+       0       0       0       0        0       0   0.3   # Relative Abundance Index 4: BSFRF males
+       4       0       0       0        0       0   0.3   # Relative Abundance Index 5: BSFRF immature females
+       4       0       0       0        0       0   0.3   # Relative Abundance Index 6: BSFRF mature females
 ## ———————————————————————————————————————————————————————————————————————————————————— ##
 ## ADDITIONAL CV FOR SURVEYS/INDICES: PARAMETER VALUES                                  ##
 ## ———————————————————————————————————————————————————————————————————————————————————— ##
@@ -821,10 +823,12 @@
 ##     and p2 are ignored). ival must be > 0                                            ##
 ## ———————————————————————————————————————————————————————————————————————————————————— ##
 ## ival        lb        ub      prior          p1      p2       phz
-   0.0001      0.00001   10.0        0         1.0     100       -4 # Index 1: NMFS males
-   0.0001      0.00001   10.0        0         1.0     100       -4 # Index 1: NMFS females
-   0.0001      0.00001   10.0        0         1.0     100       -4 # Index 2: BSFRF males
-   0.0001      0.00001   10.0        0         1.0     100       -4 # Index 2: BSFRF females
+   0.0001      0.00001   10.0        0         1.0     100       -4 # addCV_par 1: Relative Abundance Index 1--NMFS males
+   0.0001      0.00001   10.0        0         1.0     100       -4 # addCV_par 2: Relative Abundance Index 2--NMFS immature females
+#--NMFS mature females mirrored to imm. females
+   0.0001      0.00001   10.0        0         1.0     100       -4 # addCV_par 3: Relative Abundance Index 4--BSFRF males
+ #--BSFRF immature females mirrored to males
+ #--BSFRF   mature females mirrored to males
 
 ## ==================================================================================== ##
 ## CONTROLS ON F                                                                        ##
@@ -841,7 +845,7 @@
      0.0   0.0       0.0      0.00      -1      -1         -12     4        -10   10         -10   -0.5  # NMFS
      0.0   0.0       0.0      0.00      -1      -1         -12     4        -10   10         -10   -0.5  # BSFRF
 ## ———————————————————————————————————————————————————————————————————————————————————— ##
-## OPTIONS FOR SIZE COMPOSTION DATA                                                     ##
+## OPTIONS FOR SIZE COMPOSITION DATA                                                    ##
 ## ———————————————————————————————————————————————————————————————————————————————————— ##
 ## One column for each data matrix in order of entry into dat file                      ##
 ## LEGEND                                                                               ##
@@ -866,7 +870,7 @@
       1      1      1      1      1      1      1      1      1      2      2      2      2     2      2   # Set to 1 for catch-based predictions; 2 for survey or total catch predictions
       1      1      1      1      1      1      1      1      1      1      1      1      1     1      1   # Lambda for effective sample size
       1      1      1      1      1      1      1      1      1      1      1      1      1     1      1   # Lambda for overall likelihood
-      0      0      0      0      0      0      0      0      0      1      1      1      2     2      2   # Survey to set Q for this comp
+      0      0      0      0      0      0      0      0      0      2      3      1      5     6      4   # Survey to set Q for this comp
 ## ———————————————————————————————————————————————————————————————————————————————————— ##																					
 
 #--the number of parameters listed here must match the MAXIMUM composition aggregator index
@@ -923,6 +927,6 @@
      0.0000 #--Smoothness penalty on initial numbers at length
      1.0000 #--Penalty on annual F-devs for males by fleet
      1.0000 #--Penalty on annual F-devs for females by fleet
-     0.0000 #--Penalty on deviation parameters
+     1.0000 #--Penalty on deviation parameters
 ## EOF
 9999
