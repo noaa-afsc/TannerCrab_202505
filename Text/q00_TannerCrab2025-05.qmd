@@ -78,6 +78,7 @@ concordance: true
 params:
   setup: !expr 'system.file("files/qmd_setup.R",package="wtsQMD")'
   rdaAsmtSetup: "rda_AssessmentSetup.RData"
+  dirAsmt: "~/Work/StockAssessments-Crab/Assessments/TannerCrab/2024-09_TannerCrab/AssessmentData/Data_Surveys_NMFS"
   testing: false
   reorderTables: false   #--issue with finding "range" of table values  (don't use)
   reorderFigures: false  #--issue with finding "range" of figure values (don't use)
@@ -141,27 +142,29 @@ SHOULD NOT BE CONSTRUED TO REPRESENT ANY AGENCY DETERMINATION OR POLICY
 
 # Introduction 
 
-The next full assessment for the Pribilof Islands blue king crab (PIBKC) stock will be reviewed by the Crab Plan Team (CPT) in September 2025 and the NPFMC's Science and Statistical Committee (SSC) in October 2025. The stock has been on a two-year cycle for assessment and the last full assessment was conducted in September 2023 [@PIBKC2023]. Following the September 2025 assessment, the stock will begin a four-year assessment cycle and the next full assessment will be conducted in 2029. 
+The next full assessment for the Tanner crab stock will be reviewed by the Crab Plan Team (CPT) in September 2025 and the NPFMC's Science and Statistical Committee (SSC) in October 2025. The stock is on an annual cycle for assessment, with the last full assessment conducted in September 2024 [@TannerCrab2024]. 
 
-This report primarily addresses a number of issues related to data from the NMFS EBS bottom trawl survey for PIBKC that have arisen since the last assessment. First, AFSC's Shellfish Assessment Program (SAP) has developed an R package, "crabpack", as a replacement to AKFIN Answers (https://akfin.psmfc.org) for obtaining crab-related survey data in a standard format. SAP requested that assessment authors test the package and compare results of data pulls using the package with data pulled using the authors' previous methods. Second, as part of the effort to "modernize" the NMFS EBS bottom trawl survey to improve efficiency, the high-density "corner" stations in the NMFS EBS survey grid near the Pribilof Islands and St. Matthew Island were dropped for the 2024 survey and will not be sampled in future surveys. Assessment authors were asked to consider the impact of this change on their assessment. Finally, the 2023 and 2024 surveys found no mature male blue king crab in the Pribilof Islands sampling strata. While this is principally a consequence of applying relatively low sampling effort to a stock at low (but non-zero) abundance, the "hard zeros" introduced in the time series of mature male biomass for PIBKC can be problematic for the subsequent assessment. Several approaches to dealing with this issue are considered here. 
+This report addresses several topics, including new analyses, potential (bespoke) TCSAM02 models for the Fall 2025 stock assessment, and work to develop a GMACS version of the Tanner crab assessment model. Among new analyses ([@sec-Analyses]), the AFSC's Shellfish Assessment Program (SAP) has developed an R package, `crabpack`, as a replacement to AKFIN Answers (https://akfin.psmfc.org) for obtaining crab-related survey data in a standard format. SAP staff requested that assessment authors test the package and compare results of data pulls using the package with data pulled using the authors' previous methods. Results of this comparison are presented in Second, 
 
-This report is organized into the following sections: Responses to previus CPT and SSC Comments (@sec-Resps), "New" Data and Analyses (@sec-NDAs), Summary (@sec-Smry), and Acknowledgments (@sec-Acks).
+This report is organized into the following sections: Responses to previous CPT and SSC Comments (@sec-Resps), Analyses (@sec-Analyses), TCSAM02 model runs and results (@sec-TCSAM02), GMACS model runs and results (@sec-GMACS), Summary (@sec-Smry), and Acknowledgments (@sec-Acks).
 
 <!-- # Responses to CPT and SSC Comments {#sec-Resps} -->
 ```{r sct_Resps, child=file.path(child_path$peek(),"q01_TannerCrab_ResponsesToComments2025.qmd")}
 ```
 
-<!-- # "New" Data and Analyses {#sec-NDAs} -->
-```{r sct_NDAs, child=file.path(child_path$peek(),"q02_NewDataAndAnalyses.qmd")}
+<!-- # "New" Data and Analyses {#sec-Analyses} -->
+```{r sct_Analyses, child=file.path(child_path$peek(),"q02_Analyses.qmd")}
 ```
 
-<!-- # Assessment Model Explorations {#sec-ASEs} -->
-```{r sct_NDAs, child=file.path(child_path$peek(),"q03_AssessmentModelExplorations.qmd")}
+<!-- # TCSAM02 Models {#sec-TCSAM02} -->
+```{r sct_TCSAM02, child=file.path(child_path$peek(),"q03_TCSAM02_Models.qmd")}
+```
+
+<!-- # GMACS Models {#sec-GMACS} -->
+```{r sct_GMACS, child=file.path(child_path$peek(),"q03_GMACS_Models.qmd")}
 ```
 
 # Summary {#sec-Smry}
-
-The author recommends  
 
 The author recommends using the full-precision carapace length measurements with the current length-weight regressions to calculate biomass from NMFS EBS survey abundance and size data.
 
@@ -169,8 +172,11 @@ The author looks forward to discussions with the CPT and SSC regarding model cho
 
 # Acknowledgments {#sec-Acks}
 
-The author would like to acknowledge and thank .
-
+The author would like to acknowledge Andre Punt (UW) and Matthieu Veron (??) for recent improvements to GMACS, ...
+Jon Richar for VAST size comps
+Shannon Hennessey and SAP for developing the `crabpack` package
+Cole, Jim Ianelli, Andre, other crab assessment authors
+Lee Cronin-Fine for internal review
 
 <!-- references -->
 ```{r,eval=!knitr::opts_knit$get("child"),results='asis'}

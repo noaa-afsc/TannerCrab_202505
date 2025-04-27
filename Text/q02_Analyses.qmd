@@ -78,6 +78,7 @@ concordance: true
 params:
   setup: !expr 'system.file("files/qmd_setup.R",package="wtsQMD")'
   rdaAsmtSetup: "rda_AssessmentSetup.RData"
+  dirAsmt: "~/Work/StockAssessments-Crab/Assessments/TannerCrab/2024-09_TannerCrab/AssessmentData/Data_Surveys_NMFS"
   testing: false
   reorderTables: false   #--issue with finding "range" of table values  (don't use)
   reorderFigures: false  #--issue with finding "range" of figure values (don't use)
@@ -131,59 +132,59 @@ params:
   ##--
 ```
 
-# "New" Data and Analyses {#sec-NDAs}
+# Analyses {#sec-Analyses}
 
 
 <!-- # crabpack data comparison {#sec-CrabPack} -->
 
-<!-- ```{r} -->
-<!-- fldr = "../Data/01_crabpack"; -->
-<!-- child_path$push(file.path(child_path$peek(),fldr)); -->
-<!-- ``` -->
-<!-- ```{r sct_CrabPack, child=file.path(child_path$peek(),"q01_TannerCrab_CrabpackCheck.qmd")} -->
-<!-- ``` -->
-<!-- ```{r} -->
-<!-- child_path$pop(); -->
-<!-- ``` -->
+```{r}
+fldr = "../Data/01_crabpack";
+child_path$push(file.path(child_path$peek(),fldr));
+```
+```{r sct_CrabPack, child=file.path(child_path$peek(),"q01_TannerCrab_CrabpackCheck.qmd")}
+```
+```{r}
+fldr = child_path$pop();
+```
 
 
 <!-- # Comparison of VAST and design-based size compositions {#sec-VAST} -->
 
-<!-- ```{r} -->
-<!-- fldr = "../Data/02_VAST_ZCs"; -->
-<!-- child_path$push(file.path(child_path$peek(),fldr)); -->
-<!-- ``` -->
-<!-- ```{r sct_CrabPack, child=file.path(child_path$peek(),"q01_TannerCrab-VAST_ZCs.qmd")} -->
-<!-- ``` -->
-<!-- ```{r} -->
-<!-- child_path$pop(); -->
-<!-- ``` -->
+```{r}
+fldr = "../Data/02_VAST_ZCs";
+child_path$push(file.path(child_path$peek(),fldr));
+```
+```{r sct_CrabPack, child=file.path(child_path$peek(),"q01_TannerCrab-VAST_ZCs.qmd")}
+```
+```{r}
+fldr = child_path$pop();
+```
 
 
-<!-- # Small crab success {#sec-SmallCrabSuccess} -->
+<!-- # Small crab success {#sec-SCsxs} -->
 
-<!-- ```{r} -->
-<!-- fldr = "../Data/03_SmallCrabSuccess"; -->
-<!-- child_path$push(file.path(child_path$peek(),fldr)); -->
-<!-- ``` -->
-<!-- ```{r sct_CrabPack, child=file.path(child_path$peek(),"q01_TannerCrab-SmallCrabSuccess.qmd")} -->
-<!-- ``` -->
-<!-- ```{r} -->
-<!-- child_path$pop(); -->
-<!-- ``` -->
+```{r}
+fldr = "../Data/03_SmallCrabSuccess";
+child_path$push(file.path(child_path$peek(),fldr));
+```
+```{r sct_CrabPack, child=file.path(child_path$peek(),"q01_TannerCrab-SmallCrabSuccess.qmd")}
+```
+```{r}
+fldr = child_path$pop();
+```
 
 
-<!-- # Empirical maturity ogives {#sec-EmpMatOgives} -->
+<!-- # Empirical maturity ogives {#sec-EMOs} -->
 
-<!-- ```{r} -->
-<!-- fldr = "../Data/04_EmapiricalMaturityOgives"; -->
-<!-- child_path$push(file.path(child_path$peek(),fldr)); -->
-<!-- ``` -->
-<!-- ```{r sct_CrabPack, child=file.path(child_path$peek(),"q01_TannerCrab-EmpiricalMaturityOgives.qmd")} -->
-<!-- ``` -->
-<!-- ```{r} -->
-<!-- child_path$pop(); -->
-<!-- ``` -->
+```{r}
+fldr = "../Data/04_EmpiricalMaturityOgives";
+child_path$push(file.path(child_path$peek(),fldr));
+```
+```{r sct_CrabPack, child=file.path(child_path$peek(),"q01_TannerCrab-EmpiricalMaturityOgives.qmd")}
+```
+```{r}
+fldr = child_path$pop();
+```
 
 
 <!-- references -->
