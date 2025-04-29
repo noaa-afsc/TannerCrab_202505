@@ -1,0 +1,993 @@
+---
+title: "Model Comparisons"
+author: "William T. Stockhausen"
+institute: "AFSC/NMFS/NOAA"
+date: '`r format(Sys.time(), "%b %e, %Y")`'
+fontsize: 11pt 
+number-sections: true
+number-depth: 3
+reference-location: document
+reference-section-title: References
+bibliography: /Users/williamstockhausen/Work/Projects/Bibliography/AllRefs.bib
+csl: '`r system.file("files/CJFAS.csl",package="wtsQMD")`'
+link-citations: true
+crossref:
+  chapters: false      # prepend label reference numbers by chater number?
+  fig-title: Figure    # for caption: default is "Figure")
+  tbl-title: Table     # for caption: default is "Table")
+  title-delim: "."     # for caption: default is ":")
+  fig-prefix: Figure   # for in-text (use [-@fig-ref] to drop prefix in text)
+  tbl-prefix: Table    # for in-text (use [-@tbl-ref] to drop prefix in text)
+  fig-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  tbl-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  subref-labels: alpha a # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  ref-hyperlink: true    # references are hyperlinked if true
+format: 
+  html: 
+    df-print: paged
+    toc: true
+    toc-location: right
+    fig-width: 6.5
+    fig-asp: 0.6
+    fig-dpi: 100
+    embed-resources: true
+  pdf:
+    documentclass: scrartcl
+    toc: false
+    fig_crop: false
+    keep-tex: false
+    fig-width: 6.5
+    fig-asp: 0.6
+    fig-dpi: 100
+    geometry:
+      - left=1.0in
+      - right=1.0in
+      - top=1.0in
+      - bottom=1.0in
+      - textwidth=6.5in
+      - showframe=false
+    include-in-header: 
+      - text: |
+          \usepackage{placeins}
+          \extrafloats{500}
+          \maxdeadcycles=10000
+          \usepackage{fontspec}
+          \usepackage{multicol}
+          \usepackage{hhline}
+          \newlength\Oldarrayrulewidth
+          \newlength\Oldtabcolsep
+      - file: '`r system.file("files/ltx_ExtraLatexIncludes.tex",package="wtsQMD")`'
+echo: false
+warning: false
+results: 'hide'
+keep-md: false
+keep-yaml: false
+editor: source
+editor_options: 
+  chunk_output_type: console
+concordance: true
+params:
+  setup: !expr 'system.file("files/qmd_setup.R",package="wtsQMD")'
+  testing: false
+  reorderTables: false   #--issue with finding "range" of table values  (don't use)
+  reorderFigures: false  #--issue with finding "range" of figure values (don't use)
+---
+<!-- IMPORTANT: if used as a child doc, all chunk labels must be unique within the overall document -->
+
+<!-- 
+  NOTEs: 
+     * child_path$peek() gives path to current script.
+     * before starting a child document, do 
+         "child_path$push(file.path(child_path$peek(),rel_path))" first, 
+         where rel_path is the relative path to the child
+     * after a child document has finished, do "child_path$pop()" to return to current path value
+-->
+
+<!-- if not child doc, set up required objects -->
+```{r}
+#| label: ModComps_setup
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: "asis"
+  testing = params$testing;
+  if (testing) cat(params$setup,"\n\n")
+  source(params$setup);
+  if (testing) cat("root = ",root,"\n\n")
+  reorderTables  = params$reorderTables;
+  reorderFigures = params$reorderFigures;
+```
+
+```{r}
+#| label: setup_ModComps
+#| results: 'asis'
+  require(ggplot2);
+  require(kableExtra);
+  require(tables);
+  require(wtsGMACS);
+  Sum = wtsUtilities::Sum;
+  old_thm = ggplot2::theme_set(cowplot::theme_cowplot(font_size = 10) +
+                               cowplot::background_grid() +
+                               cowplot::panel_border());
+  thm = wtsPlots::getStdTheme();
+  options("readr.show_col_types"=FALSE);
+  if (testing) cat("dirThs =",child_path$peek(),"\n\n")
+  #--NOTE: take out or modify the following as necessary
+  # if (!exists("s")){
+  #   if (rstudioapi::isAvailable())
+  #     fn = file.path(rstudioapi::getActiveProject(),"rda_ProjectSetup.RData");
+  #   if (child_path$peek()!="")
+  #     fn = file.path(child_path$peek(),"../rda_AssessmentSetup.RData");
+  #   #--for debugging: ;
+  #   if (file.exists(fn)) s = wtsUtilities::getObj(fn);
+  # }
+  #--
+  asmtYr = 2024; #--s$asmtYr;
+  #--
+  dirThs = child_path$peek();                #--path to "this" folder
+  if (rstudioapi::isAvailable()) dirThs = dirname(rstudioapi::getActiveDocumentContext()$path);
+  dirPrj = file.path(child_path$peek(),"../..");#--path to project folder from "this" folder
+  if (rstudioapi::isAvailable()) dirPrj = rstudioapi::getActiveProject();
+  if (!exists("tblno")) tblno = 0;
+```
+
+```{r ModComps-GetPlottingInfo}
+  legPosUR = ggplot2::theme(legend.position="inside",
+                            legend.position.inside=c(0.99,0.99),
+                           legend.justification.inside=c(1,1));
+  legPosUL = theme(legend.position="inside",
+                   legend.position.inside=c(0.01,0.99),
+                   legend.justification.inside=c(0,1));
+  legNone = ggplot2::theme(legend.position="none");
+  noTitle  = ggplot2::theme(plot.title=element_blank());
+  noXTitle = ggplot2::theme(axis.title.x=element_blank());
+  
+  #--get plotting information----
+  if (!exists("PLOT_OBJECTS")){
+    #--PLOT OBJECTS---------------------------------------
+    require(ggplot2);
+    require(rCompTCMs);
+    source(file.path(dirThs,"../RCode_Markdown/r_FigureFunctions.R"));
+    std_theme = wtsPlots::getStdTheme();
+    ggT = ggplot2::theme(plot.title=ggplot2::element_text(size=10,
+                                                          margin=ggplot2::margin()),
+                         panel.spacing = grid::unit(0.01,"in"),
+                         legend.position="none", 
+                         plot.margin=ggplot2::margin(0,0,0,1));
+    ggL = ggplot2::labs(title=NULL,subtitle=NULL);
+    noL  = theme(legend.position="none");
+    noXT = theme(axis.title.x=element_blank());
+    colour_scale=ggplot2::scale_color_hue();
+    fill_scale  =ggplot2::scale_fill_hue();
+    PLOT_OBJECTS = "PLOT_OBJECTS";#--make flag to prevent doing this again
+  }
+```
+
+```{r ModComps-GetModels}
+  #--get TCSAM02 22_03d5 model results
+  resTCSAM02 = list(tcsam02=
+                      wtsUtilities::getObj(file.path(dirPrj,"ModelRuns/ModelRuns-TCSAM02/2024_22_03d5/best_results/Results.RData")));
+  #--read gmacs.rep1 and Gmacsall.out files----
+  fldrs = list("G25_05"=file.path(dirPrj,"ModelRuns//ModelRuns-GMACS/25_06/runBestHess"));
+  # fldrs = list("G25_05"=file.path(dirPrj,"ModelRuns//ModelRuns-GMACS/25_06/runBestHess"),
+  #              "G25_06"=file.path(dirPrj,"ModelRuns//ModelRuns-GMACS/25_06/runBestHess"));
+  if (TRUE){
+    resGMACS = wtsUtilities::getObj(file.path(dirThs,"rda_GMACS_reslstAlt.RData"));
+  } else {
+    resGMACS = wtsGMACS::readModelResultsAlt(fldrs,TRUE);
+    wtsUtilities::saveObj(resGMACS,file.path(dirThs,"rda_GMACS_reslstAlt.RData"));
+  }
+  #--model configuration----
+  rep = resGMACS[[1]]$rep;   # rep1 results
+  zBs = rep$size_midpoints;  # size bins
+  nZBs = length(zBs);        # number of size bins
+```
+
+```{r ModComps-CheckParams}
+  tmp = list();
+  for (mdl in names(resGMACS)){
+    rep = resGMACS[[mdl]]$rep;
+    #--estimated parameters----
+    tmp[[mdl]] = rep$`Estimated parameters` |>
+                   dplyr::mutate(
+                     dplyr::across(!par_type,as.numeric)
+                   ) |> 
+                   dplyr::mutate(case=mdl,.before=1);
+  }
+  dfrEstPars = dplyr::bind_rows(tmp) |> 
+                dplyr::select(!tidyselect::starts_with("..."));
+  
+  ##--check parameters at bounds----
+  dfrPsAtBs = dfrEstPars |>
+                dplyr::filter((!is.na(status)) & (status!=0)) |> 
+                dplyr::select(!c(par_count,pen,est_par_cnt)) |> 
+                dplyr::mutate(par_type=stringr::str_replace_all(par_type,"_"," "),
+                              bound=ifelse((est-lb)<(ub-est),"lower","upper"));
+  nPsAtBs = dfrPsAtBs |> dplyr::group_by(case) |> dplyr::summarize(n=dplyr::n());
+  dfrPsAtBsW = dfrPsAtBs |> tidyr::pivot_wider(id_cols=c(par_type,bound,lb,ub),names_from="case",values_from=est);
+```
+
+## Progress toward a GMACS model for Tanner crab {#sec-ModComps} 
+
+Several initial GMACS models were presented to the CPT and SSC in early 2024. These models were developed with the idea of providing a "simpler" alternative to the current Tanner crab model implemented in the TCSAM02 ADMB/C++ framework and thus were built using the concept that model processes could be defined for a single time block starting in 1982 with the NMFS EBS bottom trawl survey gear change. However,the models proved to unsatisfactory for a number of reasons, but mainly because starting a model in 1982 ignored large apparent changes in population size captured in earlier (1975-1981) NMFS survey data, foreign fleet catch data (starting in 1965), and observer data on bycatch in the groundfish fisheries (starting in 1973). In addition, previous bespoke models (e.g., Bristol Bay red king crab, snow crab) that transitioned to GMACS underwent a rather detailed comparison process that yiekded a GMACS model that performed "as close as possible" to the bespoke model. Thus, the decision moving forward for Tanner crab was to develop a GMACS model that matched the bespoke model as closely as possible.
+
+Since then, GMACS itself has undergone substantial development, including the implementation of random walk behavior and environmental covariates to implement time-varying parameters, additional selectivity functions, and tail compression for size composition data, among others. To implement a model in GMACS as "close as possible" to the bespoke TCSAM02 model, I added an option to start the model from zero population abundance and build the population up over time as well as an ascending normal selectivity curve and additional parameterizations for double normal curves, and I recently debugged an issue with how time-blocked catchability coefficients were used to predict survey catches. 
+
+At first glance, the GMACS model referred to here as "G25_05" should be "close enough" to the bespoke TCSAM02 model 22.03d5, the 2024 assessment model, to satisfy the CPT and SSC. The biological processes captured in both models are, by design, very similar (Table `r LETTERS[tblno+1]`). One (minor) difference is that mean molt increment size is estimated as a function of pre-molt size in 22.03d5 while the relationship is pre-specified in G25_05, but the pre-specified relationship is based on the same data fit to in the assessment model. Another (minor) difference is that the probability of *having undergone* the terminal molt to maturity (based on post-molt size) is pre-specified in G25_05 based on average maturity ogive curves from the NMFS EBS trawl survey whereas the probability of *undergoing* terminal molt (based on pre-molt size) is estimated in the bespoke model. Both models build up the population from zero using annual recruitment starting in 1948; what appears to be a major difference is that the annual recruitment deviations are treated as uncorrelated whereas the bespoke model treats them as an autoregressive process. As will be seen, this apparently leads to large differences in the population trajectories of the two models prior to the introduction of the NMFS survey data in 1975.
+
+```{r TCSAM02-tblModelDesc1,results='asis'}
+  tblno = tblno+1;
+  cap = paste0("Table ",LETTERS[tblno],". ",
+               "Population processes and parameterizations in the 2024 assessment model, 22.03d5, and GMACS model G25_05.\n");
+  cat(cap);
+  fn = file.path(dirThs,"Tables_G-T_ModelDescriptions/ModDesc1")
+  kbl = wtsQMD::imageAsKable(wtsQMD::getImageFN(fn));
+  cat(kbl,"\n\n\n");
+  rm(cap,kbl);
+```
+\newpage
+
+Fishery processes (mortality, selectivity and retention) are modeled in similar fashion (Tables `r LETTERS[tblno+1]` and `r LETTERS[tblno+2]`) for the same four fleets (the directed fishery, the snow crab fishery, the BBRKC fishery, and a catchall "groundfish" fishery). Time blocks for changes in selectivity and retention in the fisheries are the same in both models, as are the functions used to describe those characteristics. The NMFS and BSFRF trawl surveys are also described with the same functions and time blocks (Table `r LETTERS[tblno+3]`)
+
+```{r TCSAM02-tblModelDesc2,results='asis'}
+  tblno = tblno+1;
+  cap = paste0("Table ",LETTERS[tblno],". ",
+               "Characteristics for retention and total catch in the directed (“TCF”) fishery ",
+               "and bycatch in the snow crab (“SCF”) fishery in the 2024 assessment model, 22.03d5, and GMACS model G25_05.\n");
+  cat(cap);
+  fn = file.path(dirThs,"Tables_G-T_ModelDescriptions/ModDesc2")
+  kbl = wtsQMD::imageAsKable(wtsQMD::getImageFN(fn));
+  cat(kbl,"\n\n\n");
+  rm(cap,kbl);
+```
+
+```{r TCSAM02-tblModelDesc3,results='asis'}
+  tblno = tblno+1;
+  cap = paste0("Table ",LETTERS[tblno],". ",
+               "Characteristics for bycatch in the BBRKC (“RKF”) ",
+               "and groundfish fisheries (“GF All”) in the 2024 assessment model, 22.03d5, and GMACS model G25_05.\n")
+  cat(cap);
+  fn = file.path(dirThs,"Tables_G-T_ModelDescriptions/ModDesc3")
+  kbl = wtsQMD::imageAsKable(wtsQMD::getImageFN(fn));
+  cat(kbl,"\n\n\n");
+  rm(cap,kbl);
+```
+
+```{r TCSAM02-tblModelDesc4,results='asis'}
+  tblno = tblno+1;
+  cap = paste0("Table ",LETTERS[tblno],". ",
+               "Characteristics for the NMFS and BSFRF surveys in the 2024 assessment model, 22.03d5, and GMACS model G25_05.\n")
+  cat(cap);
+  fn = file.path(dirThs,"Tables_G-T_ModelDescriptions/ModDesc4")
+  kbl = wtsQMD::imageAsKable(wtsQMD::getImageFN(fn));
+  cat(kbl,"\n\n\n");
+  rm(cap,kbl);
+```
+\newpage
+
+Similar components are also included in the model likelihoods (Table `r LETTERS[tblno+1]`):
+
+```{r TCSAM02-tblModelDesc5,results='asis'}
+  tblno = tblno+1;
+  cap = paste0("Table ",LETTERS[tblno],". ",
+               "Likelihood components in the 2024 assessment model, 22.03d5, and GMACS model G25_05.\n");
+  cat(cap);
+  fn = file.path(dirThs,"Tables_G-T_ModelDescriptions/ModDesc5")
+  kbl = wtsQMD::imageAsKable(wtsQMD::getImageFN(fn));
+  cat(kbl,"\n\n\n");
+  rm(cap,kbl);
+```
+
+Thus, G25_05 superficially appears to differ in what should be only relatively minor ways from the bespoke model.
+
+To compare results from the two models, G2505 was subjected to a parameter jittering exercise and the resulting "best" model was selected. Of 197 model runs, 43 converged to essentially the same minimum negative log likelihood value (within 0.001 likelihood units of the absolute minimum). The run resulting in the absolute minimum had a maximum parameter gradient of 0.021 and was used as the starting point for ADMB's "hess_step" algorithm, which uses information on the curvature of the likelihood surface (the model hessian) at the "converged" point to further adjust it's location to the true minimum at which all first-order parameter gradients are 0. Disappointingly, the GMACS model had `r nPsAtBs` parameters that were estimated at their upper bounds, all of which were selectivity parameters for one fleet or another (Table [@tbl-PsAtBsW]).
+
+```{r ModComps_GetCatchData}
+  ##--catch data----
+  dfrCatFitg = rep$Catch_fit_summary |>
+                dplyr::mutate(
+                  dplyr::across(c(year,obs,cv,effort,HM,prd,rsd),
+                                as.numeric)
+                ) |>
+                dplyr::select(type,y=year,fleet,x=sex,val=prd) |>
+                dplyr::group_by(type,fleet,y) |>
+                dplyr::summarize(val=sum(val)) |>
+                dplyr::ungroup() |>
+                dplyr::mutate(case="gmacs",
+                              catch.type=type,
+                              type="predicted",
+                              x="undetermined");
+  dfrCatFitt = dplyr::bind_rows(
+                rCompTCMs::extractMDFR.Fits.BiomassData(resTCSAM02,
+                                                         fleet.type="fishery",
+                                                         catch.type="retained") |>
+                  dplyr::mutate(catch.type="retained"),
+                rCompTCMs::extractMDFR.Fits.BiomassData(resTCSAM02,
+                                                         fleet.type="fishery",
+                                                         catch.type="total") |>
+                  dplyr::mutate(catch.type="total")) |>
+              dplyr::select(case,fleet,catch.type,type,y,x,val,lci,uci) |>
+              dplyr::mutate(fleet=ifelse(stringr::str_starts(fleet,"GF All"),"GFA",fleet),
+                            x="undetermined");
+  dfrCatFit = dplyr::bind_rows(dfrCatFitt,dfrCatFitg);
+  rm(dfrCatFitg,dfrCatFitt);
+  plotDFR<-function(dfr,yax){
+    mny = min((dfr |> dplyr::filter(type=="observed"))$y);
+    dfr = dfr |> dplyr::filter(y>mny);
+    p = ggplot(dfr,aes(x=y,y=val,ymin=lci,ymax=uci,colour=case,fill=case,shape=case)) +
+          geom_point(data=dfr |> dplyr::filter(type=="observed"),colour="blue",shape=24) +
+          geom_ribbon(data=dfr |> dplyr::filter(type=="observed"),colour=NA,fill="blue",alpha=0.3) +
+          geom_line() + geom_point() +
+          geom_hline(yintercept=0,linetype=3) +
+          scale_y_continuous(limits=c(0,NA)) +
+          labs(y=yax,x="year") +
+          facet_grid(x~fleet,scales="free_y") +
+          wtsPlots::getStdTheme();
+    return(p)
+  }
+```
+
+```{r}
+#| label: fig-ModComps-FshFitTCF 
+#| fig-width: 9.0
+#| fig-asp: 0.667
+  ###--retained catch----
+  tmp = dfrCatFit |> dplyr::filter(fleet %in% "TCF",catch.type=="retained");
+  p1 = plotDFR(tmp,"Retained Catch (1,000's t)");
+  ###--TCF total catch----
+  tmp = dfrCatFit |> dplyr::filter(fleet %in% "TCF",catch.type=="total");
+  p2 = plotDFR(tmp,"Total Catch (1,000's t)");
+  pg = cowplot::plot_grid(p1+legPosUR+noXTitle,
+                          p2+legNone+noXTitle,ncol=1);
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Model fits to retained (upper plot) and total catch (lower plot) data from the directed fishery. ",
+               "Shading indicates assumed observation error. Triangles are observed catch, circles are predicted catch.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="L"));
+  rm(tmp,p1,p2,pg,lbl,cap,pth);
+```
+
+```{r}
+#| label: fig-ModComps-FshFitOthr
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  ###--SCF total catch----
+  tmp = dfrCatFit |> dplyr::filter(fleet %in% "SCF",catch.type=="total");
+  p1 = plotDFR(tmp,"Total Catch (1,000's t)")
+  ###--RKF total catch----
+  tmp = dfrCatFit |> dplyr::filter(fleet %in% "RKF",catch.type=="total");
+  p2 = plotDFR(tmp,"Total Catch (1,000's t)")
+  ###--GFA total catch----
+  tmp = dfrCatFit |> dplyr::filter(fleet %in% "GFA",catch.type=="total");
+  p3 = plotDFR(tmp,"Total Catch (1,000's t)")
+  pg = cowplot::plot_grid(p1+legPosUR+noXTitle,
+                          p2+legNone+noXTitle,
+                          p3+legNone+noXTitle,ncol=1);
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Model fits to total bycatch in the snow crab (upper plot), BBRKC (middle plot), and ",
+               "groundfish fisheries (lower plot). ",
+               "Shading indicates assumed observation error. Triangles are observed catch, circles are predicted catch.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p1,p2,p3,pg,lbl,cap,pth,dfrCatFit);
+```
+  
+```{r ModComps_GetIndexData}
+  ##--index data----
+  dfrIndxFitg = rep$Index_fit_summary |>
+                 dplyr::select(y=year,fleet,x=sex,m=maturity,val=prd) |>
+                 dplyr::mutate(
+                   dplyr::across(c(y,val),as.numeric),
+                   type="predicted",
+                   case="gmacs"
+                 );
+  dfrIndxFitt = rCompTCMs::extractMDFR.Fits.BiomassData(resTCSAM02,fleet.type="survey") |>
+                  dplyr::filter(!stringr::str_starts(fleet,"SBS NMFS")) |>
+                  dplyr::select(case,fleet,type,y,x,m,val,lci,uci) |>
+                  dplyr::mutate(m=ifelse(m=="all maturity","undetermined",m),
+                                fleet=ifelse(stringr::str_starts(fleet,"NMFS"),"NMFS","BSFRF"));
+  dfrIndxFit = dplyr::bind_rows(dfrIndxFitt,dfrIndxFitg) |> dplyr::filter((val>0)&(!is.na(val)));
+  plotDFR<-function(dfr,logscale=FALSE){
+    p = ggplot(dfr,aes(x=y,y=val,ymin=lci,ymax=uci,colour=case,shape=case)) +
+          geom_point(data=dfr |> dplyr::filter(type=="observed"),colour="blue",shape=24) +
+          geom_ribbon(data=dfr |> dplyr::filter(type=="observed"),colour=NA,fill="blue",alpha=0.3) +
+          geom_line(data=dfr |> dplyr::filter(type=="observed"),colour="blue",alpha=0.5) +
+          geom_line(data=dfr |> dplyr::filter(type!="observed")) +
+          geom_point(data=dfr |> dplyr::filter(type!="observed")) +
+          geom_hline(yintercept=0,linetype=3) +
+          facet_grid(x+m~fleet,scales="free") +
+          labs(y="Survey Biomass (1,000's t)",x="year") +
+          wtsPlots::getStdTheme();
+    if (logscale) p = p + scale_y_log10();
+    return(p);
+  }
+```
+```{r}
+#| label: fig-ModComps-IndxFitNMFS1
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  ###--NMFS survey----
+  tmp = dfrIndxFit |> dplyr::filter(fleet=="NMFS");
+  p = plotDFR(tmp)
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Model fits to NMFS survey biomass, by sex and female maturity. ",
+               "Shading indicates design-based observation error. Triangles are observed catch, circles are predicted catch.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth);
+```
+
+```{r}
+#| label: fig-ModComps-IndxFitNMFS2
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  ###--NMFS survey----
+  tmp = dfrIndxFit |> dplyr::filter(fleet=="NMFS",y>2000);
+  p = plotDFR(tmp,logscale=TRUE);
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Model fits to NMFS survey biomass, by sex and female maturity, starting in 2001 on log10 scale. ",
+               "Shading indicates design-based observation error. Triangles are observed catch, circles are predicted catch.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth);
+```
+
+```{r}
+#| label: fig-ModComps-IndxFitBSFRF
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  ###--BSFRF survey----
+  tmp = dfrIndxFit |> dplyr::filter(fleet=="BSFRF");
+  p = plotDFR(tmp);
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Model fits to BSFRF survey biomass, by sex and female maturity. ",
+               "Shading indicates design-based observation error. Triangles are observed catch, circles are predicted catch.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r ModComps-GetIndxSizeComps}
+  getOSAs_TCSAM02<-function(models,flt,catch.type='index',sex="undetermined",maturity="undetermined"){
+    fleet.type="fishery";
+    if (catch.type=="index") fleet.type="survey";
+    mdfr1 = rCompTCMs::extractFits.SizeComps(models,
+                                             fleets=flt,
+                                             fleet.type=fleet.type,
+                                             catch.type=catch.type,
+                                             plot1stObs=FALSE); 
+    mdfr2 = rCompTCMs::extractMDFR.Fits.EffectiveNs(models,
+                                                    fleets=flt,
+                                                    fleet.type=fleet.type,
+                                                    category=catch.type)
+    obss = mdfr1 |> dplyr::filter(type=="observed",x==sex,m==maturity) |> dplyr::select(case,y,z,val) |> 
+             tidyr::pivot_wider(names_from=z,values_from="val");
+    prds = mdfr1 |> dplyr::filter(type=="predicted",x==sex,m==maturity) |> dplyr::select(case,y,z,val) |> 
+             tidyr::pivot_wider(names_from=z,values_from="val");
+    Ns = mdfr2 |> dplyr::filter(type=="input ss",x==sex,m==maturity) |> dplyr::select(case,y,val)
+    lst = list();
+    cases = unique(mdfr1$case);
+    for (case_ in cases){
+      #--case_=cases1[1]
+      ys  = (obss |> dplyr::filter(case==case_) |> dplyr::select(y))$y;
+      obs=as.matrix(obss |> dplyr::filter(case==case_) |> dplyr::select(!c(case,y)));
+      names(obs) = ys;
+      prd = as.matrix(prds |> dplyr::filter(case==case_) |> dplyr::select(!c(case,y)));
+      prd = prd+1.0e-5;
+      N   = (Ns   |> dplyr::filter(case==case_) |> dplyr::select(val))$val;
+      zs  = as.numeric(colnames(obs));
+      res = afscOSA::run_osa(obs,prd,N=N,fleet=case_,index=zs,years=ys,index_label="size (mm CW)");
+      lst[[case_]] = res;
+    }
+    return(lst);
+  }
+  getOSAs_GMACS<-function(models,flt,catch.type='total',sex="undetermined",maturity="undetermined"){
+    fleet.type="fishery";
+    if (catch.type=="index") fleet.type="survey";
+    lst = list();
+    for (case_ in names(models)){
+      rep = resGMACS[[case_]]$rep;
+      dfrZCsg = rep$Size_fit_summary |>
+                 dplyr::mutate(
+                   dplyr::across(c(year,size,inpSS,inpN,aggObs,aggPrd,aggRes),
+                                 as.numeric),
+                   case=case_
+                  ) |> dplyr::rename(y=year,x=sex,m=maturity,s=shell,z=size,catch_type=comp_type) |> 
+                 dplyr::filter(fleet==flt,catch_type==catch.type,x==sex,m==maturity);
+      lst[[case_]] =  dfrZCsg;
+    }
+    dfrZCsg = dplyr::bind_rows(lst); rm(lst);
+    obss = dfrZCsg |> dplyr::select(case,y,z,aggObs) |> 
+             tidyr::pivot_wider(names_from=z,values_from="aggObs");
+    prds = dfrZCsg |> dplyr::select(case,y,z,aggPrd) |> 
+             tidyr::pivot_wider(names_from=z,values_from="aggPrd");
+    Ns = dfrZCsg |> dplyr::distinct(case,y,inpSS);
+    lst = list();
+    cases = unique(dfrZCsg$case);
+    for (case_ in cases){
+      #--case_=cases[1]
+      ys  = (obss |> dplyr::filter(case==case_) |> dplyr::select(y))$y;
+      obs=as.matrix(obss |> dplyr::filter(case==case_) |> dplyr::select(!c(case,y)));
+      names(obs) = ys;
+      prd = as.matrix(prds |> dplyr::filter(case==case_) |> dplyr::select(!c(case,y)));
+      prd = prd+1.0e-5;
+      N   = (Ns   |> dplyr::filter(case==case_) |> dplyr::select(inpSS))$inpSS;
+      zs  = as.numeric(colnames(obs));
+      res = afscOSA::run_osa(obs,prd,N=N,fleet=case_,index=zs,years=ys,index_label="size (mm CW)");
+      lst[[case_]] = res;
+    }
+    return(lst);
+  }
+```
+
+```{r}
+#| label: fig_ModComps-OSAs-NMFS-M
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="NMFS M",catch.type="index",sex="male",maturity="all maturity");
+  osasg = getOSAs_GMACS(resGMACS,flt="NMFS",catch.type="total",sex="male",maturity="undetermined");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to NMFS survey size comps for male Tanner crab, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(osasg,osast,p,lbl,cap,pth);
+```
+
+```{r}
+#| label: fig_ModComps-OSAs-NMFS-IF
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="NMFS F",catch.type="index",sex="female",maturity="immature");
+  osasg = getOSAs_GMACS(resGMACS,flt="NMFS",catch.type="total",sex="female",maturity="immature");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to NMFS survey size comps for immature female Tanner crab, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r}
+#| label: fig_ModComps-OSAs-NMFS-MF
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="NMFS F",catch.type="index",sex="female",maturity="mature");
+  osasg = getOSAs_GMACS(resGMACS,flt="NMFS",catch.type="total",sex="female",maturity="mature");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to NMFS survey size comps for mature female Tanner crab, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r}
+#| label: fig_ModComps-OSAs-TCF-RM
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="TCF",catch.type="retained",sex="male",maturity="all maturity");
+  osasg = getOSAs_GMACS(resGMACS,flt="TCF",catch.type="retained",sex="male",maturity="undetermined");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to retained catch size comps for male Tanner crab in the directed fishery, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r}
+#| label: fig_ModComps-OSAs-TCF-TM
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="TCF",catch.type="total",sex="male",maturity="all maturity");
+  osasg = getOSAs_GMACS(resGMACS,flt="TCF",catch.type="total",sex="male",maturity="undetermined");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to total catch size comps for male Tanner crab in the directed fishery, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r eval=FALSE}
+#| label: fig_ModComps-OSAs-TCF-TF
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="TCF",catch.type="total",sex="female",maturity="all maturity");
+  osasg = getOSAs_GMACS(resGMACS,flt="TCF",catch.type="total",sex="female",maturity="undetermined");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to total catch size comps for male Tanner crab in the directed fishery, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r}
+#| label: fig_ModComps-OSAs-SCF-TM
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="SCF",catch.type="total",sex="male",maturity="all maturity");
+  osasg = getOSAs_GMACS(resGMACS,flt="SCF",catch.type="total",sex="male",maturity="undetermined");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to total bycatch size comps for male Tanner crab in the snow crab fishery, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r eval=FALSE}
+#| label: fig_ModComps-OSAs-SCF-TF
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="SCF",catch.type="total",sex="female",maturity="all maturity");
+  osasg = getOSAs_GMACS(resGMACS,flt="SCF",catch.type="total",sex="female",maturity="undetermined");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to total catch size comps for female Tanner crab in the snow crab fishery, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r eval=FALSE}
+#| label: fig_ModComps-OSAs-RKF-TM
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="RKF",catch.type="total",sex="male",maturity="all maturity");
+  osasg = getOSAs_GMACS(resGMACS,flt="RKF",catch.type="total",sex="male",maturity="undetermined");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to total bycatch size comps for male Tanner crab in the BBRKC fishery, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r eval=FALSE}
+#| label: fig_ModComps-OSAs-RKF-TF
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="RKF",catch.type="total",sex="female",maturity="all maturity");
+  osasg = getOSAs_GMACS(resGMACS,flt="RKF",catch.type="total",sex="female",maturity="undetermined");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to total catch size comps for female Tanner crab in the BBRKC fishery, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r}
+#| label: fig_ModComps-OSAs-GFA-TM
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="GF All",catch.type="total",sex="male",maturity="all maturity");
+  osasg = getOSAs_GMACS(resGMACS,flt="GFA",catch.type="total",sex="male",maturity="undetermined");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to total bycatch size comps for male Tanner crab in the groundfish fisheries, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r}
+#| label: fig_ModComps-OSAs-GFA-TF
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  osast = getOSAs_TCSAM02(resTCSAM02,flt="GF All",catch.type="total",sex="female",maturity="all maturity");
+  osasg = getOSAs_GMACS(resGMACS,flt="GFA",catch.type="total",sex="female",maturity="undetermined");
+  p = (afscOSA::plot_osa(c(osast,osasg)))$p;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("OSA (one step ahead) residuals for fits to total catch size comps for female Tanner crab in the groundfish fisheries, by case. ",
+               "Upper: bubble plot of residuals; middle: quantile-quantile plot; lower: mean fit (red) to mean proprtions (bars).")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+  rm(tmp,p,lbl,cap,pth,dfrIndxFit);
+```
+
+```{r ModComps-GetSummaryDfr}
+#--Summary dataframe----
+rep = resGMACS[[1]]$rep;
+dfrSmry = rep$Summary |>
+           dplyr::mutate(dplyr::across(dplyr::everything(),as.numeric));
+```
+
+#--estimated population quantities----
+```{r}
+#| label: fig_ModComps-PopQuants
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  ##--mean growth----
+  dfrMnGr = rep$`Mean growth` |>
+              dplyr::mutate(dplyr::across(3:5,as.numeric),
+                            case="GMACS") |> 
+              dplyr::select(case,x=sex,z=premolt_size,val=mean_postmolt_size);
+  mdfr = rCompTCMs::extractMDFR.Pop.MeanGrowth(resTCSAM02);
+  tmp = dplyr::bind_rows(dfrMnGr,mdfr |> dplyr::select(case,x,z,val));
+  p1 = ggplot(tmp,aes(x=z,y=val,colour=case)) +
+        geom_line() +
+        geom_abline(slope=1,linetype=3) +
+        scale_y_continuous() +
+        labs(x="pre-molt size (mm CW)",y="mean post-molt size (mm CW}") +
+        facet_wrap(~x,ncol=1) +
+        wtsPlots::getStdTheme();
+  ##--maturity
+  dfrPrM2M = rep$prMature |>
+                  tidyr::pivot_longer(cols=!c(year,sex),
+                                      names_to="size",values_to="est") |>
+                  dplyr::mutate(dplyr::across(c(year,size,est),as.numeric),
+                                case="GMACS") |> 
+                  dplyr::select(case,y=year,x=sex,z=size,val=est) |> 
+                  dplyr::mutate(y=as.character(y));
+  mdfr = rCompTCMs::extractMDFR.Pop.PrM2M(resTCSAM02) |> 
+                  dplyr::select(case,y,x,z,val);
+  tmp = dplyr::bind_rows(dfrPrM2M,mdfr);
+  p2 = ggplot(tmp,
+         aes(x=z,y=val,colour=case,group=y)) +
+        geom_point() + geom_line() +
+        scale_y_continuous(limits=c(0,NA))+
+        labs(y="Estimated Pr(terminal molt)") +
+        facet_wrap(~x,ncol=1) +
+        wtsPlots::getStdTheme();
+
+  #--natural mortality----
+  dfrM = extractNaturalMortality(resGMACS,resTCSAM02);
+  p3 = compareNaturalMortality(dfrM);
+
+  pg1 = cowplot::plot_grid(p1 + noXTitle + legPosUL,p2+noXTitle+legNone,ncol=1)
+  pg2 = cowplot::plot_grid(pg1,p3,nrow=1)
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Estimated population quantities. Upper left: mean growth; ",
+               "lower left: probability of terminal molt; ",
+               "right: natural mortality by time block, sex and maturity state. ",
+               "Note that Pr(M2M) for TCSAM02 is a function of pre-molt size, ",
+               "for GMACS it is a function of post-molt size an is determined outside the model.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(pg2,pth=pth,lbl=lbl,cap=cap,ori="P"));
+```
+
+```{r}
+#| label: fig_ModComps-RecTS
+#| fig-width: 6.5
+#| fig-asp: 1
+  ##--recruitment----
+  dfrR_y = dplyr::bind_rows(
+             rep$R_y |>
+               dplyr::mutate(dplyr::across(dplyr::everything(),as.numeric),
+                             model="GMACS"),
+             rCompTCMs::extractMDFR.Pop.Recruitment(resTCSAM02) |>
+               dplyr::select(year=y,est=val) |>
+               dplyr::mutate(dplyr::across(dplyr::everything(),as.numeric),
+                             model="TCSAM02")
+           );
+  p1 = ggplot(dfrR_y,aes(x=year,y=est,colour=model)) +
+        geom_point() + geom_line() +
+        scale_y_continuous(limits=c(0,NA)) +
+        labs(y="Recruitment (milions)") +
+        wtsPlots::getStdTheme() + 
+        legPosUR;
+  p2 = p1 + scale_y_log10();
+  pg = cowplot::plot_grid(p1,p2+legNone,ncol=1);
+  recRatio = (dfrR_y |> dplyr::filter(year>1981) |> tidyr::pivot_wider(names_from="model",values_from="est") |> 
+              dplyr::mutate(ratio=GMACS/TCSAM02) |> dplyr::summarize(ratio=mean(ratio)))$ratio;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Estimated recruitment time series. ",
+               "Upper plot: arithmetic scale; lower plot: log10 scale.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="P"));
+```
+
+```{r}
+#| label: fig_ModComps-RecZC
+#| fig-width: 6.5
+#| fig-asp: 0.67
+  ##--size at recruitment----
+  dfrR_z=dplyr::bind_rows(
+           rep$R_z |> dplyr::filter(sex=="male") |>
+             dplyr::mutate(dplyr::across(2:3,as.numeric),
+                           model="GMACS",
+                           sex="all"),
+           rCompTCMs::extractMDFR.Pop.RecSizeDistribution(resTCSAM02) |>
+             dplyr::filter(pc==2) |> dplyr::select(sex=x,size=z,est=val) |>
+             dplyr::mutate(dplyr::across(2:3,as.numeric),
+                           model="TCSAM02")
+         );
+  p = ggplot(dfrR_z,aes(x=size,y=est,colour=model)) +
+        geom_line() +
+        labs(y="proportion") +
+        wtsPlots::getStdTheme();
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Size distribution at recruitment. ")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+```
+
+```{r}
+#| label: fig_ModComps-PopBio
+#| fig-width: 9.0
+#| fig-asp: 0.67
+  ##--population biomass by population category and size----
+  dfrB_YXMSZg = rep$B_YXMSZ |>
+                 tidyr::pivot_longer(cols=!c(year,sex,maturity,shell),
+                                     names_to="size",
+                                     values_to="est") |>
+                 dplyr::select(y=year,x=sex,m=maturity,s=shell,z=size,val=est) |>
+                 dplyr::mutate(dplyr::across(c(y,z,val),as.numeric),
+                               s="all",
+                              case="gmacs") |>
+                 rCompTCMs::getMDFR.CanonicalFormat();
+  dfrB_YXMSZt = rCompTCMs::extractMDFR.Pop.Biomass(resTCSAM02,cast="y+x+m+z") |>
+                  dplyr::mutate((dplyr::across(c(y,z,val),as.numeric)));
+  dfrB_YXMSZ = dplyr::bind_rows(dfrB_YXMSZg,dfrB_YXMSZt);
+  # ###--final population biomass by category and size----
+  # dfrBF = dfrB_YXMSZ |>
+  #           dplyr::filter(y==2024);
+  # ggplot(dfrBF,aes(x=z,y=val,colour=case)) +
+  #   geom_point() +
+  #   geom_line() +
+  #   scale_y_continuous(limits=c(0,NA)) +
+  #   labs(y="Population Biomass (1,000's t)") +
+  #   facet_grid(m~x) +
+  #   wtsPlots::getStdTheme();
+  ###--population biomass by sex, maturity----
+  dfrB_YXM = dfrB_YXMSZ |>
+               dplyr::group_by(case,y,x,m) |>
+               dplyr::summarize(val=sum(val)) |>
+               dplyr::ungroup();
+  p1 = ggplot(dfrB_YXM,aes(x=y,y=val,colour=case)) +
+        geom_point() + geom_line() +
+        scale_y_continuous(limits=c(0,NA)) +
+        labs(y="Population Biomass (1,000's t)") +
+        facet_grid(m~x,scales="free_y") +
+        wtsPlots::getStdTheme();
+  p2 = ggplot(dfrB_YXM |> dplyr::filter(y>2000),aes(x=y,y=val,colour=case)) +
+        geom_point() + geom_line() +
+        scale_y_continuous(limits=c(0,NA)) +
+        labs(y="Population Biomass (1,000's t)") +
+        facet_grid(m~x,scales="free_y") +
+        wtsPlots::getStdTheme();
+  pg = cowplot::plot_grid(p1 + legPosUL + noXTitle,
+                          p2 + legNone + noXTitle,
+                          ncol=1)
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Estimated population biomass trajectories by sex and maturityy state. ",
+               "Upper four plots: entire model time period. ",
+               "Lower four plots: detail since 2001.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="L"));
+```
+```{r}
+#| label: fig_ModComps-RetTCF
+#| fig-width: 6.5
+#| fig-asp: 0.67
+  #--retention and selectivity curves----
+  dfrSel = extractSelFcns(resGMACS,resTCSAM02);
+  #--retention----
+  tmp =  dfrSel |> dplyr::filter(fleet %in% "TCF",type=="retained",x=="male")
+  p = compareSelFcns(tmp,"Retention",sub="TCF males") + legPosUL;
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Estimated retention in the directed fishery. ",
+               "The upper time interval label in each panel refers to the GMACS model, ",
+               "the lower to the bespoke model.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+```
+
+```{r}
+#| label: fig_ModComps-SelTCFM
+#| fig-width: 9
+#| fig-asp: 0.67
+  tmp =  dfrSel |> dplyr::filter(fleet %in% "TCF",type=="capture",x=="male")
+  p = compareSelFcns(tmp,"Selectivity",sub="TCF males") + 
+        theme(legend.position="inside",
+              legend.position.inside=c(0.99,0.01),
+              legend.justification.inside=c(1,0));
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Estimated selectivity curves for males in the directed fishery. ",
+               "The upper time interval label in each panel refers to the GMACS model, ",
+               "the lower to the bespoke model.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="L"));
+```
+
+```{r}
+#| label: fig_ModComps-SelFshM
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  tmp =  dfrSel |> dplyr::filter(fleet %in% "SCF",type=="capture",x=="male")
+  p1 = compareSelFcns(tmp,"Selectivity",sub="SCF males");
+  
+  tmp =  dfrSel |> dplyr::filter(fleet %in% "RKF",type=="capture",x=="male")
+  p2 = compareSelFcns(tmp,"Selectivity",sub="RKF males");
+  
+  tmp =  dfrSel |> dplyr::filter(fleet %in% "GFA",type=="capture",x=="male")
+  p3 = compareSelFcns(tmp,"Selectivity",sub="GFA males");
+  pg = cowplot::plot_grid(p1 + legPosUL + noXTitle,
+                          p2 + legNone + noXTitle ,
+                          p3 + legNone + noXTitle,
+                          ncol=1)
+  cap = paste0("Estimated selectivity curves for males in the bycatch fisheries by time block. ",
+               "The upper time interval label in each panel refers to the GMACS model, ",
+               "the lower to the bespoke model.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="P"));
+```
+
+```{r}
+#| label: fig_ModComps-SelFshF
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  tmp =  dfrSel |> dplyr::filter(fleet %in% "TCF",type=="capture",x=="female")
+  p1 = compareSelFcns(tmp,"Selectivity",sub="TCF females");
+  tmp =  dfrSel |> dplyr::filter(fleet %in% "SCF",type=="capture",x=="female")
+  p2 = compareSelFcns(tmp,"Selectivity",sub="SCF females");
+  tmp =  dfrSel |> dplyr::filter(fleet %in% "RKF",type=="capture",x=="female")
+  p3 = compareSelFcns(tmp,"Selectivity",sub="RKF females");
+  tmp =  dfrSel |> dplyr::filter(fleet %in% "GFA",type=="capture",x=="female")
+  p4 = compareSelFcns(tmp,"Selectivity",sub="GFA females");
+  pg = cowplot::plot_grid(p1 + legPosUL + noXTitle,
+                          p2 + legNone + noXTitle ,
+                          p3 + legNone + noXTitle,
+                          p4 + legNone + noXTitle,
+                          ncol=1)
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Estimated selectivity curves for females in the directed and bycatch fisheries by time block. ",
+               "The upper time interval label in each panel refers to the GMACS model, ",
+               "the lower to the bespoke model.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="P"));
+```
+```{r}
+#| label: fig_ModComps-SelNMFS
+#| fig-width: 6.5
+#| fig-asp: 1.3
+  tmp =  dfrSel |> dplyr::filter(fleet %in% "NMFS",type=="capture",x=="male")
+  p1 = compareSelFcns(tmp,"Selectivity",sub="NMFS males");
+  tmp =  dfrSel |> dplyr::filter(fleet %in% "NMFS",type=="capture",x=="female")
+  p2 = compareSelFcns(tmp,"Selectivity",sub="NMFS females");
+  pg = cowplot::plot_grid(p1 + legPosUL + noXTitle,
+                          p2 + legNone + noXTitle,
+                          ncol=1)
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Estimated selectivity curves in the NMFS EBS bottom trawl survey.",
+               "The upper time interval label in each panel refers to the GMACS model, ",
+               "the lower to the bespoke model.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="P"));
+```
+
+<!-- references -->
+```{r,eval=!knitr::opts_knit$get("child")&!isPDF,results='asis'}
+  cat("# References {-}\n");
+  cat("::: {#refs}\n");
+  cat(":::\n\n");
+```
+
+<!-- tables, if not child doc and lstTbls is not empty -->
+```{r}
+#| label: tables_ModComps
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printTablesSectionFromList.R",package="wtsQMD"));
+```
+
+<!-- figures, if not child doc and lstFigs is not empty -->
+```{r}
+#| label: figures_ModComps
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printFiguresSectionFromList.R",package="wtsQMD"));
+```

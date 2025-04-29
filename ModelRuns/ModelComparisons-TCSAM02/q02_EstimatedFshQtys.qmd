@@ -1,0 +1,372 @@
+---
+title: "Estimated Fishery-related Quantities"
+author: William T. Stockhausen
+affiliation: NOAA/NMFS/AFSC
+date: '`r format(Sys.time(), "%b %e, %Y")`'
+fontsize: 11pt 
+number-sections: true
+reference-location: document
+bibliography: '`r path.expand("~/Work/Projects/Bibliography/AllRefs.bib")`'
+csl: '`r system.file("files/CJFAS.csl",package="wtsQMD")`'
+crossref:
+  chapters: false      # prepend label reference numbers by chater number?
+  fig-title: Figure    # for caption: default is "Figure")
+  tbl-title: Table     # for caption: default is "Table")
+  title-delim: "."     # for caption: default is ":")
+  fig-prefix: Figure   # for in-text (use [-@fig-ref] to drop prefix in text)
+  tbl-prefix: Table    # for in-text (use [-@tbl-ref] to drop prefix in text)
+  fig-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  tbl-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  subref-labels: alpha a # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  ref-hyperlink: true    # references are hyperlinked if true
+format: 
+  html: 
+    df-print: paged
+    toc: true
+    toc-location: right
+    fig-width: 6.5
+    fig-asp: 0.6
+    fig-dpi: 100
+    embed-resources: true
+    include-in-header: 
+      - '`r system.file("files/in-line_math_mode.html",package="wtsQMD")`'
+  pdf:
+    documentclass: scrartcl
+    toc: false
+    fig_crop: false
+    keep-tex: false
+    fig-width: 6.5
+    fig-asp: 0.6
+    fig-dpi: 100
+    geometry:
+      - left=1.0in
+      - right=1.0in
+      - top=1.0in
+      - bottom=1.0in
+      - textwidth=6.5in
+      - showframe=false
+    include-in-header: 
+      - text: |
+          \usepackage{placeins}
+          \extrafloats{500}
+          \maxdeadcycles=10000
+          \usepackage{fontspec}
+          \usepackage{multicol}
+          \usepackage{hhline}
+          \newlength\Oldarrayrulewidth
+          \newlength\Oldtabcolsep
+      - file: '`r system.file("files/ltx_ExtraLatexIncludes.tex",package="wtsQMD")`'
+echo: false
+warning: false
+results: 'hide'
+keep-md: false
+keep-yaml: false
+editor: source
+editor_options: 
+  chunk_output_type: console
+concordance: true
+params:
+  setup: !expr 'system.file("files/qmd_setup.R",package="wtsQMD")'
+  testing: false
+---
+
+<!-- if not child doc, set up required objects -->
+```{r}
+#| label: TCSAM02Mods-FshQtys_setup
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: "asis"
+  if (!exists("testing")) testing = params$testing;
+  if (testing) cat(params$setup,"\n\n")
+  source(params$setup);
+  if (testing) {
+    cat("In TCSAM02Mods-FshQtys_setup:\n\n")
+    cat("root = ",root,"\n\n");
+    cat("peek = '",child_path$peek(),"'\n\n",sep="");
+  }
+```
+
+```{r}
+#| label: setup_TCSAM02Mods-FshQtys
+#| results: 'asis'
+  require(ggplot2);
+  require(kableExtra);
+  require(rCompTCMs);
+  require(tables);
+  require(wtsQMD);
+  Sum = wtsUtilities::Sum;
+  old_thm = ggplot2::theme_set(cowplot::theme_cowplot(font_size = 10) +
+                               cowplot::background_grid() +
+                               cowplot::panel_border());
+  thm = wtsPlots::getStdTheme();
+  options("readr.show_col_types"=FALSE);
+  if (testing) cat("dirThs =",child_path$peek(),"\n\n")
+  # if (!exists("s")){
+  #   fn = ifelse(child_path$peek()!="",
+  #               file.path(child_path$peek(),"../..",params$rdaAsmtSetup),
+  #               file.path(rstudioapi::getActiveProject(),
+  #                         params$rdaAsmtSetup));
+  #   s = wtsUtilities::getObj(fn);
+  # }
+  dirThs = child_path$peek();                #--path to "this" folder
+  dirPrj = file.path(child_path$peek(),"..");#--path to project folder from "this" folder
+  if (!exists("models"))
+    models = wtsUtilities::getObj(file.path(dirThs,"rda_Models.RData"));
+
+  if (!exists("asmtYr")) asmtYr = 2024;
+
+  if (!exists("strAY"))  strAY  = wtsQMD::crabYear(asmtYr);
+  if (!exists("currYr")) currYr = wtsQMD::crabYear(asmtYr-1);#--current fishery year
+
+  prvYr = asmtYr-1;
+  if (!exists("tblno")) tblno = 0;#--index in LETTERS for tables in text
+```
+
+```{r}
+  prvMod = "22.03d5";#--previous assessment model
+  compare  = names(models);
+  cases1   = compare;
+  cases2   = NULL;
+  obs_case = prvMod;
+  if (!exists("PLOT_OBJECTS")){
+    #--PLOT OBJECTS---------------------------------------
+    source(file.path(dirThs,"../RCode_Markdown/r_FigureFunctions.R"));
+    std_theme = wtsPlots::getStdTheme();
+    ggT = ggplot2::theme(plot.title=element_text(size=10,margin=margin()),
+                         panel.spacing = grid::unit(0.01,"in"),
+                         legend.position="none", 
+                         plot.margin=margin(0,0,0,1));
+    ggL = labs(title=NULL,subtitle=NULL);
+    noL  = theme(legend.position="none");
+    noXT = theme(axis.title.x=element_blank());
+    colour_scale=ggplot2::scale_color_hue();
+    fill_scale  =ggplot2::scale_fill_hue();
+    PLOT_OBJECTS = "PLOT_OBJECTS";#--make flag to prevent doing this again
+  }
+```
+
+## Estimated Fishery-related Quantities {#sec-TCSAM02FshQtys}
+
+All estimated fishery-related quantities are essentially identical for all of the models.
+Graphs of time series of estimated fully-selected F (total catch capture rates, not necessarily mortality) in the directed fishery are shown in Figure [-@fig-TCSAM02Mods-FshQtys-TCF-CRs], while the associated selectivity functions are illustrated in Figures [-@fig-TCSAM02Mods-FshQtys-TCF-SelFcnsF]-[-@fig-TCSAM02Mods-FshQtys-TCF-SelFcnsM2]. The estimates of size-selective retention of males captured in the directed fishery are presented in Figure [-@fig-TCSAM02Mods-FshQtys-TCF-RetFcns]. Graphs of time series of estimated fully-selected F (again, total catch capture rates, not mortality) and the associated selectivity functions for the bycatch fisheries are shown in Figures [-@fig-TCSAM02Mods-FshQtys-SCF-CRs]-[-@fig-TCSAM02Mods-FshQtys-GFAll-CRs].
+
+```{r }
+#| label: fig_TCSAM02Mods-FshQtys
+#| fig-asp: 1.23
+#| results: asis
+  #--directed fishery----
+  fleet_="TCF";
+  ##--fully-selected capture rates----
+  ps1 = rCompTCMs::compareResults.Fisheries.Catchability(models[compare],
+                                                         fleets=fleet_,
+                                                         cast="x",
+                                                         facet_grid=x~.,
+                                                         years="all");
+  ps2 = rCompTCMs::compareResults.Fisheries.Catchability(models[compare],
+                                                         fleets=fleet_,
+                                                         cast="x",
+                                                         facet_grid=x~.,
+                                                         years=1980:asmtYr);
+  lg = cowplot::get_legend(ps2[[1]]);
+  pg1 = cowplot::plot_grid(ps1[[1]]+noXT+noL+ggL,
+                           ps2[[1]]+noXT+noL+ggL,ncol=1); 
+  pg2 = cowplot::plot_grid(pg1,lg,nrow=1,rel_widths=c(8,1));
+  cap = paste0("TCSAM02 models estimated fully-selected capture rates (not mortality) in the directed fishery. ",
+               "The lower pair of plots show the estimated time series since 1980. ");
+  xt  = paste0("-TCF-CRs");
+  lbl = wtsQMD::getLabel(xt);
+  pth = wtsQMD::getFigFN(xt);
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(pg2,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(ps1,ps2,lg,pg1,pg2,cap,xt,lbl,pth);
+
+  #----selectivity functions----
+  mdfr1 = rCompTCMs::extractMDFR.Fisheries.SelFcns(models[compare],
+                                                        fleets=fleet_,
+                                                        cast="y+x",
+                                                        years=c(1990:2021));
+
+  # ##--females----
+  # p1 = ggplot(mdfr1 %>% dplyr::filter(x=="female",y==1990) |> dplyr::mutate(block="all years"),
+  #             aes(x=z,y=val,colour=case,shape=case)) +
+  #        geom_line() + geom_point() +
+  #        facet_wrap(~block) +
+  #        labs(x="Size (mm CW)",y="selectivity") +
+  #        wtsPlots::getStdTheme(); if (testing) print(p1);
+  # cap = paste0("TCSAM02 models estimated selectivity for females in the directed fishery for all years.");
+  # xt  = paste0("-TCF-SelFcnsF");
+  # lbl = wtsQMD::getLabel(xt);
+  # pth = wtsQMD::getFigFN(xt);
+  # lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,asp=0.5,ori="P"));
+  # 
+  # ##--males, faceted by case----
+  # p1 = ggplot(mdfr1 %>% dplyr::filter(x=="male"),aes(x=z,y=val,colour=y)) +
+  #        geom_line() + geom_point() +
+  #        facet_wrap(~case,ncol=2) +
+  #        labs(x="Size (mm CW)",y="selectivity",colour="year") +
+  #        wtsPlots::getStdTheme(); if (testing) print(p1);
+  # lbl = paste0("fshQuants.TCF.MaleSelFcns1.TCSAM02Mods");
+  # cap = paste0("TCSAM02 models estimated selectivity curves for males in the directed fishery, ",
+  #              "faceted by model scenario. ",
+  #              "Curves labelled 1990 applies to all years before 1991. ",
+  #              "Others apply in the year indicated in the legend.");
+  # xt  = paste0("-TCF-SelFcnsM1");
+  # lbl = wtsQMD::getLabel(xt);
+  # pth = wtsQMD::getFigFN(xt);
+  # lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+
+  ##--males, faceted by year----
+  p1 = ggplot(mdfr1 %>% dplyr::filter(x=="male"),
+              aes(x=z,y=val,colour=case,shape=case)) +
+         geom_line() + geom_point() +
+         facet_wrap(~y) +
+         labs(x="Size (mm CW)",y="selectivity") +
+         wtsPlots::getStdTheme(); if (testing) print(p1);
+  lbl = paste0("fshQuants.TCF.MaleSelFcns2.TCSAM02Mods");
+  cap = paste0("TCSAM02 models estimated selectivity curves for males in the directed fishery by year. ",
+               "Curve labelled 1990 applies to  all years before 1991. ",
+               "Others apply in the year indicated in the panel.");
+  xt  = paste0("-TCF-SelFcnsM2");
+  lbl = wtsQMD::getLabel(xt);
+  pth = wtsQMD::getFigFN(xt);
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p1,lbl=lbl,cap=cap,pth=pth,ori="P"));
+
+  # ##--retention functions----
+  # mdfr1 = rCompTCMs::extractMDFR.Fisheries.RetFcns(models[compare],
+  #                                                  fleets=fleet_,
+  #                                                  years=c(1990,1992,2005,2013),
+  #                                                  cast="y+x") |> 
+  #           dplyr::mutate(block=ifelse(y==1990,"before 1991","1991-1996"),
+  #                         block=ifelse(y==2005,"2005-2009",block),
+  #                         block=ifelse(y==2013,"2013-present",block),
+  #                         block=factor(block,levels=c("before 1991","1991-1996","2005-2009","2013-present")));
+  # p = ggplot(mdfr1,aes(x=z,y=val,colour=case)) +
+  #       geom_line() + 
+  #       geom_vline(xintercept=125,linetype=3) + 
+  #       facet_wrap(~block,ncol=2) +
+  #       ylim(0,1) +
+  #       xlab('size (mm CW)')+ylab('retention')+
+  #       wtsPlots::getStdTheme(); if (testing) print(p);
+  # cap = paste0("TCSAM02 models estimated retention curves for males in the directed fishery by time block. ",
+  #              "The dotted line indicates the current industry-preferred size (125 mm CW).");
+  # xt  = paste0("-TCF-RetFcns");
+  # lbl = wtsQMD::getLabel(xt);
+  # pth = wtsQMD::getFigFN(xt);
+  # lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  # rm(ps,p1,cap,xt,lbl,pth);
+  # 
+  # #--other fisheries----
+  # ##--snow crab fishery----
+  # fleet_="SCF";
+  # ps = rCompTCMs::compareResults.Fisheries.Catchability(models[compare],
+  #                                                       fleets=fleet_,
+  #                                                       cast="x",
+  #                                                       facet_grid=.~x,
+  #                                                       years="all");
+  # mdfr2 = rCompTCMs::extractMDFR.Fisheries.SelFcns(models[compare],
+  #                                                       fleets=fleet_,
+  #                                                       cast="y+x",
+  #                                                       years=c(1990,2000,2020)) |> 
+  #           dplyr::mutate(block=ifelse(y==1990,"before 1997","1997-2004"),
+  #                         block=ifelse(y==2020,"2005-present",block));
+  # p2 = ggplot(mdfr2,aes(x=z,y=val,colour=case)) + 
+  #       geom_line() + 
+  #       facet_grid(block~x) +
+  #       labs(y="selectivity",x="size (mmCW)") +
+  #       wtsPlots::getStdTheme() + noL;
+  # pg = cowplot::plot_grid(ps[[1]]+ggL+noXT,p2,ncol=1,rel_heights=c(1,2)); if (testing) print(pg);
+  # lbl = paste0("fshQuants.SCF.TCSAM02Mods");
+  # cap = paste0("TCSAM02 models estimated fully-selected bycatch capture rates (not mortality) ",
+  #              "and selectvity functions in the snow crab fishery. ",
+  #              "Time blocks for selectivity functions are labelled: ",
+  #              "1) before 1997; 2) 1997-2004; 3) 2005-present. ");
+  # xt  = paste0("-SCF-CRs");
+  # lbl = wtsQMD::getLabel(xt);
+  # pth = wtsQMD::getFigFN(xt);
+  # lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  # rm(ps,mdfr2,p2,pg,lbl,cap,xt,lbl,pth);
+  # 
+  # ##--BBRKC fishery----
+  # fleet_="RKF";
+  # ps = rCompTCMs::compareResults.Fisheries.Catchability(models[compare],
+  #                                                       fleets=fleet_,
+  #                                                       cast="x",
+  #                                                       facet_grid=.~x,
+  #                                                       years="all");
+  # mdfr2 = rCompTCMs::extractMDFR.Fisheries.SelFcns(models[compare],
+  #                                                       fleets=fleet_,
+  #                                                       cast="y+x",
+  #                                                       years=c(1990,2000,2020)) |> 
+  #           dplyr::mutate(block=ifelse(y==1990,"before 1997","1997-2004"),
+  #                         block=ifelse(y==2020,"2005-present",block));
+  # p2 = ggplot(mdfr2,aes(x=z,y=val,colour=case)) + 
+  #       geom_line() + 
+  #       facet_grid(block~x) +
+  #       labs(y="selectivity",x="size (mmCW)") +
+  #       wtsPlots::getStdTheme() + noL;
+  # pg = cowplot::plot_grid(ps[[1]]+ggL+noXT,p2,ncol=1,rel_heights=c(1,2)); if (testing) print(pg);
+  # lbl = paste0("fshQuants.RKF.TCSAM02Mods");
+  # cap = paste0("TCSAM02 models estimated fully-selected bycatch capture rates (not mortality)  ",
+  #              "and selectvity functions in the BBRKC fishery. ",
+  #              "Time blocks for selectivity functions are: ",
+  #              "1) before 1997; 2) 1997-2004; 3) 2005-present.");
+  # xt  = paste0("-RKF-CRs");
+  # lbl = wtsQMD::getLabel(xt);
+  # pth = wtsQMD::getFigFN(xt);
+  # lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  # rm(ps,mdfr2,p2,pg,lbl,cap,xt,lbl,pth);
+  # 
+  # ##--groundfish fisheries----
+  # fleet_="GF All";
+  # ps = rCompTCMs::compareResults.Fisheries.Catchability(models[compare],
+  #                                                       fleets=fleet_,
+  #                                                       cast="x",
+  #                                                       facet_grid=.~x,
+  #                                                       years="all");
+  # mdfr2 = rCompTCMs::extractMDFR.Fisheries.SelFcns(models[compare],
+  #                                                       fleets=fleet_,
+  #                                                       cast="y+x",
+  #                                                       years=c(1980,1997,2020)) |> 
+  #           dplyr::mutate(block=ifelse(y==1980,"before 1988","1987-1996"),
+  #                         block=ifelse(y==2020,"1997-present",block));
+  # p2 = ggplot(mdfr2,aes(x=z,y=val,colour=case)) + 
+  #       geom_line() + 
+  #       facet_grid(block~x) +
+  #       labs(y="selectivity",x="size (mmCW)") +
+  #       wtsPlots::getStdTheme() + noL;
+  # pg = cowplot::plot_grid(ps[[1]]+ggL+noXT,p2,ncol=1,rel_heights=c(1,2)); if (testing) print(pg);
+  # lbl = paste0("fshQuants.GFAll.TCSAM02Mods");
+  # cap = paste0("TCSAM02 models estimated fully-selected bycatch capture rates (not mortality)  ",
+  #              "and selectvity functions in the groundfish fisheries. ",
+  #              "Time blocks for selectivity functions are: ",
+  #              "1) before 1988; 2) 1987-1996; 3) 1997-present.");
+  # xt  = paste0("-GFAll-CRs");
+  # lbl = wtsQMD::getLabel(xt);
+  # pth = wtsQMD::getFigFN(xt);
+  # lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(ps,mdfr2,p2,pg,lbl,cap,xt,lbl,pth);
+  rm(fleet_);
+```
+
+
+<!-- references -->
+```{r,eval=!knitr::opts_knit$get("child")&!isPDF,results='asis'}
+  cat("# References {-}\n");
+  cat("::: {#refs}\n");
+  cat(":::\n\n");
+```
+
+<!-- tables, if not child doc and lstTbls is not empty -->
+```{r}
+#| label: tables_TCSAM02Mods-FshQtys
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printTablesSectionFromList.R",package="wtsQMD"));
+```
+
+<!-- figures, if not child doc and lstFigs is not empty -->
+```{r}
+#| label: figures_TCSAM02Mods-FshQtys
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printFiguresSectionFromList.R",package="wtsQMD"));
+```
+

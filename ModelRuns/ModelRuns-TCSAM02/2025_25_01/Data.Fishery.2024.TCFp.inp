@@ -312,7 +312,7 @@ SIZE_FREQUENCY_DATA  #required keyword
 BY_XE             #objective function fitting option
 MULTINOMIAL             #likelihood type
 1             #likelihood weight
-0.05 0.05             #tail compression factors
+0.0 0.0             #tail compression factors
 20             #number of years of data
 MILLIONS             #units
 33  #number of size bin cutpoints

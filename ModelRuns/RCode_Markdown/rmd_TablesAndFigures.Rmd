@@ -1,0 +1,33 @@
+<!-- # Tables -->
+
+```{r tablesCFD,results="asis"}
+  fn = params$TablesAndFigures$tblInfoFilename;
+  if (file.exists(fn)){
+    cat("\n# Tables\n\n");
+    tblInfo = readr::read_csv(fn);
+    wtsMarkdown::processTableInfo(tblInfo,verbose=TRUE);
+  } else message("tblInfo file not found. No tables will be included.")
+  rm(fn);
+```
+
+<!-- # Figures -->
+
+```{r figuresCFD,results="asis"}
+  fn = params$TablesAndFigures$figInfoFilename;
+  if (file.exists(fn)){
+    cat("\n# Figures\n\n");
+    figInfo = readr::read_csv(fn);
+    nf = nrow(figInfo);
+    for (f in 1:nf){
+      fi = figInfo[f,];
+      if (fi$orientation=="landscape") cat("\n\\blandscape\n")
+      fn = file.path(fi$path,fi$fn);
+      if (!file.exists(fn)) stop("Figure file '",fn,"' was not found!")
+      wtsMarkdown::insertImage(fn,cap=fi$caption,lbl=fi$label,width=fi$width,height=fi$height);
+      cat("\n\n<!--\\FloatBarrier-->\n");
+      if (fi$orientation=="landscape") cat("\n\\elandscape\n")
+    }
+    rm(fn,figInfo,nf,f,fi);
+  } else message("figInfo file not found. No figures will be included.")
+```
+

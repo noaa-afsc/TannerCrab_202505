@@ -1,0 +1,343 @@
+---
+title: "Fits to Marginal Size Comps"
+author: William T. Stockhausen
+affiliation: NOAA/NMFS/AFSC
+date: '`r format(Sys.time(), "%b %e, %Y")`'
+fontsize: 11pt 
+number-sections: true
+reference-location: document
+reference-section-title: References
+bibliography: '`r path.expand("~/Work/Projects/Bibliography/AllRefs.bib")`'
+csl: '`r system.file("files/CJFAS.csl",package="wtsQMD")`'
+crossref:
+  chapters: false      # prepend label reference numbers by chater number?
+  fig-title: Figure    # for caption: default is "Figure")
+  tbl-title: Table     # for caption: default is "Table")
+  title-delim: "."     # for caption: default is ":")
+  fig-prefix: Figure   # for in-text (use [-@fig-ref] to drop prefix in text)
+  tbl-prefix: Table    # for in-text (use [-@tbl-ref] to drop prefix in text)
+  fig-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  tbl-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  subref-labels: alpha a # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  ref-hyperlink: true    # references are hyperlinked if true
+format: 
+  html: 
+    df-print: paged
+    toc: true
+    toc-location: right
+    fig-width: 6.5
+    fig-asp: 0.6
+    fig-dpi: 100
+  pdf:
+    documentclass: scrartcl
+    toc: false
+    fig_crop: false
+    keep-tex: false
+    fig-width: 6.5
+    fig-asp: 0.6
+    fig-dpi: 100
+    geometry:
+      - left=1.0in
+      - right=1.0in
+      - top=1.0in
+      - bottom=1.0in
+      - textwidth=6.5in
+      - showframe=false
+    include-in-header: 
+      - text: |
+          \usepackage{placeins}
+          \extrafloats{500}
+          \maxdeadcycles=10000
+          \usepackage{fontspec}
+          \usepackage{multicol}
+          \usepackage{hhline}
+          \newlength\Oldarrayrulewidth
+          \newlength\Oldtabcolsep
+      - file: '`r system.file("files/ltx_ExtraLatexIncludes.tex",package="wtsQMD")`'
+echo: false
+warning: false
+results: 'hide'
+keep-md: false
+keep-yaml: false
+editor: source
+editor_options: 
+  chunk_output_type: console
+concordance: true
+params:
+  setup: !expr 'system.file("files/qmd_setup.R",package="wtsQMD")'
+  testing: false
+---
+
+<!-- if not child doc, set up required objects -->
+```{r}
+#| label: TCSAM02Mods-MrgZCs_setup
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: "asis"
+  if (!exists("testing")) testing = params$testing;
+  if (testing) cat(params$setup,"\n\n")
+  source(params$setup);
+  if (testing) {
+    cat("In MargZCsPrefMod_setup:\n\n")
+    cat("root = ",root,"\n\n");
+    cat("peek = '",child_path$peek(),"'\n\n",sep="");
+  }
+```
+
+```{r}
+#| label: setup_TCSAM02Mods-MrgZCs
+#| results: 'asis'
+  require(ggplot2);
+  require(kableExtra);
+  require(tables);
+  require(wtsQMD);
+  Sum = wtsUtilities::Sum;
+  old_thm = ggplot2::theme_set(cowplot::theme_cowplot(font_size = 10) +
+                               cowplot::background_grid() +
+                               cowplot::panel_border());
+  thm = wtsPlots::getStdTheme();
+  options("readr.show_col_types"=FALSE);
+  if (testing) cat("dirThs =",child_path$peek(),"\n\n")
+  # if (!exists("s")){
+  #   fn = ifelse(child_path$peek()!="",
+  #               file.path(child_path$peek(),"../../",params$rdaAsmtSetup),
+  #               file.path(rstudioapi::getActiveProject(),params$rdaAsmtSetup));
+  #   s = wtsUtilities::getObj(fn);
+  # }
+  # if (!exists("models"))
+  #   models = wtsUtilities::getObj(s$ModCompPths$fnModels);
+  dirThs = child_path$peek();                #--path to "this" folder
+  dirPrj = file.path(child_path$peek(),"..");#--path to project folder from "this" folder
+  if (!exists("models"))
+    models = wtsUtilities::getObj(file.path(dirThs,"rda_Models.RData"));
+
+  if (!exists("asmtYr")) asmtYr = 2024;
+
+  if (!exists("strAY"))  strAY  = wtsQMD::crabYear(asmtYr);
+  if (!exists("currYr")) currYr = wtsQMD::crabYear(asmtYr-1);#--current fishery year
+
+  prvYr = asmtYr-1;
+  if (!exists("tblno")) tblno = 0;#--index in LETTERS for tables in text
+```
+
+```{r}
+  prvMod = "22.03d5";#--previous assessment model
+  compare  = names(models);
+  cases1   = compare;
+  cases2   = NULL;
+  obs_case = prvMod;
+   if (!exists("PLOT_OBJECTS")){
+    #--PLOT OBJECTS---------------------------------------
+    source(file.path(dirThs,"../RCode_Markdown/r_FigureFunctions.R"));
+    std_theme = wtsPlots::getStdTheme();
+    ggT = ggplot2::theme(plot.title=element_text(size=10,margin=margin()),
+                         panel.spacing = grid::unit(0.01,"in"),
+                         legend.position="none", 
+                         plot.margin=margin(0,0,0,1));
+    ggL = labs(title=NULL,subtitle=NULL);
+    colour_scale=ggplot2::scale_color_hue();
+    fill_scale  =ggplot2::scale_fill_hue();
+    PLOT_OBJECTS = "PLOT_OBJECTS";#--make flag to prevent doing this again
+  }
+  ggT1 = ggplot2::theme(plot.title=element_text(size=10,margin=margin()),
+                       panel.spacing = grid::unit(0.01,"in"),
+                       plot.margin=margin(0,0,0,1));
+```
+
+## Marginal Distributions for Fits to Compositional Data {#sec-TCSAM02Mods-MrgZCs}
+
+Marginal distributions for fits to the compositional data from the fisheries are shown in 
+Figures [-@fig-TCSAM02Mods-MrgZCs-TCF]-[-@fig-TCSAM02Mods-MrgZCs-GFAll]. Marginal distributions for fits to the compositional data from the surveys are shown in Figure [-@fig-TCSAM02Mods-MrgZCs-Surveys]. Except for the BSFRF survey data, the fits to the marginal distributions are practically identical across all the models and none exhibit the problem with overpredicting the proportions of large crab noted for the fits to individual years because underpredictions in the early parts of the time series balance out overpredictions in the latter part of those time series. The models do exhibit some variability with respect to the marginal distributions for the BSFRF size compositions, reflecting the differences in fit to the individual size compositions and the relatively few years to available to form the marginal distributions.
+
+```{r}
+#| label: fig-TCSAM02Mods-MrgZCs-TCF
+#| fig-width: 9
+#| fig-asp: 0.667
+  #----fisheries
+  #------directed fishery
+  #--------retained catch
+selCases = cases1;
+  mdfr<-rCompTCMs::extractFits.MeanSizeComps(objs=models[selCases],
+                                              fleets="TCF",
+                                              fleet.type="fishery",
+                                              catch.type="retained",
+                                              years="all",
+                                              plot1stObs=FALSE) |> 
+          dplyr::filter(!((type=="observed")&(!(case %in% c("22.03d5","25_01")))));
+  ps = rCompTCMs::compareFits.MeanSizeComps(mdfr=mdfr,fleets="TCF",
+                                            fleet.type="fishery",catch.type="retained",
+                                            plot1stObs=FALSE)[1];
+  lg = cowplot::get_legend(ps[[1]]+guides(shape="none")+theme(legend.box.margin=margin(0,0,0,2)));
+  p1 = ps[[1]]+ggL+ggT+theme(axis.title.x = element_blank());
+  #--total catch for model scenarios
+  mdfr<-rCompTCMs::extractFits.MeanSizeComps(objs=models[selCases],
+                                              fleets="TCF",
+                                              fleet.type="fishery",
+                                              catch.type="total",
+                                              years="all",
+                                              plot1stObs=FALSE) |> 
+          dplyr::filter(!((type=="observed")&(!(case %in% c("22.03d5","25_01")))));
+  ps = rCompTCMs::compareFits.MeanSizeComps(mdfr=mdfr,fleets="TCF",
+                                            fleet.type="fishery",catch.type="total",
+                                            plot1stObs=FALSE)[1];
+  p2 = ps[[1]]+ggL+ggT+theme(axis.title.x = element_blank());
+  pg1 = cowplot::plot_grid(p1+std_theme,p2+std_theme,ncol=1,rel_heights=c(1,1));
+  pg2 = cowplot::plot_grid(pg1,lg,nrow=1,rel_widths = c(10,1.5));
+  cap = paste0("TCSAM02 models fits to directed fishery mean size compositions. Upper plot: retained catch; ",
+               "lower plot: total catch. ",
+               "22.03d5 is the model from the previous assessment and had tail compression applied.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(pg2,lbl=lbl,cap=cap,pth=pth,ori="L"));
+```  
+
+```{r}
+#| label: fig-TCSAM02Mods-MrgZCs-SCF
+#| fig-width: 9
+#| fig-asp: 0.667
+  #------SCF
+  #--------total catch for model scenarios
+  mdfr<-rCompTCMs::extractFits.MeanSizeComps(objs=models[selCases],
+                                              fleets="SCF",
+                                              fleet.type="fishery",
+                                              catch.type="total",
+                                              years="all",
+                                              plot1stObs=FALSE) |> 
+          dplyr::filter(!((type=="observed")&(!(case %in% c("22.03d5","25_01")))));
+  ps = rCompTCMs::compareFits.MeanSizeComps(mdfr=mdfr,fleets="SCF",
+                                            fleet.type="fishery",catch.type="total",
+                                            plot1stObs=FALSE)[1];
+  p2 = ps[[1]]+ggL+ggT1;
+  cap = paste0("TCSAM02 models fits to mean bycatch size compositions from the snow crab fishery. ",
+               "22.03d5 is the model from the previous assessment and had tail compression applied.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p2,lbl=lbl,cap=cap,pth=pth,ori="L"));
+```
+
+```{r}
+#| label: fig-TCSAM02Mods-MrgZCs-RKF
+#| fig-width: 9
+#| fig-asp: 0.667
+  #--------RKF
+  mdfr<-rCompTCMs::extractFits.MeanSizeComps(objs=models[selCases],
+                                              fleets="RKF",
+                                              fleet.type="fishery",
+                                              catch.type="total",
+                                              years="all",
+                                              plot1stObs=FALSE) |> 
+          dplyr::filter(!((type=="observed")&(!(case %in% c("22.03d5","25_01")))));
+  ps = rCompTCMs::compareFits.MeanSizeComps(mdfr=mdfr,fleets="RKF",
+                                            fleet.type="fishery",catch.type="total",
+                                            plot1stObs=FALSE)[1];
+  p2 = ps[[1]]+ggL+ggT1;
+  cap = paste0("TCSAM02 models fits to mean bycatch size compositions from the BBRKC fishery. ",
+               "22.03d5 is the model from the previous assessment and had tail compression applied.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p2,lbl=lbl,cap=cap,pth=pth,ori="L"));
+```
+```{r}
+#| label: fig-TCSAM02Mods-MrgZCs-GFAll
+#| fig-width: 9
+#| fig-asp: 0.667
+  #--------GF
+  #--------total catch for ALL model scenarios
+  mdfr<-rCompTCMs::extractFits.MeanSizeComps(objs=models[selCases],
+                                              fleets="GF All",
+                                              fleet.type="fishery",
+                                              catch.type="total",
+                                              years="all",
+                                              plot1stObs=FALSE) |> 
+          dplyr::filter(!((type=="observed")&(!(case %in% c("22.03d5","25_01")))));
+  ps = rCompTCMs::compareFits.MeanSizeComps(mdfr=mdfr,fleets="GF All",
+                                            fleet.type="fishery",catch.type="total",
+                                            plot1stObs=FALSE)[1];
+  p2 = ps[[1]]+ggL+ggT1;
+  cap = paste0("TCSAM02 models fits to mean bycatch size compositions from the groundfish fisheries. ",
+               "The total catch size compositions were normalized similarly for all model scenarios. ",
+               "22.03d5 is the model from the previous assessment and had tail compression applied.");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p2,lbl=lbl,cap=cap,pth=pth,ori="L"));
+```
+
+```{r}
+#| label: fig-TCSAM02Mods-MrgZCs-Surveys
+#| fig-width: 9
+#| fig-asp: 0.667
+  #--surveys----
+  ##--NMFS----
+  mdfr<-rCompTCMs::extractFits.MeanSizeComps(objs=models[selCases],
+                                              fleets="NMFS M",fleet.type="survey",
+                                              catch.type="index",years="all",
+                                              plot1stObs=FALSE) |> 
+          dplyr::filter(!((type=="observed")&(!(case %in% c("22.03d5","25_01")))));
+  ps = rCompTCMs::compareFits.MeanSizeComps(mdfr=mdfr,fleets="NMFS M",
+                                            fleet.type="survey",catch.type="index",
+                                            plot1stObs=FALSE)[1];
+  lg = cowplot::get_legend(ps[[1]]+guides(shape="none")+theme(legend.box.margin=margin(0,0,0,2)));
+  p1 = ps[[1]]+ggL+ggT+theme(axis.title.x = element_blank())+labs(title="NMFS");
+  mdfr<-rCompTCMs::extractFits.MeanSizeComps(objs=models[selCases],
+                                              fleets="NMFS F",fleet.type="survey",
+                                              catch.type="index",years="all",
+                                              plot1stObs=FALSE) |> 
+          dplyr::filter(!((type=="observed")&(!(case %in% c("22.03d5","25_01")))));
+  ps = rCompTCMs::compareFits.MeanSizeComps(mdfr=mdfr,fleets="NMFS F",
+                                         fleet.type="survey",catch.type="index",
+                                         plot1stObs=FALSE)[1];
+  p2 = ps[[1]]+ggL+ggT+theme(axis.title.x = element_blank())+labs(title=" ");
+  pg1 = cowplot::plot_grid(p1 + std_theme,p2 + std_theme,ncol=1,rel_heights=c(2,3))
+  ##--BSFRF----
+  mdfr<-rCompTCMs::extractFits.MeanSizeComps(objs=models[selCases],
+                                              fleets="SBS BSFRF M",fleet.type="survey",
+                                              catch.type="index",years="all",
+                                              plot1stObs=FALSE) |> 
+          dplyr::filter(!((type=="observed")&(!(case %in% c("22.03d5","25_01")))));
+  ps = rCompTCMs::compareFits.MeanSizeComps(mdfr=mdfr,fleets="SBS BSFRF M",
+                                         fleet.type="survey",catch.type="index",
+                                         plot1stObs=FALSE)[1];
+  p3 = ps[[1]]+ggL+ggT+theme(axis.title.x = element_blank(),axis.title.y=element_blank())+labs(title="BSFRF");
+  mdfr<-rCompTCMs::extractFits.MeanSizeComps(objs=models[selCases],
+                                              fleets="SBS BSFRF F",fleet.type="survey",
+                                              catch.type="index",years="all",
+                                              plot1stObs=FALSE) |> 
+          dplyr::filter(!((type=="observed")&(!(case %in% c("22.03d5","25_01")))));
+  ps = rCompTCMs::compareFits.MeanSizeComps(models[selCases],fleets="SBS BSFRF F",
+                                         fleet.type="survey",catch.type="index",
+                                         plot1stObs=FALSE)[1];
+  p4 = ps[[1]]+ggL+ggT+theme(axis.title.x=element_blank(),axis.title.y=element_blank())+labs(title=" ");
+  pg2 = cowplot::plot_grid(p3 + std_theme,p4 + std_theme,ncol=1,rel_heights = c(2,3));
+  ##--combine plots as columns----
+  pg3 = cowplot::plot_grid(pg1,pg2,lg,nrow=1,rel_widths = c(10,10,2)); if (testing) print(pg3);
+  cap = paste0("TCSAM02 models' fits to mean survey size compositions from the NMFS EBS (left column) ",
+               "and BSFRF SBS (right column) surveys. ",
+               "22.03d5 is the model from the previous assessment and had tail compression applied.",
+               "The total catch size compositions were normalized similarly for all model scenarios. ");
+  lbl = wtsQMD::getLabel();
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(pg3,lbl=lbl,cap=cap,pth=pth,ori="L"));
+```
+
+<!-- references -->
+```{r,eval=!knitr::opts_knit$get("child")&!isPDF,results='asis'}
+  cat("# References {-}\n");
+  cat("::: {#refs}\n");
+  cat(":::\n\n");
+```
+
+<!-- tables, if not child doc and lstTbls is not empty -->
+```{r}
+#| label: tables_TCSAM02Mods-MrgZCs
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printTablesSectionFromList.R",package="wtsQMD"));
+```
+
+<!-- figures, if not child doc and lstFigs is not empty -->
+```{r}
+#| label: figures_TCSAM02Mods-MrgZCs
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printFiguresSectionFromList.R",package="wtsQMD"));
+```
+
