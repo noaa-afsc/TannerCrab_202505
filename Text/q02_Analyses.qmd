@@ -174,17 +174,17 @@ fldr = child_path$pop();
 ```
 
 
-<!-- # Empirical maturity ogives {#sec-EMOs} -->
+<!-- <!-- # Empirical maturity ogives {#sec-EMOs} --> -->
 
-```{r}
-fldr = "../Data/04_EmpiricalMaturityOgives";
-child_path$push(file.path(child_path$peek(),fldr));
-```
-```{r sct_CrabPack, child=file.path(child_path$peek(),"q01_TannerCrab-EmpiricalMaturityOgives.qmd")}
-```
-```{r}
-fldr = child_path$pop();
-```
+<!-- ```{r} -->
+<!-- fldr = "../Data/04_EmpiricalMaturityOgives"; -->
+<!-- child_path$push(file.path(child_path$peek(),fldr)); -->
+<!-- ``` -->
+<!-- ```{r sct_CrabPack, child=file.path(child_path$peek(),"q01_TannerCrab-EmpiricalMaturityOgives.qmd")} -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- fldr = child_path$pop(); -->
+<!-- ``` -->
 
 
 <!-- references -->

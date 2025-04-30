@@ -1,5 +1,5 @@
 ---
-title: "Success or Failure of small Tanner crab"
+title: "Success or failure of small Tanner crab"
 author: "William T. Stockhausen"
 institute: NOAA/NMFS/AFSC
 date: '`r format(Sys.time(), "%b %e, %Y")`'
@@ -35,7 +35,7 @@ format:
     documentclass: scrartcl
     toc: false
     fig_crop: false
-    keep-tex: true
+    keep-tex: false
     geometry:
       - left=1.0in
       - right=1.0in
@@ -48,11 +48,16 @@ format:
           \usepackage{placeins}
           \extrafloats{500}
           \maxdeadcycles=10000
+          \usepackage{fontspec}
+          \usepackage{multicol}
+          \usepackage{hhline}
+          \newlength\Oldarrayrulewidth
+          \newlength\Oldtabcolsep
       - file: '`r system.file("files/ltx_ExtraLatexIncludes.tex",package="wtsQMD")`'
 echo: false
 warning: false
 results: 'hide'
-keep-md: true
+keep-md: false
 keep-yaml: false
 editor: source
 editor_options: 
@@ -108,9 +113,13 @@ params:
 
 ## Small crab success {#sec-SCsxs}
 
-Small Tanner crab crab encountered during the NMFS EBS bottom trawl surveys in 2003-2005 and 2008-2010 successfully propagated to larger sizes while the cohort first observed in 2017-2019 did not. The SSC requested that the author explore whether the successful cohorts showed differences in habitat use compared with the unsuccessful one that may have contributed to their success. Furthermore, the SSC recommended that a comparison of environmental conditions experienced by
-small crabs during these periods may help to elucidate why some cohorts appear to propagate and others do not. Here, I ...
+Small Tanner crab crab encountered during the NMFS EBS bottom trawl surveys in 2003-2005 and 2008-2010 successfully propagated to larger sizes while the cohort first observed in 2017-2019 did not (Figure [-@fig-SCsxs-ZCs]). The SSC requested that the author explore whether the successful cohorts showed differences in habitat use compared with the unsuccessful one that may have contributed to their success. Furthermore, the SSC recommended that a comparison of environmental conditions experienced by small crabs during these periods may help to elucidate why some cohorts appear to propagate and others do not. Here, I present some simple comparisons between the cohorts using NMFS EBS bottom trawl survey data with regards to bottom temperatures occupied (Figures [-@fig-SCsxs-SCAvT] and [-@fig-SCsxs-TvSCA]), overlap with large crab (Figures [-@fig-SCsxs-SCAvLCA] and [-@fig-SCsxs-LCAvSCA]), the distribution of small crab with respect to bottom temperature and large crab abundance jointly (Figures [-@fig-SCsxs-H2Ds1]-[-@fig-SCsxs-H2Ds3]), and finally the geographic distributions of the cohorts with respect to location on the EBS shelf and relation to the cold pool (Figure [-@fig-SCsxs-Maps]). Bottom temperature was chosen because the it is important for physiological processes and regulates feeding, respiration, and growth while they were available as part of the survey data. Large crab CPUE was chosen because of the possibility that predation by, or competition with, large crab might have a substantial effect on small crab survival. In addition, both were available in the survey data.
 
+The small crab in all three cohorts were exposed to a range of bottom temperatures from ~-2 to ~6^o^C. Survey CPUE peaked in the 4 to 6^o^C range for all three cohorts (Figure [-@fig-SCsxs-SCAvT]), but crab in the successful cohorts experienced lower mean temperatures across the range of crab densities (Figure [-@fig-SCsxs-TvSCA]) when compared with the 2017-2019 "unsuccessful" cohort.
+
+There seemed to be little difference between the cohorts in terms of the densities of large crab experienced by small crab, or the densities of small crab associated with large crab (Figures [-@fig-SCsxs-SCAvLCA] and [-@fig-SCsxs-LCAvSCA]). The two successful cohorts appeared to occupy a wider range of temperature and large crab densities than the unsuccessful cohort, in which most crab were associated with warm temperatures and low large crab density (Figures [-@fig-SCsxs-H2Ds1]-[-@fig-SCsxs-H2Ds3]). The location and size of the cold pool varied annually in relation to spatial extent of the three cohorts, with no clear pattern apparent (Figure [-@fig-SCsxs-Maps]). It was small and located to the northwest during 2003-05, extensive during 2008-10, and started out extensive but then essentially disappeared after the first year in 2017-2019.
+
+The one clear difference between the two successful cohorts and one unsuccessful cohort is that of mean bottom temperature, with the two successful cohorts occupying colder temperatures than the unsuccessful cohort. A more nuanced analysis might pull out more subtle relationships, but any further analysis faces the issue of small sample size (two successful cohorts, one unsuccessful) and the potential for identifying spurious relationships. Expanding the time frame considered to the entire period covered by the NMF survey might increase the sample size by a factor of three or four successful/unsuccessful cohorts over the 50 year extent of the survey. Further work needs to be done in coordination with SAP and perhaps be led by analysts developing the Tanner crab ESP.
 
 ```{r}
 #| label: fig_SCsxs-ZCs
@@ -154,7 +163,30 @@ small crabs during these periods may help to elucidate why some cohorts appear t
   lbl = wtsQMD::getLabel();
   cap = paste0("Small crab haul-specific CPUE plotted against bottom temperature for the ",
                "successful 2003-2005 and 2008-2010 pseudocohorts and the unsuccessful 2017-2019 one. ",
-               "Lines and shading represent smooth fits to the CPUE data as a funtion of temperature.")
+               "Lines and shading represent smooth fits to the ln-scale CPUE data as a function of temperature.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(p,lbl,cap,pth);
+```
+
+```{r}
+#| label: fig_SCsxs-TvSCA
+#| results: asis
+#| fig-width: 6.5 
+#| fig-asp: 1.0
+  p = ggplot(dfrSTC |> dplyr::filter(!is.na(cohort),numCPUE_STC>0),aes(y=temp,x=numCPUE_STC,colour=cohort)) +
+        geom_point(alpha=0.5) +
+        geom_smooth() + 
+        scale_x_log10() +
+        labs(y="temperature degC",x="small crab CPUE (number/sq. nmi.)") +
+        wtsPlots::getStdTheme() +
+        theme(legend.position="inside",
+              legend.position.inside=c(0.01,0.99),
+              legend.justification.inside=c(0,1));
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Bottom temperature plotted against small crab haul-specific CPUE for the ",
+               "successful 2003-2005 and 2008-2010 pseudocohorts and the unsuccessful 2017-2019 one. ",
+               "Lines and shading represent smooth fits to the temperature data as a function of ln-scale CPUE.")
   pth = wtsQMD::getFigFN();
   lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
   rm(p,lbl,cap,pth);
@@ -180,6 +212,31 @@ small crabs during these periods may help to elucidate why some cohorts appear t
                "successful 2003-2005 and 2008-2010 pseudocohorts and the unsuccessful 2017-2019 one. ",
                "Lines and shading represent smooth fits to the small crab CPUE data as a function of ",
                "the large crab CPUE data.")
+  pth = wtsQMD::getFigFN();
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
+  rm(p,lbl,cap,pth);
+```
+
+```{r}
+#| label: fig_SCsxs-LCAvSCA
+#| results: asis
+#| fig-width: 6.5 
+#| fig-asp: 1.0
+  p = ggplot(dfrSTC |> dplyr::filter(!is.na(cohort),numCPUE_STC>0),aes(y=numCPUE_LTC,x=numCPUE_STC,colour=cohort)) +
+        geom_point(alpha=0.5) + 
+        geom_smooth() + 
+        scale_x_log10() +
+        scale_y_log10(limits=c(NA,10000)) +
+        labs(y="large crab CPUE (number/sq. nmi.)",x="small crab CPUE (number/sq. nmi.)") +
+        wtsPlots::getStdTheme() +
+        theme(legend.position="inside",
+              legend.position.inside=c(0.01,0.99),
+              legend.justification.inside=c(0,1));
+  lbl = wtsQMD::getLabel();
+  cap = paste0("Large crab haul-specific CPUE plotted against small crab haul-specific CPUE for the ",
+               "successful 2003-2005 and 2008-2010 pseudocohorts and the unsuccessful 2017-2019 one. ",
+               "Lines and shading represent smooth fits to the ln-scale large crab CPUE data as a function of ",
+               "the ln-scale small crab CPUE data.")
   pth = wtsQMD::getFigFN();
   lstFigs = c(lstFigs,wtsQMD::printGGplot(p,lbl=lbl,cap=cap,pth=pth,ori="P"));
   rm(p,lbl,cap,pth);
@@ -285,7 +342,7 @@ small crabs during these periods may help to elucidate why some cohorts appear t
 ```
 
 <!-- references, if not child doc -->
-```{r,eval=!knitr::opts_knit$get("child"),results='asis'}
+```{r,eval=!knitr::opts_knit$get("child")&!isPDF,results='asis'}
   cat("# References {-}\n");
   cat("::: {#refs}\n");
   cat(":::\n\n");

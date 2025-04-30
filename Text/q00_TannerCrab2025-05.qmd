@@ -144,9 +144,9 @@ SHOULD NOT BE CONSTRUED TO REPRESENT ANY AGENCY DETERMINATION OR POLICY
 
 The next full assessment for the Tanner crab stock will be reviewed by the Crab Plan Team (CPT) in September 2025 and the NPFMC's Science and Statistical Committee (SSC) in October 2025. The stock is on an annual cycle for assessment, with the last full assessment conducted in September 2024 [@TannerCrab2024]. 
 
-This report addresses several topics, including new analyses, potential (bespoke) TCSAM02 models for the Fall 2025 stock assessment, and work to develop a GMACS version of the Tanner crab assessment model. Among new analyses ([@sec-Analyses]), the AFSC's Shellfish Assessment Program (SAP) has developed an R package, `crabpack`, as a replacement to AKFIN Answers (https://akfin.psmfc.org) for obtaining crab-related survey data in a standard format. SAP staff requested that assessment authors test the package and compare results of data pulls using the package with data pulled using the authors' previous methods. Results of this comparison are presented in Second, 
+This report addresses several topics, including new analyses, potential (bespoke) TCSAM02 models for the Fall 2025 stock assessment, and work to develop a GMACS version of the Tanner crab assessment model. Among new analyses ([@sec-Analyses]), the AFSC's Shellfish Assessment Program (SAP) has developed an R package, `crabpack`, as a replacement to AKFIN Answers (https://akfin.psmfc.org) for obtaining crab-related survey data in a standard format. SAP staff requested that assessment authors test the package and compare results of data pulls using the package with data pulled using the authors' previous methods. Results of this comparison are presented in Section [-@sec-crabpack]. Model-based size compositions using VAST ([@VAST2015]) from the NMFS EBS bottom trawl survey are compared with standard design-based estimates in Section [-@sec-VAST-ZCs]. Finally, in response to an SSC request to compare spatial ranges and environmental conditions between juvenile cohorts that succeed or fail, Section [-@sec-SCsxs] provides a preliminary attempt to look at temperature and geographic conditionsfor two successful and one unsuccessful cohort of juvenile crab. Results from two models using the bespoke TCSAM02 framework are compared with results from the 2024 assessment assessment model in Section [-@sec-TCSAM02] to provide potential alternative models for the 2025 assessment. Finally, results from a GMACS model that attempts (but doesn't quite succeed) to duplicate the 2024 assessment model in the GMACS framework are presented in Section [-@sec-ModComps].
 
-This report is organized into the following sections: Responses to previous CPT and SSC Comments (@sec-Resps), Analyses (@sec-Analyses), TCSAM02 model runs and results (@sec-TCSAM02), GMACS model runs and results (@sec-GMACS), Summary (@sec-Smry), and Acknowledgments (@sec-Acks).
+This report is organized into the following sections: Responses to previous CPT and SSC Comments (@sec-Resps), Analyses (@sec-Analyses), TCSAM02 model runs and results (@sec-TCSAM02), GMACS model run and comparison with the current assessment model (@sec-ModComps), Summary (@sec-Smry), and Acknowledgments (@sec-Acks).
 
 <!-- # Responses to CPT and SSC Comments {#sec-Resps} -->
 ```{r sct_Resps, child=file.path(child_path$peek(),"q01_TannerCrab_ResponsesToComments2025.qmd")}
@@ -157,27 +157,52 @@ This report is organized into the following sections: Responses to previous CPT 
 ```
 
 <!-- # TCSAM02 Models {#sec-TCSAM02} -->
-```{r sct_TCSAM02, child=file.path(child_path$peek(),"q03_TCSAM02_Models.qmd")}
+```{r}
+fldr = "../ModelRuns/ModelComparisons-TCSAM02";
+child_path$push(file.path(child_path$peek(),fldr));
+```
+```{r sct_TCSAM02, child=file.path(child_path$peek(),"q01_TCSAM02_ModelComparisons.qmd")}
+```
+```{r}
+fldr = child_path$pop();
 ```
 
 <!-- # GMACS Models {#sec-GMACS} -->
-```{r sct_GMACS, child=file.path(child_path$peek(),"q03_GMACS_Models.qmd")}
+```{r}
+fldr = "../ModelRuns/ModelComparisons-TCSAM02-GMACS";
+child_path$push(file.path(child_path$peek(),fldr));
+```
+```{r sct_GMACS, child=file.path(child_path$peek(),"q02_GMACS-TCSAM02_ModelComparisons.qmd")}
+```
+```{r}
+fldr = child_path$pop();
 ```
 
 # Summary {#sec-Smry}
 
-The author recommends using the full-precision carapace length measurements with the current length-weight regressions to calculate biomass from NMFS EBS survey abundance and size data.
+In summary,
+
+  * with regard to `crabpack`, I
+  
+    - recommend using the full-precision carapace length measurements with the current length-weight regressions to calculate biomass from NMFS EBS survey abundance and size data.
+    
+    - recommend limiting the survey stations in 1979 to the 375 stations previously adopted as "standard" by the CPT for calculating crab survey abundance and biomass indices or size compositions using design-based methods.
+    
+    - recommend using data from all the available stations when calculating survey biomass and abundance indices or size compositions using model-based geostatistical (e.g., `VAST`, `sdmTMB`) methods.
+    
+  * with regard to using `VAST`-derived size compositions in the stock assessment, I recommend that a model using `VAST`-derived indices and size compositions be developed as an alternative model in 2026 pending further work to streamline the process of estimating and reviewing the results
+  
+  * with regard to "small crab success", I thank the SSC for the suggestion and hope the small overview given here provides some basis for further research on this topic, although further work needs to be done in coordination with SAP and perhaps led by analysts developing the Tanner crab ESP
+  
+  * with regard to alternative TCSAM02 models for the consideration as part of the 2025 stock assessment, I recommend including 25_02 as an alternative model in addition to the base. This model is attractive because using capture probability functions derived from the BSFRF data reduces overall model complexity by eliminating several selectivity/catchability-related parameters as well as the necessity to fit the BSFRF biomass indices and size compositions.
+  
+  * with regard to a GMACS alternative to the bespoke TCSAM02 model, substantial progress has been made on this: it feels like we're "almost there". I propose to continue to work on this over the summer and present an update on further progress at the 2025 stock assessment.
 
 The author looks forward to discussions with the CPT and SSC regarding model choices for the September assessment and further refinements to address on a longer timescale.
 
 # Acknowledgments {#sec-Acks}
 
-The author would like to acknowledge Andre Punt (UW) and Matthieu Veron (??) for recent improvements to GMACS, ...
-Jon Richar for VAST size comps
-Shannon Hennessey and SAP for developing the `crabpack` package
-Cole, Jim Ianelli, Andre, other crab assessment authors
-Cole for hess_step and OSA residuals
-Lee Cronin-Fine for internal review
+The author would like to acknowledge Andre Punt (UW) and Matthieu Veron (previously at the AFSC-Seattle, now at the Institut Agro Rennes-Angers) for recent improvements to GMACS; Jon Richar (AFSC-SAP) for developing the VAST size compositions for Tanner crab; Shannon Hennessey (AFSC-SAP) and SAP for developing the `crabpack` R package; Cole Monnahan (AFSC-SSMA), Jim Ianelli (AFSC-SSMA), Andre, and other crab assessment authors for discussions on use and debugging of GMACS; and Cole for developing the ADMB "hess_step" routine and providing help with OSA residuals. I would also like to thank Lee Cronin-Fine (AFSC-SSMA) for providing an internal review of a draft version of this report.
 
 <!-- references -->
 ```{r,eval=!knitr::opts_knit$get("child"),results='asis'}
