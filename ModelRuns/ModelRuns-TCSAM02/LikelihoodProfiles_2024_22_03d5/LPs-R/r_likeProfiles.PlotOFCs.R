@@ -1,14 +1,19 @@
 #plot likelihood profiles for OFCs----
+require(ggplot2);
+
 ##--PROFILING on pLnR[2]----
+param = "mean ln-scale R"
+
+dirThs = dirname(rstudioapi::getActiveDocumentContext()$path);
 
 #--load data-related OFCs----
-cases = wtsUtilities::getObj("rda_cases.RData");
+cases = wtsUtilities::getObj(file.path(dirThs,"rda_cases.RData"));
 base = as.character(cases[1]);
 if (FALSE){  #--do once, if not done previously
   lstDCs<-NULL;
   lstNCs<-NULL;
   for (case_ in cases){
-    fn = paste0("./LP_Results/OFCs_",case_,".DataComponents.csv");
+    fn = file.path(dirThs,paste0("./LP_Results/OFCs_",case_,".DataComponents.csv"));
     if (file.exists(fn)){
       dfrp<-readr::read_csv(fn,show_col_types=FALSE);
       if (nrow(dfrp)>0){
@@ -19,7 +24,7 @@ if (FALSE){  #--do once, if not done previously
         rm(dfrp);
       }
     }
-    fn = paste0("./LP_Results/OFCs_",case_,".NonDataComponents.csv");
+    fn = file.path(dirThs,paste0("./LP_Results/OFCs_",case_,".NonDataComponents.csv"));
     if (file.exists(fn)){
       dfrp<-readr::read_csv(fn,show_col_types=FALSE);
       if (nrow(dfrp)>0){
@@ -32,13 +37,13 @@ if (FALSE){  #--do once, if not done previously
   }
   dfrDCs = dplyr::bind_rows(lstDCs); #rm(lstDCs);
   dfrNCs = dplyr::bind_rows(lstNCs); #rm(lstNCs);
-  wtsUtilities::saveObj(dfrDCs,"rda_dfrDataComponentOFCs.RData");
-  wtsUtilities::saveObj(dfrNCs,"rda_dfrNonDataComponentOFCs.RData");
+  wtsUtilities::saveObj(dfrDCs,file.path(dirThs,"rda_dfrDataComponentOFCs.RData"));
+  wtsUtilities::saveObj(dfrNCs,file.path(dirThs,"rda_dfrNonDataComponentOFCs.RData"));
 }
 
 #--edit and extract data components----
-dfrDCs = wtsUtilities::getObj("rda_dfrDataComponentOFCs.RData");
-dfrNCs = wtsUtilities::getObj("rda_dfrNonDataComponentOFCs.RData");
+dfrDCs = wtsUtilities::getObj(file.path(dirThs,"rda_dfrDataComponentOFCs.RData"));
+dfrNCs = wtsUtilities::getObj(file.path(dirThs,"rda_dfrNonDataComponentOFCs.RData"));
 idx<-dfrDCs$category=="growth data";
 dfrDCs$fleet[idx]<-ifelse(dfrDCs$x[idx]=="male","NMFS M","NMFS F");
 idx<-dfrDCs$x=="all sexes";
@@ -110,7 +115,7 @@ p = ggplot(dfrTs,aes(x=case,y=diff)) +
       geom_vline(xintercept=as.numeric(cases[1]),linetype=3) +
       geom_vline(xintercept=minG,linetype=3,colour="cyan") +
       geom_line() +
-      labs(subtitle="total objective function",y="difference from base",x="parameter value") +
+      labs(subtitle="total objective function",y="difference from base",x=param) +
       wtsPlots::getStdTheme();
 print(p);
 
@@ -134,7 +139,7 @@ for (rw in 1:nrow(dfrPltCats)){
         geom_line() +
         geom_point(data=tmp2) +
         labs(subtitle=paste0(dfrPltCats$category[rw],": ",dfrPltCats$fleet[rw]),
-             y="difference from base",x="parameter value") +
+             y="difference from base",x=param) +
         wtsPlots::getStdTheme();
   print(p);
 }
@@ -158,7 +163,7 @@ for (rw in 1:nrow(dfrPltCats)){
         geom_line() +
         geom_point(data=tmp2) +
         labs(subtitle=paste0(dfrPltCats$category[rw]),
-             y="difference from base",x="parameter value") +
+             y="difference from base",x=param) +
         wtsPlots::getStdTheme();
   print(p);
 }

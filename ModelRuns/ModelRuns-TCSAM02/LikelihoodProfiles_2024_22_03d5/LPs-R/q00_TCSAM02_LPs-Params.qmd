@@ -1,0 +1,281 @@
+---
+title: "Likelihood profiles"
+author: "William T. Stockhausen"
+institute: "AFSC/NMFS/NOAA"
+date: '`r format(Sys.time(), "%b %e, %Y")`'
+fontsize: 11pt 
+number-sections: true
+number-depth: 3
+reference-location: document
+reference-section-title: References
+bibliography: /Users/williamstockhausen/Work/Projects/Bibliography/AllRefs.bib
+csl: '`r system.file("files/CJFAS.csl",package="wtsQMD")`'
+link-citations: true
+crossref:
+  chapters: false      # prepend label reference numbers by chater number?
+  fig-title: Figure    # for caption: default is "Figure")
+  tbl-title: Table     # for caption: default is "Table")
+  title-delim: "."     # for caption: default is ":")
+  fig-prefix: Figure   # for in-text (use [-@fig-ref] to drop prefix in text)
+  tbl-prefix: Table    # for in-text (use [-@tbl-ref] to drop prefix in text)
+  fig-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  tbl-labels: arabic    # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  subref-labels: alpha a # options are arabic, roman, roman i, alpha x, alpha X; latter two starting from x/X
+  ref-hyperlink: true    # references are hyperlinked if true
+format: 
+  html: 
+    df-print: paged
+    toc: true
+    toc-location: right
+    fig-width: 6.5
+    fig-asp: 0.6
+    fig-dpi: 100
+    embed-resources: true
+  pdf:
+    documentclass: scrartcl
+    toc: false
+    fig_crop: false
+    keep-tex: false
+    fig-width: 6.5
+    fig-asp: 0.6
+    fig-dpi: 100
+    geometry:
+      - left=1.0in
+      - right=1.0in
+      - top=1.0in
+      - bottom=1.0in
+      - textwidth=6.5in
+      - showframe=false
+    include-in-header: 
+      - text: |
+          \usepackage{placeins}
+          \extrafloats{500}
+          \maxdeadcycles=10000
+          \usepackage{fontspec}
+          \usepackage{multicol}
+          \usepackage{hhline}
+          \newlength\Oldarrayrulewidth
+          \newlength\Oldtabcolsep
+      - file: '`r system.file("files/ltx_ExtraLatexIncludes.tex",package="wtsQMD")`'
+echo: false
+warning: false
+results: 'hide'
+keep-md: false
+keep-yaml: false
+editor: source
+editor_options: 
+  chunk_output_type: console
+concordance: true
+params:
+  setup: !expr 'system.file("files/qmd_setup.R",package="wtsQMD")'
+  testing: false
+  reorderTables: false   #--issue with finding "range" of table values  (don't use)
+  reorderFigures: false  #--issue with finding "range" of figure values (don't use)
+---
+<!-- IMPORTANT: if used as a child doc, all chunk labels must be unique within the overall document -->
+
+<!-- 
+  NOTEs: 
+     * child_path$peek() gives path to current script.
+     * before starting a child document, do 
+         "child_path$push(file.path(child_path$peek(),rel_path))" first, 
+         where rel_path is the relative path to the child
+     * after a child document has finished, do "child_path$pop()" to return to current path value
+-->
+
+<!-- if not child doc, set up required objects -->
+```{r}
+#| label: LPs_setup
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: "asis"
+  testing = params$testing;
+  if (testing) cat(params$setup,"\n\n")
+  source(params$setup);
+  if (testing) cat("root = ",root,"\n\n")
+  reorderTables  = params$reorderTables;
+  reorderFigures = params$reorderFigures;
+```
+
+```{r}
+#| label: setup_LPs
+#| results: 'asis'
+  require(ggplot2);
+  require(kableExtra);
+  require(tables);
+  Sum = wtsUtilities::Sum;
+  old_thm = ggplot2::theme_set(cowplot::theme_cowplot(font_size = 10) +
+                               cowplot::background_grid() +
+                               cowplot::panel_border());
+  thm = wtsPlots::getStdTheme();
+  options("readr.show_col_types"=FALSE);
+  if (testing) cat("dirThs =",child_path$peek(),"\n\n")
+  dirThs = child_path$peek();                #--path to "this" folder
+  if (rstudioapi::isAvailable()) dirThs = dirname(rstudioapi::getActiveDocumentContext()$path);
+  dirPrj = file.path(child_path$peek(),"..");#--path to project folder from "this" folder
+  if (!exists("tblno")) tblno = 0;
+```
+
+```{r LPs-GetPlottingInfo}
+legPosUR = ggplot2::theme(legend.position="inside",
+                          legend.position.inside=c(0.99,0.99),
+                         legend.justification.inside=c(1,1));
+legPosUL = theme(legend.position="inside",
+                 legend.position.inside=c(0.01,0.99),
+                 legend.justification.inside=c(0,1));
+noLeg = ggplot2::theme(legend.position="none");
+noTitle  = ggplot2::theme(plot.title=element_blank());
+noXTitle = ggplot2::theme(axis.title.x=element_blank());
+noTTitle = ggplot2::theme(axis.title.y=element_blank());
+colour_scale=ggplot2::scale_color_hue();
+fill_scale  =ggplot2::scale_fill_hue();
+
+```
+
+```{r LP_GetResultsOFCs}
+  param = "pLnR[2]";
+  param_str = "mean ln-scale R";
+
+#--load data-related OFCs----
+cases = wtsUtilities::getObj(file.path(dirThs,"rda_cases.RData"));
+base = as.character(cases[1]);
+dfrDCs = wtsUtilities::getObj(file.path(dirThs,"rda_dfrDataComponentOFCs.RData"));
+dfrNCs = wtsUtilities::getObj(file.path(dirThs,"rda_dfrNonDataComponentOFCs.RData"));
+idx<-dfrDCs$category=="growth data";
+dfrDCs$fleet[idx]<-ifelse(dfrDCs$x[idx]=="male","NMFS M","NMFS F");
+idx<-dfrDCs$x=="all sexes";
+dfrDCs$x[idx]<-"all";
+dfrDCsp<-reshape2::dcast(dfrDCs,"case+category+fleet+catch.type+data.type+x~.",
+                         fun.aggregate=wtsUtilities::Sum,value.var="objfun");
+names(dfrDCsp)[7]<-"objfun";
+#--extract base case
+dfrDCspBase = dfrDCsp |>
+                dplyr::filter(case==base) |>
+                dplyr::mutate(base=objfun) |>
+                dplyr::select(!c(case,objfun));
+#--append base values to other models and find difference
+dfrDCsd = dfrDCsp |>
+            dplyr::inner_join(dfrDCspBase,
+                              by=dplyr::join_by(category, fleet, catch.type, data.type, x)) |>
+            dplyr::mutate(diff=objfun-base,
+                          component=paste(category,fleet,catch.type,data.type,x,sep="; "),
+                          case=as.numeric(case));
+#----calculate total by case
+dfrDCst = dfrDCsd |>
+            dplyr::group_by(case) |>
+            dplyr::summarise(objfun=wtsUtilities::Sum(objfun),
+                             base=wtsUtilities::Sum(base),
+                             diff=wtsUtilities::Sum(diff)) |>
+            dplyr::ungroup();
+
+#--edit and extract non-data components----
+dfrNCsp<-reshape2::dcast(dfrNCs,"case+category+type+element~.",
+                         fun.aggregate=wtsUtilities::Sum,value.var="objfun");
+names(dfrNCsp)[5]<-"objfun";
+
+#--extract base case----
+dfrNCspBase = dfrNCsp |>
+                dplyr::filter(case==base) |>
+                dplyr::mutate(base=objfun) |>
+                dplyr::select(!c(case,objfun));
+##--append base values to other models and find difference----
+dfrNCsd = dfrNCsp |>
+            dplyr::inner_join(dfrNCspBase,
+                              by=dplyr::join_by(category,type,element)) |>
+            dplyr::mutate(diff=objfun-base,
+                          component=paste(category,type,element,sep="; "),
+                          case=as.numeric(case));
+##----calculate total by case----
+dfrNCst = dfrNCsd |>
+            dplyr::group_by(case) |>
+            dplyr::summarise(objfun=wtsUtilities::Sum(objfun),
+                             base=wtsUtilities::Sum(base),
+                             diff=wtsUtilities::Sum(diff)) |>
+            dplyr::ungroup();
+
+#--create dataframe with totals by case----
+dfrTs<-dplyr::bind_rows(dfrDCst,dfrNCst) |>
+         dplyr::group_by(case) |>
+         dplyr::summarise(objfun=wtsUtilities::Sum(objfun),
+                          base=wtsUtilities::Sum(base),
+                          diff=wtsUtilities::Sum(diff)) |>
+         dplyr::ungroup();
+```
+
+```{r LPs-GetResultsParams}
+  #--plot parameter profiles
+  dfrPds = wtsUtilities::getObj(file.path("rda_dfrParamDiffs.RData"));
+```
+
+```{r}
+#| results: asis
+ title = paste0("## Likelihood profile results for profiling on ",param," (",param_str,") {#sec-LP-",param,"}");
+  cat(title,"\n\n")
+```
+
+```{r}
+#| label: fig_LPs-ParDifs-
+#| results: "asis"
+#| fig-width: 6.0
+#| fig-asp: 1
+  uCPs = dfrPds |> dplyr::distinct(category,process);
+  for (rw in 1:nrow(uCPs)){
+    #--testing: rw = 1;
+    tmp1<-dfrPds |>
+            dplyr::inner_join(uCPs[rw,,drop=FALSE],by=dplyr::join_by(category,process)) |>
+            dplyr::filter(type==" param_init_bounded_number");
+    if (nrow(tmp1)>0){
+      ctg = uCPs$category[rw];
+      prc = uCPs$process[rw];
+      subt = paste0(ctg,": ",prc);
+      p = ggplot(tmp1,mapping=aes(x=case,y=diff,colour=name)) +
+            geom_hline(yintercept=0,linetype=3) +
+            geom_vline(xintercept=as.numeric(cases[1]),linetype=3) +
+            geom_line() +
+            labs(x=param,y="parameter difference",colour="parameter",
+                 subtitle=subt) +
+            wtsPlots::getStdTheme();
+      xtra=paste0("AD-",ctg,"-",prc);
+      lbl = wtsQMD::getLabel(xtra);
+      cap = paste0('Absolute parameter differences in model category "',ctg,'" and process "',prc,'".')
+      pth = wtsQMD::getFigFN(xtra);
+      lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+      p = ggplot(tmp1,mapping=aes(x=case,y=pct,colour=name)) +
+            geom_hline(yintercept=0,linetype=3) +
+            geom_vline(xintercept=as.numeric(cases[1]),linetype=3) +
+            geom_line() +
+            labs(x=param,y="parameter percent difference",colour="parameter",
+                 subtitle=subt) +
+            wtsPlots::getStdTheme();
+      xtra=paste0("PD-",ctg,"-",prc)
+      lbl = wtsQMD::getLabel(xtra);
+      cap = paste0('Proportional parameter differences in model category "',ctg,'" and process "',prc,'".')
+      pth = wtsQMD::getFigFN(xtra);
+      lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+    }
+  }
+  rm(lbl,cap,pth)
+```
+
+
+<!-- references -->
+```{r,eval=!knitr::opts_knit$get("child")&!isPDF,results='asis'}
+  cat("# References {-}\n");
+  cat("::: {#refs}\n");
+  cat(":::\n\n");
+```
+
+<!-- tables, if not child doc and lstTbls is not empty -->
+```{r}
+#| label: tables_TCSAM02
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printTablesSectionFromList.R",package="wtsQMD"));
+```
+
+<!-- figures, if not child doc and lstFigs is not empty -->
+```{r}
+#| label: figures_TCSAM02
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printFiguresSectionFromList.R",package="wtsQMD"));
+```
