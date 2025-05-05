@@ -281,6 +281,7 @@ Similar error distributions are also used for the various components of the mode
 However, G25_05 superficially appears to differ from the bespoke model in what should be only relatively minor ways.
 
 To compare results from the two models, G25_05 was subjected to a parameter jittering exercise and the resulting "best" model was selected. Of 197 model runs, 43 converged to essentially the same minimum negative log likelihood value (within 0.001 likelihood units of the absolute minimum; Figure [-@fig-ModComps-Jittering]). 
+
 ```{r}
 #| label: fig_ModComps-Jittering
 #| fig-width: 6.0
@@ -290,6 +291,7 @@ To compare results from the two models, G25_05 was subjected to a parameter jitt
   pth = file.path(dirThs,"../ModelRuns-GMACS/25_05/runJitterResults.pdf");
   lstFigs = c(lstFigs,wtsQMD::printGGplot(NULL,pth=pth,lbl=lbl,cap=cap,ori="P"));
 ```
+
 The run resulting in the absolute minimum had a maximum parameter gradient of 0.021 and was used as the starting point for ADMB's "hess_step" algorithm, which uses information on the curvature of the likelihood surface (the model hessian) at the "converged" point to further adjust its location to the true minimum at which all first-order parameter gradients are 0. Although this adjustment was successful, the GMACS model disappointingly had `r nPsAtBs$n` parameters that were estimated at their upper bounds, all of which were selectivity parameters for the NMFS survey or females in the snow crab fishery (Table [-@tbl-ModComps-PsAtBsW]). The full list of estimated parameters is given in Table [-@tbl-ModComps-ParEsts].
 
 ```{r tbl_ModComps-PsAtBsW}
@@ -381,7 +383,8 @@ The fits of both GMACS and and the bespoke TCSAM02 model to fishery catch data a
                           p2+legNone+noXTitle,ncol=1);
   lbl = wtsQMD::getLabel();
   cap = paste0("Model fits to retained (upper plot) and total catch (lower plot) data from the directed fishery. ",
-               "Shading indicates assumed observation error. Triangles are observed catch, circles are predicted catch.")
+               "Shading indicates assumed observation error. Triangles are observed catch (the same for both models), ",
+               "circles are predicted catch.")
   pth = wtsQMD::getFigFN();
   lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="L"));
   rm(tmp,p1,p2,pg,lbl,cap,pth);
@@ -406,7 +409,8 @@ The fits of both GMACS and and the bespoke TCSAM02 model to fishery catch data a
   lbl = wtsQMD::getLabel();
   cap = paste0("Model fits to total bycatch in the snow crab (upper plot), BBRKC (middle plot), and ",
                "groundfish fisheries (lower plot). ",
-               "Shading indicates assumed observation error. Triangles are observed catch, circles are predicted catch.")
+               "Shading indicates assumed observation error. Triangles are observed catch (the same for both models), ",
+               "circles are predicted catch.")
   pth = wtsQMD::getFigFN();
   lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="P"));
   rm(tmp,p1,p2,p3,pg,lbl,cap,pth,dfrCatFit);
@@ -454,7 +458,8 @@ The GMACS model also fits the NMFS survey biomass time series in a very similar 
   p = plotDFR(tmp)
   lbl = wtsQMD::getLabel();
   cap = paste0("Model fits to NMFS survey biomass, by sex and female maturity. ",
-               "Shading indicates design-based observation error. Triangles are observed catch, circles are predicted catch.")
+               "Shading indicates design-based observation error. Triangles are observed catch (the same for both models), ",
+               "circles are predicted catch.")
   pth = wtsQMD::getFigFN();
   lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
   rm(tmp,p,lbl,cap,pth);
@@ -469,7 +474,8 @@ The GMACS model also fits the NMFS survey biomass time series in a very similar 
   p = plotDFR(tmp,logscale=TRUE);
   lbl = wtsQMD::getLabel();
   cap = paste0("Model fits to NMFS survey biomass, by sex and female maturity, starting in 2001 on log10 scale. ",
-               "Shading indicates design-based observation error. Triangles are observed catch, circles are predicted catch.")
+               "Shading indicates design-based observation error. Triangles are observed catch (the same for both models), ",
+               "circles are predicted catch.")
   pth = wtsQMD::getFigFN();
   lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
   rm(tmp,p,lbl,cap,pth);
@@ -484,7 +490,8 @@ The GMACS model also fits the NMFS survey biomass time series in a very similar 
   p = plotDFR(tmp);
   lbl = wtsQMD::getLabel();
   cap = paste0("Model fits to BSFRF survey biomass, by sex and female maturity. ",
-               "Shading indicates design-based observation error. Triangles are observed catch, circles are predicted catch.")
+               "Shading indicates design-based observation error. Triangles are observed catch (the same for both models), ",
+               "circles are predicted catch.")
   pth = wtsQMD::getFigFN();
   lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
   rm(tmp,p,lbl,cap,pth,dfrIndxFit);
@@ -563,7 +570,7 @@ The GMACS model also fits the NMFS survey biomass time series in a very similar 
   }
 ```
 
-Based on OSA residuals and comparison with the observed mean proportions (Figures [-@fig-ModComps-OSAs-NMFS-M]-[-@fig-ModComps-OSAs-NMFS-M]), the GMACS model fits the size composition data from the NMFS EBS trawl survey equally as well as the bespoke TCSAM02 model. The plots highlight two differences in configuration between the two models: 1) female size comps are limited to a smaller maximum size in the GMACS model and 2) tail compression (5%) is applied in the TCSAM02 model but not the GMACS model, although any effects these differences introduce should be minor (as the comparison between the bespoke model and the 25_01 TCSAM02 model showed in the previous section). Both models exhibit an alternating ~ 5-year pattern of misfits to the male size compositions in the 75-125 mm CW size range from 1975-2000, after 2000 the residuals are mainly positive and small. Additionally, the proportions for immature females are substantially overestimated in 1987 in both models.
+Based on OSA residuals and comparison with the observed mean proportions (Figures [-@fig-ModComps-OSAs-NMFS-M]-[-@fig-ModComps-OSAs-NMFS-MF]), the GMACS model fits the size composition data from the NMFS EBS trawl survey equally as well as the bespoke TCSAM02 model. The plots highlight two differences in configuration between the two models: 1) female size comps are limited to a smaller maximum size in the GMACS model and 2) tail compression (5%) is applied in the TCSAM02 model but not the GMACS model, although any effects these differences introduce should be minor (as the comparison between the bespoke model and the 25_01 TCSAM02 model showed in the previous section). Both models exhibit an alternating ~ 5-year pattern of misfits to the male size compositions in the 75-125 mm CW size range from 1975-2000, after 2000 the residuals are mainly positive and small. The proportions for immature females are substantially overestimated in 1987 in both models ([@fig-ModComps-OSAs-NMFS-IF]); both models also exhibit semi-decadal scale patterns of misfits for mature females ([@fig-ModComps-OSAs-NMFS-MF]) prior to 1990 similar to those for males, but at smaller sizes.
 
 ```{r}
 #| label: fig_ModComps-OSAs-NMFS-M
@@ -757,7 +764,7 @@ dfrSmry = rep$Summary |>
 Given the relative similarity in fits to the data, the two models might be expected to agree closely with respect to predicted population processes, but this is not the case. Mean growth and the annual probability of having undergone terminal molt were estimated outside the GMACS model (Figure [-@fig-ModComps-PopQuants]) but agree well with the estimated quantities in the bespoke model. Natural mortality rates were estimated for immature crab and mature crab by sex, as well as separately for the 1980-84 "enhanced mortality" time block, as in the bespoke model but the "base" class from which deviations were estimated was different between the two models: mature males in the GMACS model and a fixed value of 0.23 independent of population category in the TCSAM02 model.
 Relative to the bespoke model, the GMACS model estimated much lower rates of M for immature crab and mostly larger rates for mature crab (mature males being the one exception).
 
-Following a "spin-up" period in both models to ~1975, both models exhibit strikingly similar temporal variation in annual recruitment, although the GMACS model estimates an overall scale of about 0.3 of that for the TCSAM02 model (Figure [-@fig-ModComps-RecTS]). The lower estimates for immature crab *M* contribute to the disparity in scale between the two models' estimate for annual recruitment, as do differences in estimated survey catchability (Figure [-@fig-ModComps-CapPrbNMFS]). The major differences in the patterns of the trajectories disappear by 1985, but this is ten years after the NMSF survey data become available to inform the models. Because the period to calculate mean recruitment for the Tier 3 harvest control rule for Tanner crab extends back to 1982, the manner in which recruitment is treated during the "spin up" period is important. The buildup of mature male biomass in the GMACS model to 1980, followed by the extremely steep decline across the next five years seems would seem to be highly suspect as anything but an artifact of the manner in which the model is initialized. The use of a random walk for the recruitment deviations prior to 1975 in the bespoke model allows the model to "react" to the directed (foreign fleets) fishery and accompanying fishing mortality that starts in 1965. 
+Following a "spin-up" period in both models to ~1975, both models exhibit strikingly similar temporal variation in annual recruitment, although the relative scale of the GMACS model is about one-third of that of the TCSAM02 model (Figure [-@fig-ModComps-RecTS]). The lower estimates for immature crab *M* contribute to the disparity in scale between the two models' estimate for annual recruitment, as do differences in estimated survey catchability (see Figure [-@fig-ModComps-CapPrbNMFS] below). The buildup of mature male biomass in the GMACS model to 1980, followed by the extremely steep decline across the next five years would seem to be highly suspect as anything but an artifact of the manner in which the model is initialized ([@fig-ModComps-PopBio]). The use of a random walk for the recruitment deviations prior to 1975 in the bespoke model allows the model to "react" to the directed (foreign fleets) fishery and accompanying fishing mortality that starts in 1965. The major differences in the patterns of the biomass trajectories disappear by 1985, but this is ten years after the NMSF survey data become available to inform the models. Because the period to calculate mean recruitment for the Tier 3 harvest control rule for Tanner crab extends back to 1982, the manner in which recruitment is treated during the "spin up" period is important. 
 
 ```{r}
 #| label: fig_ModComps-PopQuants
@@ -806,8 +813,9 @@ Following a "spin-up" period in both models to ~1975, both models exhibit striki
   cap = paste0("Estimated population quantities. Upper left: mean growth; ",
                "lower left: probability of terminal molt; ",
                "right: natural mortality by time block, sex and maturity state. ",
+               "X-axes for plots in lefthand column are carapace with (mm-CW). ",
                "Note that Pr(M2M) for TCSAM02 is a function of pre-molt size, ",
-               "for GMACS it is a function of post-molt size an is determined outside the model.")
+               "for GMACS it is a function of post-molt size and is determined outside the model.")
   pth = wtsQMD::getFigFN();
   lstFigs = c(lstFigs,wtsQMD::printGGplot(pg2,pth=pth,lbl=lbl,cap=cap,ori="P"));
 ```
@@ -844,28 +852,28 @@ Following a "spin-up" period in both models to ~1975, both models exhibit striki
 ```
 
 ```{r eval=FALSE}
-#| label: fig_ModComps-RecZC
-#| fig-width: 6.5
-#| fig-asp: 0.67
-  ##--size at recruitment----
-  dfrR_z=dplyr::bind_rows(
-           rep$R_z |> dplyr::filter(sex=="male") |>
-             dplyr::mutate(dplyr::across(2:3,as.numeric),
-                           model="GMACS",
-                           sex="all"),
-           rCompTCMs::extractMDFR.Pop.RecSizeDistribution(resTCSAM02) |>
-             dplyr::filter(pc==2) |> dplyr::select(sex=x,size=z,est=val) |>
-             dplyr::mutate(dplyr::across(2:3,as.numeric),
-                           model="TCSAM02")
-         );
-  p = ggplot(dfrR_z,aes(x=size,y=est,colour=model)) +
-        geom_line() +
-        labs(y="proportion") +
-        wtsPlots::getStdTheme();
-  lbl = wtsQMD::getLabel();
-  cap = paste0("Size distribution at recruitment. ")
-  pth = wtsQMD::getFigFN();
-  lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
+# #| label: fig_ModComps-RecZC
+# #| fig-width: 6.5
+# #| fig-asp: 0.67
+#   ##--size at recruitment----
+#   dfrR_z=dplyr::bind_rows(
+#            rep$R_z |> dplyr::filter(sex=="male") |>
+#              dplyr::mutate(dplyr::across(2:3,as.numeric),
+#                            model="GMACS",
+#                            sex="all"),
+#            rCompTCMs::extractMDFR.Pop.RecSizeDistribution(resTCSAM02) |>
+#              dplyr::filter(pc==2) |> dplyr::select(sex=x,size=z,est=val) |>
+#              dplyr::mutate(dplyr::across(2:3,as.numeric),
+#                            model="TCSAM02")
+#          );
+#   p = ggplot(dfrR_z,aes(x=size,y=est,colour=model)) +
+#         geom_line() +
+#         labs(y="proportion") +
+#         wtsPlots::getStdTheme();
+#   lbl = wtsQMD::getLabel();
+#   cap = paste0("Size distribution at recruitment. ")
+#   pth = wtsQMD::getFigFN();
+#   lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));
 ```
 
 ```{r}
@@ -975,7 +983,7 @@ Two periods, before and after the survey gear change in 1982, are used to model 
         wtsPlots::getStdTheme() + legPosUR + noXTitle;
 
   lbl = wtsQMD::getLabel();
-  cap = paste0("Estimated capture probability curves (q x selectivity) in the NMFS EBS bottom trawl survey, ",
+  cap = paste0("Estimated capture probability curves (q * selectivity) in the NMFS EBS bottom trawl survey, ",
                "by sex and time period.")
   pth = wtsQMD::getFigFN();
   lstFigs = c(lstFigs,wtsQMD::printGGplot(p,pth=pth,lbl=lbl,cap=cap,ori="P"));

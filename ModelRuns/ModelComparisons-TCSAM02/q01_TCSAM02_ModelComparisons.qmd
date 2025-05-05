@@ -234,7 +234,7 @@ Finally, the components included in the model likelihood are summarized in the f
 
 Three models were considered as alternatives to 22.03d5 for the 2025 stock assessment. Every size composition in 22.03d5 had 5% compression applied to each tail prior to calculating the associated likelihood. Model 25_01 eliminated this compression. The observation errors associated with the aggregate survey biomass indices in 22.03d5 were assumed to be lognormally distributed, with the implication that model prediction errors for these data were scored on a relative scale (i.e., a 20% error at high observed biomass was scored the same as a 20% error at low observed biomass). Model 25_01a was built on 25_01 but assumed that observation errors in the survey biomass time series were normally distributed, with the implication that model prediction errors were scored on an absolute scale (thus, a 5t error at high biomass was scored the same as a 5t error at low biomass). 
 
-Model 25_02 partially addresses an SSC request to drop the BSFRF side-by-side data from the model but use it to provide a prior on NMFS survey capture probabilities. Model 25_02 was also built on 25_01, but dropped fitting the BSFRF data and replaced estimating sex-specific NMFS survey selectivity curves and fully-selected catchability coefficients in the 1982-2024 time frame with sex-specific NMFS survey "capture probability" (fully-selected catchability *x* size-specific selectivity) curves estimated from the BSFRF side-by-side haul studies ([@fig-TCSAM02-CapProbsSBS]). The estimated capture probabilities were based on the "survey level" analysis of the side-by-side data. However, the estimated curves suggest that capture probabilities are somewhat dome-shaped and decrease from maxima at intermediate sizes, although the uncertainty associated with these declines is very large due to the relatively small number of large crab caught in the surveys. That this tendency is real, and not an artifact of the data, seems unlikely. Consequently, the capture probability curves used in 25_02 were assumed to reach asymptotes at the maxima (the dotted lines in the figure). 
+Model 25_02 partially addresses an SSC request to drop the BSFRF side-by-side data from the model but use it to provide a prior on NMFS survey capture probabilities. Model 25_02 was also built on 25_01, but dropped fitting the BSFRF data and replaced estimating sex-specific NMFS survey selectivity curves and fully-selected catchability coefficients in the 1982-2024 time frame with sex-specific NMFS survey "capture probability" (fully-selected catchability $*$ size-specific selectivity) curves estimated from the BSFRF side-by-side haul studies ([@fig-TCSAM02-CapProbsSBS]). The estimated capture probabilities were based on the "survey level" analysis of the side-by-side data. However, the estimated curves suggest that capture probabilities are somewhat dome-shaped and decrease from maxima at intermediate sizes, although the uncertainty associated with these declines is very large due to the relatively small number of large crab caught in the surveys. Whether this tendency is real, and not an artifact of the data, seems unlikely. Consequently, the capture probability curves used in Model 25_02 were assumed to reach asymptotes at the maxima (the dotted lines in [@fig-TCSAM02-CapProbsSBS]). 
 
 ```{r}
 #| label: fig_TCSAM02-CapProbsSBS
@@ -270,7 +270,7 @@ Model 25_02 partially addresses an SSC request to drop the BSFRF side-by-side da
  rm(obj,dfrM,dfrF,sM,zM,dfrMp,sF,zF,dfrFp,dfrp,p1,lbl,cap,pth)
 ```
 
-Results for Model 22.03d5 were taken from the 2024 assessment. The three alternative models appeared to converge to their maximum likelihood estimates (MLEs): maximum gradients for all three models were 0 after the ADMB "hess_step" procedure and standard errors were obtained for all estimated parameters (Table `r LETTERS[tblno+1]`). Parameter jittering was not attempted due to time limitations. Model 25_01a converged with a single parameter estimated at its (upper) bound, but the remaining alternative models converged with no parameters at a bound.
+The three alternative models appeared to converge to their maximum likelihood estimates (MLEs): maximum gradients for all three models were 0 after the ADMB "hess_step" procedure and standard errors were obtained for all estimated parameters (Table `r LETTERS[tblno+1]`). Parameter jittering was not attempted due to time limitations. Model 25_01a converged with a single parameter estimated at its (upper) bound, but the remaining alternative models converged with no parameters at a bound. Results for Model 22.03d5 were taken from the 2024 assessment. 
 
 ```{r TCSAM02-tblModelResults,results='asis'}
   tblno = tblno+1;
@@ -285,19 +285,19 @@ Results for Model 22.03d5 were taken from the 2024 assessment. The three alterna
 
 Estimates of size-specific growth and probability of undergoing the molt to maturity were nearly identical for all models (Figure [-@fig-TCSAM02Mods-PopProcesses]). Estimates of natural mortality rates by sex and maturity stage were also very similar between the base model and 25_01, with slightly larger differences between it and the other two models (< 0.025, though).  
 
-Differences were larger among the models for estimated recruitment and mature biomass time series, with the largest estimates from 25_01a (~28% larger, on average after 1981) and the smallest from 25_02 (~11% smaller); the base model and 25_01 had more similar estimates (25_01 on average ~6% larger; Figure [-@fig-TCSAM02-Rec]). The differences between 25_01a and 25_02 and the other two models were increased in estimates for mature biomass, with estimates from 25_01a ~33% larger on average, and 25_02 ~28% smaller, than 22.03d5 (Figure [-@fig-TCSAM02-MatBio]). However, the estimated recruitment and mature biomass trends followed similar overall trajectories in all four models.
+Large scale differences occurred among the models for estimated recruitment and mature biomass, with the largest estimates from Model 25_01a (~28% larger, on average after 1981), the smallest from 25_02 (~11% smaller); the base model and 25_01 had more similar estimates (25_01 on average ~6% larger; Figure [-@fig-TCSAM02-Rec]). For mature biomass, the differences between 25_01a and 25_02 and the other two models increased, with estimates from Mopdel 25_01a ~33% larger on average, and 25_02 ~28% smaller, than 22.03d5 (Figure [-@fig-TCSAM02-MatBio]). However, the estimated recruitment and mature biomass trends followed similar overall trajectories in all four models.
 
 The estimated fully-selected fishery capture rates (not necessarily mortality) in the models exhibited essentially the same temporal behavior across the models, but differed somewhat in scale (Figure [-@fig-TCSAM02Mods-FshFs]). The scales generally exhibited the opposite relationship to those for recruitment and mature biomass: rates from 25_02 were generally higher than those from the base model but rates from 25_01a were generally lower. The estimated selectivity and curves (not shown) were extremely similar among the four models for all four fisheries, so the scales of the fishery capture rates, for a given fishery, were not related to differences in selectivity patterns among the models. 
 
 The differences in the scales of recruitment, mature biomass, and fishing mortality appear to be directly related to the differences among the models in the estimates of NMFS survey capture probability (Figures [-@fig-TCSAM02-SrvSelM] and [-@fig-TCSAM02-SrvSelF]). Similar to the fully-selected fishing mortality rates, the capture probabilities are larger for 25_02 and smaller for 25_01a compared with the base, while the curves for 25_01 are very similar to the base.
 
-The fits to fishery retained and total catch catch biomass are very good and display no significant differences among the models (Figure [-@fig-TCSAM02Mods-FshBioFits]). 
+The fits to fishery retained and total catch biomass are very good and display no significant differences among the models (Figure [-@fig-TCSAM02Mods-FshBioFits]). 
 
-Given the difference in the scales of recruitment and mature biomass for 25_02 compared with the base and 25_01, as well as the opposite (but offsetting) differences in NMFS survey capture probabilities, the degree of similarity in fits to NMFS survey biomass is somewhat surprising (Figures [-@fig-TCSAM02-SrvFitM] and [-@fig-TCSAM02-SrvFitF]). 25_02 has a small tendency to fit the NMFS survey biomass better than the base and 25_01 when the observed survey biomass is high (e.g.1988-1992), but otherwise the estimates are very similar. In contrast, estimates for NMFS survey biomass from 25_01a are almost always lower than the other three models; it also has the poorest performance following the semi-decadal fluctuations in observed survey biomass.
+Given the difference in the scales of recruitment and mature biomass between 25_02, 25_01, and the base model, as well as the opposite (but offsetting) differences in NMFS survey capture probabilities, the degree of similarity in fits to NMFS survey biomass is somewhat surprising (Figures [-@fig-TCSAM02-SrvFitM] and [-@fig-TCSAM02-SrvFitF]). 25_02 has a small tendency to fit the NMFS survey biomass better than the base and 25_01 when the observed survey biomass is high (e.g.1988-1992), but otherwise the estimates are very similar. In contrast, estimates for NMFS survey biomass from 25_01a are almost always lower than the other three models; it also has the poorest performance following the semi-decadal fluctuations in observed survey biomass.
 
-Residual diagnostics for NMFS survey size compositions (one-step ahead residuals using the `afscOSA` R package) appear to be satisfactory for all of the models (Figures [-@fig-TCSAM02-OSAs-NMFS-M]- [-@fig-TCSAM02-OSAs-NMFS-F-mature]). Any differences between the models due to tail compression (22.03d5) or lack thereof (the alternative models) are not discernable. Some cohort effects are evident in the OSA residuals for males (e.g., the right-sloping band of positive residuals that start ~1980), but these are similar in the residuals for all the models. 
+Residual diagnostics for NMFS survey size compositions (one-step ahead [OSA] residuals using the `afscOSA` R package) appear to be satisfactory for all of the models (Figures [-@fig-TCSAM02-OSAs-NMFS-M]- [-@fig-TCSAM02-OSAs-NMFS-F-mature]). Any differences between the models due to tail compression (22.03d5) or lack thereof (the alternative models) are not discernable. Some cohort effects are evident in the OSA residuals for males (e.g., the right-sloping band of positive residuals that start ~1980), but these are similar in the residuals for all the models. 
 
-Residual diagnostics for fishery size compositions (Figures [-@fig-TCSAM02-OSAs-Fsh-TCF-male]-[-@fig-TCSAM02-OSAs-Fsh-RKF]) exhibit a consistent feature in the male size compositions in all fisheries  across all of the models: the mean proportions in the 50-75 mm CW range are underpredicted and in the 75-120 mm CW are overpredicted. This pattern may also occur in the female fishery size compositions, but to a much less notable degree. Interestingly, the SDNRs for the male compositions are, on the whole, much closer to 1 than the female compositions are, where 1 is the expected value if the OSAs were truly normally-distributed.
+Residual diagnostics for fishery size compositions (Figures [-@fig-TCSAM02-OSAs-Fsh-TCF-male]-[-@fig-TCSAM02-OSAs-Fsh-RKF]) exhibit a consistent feature in the male size compositions in all fisheries  across all of the models: the mean proportions in the 50-75 mm carapace width (CW) range are underpredicted and in the 75-120 mm CW are overpredicted. This pattern may also occur in the female fishery size compositions, but to a much less notable degree. Interestingly, the SDNRs (Standard Deviation of Normalized Residuals) for the male compositions are, on the whole, much closer to 1 than the female compositions are, where 1 is the expected value if the OSAs were truly normally-distributed.
 
 Of the three alternative TCSAM02 models evaluated here, only 25_02 may be worth considering for use in the 2025 assessment--although the case to be made is not particularly strong. "To tail compress or not to tail compress" does not seem to be an issue given the overall similarity in results between the base model and 25_01. Characterizing errors in fitting biomass trends using normal distributions and likelihoods is clearly a not a good choice to characterize Tanner crab survey data, given the inability of 25_01a to follow the semi-decadal swings in the NMFS survey biomass data. Model 25_02 demonstrates, more than anything else, I think, the uncertainty attached to overall scale in the Tanner crab survey data. This is apparent, as well, from the uncertainty intervals on the estimated curves (Figure [-@fig-TCSAM02-CapProbsSBS]) from which the capture probabilities used in 25_02 were derived.
 
@@ -556,7 +556,9 @@ rm(pg,lbl,cap,pth,plts);
                            ps3[[1]] + noXTitle + legNone +theme(title=element_text(size=8)),
                            ps4[[1]] + noXTitle + legNone +theme(title=element_text(size=8)),ncol=1);
   cap = paste0("Estimated fully-selected capture rates (not mortality) for male Tanner crab ",
-               "in the directed and bycatch fisheries from the TCSAM02 models. ");
+               "in the directed and bycatch fisheries from the TCSAM02 models. ",
+               "TCF: directed Tanner crab fishery; SCF: snow crab fishery; RKF: BBRKC fishery; ",
+               "GF All: all groundfish fisheries.");
   lbl = wtsQMD::getLabel();
   pth = wtsQMD::getFigFN();
   lstFigs = c(lstFigs,wtsQMD::printGGplot(pg1,lbl=lbl,cap=cap,pth=pth,ori="P"));
@@ -646,7 +648,8 @@ rm(pg,lbl,cap,pth,plts);
                           p5 + noXTitle + legNone + theme(title=element_text(size=8)),
                           ncol=1)
   cap = paste0("Fits to retained and total catch biomass in the directed fishery and bycatch fisheries.",
-               "Vertical bars indicate assumed confidence intervals on the catch data.");
+               "Vertical bars indicate assumed confidence intervals on the catch data. ",
+               "Points: data (labelled as 22.03d5, but same for all models); lines: model fits.");
   lbl = wtsQMD::getLabel();
   pth = wtsQMD::getFigFN();
   lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,lbl=lbl,cap=cap,pth=pth,ori="P"));
@@ -675,7 +678,9 @@ pg = cowplot::plot_grid(plts[[2]] + legPosUR + noTitle + noXTitle,
                         plts[[3]] + legNone + noTitle + noXTitle,ncol=1);
 lbl = wtsQMD::getLabel();
 cap = paste0("Comparison of TCSAM02 (22.03d5) and the alternative TCSAM02 models fits to NMFS survey biomass ",
-             "for males. Points and bars indicate the design-based estimates and confidence intervals.")
+             "for males. Points and bars indicate the design-based estimates and confidence intervals. ",
+             "Points and vertical lines: data and confidence intervals (labelled as 22.03d5, but same for all models); ",
+             "lines: model fits.");
 pth = wtsQMD::getFigFN();
 
 lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="P"));
@@ -692,7 +697,9 @@ pg = cowplot::plot_grid(plts[[5]] + legPosUR + noTitle + noXTitle,
                         plts[[6]] + legNone + noTitle + noXTitle,ncol=1);
 lbl = wtsQMD::getLabel();
 cap = paste0("Comparison of TCSAM02 (22.03d5) and the alternative TCSAM02 models fits to NMFS survey biomass ",
-             "for females. Points and bars indicate the design-based estimates and confidence intervals.")
+             "for females. Points and bars indicate the design-based estimates and confidence intervals. ",
+             "Points and vertical lines: data and confidence intervals (labelled as 22.03d5, but same for all models); ",
+             "lines: model fits.")
 pth = wtsQMD::getFigFN();
 
 lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="P"));
@@ -700,21 +707,21 @@ rm(pg,lbl,cap,pth);
 ```
 
 ```{r}
-#| label: fig_TCSAM02-SrvFitBSFRF
-#| results: "asis"
-#| fig-width: 6.0
-#| fig-asp: 1.4
-##--females----
-pg = cowplot::plot_grid(plts[[8]] + legPosUR + noTitle + noXTitle,
-                        plts[[11]] + legNone + noTitle + noXTitle,ncol=1);
-lbl = wtsQMD::getLabel();
-cap = paste0("Comparison of TCSAM02 (22.03d5) and the alternative TCSAM02 models fits to BSFRF survey biomass.",
-             "Points and bars indicate the design-based estimates and confidence intervals. ",
-             "Note that model 25_02 does not include the BSFRF data in it's likelihood.")
-pth = wtsQMD::getFigFN();
-
-lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="P"));
-rm(pg,lbl,cap,pth,plts);
+# #| label: fig_TCSAM02-SrvFitBSFRF
+# #| results: "asis"
+# #| fig-width: 6.0
+# #| fig-asp: 1.4
+# ##--females----
+# pg = cowplot::plot_grid(plts[[8]] + legPosUR + noTitle + noXTitle,
+#                         plts[[11]] + legNone + noTitle + noXTitle,ncol=1);
+# lbl = wtsQMD::getLabel();
+# cap = paste0("Comparison of TCSAM02 (22.03d5) and the alternative TCSAM02 models fits to BSFRF survey biomass.",
+#              "Points and bars indicate the design-based estimates and confidence intervals. ",
+#              "Note that model 25_02 does not include the BSFRF data in it's likelihood.")
+# pth = wtsQMD::getFigFN();
+# 
+# lstFigs = c(lstFigs,wtsQMD::printGGplot(pg,pth=pth,lbl=lbl,cap=cap,ori="P"));
+# rm(pg,lbl,cap,pth,plts);
 ```
 
 ```{r fig_TCSAM02-OSAs-NMFS-M}

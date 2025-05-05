@@ -192,11 +192,11 @@ params:
 
 ## `crabpack` {#sec-crabpack}
 
-The ASFC's Shellfish Assessment Program has introduced `crabpack`, a new R package [@ref-R] to access NMFS EBS crab survey data and subsequently estimate annual abundance, biomass, and size compositions by year for several population categories (e.g., sex, maturity state). The [tcsamSurveyData](https://github.com/wStockhausen/tcsamSurveyData) R package has been used previously with survey haul data files downloaded from [AKFIN](https://akfin.psmfc.org) Answers to provide similar information for the Tanner crab assessment [e.g., @TannerCrab2024]. Here, the two approaches are compared for EBS-wide abundance, biomass, and size compositions for NMFS EBS crab survey data from 1975 to 2024.
+The ASFC's Shellfish Assessment Program (SAP) has introduced `crabpack`, a new `R` package [@ref-R] to access NMFS EBS crab survey data and subsequently estimate annual abundance, biomass, and size compositions by year for several population categories (e.g., sex, maturity state). The [tcsamSurveyData](https://github.com/wStockhausen/tcsamSurveyData) `R` package has been used previously with survey haul data files downloaded from [AKFIN](https://akfin.psmfc.org) Answers to provide similar information for the Tanner crab assessment [e.g., @TannerCrab2024]. Here, the two approaches are compared for EBS-wide abundance, biomass, and size compositions for NMFS EBS crab survey data from 1975 to 2024.
 
 ## Survey abundance estimates
 
-Estimates of EBS-wide abundance from the NMFS bottom trawl survey for male and female Tanner crab by maturity state are compared by year in [@fig-crabpack-SrvAbd] for calculations made in the 2024 assessment [@TannerCrab2024] and with the `crabpack` R package. Absolute differences and percent differences between the two methods are shown, respectively, in Figures [-@fig-crabpack-SrvAbdAbsDif] and [-@fig-crabpack-SrvAbdPctDif]. The percent differences are also shown in Table [-@tbl-crabpack-SrvAbdPctDif] to two decimal places. The figures and table show excellent agreement between the two methods in all survey years except 1979, when estimates from the two methods differ substantially (> 10%). The estimates from the assessment are less than those from `crabpack` in 1979. The differences in the two methods apparently reflect differences in the hauls included in the calculation (`crabpack` appears to include hauls at corner stations that were only conducted in 1979, while these were excluded in the standardized time series used in the assessment).
+Estimates of EBS-wide abundance from the NMFS bottom trawl survey for male and female Tanner crab by maturity state are compared by year in [@fig-crabpack-SrvAbd] for calculations made in the 2024 assessment [@TannerCrab2024] and with the `crabpack` R package. Absolute differences and percent differences between the two methods are shown in Figures [-@fig-crabpack-SrvAbdAbsDif] and [-@fig-crabpack-SrvAbdPctDif]. The percent differences are also shown in Table [-@tbl-crabpack-SrvAbdPctDif]. The figures and table show excellent agreement between the two methods in all survey years except 1979, when estimates from the two methods differ substantially (> 10%). The estimates from the assessment are less than those from `crabpack` in 1979. The differences in the two methods apparently reflect differences in the hauls included in the calculation (`crabpack` appears to include hauls at corner stations that were only conducted in 1979, while these were excluded in the standardized time series used in the assessment).
 
 ```{r}
 #| label: fig_crabpack-SrvAbd
@@ -286,7 +286,7 @@ p2 = ggplot(dfrAsp |> dplyr::mutate(xm=tolower(paste(m,x))),
   colLabels(tblr) = colLabels(tblr)[2,];
   kblr = tblr |> wtsQMD::convert_tblr_to_kbl(col_spec=c(1),!isPDF,
                                              ltx_font_size=7,replaceNAs="--",adjColSpacing=-4);
-  cap = paste0("Percent difference, by year, in  design-based NMFS survey abundance trends ",
+  cap = paste0("Percent differences (to two decimal places), by year, in  design-based NMFS survey abundance trends ",
                "from the 2024 assessment and the `crabpack` R package, by sex and maturity state.");
   lstTbls = c(lstTbls,
               wtsQMD::insertKblIntoQMD(kblr,
@@ -300,7 +300,7 @@ p2 = ggplot(dfrAsp |> dplyr::mutate(xm=tolower(paste(m,x))),
 
 Estimates of EBS-wide biomass from the NMFS bottom trawl survey for male and female Tanner crab by maturity state are compared by year in [@fig-crabpack-SrvBio] for calculations made in the 2024 assessment [@TannerCrab2024] and with the `crabpack` R package. Absolute differences and percent differences between the two methods are shown, respectively, in Figures [-@fig-crabpack-SrvBioAbsDif] and [-@fig-crabpack-SrvBioPctDif]. The percent differences are also shown in Table [-@tbl-crabpack-SrvBioPctDif] to two decimal places. 
 
-As with abundance, the figures and table demonstrate excellent agreement between the two methods in all survey years prior to 2016 except 1979, when estimates from the two methods differ substantially (> 10%). Unlike the abundance estimates, the two methods also exhibit small differences (< 5 %) in 2016 and subsequent years. The estimates from the assessment for 2016 and later are larger than those from `crabpack` in all years. The post-2015 differences between the two methods may reflect differences in the size used to calculate the weight of individual crab: the assessment uses carapace width to the first decimal place while `crabpack` apparently uses the carapace width to 1-mm.
+As with abundance, the figures and table demonstrate excellent agreement between the two methods in all survey years prior to 2016 except 1979, when estimates from the two methods differ substantially (> 10%). Unlike the abundance estimates, the two methods also exhibit small differences (< 5 %) in 2016 and subsequent years. The estimates from the assessment for 2016 and later are larger than those from `crabpack` in all years. The post-2015 differences may reflect differences in the size used to calculate the weight of individual crab: the assessment uses carapace width to the first decimal place while `crabpack` apparently uses the carapace width to 1-mm.
 
 ```{r}
 #| label: fig_crabpack-SrvBio

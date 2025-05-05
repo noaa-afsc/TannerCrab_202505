@@ -53,6 +53,11 @@ format:
           \usepackage{placeins}
           \extrafloats{500}
           \maxdeadcycles=10000
+          \usepackage{fontspec}
+          \usepackage{multicol}
+          \usepackage{hhline}
+          \newlength\Oldarrayrulewidth
+          \newlength\Oldtabcolsep
       - file: '`r system.file("files/ltx_ExtraLatexIncludes.tex",package="wtsQMD")`'
 echo: false
 warning: false
@@ -117,6 +122,9 @@ params:
   #   if (file.exists(fn)) s = wtsUtilities::getObj(fn);
   # }
   ##--
+  #--path to folder containing "this" file
+  dirThs = child_path$peek();
+  if (rstudioapi::isAvailable()) dirThs = dirname(rstudioapi::getActiveDocumentContext()$path);
 ```
 
 # Responses to the most recent two sets of SSC and CPT Comments {#sec-Resps}
@@ -125,12 +133,98 @@ params:
 
 ### CPT Comment (general) 
 
+None.
+
 ### CPT Comment (specific to assessment) 
+
+The high priorities for future work includes completion of the BSFRF selectivity analysis to incorporate into the assessment model and work towards an acceptable GMACS Tanner crab model.
+
+*Response*: (May 2025) The BSFRF selectivity analysis was presented at the January 2025 Modeling Workshop and is nearly complete. Curves based on the survey-level (not haul-level) analysis were used in alternative TCSAM02 model 25_02 as pre-specified capture probability (fully-selected catchability * selectivity). Model results are discussed in [@sec-TCSAM02]. Significant progress has been made towards an acceptable GMACS model ([@sec-ModComps]). 
 
 ## SSC Comments October 2024
 
 ### SSC Comment (general) 
+The SSC would like to see additional residual diagnostics other than raw residuals for length composition data from GMACS models. The SSC encourages crab authors to collaborate with groundfish assessment authors regarding the use of One-Step-Ahead and Pearson residuals.
 
+*Response*: (May 2025) One-Step-Ahead (OSA) residuals and DHARMa residual statistics are provided for most of the models discussed herein.
+
+### SSC Comment (general) 
+The SSC requests that the CPT consider whether distinguishing between full and update assessments, as in the protocol recently adopted for groundfish assessments, would be useful for crab assessments.
+
+*Response*: (May 2025) As an author or reviewer, this distinction might be useful if the requirements for update assessments were reduced from those for full assessments.
+
+### SSC Comment (general) 
+The SSC suggests the CPT live link assessments and other documents in their report to facilitate review.
+
+*Response*: (May 2025) If the SSC is requesting that links to figures and tables be provided in the text, that has been done in the Tanner crab assessment and other reports for several assessment cycles now (just tap the figure/table number). Otherwise, it is unclear to what the request refers.
+
+### SSC Comment (general) 
+CPT develop a process for ensuring that authors have provided a response to all previous (including at least, the last assessment) SSC recommendations.
+
+*Response*: (May 2025) It would be helpful if SSC requests were extracted into a table. In particular, SSC comments that pertain to multiple stocks may only occur in the review for a single stock.
+
+### SSC Comment (specific to assessment) 
+While the SSC appreciates the author’s attention to detail, the SSC highlights that the SAFE and the included Appendices are over 700 pages long, which makes review a daunting task. The SSC suggests that consideration should be given to streamlining the material included in future assessment documents.
+
+*Response*: (May 2025) Specific suggestions for streamlining the assessment would be welcome. The SAFE guidelines prescribe a substantial number of topics to be addressed in an assessment, and this has grown in recent years with incorporation of risk tables and ESPs. The Appendices generally provide supplementary information related to, but not necessarily critical to, understanding and evaluating the assessment (e.g., exhaustive residuals plots) or they provide results from requested analyses. They should be regarded the same as "Supplementary Material" in a published paper.
+
+### SSC Comment (specific to assessment) 
+While this [fixing Dirichlet-Multinomial parameters] addresses the immediate issue [of the parameters hitting an upper bound], fixing parameters is not a long-term solution, and evaluation of whether these parameters can be reliably estimated should continue.
+
+*Response*: (May 2025) Agreed, although a D-M parameter hitting an upper bound simply implies that the size composition and associated sample size being evaluated are consistent with a multinomial distribution. The input sample sizes for most size compositions fit in the Tanner crab model have already been substantially down-weighted from the number of crab sampled, so an associated D-M parameter hitting its upper bound is not surprising. 
+
+### SSC Comment (specific to assessment) 
+The draft risk table noted increased concern for population dynamics in part due to uncertainty in the quantification of reproductive output. The SSC suggests this uncertainty is more associated with the stock assessment, rather than population dynamics.
+
+*Response*: (May 2025) Noted. The concern will be moved to the "stock assessment" column of the table.
+
+### SSC Comment (specific to assessment) 
+Directly incorporate annual molt to maturity data, as implemented in the EBS snow crab assessment, if sufficient data are available.
+
+*Response*: (May 2025) As has been noted previously (see below), this would require substantial development work to implement in TCSAM02. A GMACS model implementing *annual* molt to maturity data has been developed but time did not allow re-running the model for this report after issues with the GMACS code were identified (and subsequently corrected). The GMACS model discussed in this report ([@sec-ModComps]) uses the mean molt to maturity curve based on the annual data.
+
+### SSC Comment (specific to assessment) 
+Explore differences in the spatial distribution of small male crab in the NMFS survey, to identify if the distribution of small crab encountered in 2003-2005 and 2008-2010, which successfully propagated to larger sizes, showed differences in habitat use compared with the cohort first observed in 2017-2019, which did not propagate to larger sizes. Likewise, the SSC recommends that a comparison of environmental conditions experienced by small crabs during these periods may help to elucidate why some cohorts appear to propagate and others do not.
+
+*Response*: (May 2025) A preliminary analysis (see [@sec-SCsxs]) suggests differences in temperatures experienced by the "successful" and "unsuccessful" cohorts.
+
+### SSC Comment (specific to assessment) 
+[...] the SSC notes that for a number of years, the author and CPT have expressed concerns that the recommended models are overly optimistic. The SSC recommends exploring the reason for this characterization through exploring likelihood profiles and other diagnostics and sensitivities of important scale related parameters (e.g., natural mortality, catchability and mean recruitment).
+
+*Response*: (May 2025) Likelihood profiles were run for log-scale mean recruitment, male survey catchability, and base natural mortality. Preliminary results suggest that the three are substantially correlated (Figures [-@fig-Resps-LP1] and [-@fig-Resps-LP2]). Further analysis will be presented in September.
+
+```{r}
+#| label: fig_Resps-LP1
+#| results: asis
+#| fig-width: 6.5 
+#| fig-asp: 1.0
+  lbl = wtsQMD::getLabel();
+  cap = paste0("The change in estimated fully-selected survey catchability parameters with log-scale mean recruitment after 1974 (pLnR[2]) ",
+               "from a likelihood profile on the latter. ",
+               "pQ[1]: male crab, NMFS trawl survey 1975-1981; ",
+               "pQ[2]: male crab, NMFS trawl survey 1982+; ",
+               "pQ[3]: female crab, NMFS trawl survey 1975-1981; ",
+               "pQ[4]: female crab, NMFS trawl survey 1982+.")
+  pth = file.path(dirThs,"/../ModelRuns/ModelRuns-TCSAM02/LikelihoodProfiles_2024_22_03d5/LPs-R/figures/q00_TCSAM02_LikelihoodProfiles_files/figure-pdf/fig_LPs-ParDifs--1AD-surveys-surveys.pdf"); 
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(NULL,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
+
+```{r}
+#| label: fig_Resps-LP2
+#| results: asis
+#| fig-width: 6.5 
+#| fig-asp: 1.0
+  lbl = wtsQMD::getLabel();
+  cap = paste0("The change in estimated natural mortality parameters with log-scale mean recruitment after 1974 (pLnR[2]) ",
+               "from a likelihood profile on the latter. ",
+               "pDM1[1]: multiplier on base M for immature crab; ",
+               "pDM1[2]: multiplier on base M for mature males; ",
+               "pDM1[3]: multiplier on base M for mature females; ",
+               "pDM2[1]: multiplier on base M for mature males in enhanced mortality time block (1980-1984); ",
+               "pDM2[2]: multiplier on base M for mature females in enhanced mortality time block (1980-1984).")
+  pth = file.path(dirThs,"/../ModelRuns/ModelRuns-TCSAM02/LikelihoodProfiles_2024_22_03d5/LPs-R/figures/q00_TCSAM02_LikelihoodProfiles_files/figure-pdf/fig_LPs-ParDifs--1AD-population-processes-natural-mortality.pdf"); 
+  lstFigs = c(lstFigs,wtsQMD::printGGplot(NULL,lbl=lbl,cap=cap,pth=pth,ori="P"));
+```
 
 ## CPT Comments May 2024
 
@@ -138,25 +232,23 @@ params:
 
 The CPT recognized the amount of work [the author] had accomplished in responding to SSC requests to transition to GMACS, but requested that a more complete bridging analysis be undertaken for presentation to the modeling workshop in January 2025. Some features of TCSAM02 will need to be incorporated into GMACS for the CPT to make a more direct comparison between models.
 
-#### Response 
+*Response*: (May 2025) While substantial progress has been made toward a more complete bridging analysis (including debugging new features in GMACS required to implement a Tanner crab model), the task is not yet complete.
 
-Sept 2024: the author plans to address this request in the given time frame.
+Sept 2024: The author plans to address this request in the given time frame.
 
 ### CPT Comment (specific to assessment) 
 
 The CPT recommended that only TCSAM02 model 22.03d be brought forward to the September final assessment.
 
-#### Response 
-
-Sept 2024: Done. The author's preferred model, 22.03d5, is 22.03d, updated with 2023/24 data and modified to fix the effective sample size parameters for the two Dirichlet-Multinomial likelihoods applied to the sex-specific BSFRF SBS size compositions near their upper bounds. 
+*Response*: (Sept 2024) Done. The author's preferred model, 22.03d5, is 22.03d updated with 2023/24 data and modified to fix the effective sample size parameters for the two Dirichlet-Multinomial likelihoods applied to the sex-specific Bering Sea Research Foundation side-by-side (BSFRF SBS) haul study size compositions near their upper bounds. 
 
 ## SSC Comments June 2024
 
 ### SSC Comment (general) 
 
-The SSC requests the authors and CPT consider coordinating the approach to analyzing the BSFRF data for the two *Chionoecetes* crab and BBRKC stocks, and specifically consider developing the results as a prior on selectivity for use in the models
+The SSC requests the authors and CPT consider coordinating the approach to analyzing the BSFRF data for the two *Chionoecetes* crab and Bristol Bay red king crab) BBRKC stocks, and specifically consider developing the results as a prior on selectivity for use in the models
 
-#### Response 
+*Response*: (May 2025) The analysis is almost complete for Tanner and BBRKC crab. It appears that incorporating haul-level environmental effects may not be possible, presumably due to small joint size-specific sample sizes between the BSFRF and NMFS hauls.
 
 Sept 2024: With the 2018 BSFRF SBS data for Tanner crab provided this past year, the author is finishing up analyses using the BSFRF SBS data for Tanner crab and BBRKC to inform NMFS survey selectivity. Following completion, a similar approach will be applied to the snow crab data. Products from these analyses will include stock-specific priors for NMFS survey selectivity. The analysis for Tanner crab and BBRKC should be completed in time to present at the January 2025 Modeling Workshop. The analysis for snow crab will potentially be completed by the May 2025 CPT meeting.
 
@@ -164,31 +256,23 @@ Sept 2024: With the 2018 BSFRF SBS data for Tanner crab provided this past year,
 
 The SSC supports the author and CPT recommendation to bring forward Model 23.03d in September, updated with the 2023/24 NMFS survey data, provided that the issues related to parameters on bounds can be resolved.
 
-#### Response 
-
-Sept 2024: The issues involved with parameters on a bound were resolved in the author's preferred model, 22.03d5. Appendices B and C discuss bridging analyses that move from 22.03b to 22.03d, incorporating the 2013-2018 BSFRF SBS data (Appendix B), and from 22.03d to 22.03d5 incorporating the 2023/24 data.
+*Response*: (Sept 2024) The issues involved with parameters on a bound were resolved in the author's preferred model, 22.03d5. Appendices B and C discuss bridging analyses that move from 22.03b to 22.03d, incorporating the 2013-2018 BSFRF SBS data (Appendix B), and from 22.03d to 22.03d5 incorporating the 2023/24 data.
 
 ### SSC Comment 
 
 The SSC recommends the author provide additional detail in the changes to the underlying BSFRF data from 2013-17 that caused parameters to hit bounds, including details on any possible changes to the data weighting.
 
-#### Response 
-
-Sept 2024: Additional details associated with incorporating the 2013-2018 BSFRF SBS data into the assessment are discussed in Appendix A and Appendix B, the first bridging analysis.
+*Response*: (Sept 2024) Additional details associated with incorporating the 2013-2018 BSFRF SBS data into the assessment are discussed in Appendix A and Appendix B, the first bridging analysis.
 
 ### SSC Comment 
-
 If the author is unable to resolve the parameter bounding issue, the SSC recommends that an alternative model that fixes these parameters at a value of 1.0 and that has no other parameters on bounds be brought forward in addition to Model 22.03d and the Tier 4 approach (using the SSC recommended 2023 method).
 
-#### Response 
-
-Sept 2024: The author's preferred model, 22.03d5, fixes the parameter bounding issue and has no estimated parameters on a bound.
+*Response*: (Sept 2024) The author's preferred model, 22.03d5, fixes the parameter bounding issue and has no estimated parameters on a bound.
 
 ### SSC Comment 
-
 Consider a smoothed approach instead of the current empirical approach to the terminal molt curve, which assumes no observation error.
 
-#### Response 
+*Response*: (May 2025) See related response above.
 
 Sept 2024: If this comment applies to the current modeling framework (TCSAM02), it seems to be based on a misunderstanding of how the current model deals with terminal molt. The model currently estimates a size-specific curve reflecting the probability of undergoing terminal molt (i.e., the probability that a crab of **pre-molt size** $z_{pre}$ **will undergo** terminal molt), to which 2nd order difference penalties are applied to achieve a "smooth" curve. The parameter values underlying this estimated curve are principally informed by including a likelihood component in the model optimization that compares the "observed" ratio of new shell mature males to all new shell males in the NMFS EBS shelf survey, by 10-mm size bin, in several years to model-predicted ratios based on the parameter values (thus, "observed" vs. estimated probabilities at **post-molt size** $z_{post}$ of **having undergone** terminal molt). The "observed" ratios are, for each survey year with available chela height data, based on classifying new shell mature males within a size bin on the basis of their CH to CW (carapace height to carapace width) ratios. The "observation errors" used in the associated likelihood component are assumed to be binomially-distributed, conditioned on the total number of crab measured within the size bin.
 
@@ -199,23 +283,19 @@ On the other hand, if this comment applies to a model (which is still under deve
 
 Show confidence intervals on estimated time series when comparing model runs, in order to allow interpretation of whether differences among alternative models are statistically meaningful.
 
-#### Response 
-
-Sept 2024: Uncertainty estimates are available in ADMB for "sdreport" variables or through MCMC. ADMB only provides sdreport variables up to two dimensions (matrices), so quantities that would require more than two dimensions (e.g., survey-related estimates would require four dimensions: fleet [NMFS or BSFRF, currently], year, sex, maturity state). TCSAM02-based models provide sdreport output only for time series of recruitment (a vector) and spawning biomass (a matrix). Confidence intervals on other estimated time series are only available in TCSAM02-based models if MCMC runs are successful. Andre Punt has suggested that it would be possible to expand GMACS sdreport capabilities to incorporate expanded coverage of estimated time series, but that this will result in substantially increased model run times.
+*Response*: (Sept 2024) Uncertainty estimates are available in ADMB for "sdreport" variables or through MCMC. ADMB only provides sdreport variables up to two dimensions (matrices), so quantities that would require more than two dimensions (e.g., survey-related estimates would require four dimensions: fleet [NMFS or BSFRF, currently], year, sex, maturity state). TCSAM02-based models provide sdreport output only for time series of recruitment (a vector) and spawning biomass (a matrix). Confidence intervals on other estimated time series are only available in TCSAM02-based models if MCMC runs are successful. Andre Punt has suggested that it would be possible to expand GMACS sdreport capabilities to incorporate expanded coverage of estimated time series, but that this will result in substantially increased model run times.
 
 ### SSC Comment 
 
 Remove the connection between 2019 to 2021 when plotting survey time-series estimates and variances.
 
-#### Response 
-
-Sept 2024: The connection has been removed from the relevant plots.
+*Response*: (Sept 2024) The connection has been removed from the relevant plots.
 
 ### SSC Comment 
 
 The SSC concurs with the CPT that these models (i.e., the GMACS models) require further development and with the author and CPT recommendation to conduct a detailed bridging analysis as a next step. The SSC supports the CPT recommendation to make GMACS development the focus of the January 2025 modeling workshop.
 
-#### Response 
+*Response*: (May 2025) See response to CPT comment above.
 
 Sept 2024: Noted. The author regards the transition to GMACS as the main priority to address in future work. He hopes that a suitable comparison can be presented at the January Modeling Workshop.
 
@@ -223,7 +303,7 @@ Sept 2024: Noted. The author regards the transition to GMACS as the main priorit
 
 The SSC supports the continued exploration of a geostatistical time-series for Tanner crab.
 
-#### Response 
+*Response*: (May 2025) VAST-derived size compositions for Tanner crab are compared with their design-based counterparts in [@sec-VAST-ZCs]. Given time constraints, a model incorporating the VAST-derived size compositions has not yet been developed.
 
 Sept 2024: The author has tried a number of times to incorporate VAST-based indices of survey abundance/biomass into the assessment model. In general, these indices exhibit only small differences in the individual estimates from their design-based counterparts. The major differences between the VAST indices and the design-based indices is in the CVs; thus, using the VAST indices is really just equivalent to increasing the weight on the survey biomass trends in the model likelihood relative to other data sources. The result is increased model instability and the inability to find the maximum likelihood solution. 
 
@@ -231,8 +311,7 @@ Sept 2024: The author has tried a number of times to incorporate VAST-based indi
 
 The SSC also recommends that a similar method of the treatment of the BSFRF data be considered for the Tanner GMACS model as in the EBS snow crab model where it is used to inform the prior on survey selectivity, or at minimum an evaluation of the relative merits of each approach.
 
-#### Response 
-
+*Response*: (May 2025) See response to Oct 2024 comment above.
 Sept 2024: This suggestion will be addressed following completion of analysis of the paired haul BSFRF/NMFS selectivity study data for Tanner crab and transition of the assessment to GMACS.
 
 ## CPT Comments January 2024
@@ -241,567 +320,566 @@ Sept 2024: This suggestion will be addressed following completion of analysis of
 
 Responses for unaddressed SSC and CPT comments should include an estimate of the timeline for work, if applicable.
 
-#### Response 
-
-Sept 2024: This is really only possible for the requests given the highest priority. For these requests, a preliminary estimate for completion will generally be the next May CPT meeting.
+*Response*: (Sept 2024) This is really only possible for the requests given the highest priority. For these requests, a preliminary estimate for completion will generally be the next May CPT meeting.
 
 ### CPT Comments 
 
 Assessments should include a history of modeling approaches, and a table of historical issues addressed.
 
-#### Response 
-
-Sept 2024: A general history of modeling approaches is available in the "History of modeling approaches for this stock" section ([@sec-ModelingHistory]. A table of historical issues addressed is under development and will be included in the next assessment, although **it would be helpful if the CPT could provide a template** for all stocks.
+*Response*: (Sept 2024) A general history of modeling approaches is available in the "History of modeling approaches for this stock" section (A table of historical issues addressed is under development and will be included in the next assessment, although **it would be helpful if the CPT could provide a template** for all stocks.
 
 ### CPT Comments 
 
 The CPT recommended the stock assessment authors that have final assessments in Sept/Oct bring forward a draft risk table for CPT review at that time.
 
-#### Response 
-
-Sept 2024: A draft risk table is provided as an appendix to the SAFE chapter.
+*Response*: (Sept 2024) A draft risk table is provided as an appendix to the SAFE chapter.
 
 ### CPT Comments 
 
-The CPT recommended that total catch be fitted in the model, after which mortality rates can be
-applied by weighting gear-specific mortality rates (e.g., trawl vs. fixed gear) by the proportion of
-bycatch for each gear type.
+The CPT recommended that total catch be fitted in the model, after which mortality rates can be applied by weighting gear-specific mortality rates (e.g., trawl vs. fixed gear) by the proportion of bycatch for each gear type.
 
-#### Response 
-
-Sept 2024: In the current assessment model(s), all bycatch in the groundfish fisheries is aggregated across gear types and the bycatch rate for trawl gear is applied. Effectively, this suggestion will mean applying a year, sex, and size-specific handling mortality rates to Tanner crab bycatch in the groundfish fisheries. Addressing this will involve additional data processing and modifying input data files to the assessment model. Because the current emphasis with the assessment is to transition the Tanner crab assessment to GMACS, the author can address this issue in GMACS once the transition has been made, if it is regarded as a high priority. An alternative (and conceptually simpler) solution would be to incorporate gear-specific bycatch information directly into the assessment model as separate fleets.
+*Response*: (May 2024) In the current assessment model(s), all bycatch in the groundfish fisheries is aggregated across gear types and the bycatch rate for trawl gear is applied. Effectively, this suggestion will mean applying a year, sex, and size-specific handling mortality rates to Tanner crab bycatch in the groundfish fisheries. Addressing this will involve additional data processing and modifying input data files to the assessment model. Because the current emphasis with the assessment is to transition the Tanner crab assessment to GMACS, the author can address this issue in GMACS once the transition has been made, if it is regarded as a high priority. An alternative (and conceptually simpler) solution would be to incorporate gear-specific bycatch information directly into the assessment model as separate fleets.
 
 ### CPT Comments (specific to assessment) 
 
 The CPT recommended that the Tanner assessment use 50% handling mortality rate for groundfish fixed gear (pot and long line) to be consistent with other crab assessments.
 
-#### Response 
-
-Done. This assessment uses handling (discard) mortality rates of 32.1% for bycatch in the crab fisheries, 50% for bycatch in the fixed-gear groundfish fisheries, and 80% for bycatch in the groundfish trawl fisheries when determining total catch mortality directly from observer data. In the current assessment model(s), all bycatch in the groundfish fisheries is aggregated across gear types and the bycatch rate for trawl gear is applied.
+*Response*: (May 2025) Done. This assessment uses handling (discard) mortality rates of 32.1% for bycatch in the crab fisheries, 50% for bycatch in the fixed-gear groundfish fisheries, and 80% for bycatch in the groundfish trawl fisheries when determining total catch mortality directly from observer data. In the current assessment model(s), all bycatch in the groundfish fisheries is aggregated across gear types and the bycatch rate for trawl gear is applied.
 
 ## SSC Comments February 2024
 
 ### SSC Comments (general) 
 
-The SSC supports revisiting the topic of VAST or other spatiotemporal model-based methods for the 2025
-CPT modeling workshop, as this topic is relevant to several stocks and there have been some updates that
-might improve applicability to crab assessments.
+The SSC supports revisiting the topic of VAST or other spatiotemporal model-based methods for the 2025 CPT modeling workshop, as this topic is relevant to several stocks and there have been some updates that might improve applicability to crab assessments.
 
-#### Response 
+*Response*: (May 2025) VAST-derived size comps are compared with their design-based counterparts in [@sec-VAST-ZCs]. Time constraints did not allow incorporation into an assessment model.
 
 Sept 2024: Noted.
 
 ### SSC Comments 
 
-The SSC looks forward to seeing draft risk tables for the crab stocks being reviewed in October. The SSC
-reiterates that the risk table framework is intended to provide a clear and transparent basis for
-communicating assessment-related and stock condition concerns that are not directly captured in model-
-based uncertainty, the tier system, or harvest control rules (see Preliminary Guidance and SSC
-recommendations on risk tables in the June 2021 SSC Report, p.33). Also, the SSC recommends that crab
-assessment authors follow the same organization scheme as the groundfish assessment authors, where the
-full risk table is contained in each individual chapter and brief summaries are included in the SAFE
-introduction.
+The SSC looks forward to seeing draft risk tables for the crab stocks being reviewed in October. The SSC reiterates that the risk table framework is intended to provide a clear and transparent basis for communicating assessment-related and stock condition concerns that are not directly captured in model-based uncertainty, the tier system, or harvest control rules (see Preliminary Guidance and SSC recommendations on risk tables in the June 2021 SSC Report, p.33). Also, the SSC recommends that crab assessment authors follow the same organization scheme as the groundfish assessment authors, where the full risk table is contained in each individual chapter and brief summaries are included in the SAFE introduction.
 
-#### Response 
+*Response*: (Sept 2024) A draft risk table is provided as an appendix to the SAFE chapter.
 
-Sept 2024: A draft risk table is provided as an appendix to the SAFE chapter.
 
+<!-- ## CPT Comments September 2023 -->
 
-## CPT Comments September 2023
+<!-- ### CPT Comments (general)  -->
 
-### CPT Comments (general) 
+<!-- The CPT recommends that all assessment authors document assumptions and simulate data under those assumptions to test the ability of the model to estimate key parameters in an unbiased manner. These simulations would be used to demonstrate precision and bias in estimated model parameters. -->
 
-The CPT recommends that all assessment authors document assumptions and simulate data under those assumptions to test the ability of the model to estimate key parameters in an unbiased manner. These simulations would be used to demonstrate precision and bias in estimated model parameters.
+<!-- *Response*: (Sept 2024) Model assumptions are discussed in the Model Description section. The ability to simulate data and fit to it within a single model run was implemented in TCSAM02 this summer, but time constraints have not allowed completion of a substantive set of tests. **The author requests that the CPT include the topic of simulation testing as an agenda item for the January Modeling Workshop.**  -->
 
-#### Response 
+<!-- May 2024: On the "to do" list. -->
 
-Sept 2024: Model assumptions are discussed in [@sec-ModelDescriptionTCSAM02]. The ability to simulate data and fit to it within a single model run was implemented in TCSAM02 this summer, but time constraints have not allowed completion of a substantive set of tests. **The author requests that the CPT include the topic of simulation testing as an agenda item for the January Modeling Workshop.** 
+<!-- ### CPT Comment  -->
 
-May 2024: On the "to do" list.
+<!-- The CPT recommends that weighting factors be expressed as sigmas or CVs or effective sample sizes. The team requests all authors to follow the Guidelines for SAFE preparation and to follow the Terms of Reference as listed therein as applicable by individual assessment for both content and diagnostics. -->
 
-### CPT Comment 
+<!-- #### Response  -->
 
-The CPT recommends that weighting factors be expressed as sigmas or CVs or effective sample sizes. The team requests all authors to follow the Guidelines for SAFE preparation and to follow the Terms of Reference as listed therein as applicable by individual assessment for both content and diagnostics.
+<!-- May 2024: These requests are generally followed, but the compressed time frame for SAFE preparation in the fall often precludes including analyses that require extended time frames, e.g., MCMC evaluation). -->
 
-#### Response 
+<!-- ### CPT Comment  -->
 
-May 2024: These requests are generally followed, but the compressed time frame for SAFE preparation in the fall often precludes including analyses that require extended time frames, e.g., MCMC evaluation).
+<!-- Authors should focus on displaying information on revised models as compared to last year’s model rather than focusing on aspects of the assessment that have not changed from the previous year. -->
 
-### CPT Comment 
+<!-- #### Response  -->
 
-Authors should focus on displaying information on revised models as compared to last year’s model rather than focusing on aspects of the assessment that have not changed from the previous year.
+<!-- May 2024: This is generally the case, except to highlight issues that remain unresolved from the previous assessment. -->
 
-#### Response 
+<!-- ### CPT Comment  -->
 
-May 2024: This is generally the case, except to highlight issues that remain unresolved from the previous assessment.
+<!-- The current approach for fitting length-composition data accounts for sampling error but ignores the fact that selectivity among size classes is not constant within years; a small change in the selectivity on small animals could lead to a very large change in the catch of such animals. Authors are encouraged to develop approaches for accounting for this source of process error. This issue is generic to assessments of crab and groundfish stocks. -->
 
-### CPT Comment 
+<!-- #### Response  -->
 
-The current approach for fitting length-composition data accounts for sampling error but ignores the fact that selectivity among size classes is not constant within years; a small change in the selectivity on small animals could lead to a very large change in the catch of such animals. Authors are encouraged to develop approaches for accounting for this source of process error. This issue is generic to assessments of crab and groundfish stocks.
+<!-- Sept 2024: The author notes the CPT rejected several GMACS models that addressed this issue, but that it remains an area of continued effort. -->
 
-#### Response 
+<!-- May 2024: Annual survey selectivity curves for the NMFS EBS shelf survey have been estimated using selectivity models derived from the BSFRF "side-by-side" selectivity studies. Several of the GMACS models presented in this report incorporate this source of variability. -->
 
-Sept 2024: The author notes the CPT rejected several GMACS models that addressed this issue, but that it remains an area of continued effort.
+<!-- ### CPT Comment  -->
 
-May 2024: Annual survey selectivity curves for the NMFS EBS shelf survey have been estimated using selectivity models derived from the BSFRF "side-by-side" selectivity studies. Several of the GMACS models presented in this report incorporate this source of variability.
+<!-- Authors are reminded that assessments should include the time series of stock estimates at the time of survey for at least the author's recommended model in that year. -->
 
-### CPT Comment 
+<!-- #### Response  -->
 
-Authors are reminded that assessments should include the time series of stock estimates at the time of survey for at least the author's recommended model in that year.
+<!-- Sept 2024: See Tables [-@tbl-EstPopAbd1-AllMods]-[-@tbl-EstPopBio2-AllMods] for population abundance and biomass estimates at the start of the crab year (the time of the survey). -->
+<!-- May 2024: This has generally been the case. -->
 
-#### Response 
+<!-- ### CPT Comment  -->
 
-Sept 2024: See Tables [-@tbl-EstPopAbd1-AllMods]-[-@tbl-EstPopBio2-AllMods] for population abundance and biomass estimates at the start of the crab year (the time of the survey).
-May 2024: This has generally been the case.
+<!-- Consider stepwise changes to data as individual model runs instead of changing multiple parameters at once so that changes in model performance may be attributed to specific data. -->
 
-### CPT Comment 
+<!-- #### Response  -->
 
-Consider stepwise changes to data as individual model runs instead of changing multiple parameters at once so that changes in model performance may be attributed to specific data.
+<!-- Sept 2024: Appendices B and C provide the requested bridging analyses in detail. -->
 
-#### Response 
+<!-- May 2024: This has generally been the approach in presenting model results. the GMACS models presented in this report, however, represent enough of a "clean break" from the current assessment model that this incremental approach would have been extremely unwieldy (if not impossible) to implement. -->
 
-Sept 2024: Appendices B and C provide the requested bridging analyses in detail.
+<!-- ### CPT Comments (specific to assessment)  -->
 
-May 2024: This has generally been the approach in presenting model results. the GMACS models presented in this report, however, represent enough of a "clean break" from the current assessment model that this incremental approach would have been extremely unwieldy (if not impossible) to implement.
+<!-- None. -->
 
-### CPT Comments (specific to assessment) 
+<!-- ## SSC Comments October 2023  -->
 
-None.
+<!-- ### SSC Comments (general)  -->
 
-## SSC Comments October 2023 
+<!-- For the inclusion of trawl survey data, the SSC suggests crab assessment authors and the CPT be more explicit about best practices for which standard years are included for bottom trawl survey data. The SSC suggests that the years recommended by the Groundfish Plan Teams would be a good starting point, which specify using the following bottom trawl survey data years: -->
+<!-- -   Aleutian Islands: 1991 - present (standard gear) -->
+<!-- -   Eastern Bering Sea: 1982 - present (standard gear, grid, and design), 1987 - present for species that inhabit the northwest corner of the survey (which was added in 1987 for snow crab and walleye pollock) -->
 
-### SSC Comments (general) 
+<!-- #### Response  -->
 
-For the inclusion of trawl survey data, the SSC suggests crab assessment authors and the CPT be more explicit about best practices for which standard years are included for bottom trawl survey data. The SSC suggests that the years recommended by the Groundfish Plan Teams would be a good starting point, which specify using the following bottom trawl survey data years:
--   Aleutian Islands: 1991 - present (standard gear)
--   Eastern Bering Sea: 1982 - present (standard gear, grid, and design), 1987 - present for species that inhabit the northwest corner of the survey (which was added in 1987 for snow crab and walleye pollock)
+<!-- May 2024: As per every assessment since 2015, the current stock assessment model fits NMFS EBS bottom trawl survey biomass indices and size comps using crab-standardized stations starting in 1975. It estimates separate sex-specific parametric selectivity curves and fully-selected catchabilities for the 1975-1981 and gear-standardized 1982+ time periods. Alternative models such as the GMACS models considered in the May 2024 Tanner crab report have used only the 1982+ time period. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-May 2024: As per every assessment since 2015, the current stock assessment model fits NMFS EBS bottom trawl survey biomass indices and size comps using crab-standardized stations starting in 1975. It estimates separate sex-specific parametric selectivity curves and fully-selected catchabilities for the 1975-1981 and gear-standardized 1982+ time periods. Alternative models such as the GMACS models considered in the May 2024 Tanner crab report have used only the 1982+ time period.
+<!-- Risk tables would be used to provide a more comprehensive, transparent, and defensible justification for CPT and SSC recommendations on ABC buffers. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-Risk tables would be used to provide a more comprehensive, transparent, and defensible justification for CPT and SSC recommendations on ABC buffers.
+<!-- Sept 2024: A draft Risk Table is provided in Appendix D. -->
 
-#### Response 
+<!-- May 2024: a risk table will be included in the 2024 assessment. -->
 
-Sept 2024: A draft Risk Table is provided in Appendix D.
+<!-- ### SSC Comment  -->
 
-May 2024: a risk table will be included in the 2024 assessment.
+<!-- future BBRKC, Tanner and snow crab assessments routinely include a simple Tier 4 analysis that includes a smoothed time series of survey vulnerable biomass (legal size or smaller to accommodate discard mortality) using the REMA package and not adjusted for natural mortality. This model will provide a consistent alternative should the preferred Tier 3 approach fail in some way and also a point of comparison with Tier 3 and State methods used as a basis for TAC setting. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-future BBRKC, Tanner and snow crab assessments routinely include a simple Tier 4 analysis that includes a smoothed time series of survey vulnerable biomass (legal size or smaller to accommodate discard mortality) using the REMA package and not adjusted for natural mortality. This model will provide a consistent alternative should the preferred Tier 3 approach fail in some way and also a point of comparison with Tier 3 and State methods used as a basis for TAC setting.
+<!-- Sept 2024: See [@sec-T4M]. -->
 
-#### Response 
+<!-- May 2024: The SSC appears to have accepted the author's approach used in the 2023 assessment. This will be repeated for 2024. -->
 
-Sept 2024: See [@sec-T4M].
+<!-- ### SSC Comment  -->
 
-May 2024: The SSC appears to have accepted the author's approach used in the 2023 assessment. This will be repeated for 2024.
+<!-- Include uncertainty intervals when showing time series of biomass/abundance estimated by the stock assessment models -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-Include uncertainty intervals when showing time series of biomass/abundance estimated by the stock assessment models
+<!-- Sept 2024: See response above. -->
 
-#### Response 
+<!-- May 2024: This will be done for the 2024 assessment. -->
 
-Sept 2024: See response above.
+<!-- ### SSC Comment  -->
 
-May 2024: This will be done for the 2024 assessment.
+<!-- The SSC suggests that the CPT and crab authors continue to evaluate whether VAST or similar approaches, when specified carefully for individual crab stocks (i.e., the choice of error distributions and number of knots) might provide more robust survey time-series -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC suggests that the CPT and crab authors continue to evaluate whether VAST or similar approaches, when specified carefully for individual crab stocks (i.e., the choice of error distributions and number of knots) might provide more robust survey time-series
+<!-- May 2024: Previous reports have examined the use of VAST-derived time series for survey abundance/biomass and results from a GMACS model fitting to VAST-derived estimates are presented in the May 2024 Tanner crab report. Using the VAST estimates for the survey biomass time series results in poor model fits and model convergence issues.The VAST and design-based estimates are typically similar but differ mainly in the associated estimates of uncertainty. Thus, the ultimate effect of using the VAST estimates could be achieved heuristically simply by placing more emphasis on the survey indices relative to the fishery catch data than is currently done.  However, the estimates themselves suggest that interannual changes in stock biomass much larger than the current model dynamics (constant M, constant probability of terminal molt, constant growth dynamics, constant survey selectivity and fully-selected catchability) can accommodate are credible and should be captured by the model. The introduction of more flexible, time-varying dynamics is the key to better fitting the survey indices (VAST or design-based), but to do so with regard to plausible mechanisms and drivers is an area of ongoing research. -->
 
-#### Response 
+<!-- ### SSC Comments (specific to assessment)  -->
 
-May 2024: Previous reports have examined the use of VAST-derived time series for survey abundance/biomass and results from a GMACS model fitting to VAST-derived estimates are presented in the May 2024 Tanner crab report. Using the VAST estimates for the survey biomass time series results in poor model fits and model convergence issues.The VAST and design-based estimates are typically similar but differ mainly in the associated estimates of uncertainty. Thus, the ultimate effect of using the VAST estimates could be achieved heuristically simply by placing more emphasis on the survey indices relative to the fishery catch data than is currently done.  However, the estimates themselves suggest that interannual changes in stock biomass much larger than the current model dynamics (constant M, constant probability of terminal molt, constant growth dynamics, constant survey selectivity and fully-selected catchability) can accommodate are credible and should be captured by the model. The introduction of more flexible, time-varying dynamics is the key to better fitting the survey indices (VAST or design-based), but to do so with regard to plausible mechanisms and drivers is an area of ongoing research.
+<!-- The SSC continues to support development of a parallel or simplified version of the Tanner crab assessment model in the GMACS platform, and the author’s proposed development timeline in fall 2023. -->
 
-### SSC Comments (specific to assessment) 
+<!-- #### Response  -->
 
-The SSC continues to support development of a parallel or simplified version of the Tanner crab assessment model in the GMACS platform, and the author’s proposed development timeline in fall 2023.
+<!-- Sept 2024: The CPT rejected the simplified GMACS Tanner crab models presented in May and requested  full model comparison. This will be presented at the January 2025 Modeling Workshop. -->
 
-#### Response 
+<!-- May 2024: Simplified versions of the Tanner crab assessment model using the GMACS framework are presented in the May 2024 Tanner crab report. -->
 
-Sept 2024: The CPT rejected the simplified GMACS Tanner crab models presented in May and requested  full model comparison. This will be presented at the January 2025 Modeling Workshop.
+<!-- ### SSC Comment  -->
 
-May 2024: Simplified versions of the Tanner crab assessment model using the GMACS framework are presented in the May 2024 Tanner crab report.
+<!-- The SSC appreciates the author’s development of a simplified Tier 4 model for use as a backup in the event that extreme and insurmountable issues are encountered by the Tier 3 assessment model in the future. The SSC supports the structure of the Tier 4 model as presented, based on the estimate of vulnerable male crab biomass from the NMFS EBS bottom trawl survey and including the use of the coefficient of variation in projected biomass as a reasonable basis for defining the ABC buffer. With respect to the reference time period for calculating BMSY, the SSC concurs with the CPT recommendation to use the entire time series since 1982. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC appreciates the author’s development of a simplified Tier 4 model for use as a backup in the event that extreme and insurmountable issues are encountered by the Tier 3 assessment model in the future. The SSC supports the structure of the Tier 4 model as presented, based on the estimate of vulnerable male crab biomass from the NMFS EBS bottom trawl survey and including the use of the coefficient of variation in projected biomass as a reasonable basis for defining the ABC buffer. With respect to the reference time period for calculating BMSY, the SSC concurs with the CPT recommendation to use the entire time series since 1982.
+<!-- Sept 2024: Results from a Tier 4 analysis are presented in [@sec-T4M]. -->
 
-#### Response 
+<!-- May 2024: Results from this model will be updated for the 2024 assessment. -->
 
-Sept 2024: Results from a Tier 4 analysis are presented in [@sec-T4M].
+<!-- ### SSC Comment  -->
 
-May 2024: Results from this model will be updated for the 2024 assessment.
+<!-- Briefly summarize the history of the GOA Tanner crab fishery and stock dynamics, given the possible value of this information for the interpretation of BSAI Tanner crab stock dynamics. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-Briefly summarize the history of the GOA Tanner crab fishery and stock dynamics, given the possible value of this information for the interpretation of BSAI Tanner crab stock dynamics.
+<!-- May 2024: Kally Spalinger (ADFG) and Nathaniel Nichols (ADFG) have provided the author with, respectively, data from the Kodiak Large Mesh Survey for Tanner crab and historical landings from GOA Tanner crab fisheries. A "history" has not yet been developed, but time series of abundance and landings are included in the May 2024 Tanner crab report. A preliminary comparison of survey abundnace trends suggests that recruitment in the GOA and EBS is correlated, but whether this is due to a direct linkage or simply environmental mediation is unknown. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-May 2024: Kally Spalinger (ADFG) and Nathaniel Nichols (ADFG) have provided the author with, respectively, data from the Kodiak Large Mesh Survey for Tanner crab and historical landings from GOA Tanner crab fisheries. A "history" has not yet been developed, but time series of abundance and landings are included in the May 2024 Tanner crab report. A preliminary comparison of survey abundnace trends suggests that recruitment in the GOA and EBS is correlated, but whether this is due to a direct linkage or simply environmental mediation is unknown.
+<!-- Consider directly incorporating annual molt to maturity data, as implemented in the EBS snow crab assessment, if sufficient data are available. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-Consider directly incorporating annual molt to maturity data, as implemented in the EBS snow crab assessment, if sufficient data are available.
+<!-- May 2024: This suggestion is explored in several GMACS models presented in the May 2024 Tanner crab report. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-May 2024: This suggestion is explored in several GMACS models presented in the May 2024 Tanner crab report.
+<!-- Consider using the Bering Sea Fisheries Research Foundation (BSFRF) survey data to inform selectivity and catchability, as implemented in the EBS snow crab assessment, as an alternative to fitting these data as a separate index. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-Consider using the Bering Sea Fisheries Research Foundation (BSFRF) survey data to inform selectivity and catchability, as implemented in the EBS snow crab assessment, as an alternative to fitting these data as a separate index.
+<!-- May 2024: The BSFRF data has been used to inform NMFS survey selectivity/catchability in several GMACS models presented in the May 2024 Tanner crab report. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-May 2024: The BSFRF data has been used to inform NMFS survey selectivity/catchability in several GMACS models presented in the May 2024 Tanner crab report.
+<!-- Explore what might be driving the residual pattern in the fit to the NMFS survey data. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-Explore what might be driving the residual pattern in the fit to the NMFS survey data.
+<!-- May 2024: Because recruitment is freely estimated, the residual patterns are presumably due to the constraints on the model dynamics imposed by 1) constant M and 2) constant growth dynamics, as well (possibly) as variability in weight-at-size. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-May 2024: Because recruitment is freely estimated, the residual patterns are presumably due to the constraints on the model dynamics imposed by 1) constant M and 2) constant growth dynamics, as well (possibly) as variability in weight-at-size.
+<!-- With respect to the spatial distribution of Tanner crab captured in the NMFS bottom trawl survey, the SSC appreciates the inclusion of Figures 38-42 which highlight both the large number of small male crab encountered in 2023 and the spatially expansive nature of that increase in CPUE. The SSC encourages exploration of differences in the spatial distribution of small male crab in the NMFS survey, to identify if the distribution of small crab encountered in 2003-2005 and 2008-2010, which successfully propagated to larger sizes, showed differences in habitat use compared with the cohort first observed in 2017-2019, which did not propagate to larger sizes.  -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-With respect to the spatial distribution of Tanner crab captured in the NMFS bottom trawl survey, the SSC appreciates the inclusion of Figures 38-42 which highlight both the large number of small male crab encountered in 2023 and the spatially expansive nature of that increase in CPUE. The SSC encourages exploration of differences in the spatial distribution of small male crab in the NMFS survey, to identify if the distribution of small crab encountered in 2003-2005 and 2008-2010, which successfully propagated to larger sizes, showed differences in habitat use compared with the cohort first observed in 2017-2019, which did not propagate to larger sizes. 
+<!-- May 2024: This is an avenue for future research. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-May 2024: This is an avenue for future research.
+<!-- Likewise, the SSC recommends that a comparison of environmental conditions experienced by small crabs during these periods may help to elucidate why some cohorts appear to propagate and others do not. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-Likewise, the SSC recommends that a comparison of environmental conditions experienced by small crabs during these periods may help to elucidate why some cohorts appear to propagate and others do not.
+<!-- May 2024: This is an avenue for future research. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-May 2024: This is an avenue for future research.
+<!-- Fits to length composition data in the recent period remain a concern, exemplified by large negative residuals in length composition fits for the largest observed length bin in recent years and as a strong positive retrospective pattern in recruitment. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-Fits to length composition data in the recent period remain a concern, exemplified by large negative residuals in length composition fits for the largest observed length bin in recent years and as a strong positive retrospective pattern in recruitment.
+<!-- May 2024: Large negative residuals in (male) size compositions continue to be a problem with this assessment. The residuals to the estimated mean post-molt size for large males are also (increasingly) negative with pre-molt size. This suggests that something else in the data is forcing male crab to grow to sizes inconsistent with the molt increment and size composition data. Potential sources for this include a biased size-weight regression used to convert abundance to biomass and biased probabilities of terminal molt and suggest avenues for future research. -->
 
-#### Response 
+<!-- ## CPT comments May 2023 -->
 
-May 2024: Large negative residuals in (male) size compositions continue to be a problem with this assessment. The residuals to the estimated mean post-molt size for large males are also (increasingly) negative with pre-molt size. This suggests that something else in the data is forcing male crab to grow to sizes inconsistent with the molt increment and size composition data. Potential sources for this include a biased size-weight regression used to convert abundance to biomass and biased probabilities of terminal molt and suggest avenues for future research.
+<!-- ### CPT Comments (specific to assessment)  -->
 
-## CPT comments May 2023
+<!-- The CPT commends the author for the large amount of exploration and work done on model runs and recommends that the author bring forward model 22.03b as the base model for specifications in the fall. -->
 
-### CPT Comments (specific to assessment) 
+<!-- #### Response  -->
 
-The CPT commends the author for the large amount of exploration and work done on model runs and recommends that the author bring forward model 22.03b as the base model for specifications in the fall.
+<!-- Sep 2023: Done. -->
 
-#### Response 
+<!-- ### CPT Comment  -->
 
-Sep 2023: Done.
+<!-- The CPT encouraged the author to bring forward in September the Tier 4 option that was decided upon at the simpler modeling workshop. This involved using smoothing of the area-swept MMB estimates and applying F = M for OFL determination. There was discussion upon which set of years to use for setting status determination using this method, and CPT members suggested reviewing the last accepted Tier 4 model -- i.e., before the Tier 3 model was accepted -- for reasoning as to the years that were used for status determination at that time. -->
 
-### CPT Comment 
+<!-- #### Response  -->
 
-The CPT encouraged the author to bring forward in September the Tier 4 option that was decided upon at the simpler modeling workshop. This involved using smoothing of the area-swept MMB estimates and applying F = M for OFL determination. There was discussion upon which set of years to use for setting status determination using this method, and CPT members suggested reviewing the last accepted Tier 4 model -- i.e., before the Tier 3 model was accepted -- for reasoning as to the years that were used for status determination at that time.
+<!-- Sep 2023: Done. -->
 
-#### Response 
+<!-- ## SSC comments June 2023 -->
 
-Sep 2023: Done.
+<!-- ### SSC Comment (general)  -->
 
-## SSC comments June 2023
+<!-- The SSC highlights that the estimation of unrealistically high instantaneous fishing mortality rates appears to be an emergent property of several crab assessments...These estimates result in ABC recommendations that would remove virtually all legal sized crab from the population. The SSC encourages collaboration among assessment authors to identify the root causes of this common issue and potential solutions and suggests potentially using a hypothesis driven approach...a high priority topic for the crab modeling workshop planned for January 2024. -->
 
-### SSC Comment (general) 
+<!-- #### Response  -->
 
-The SSC highlights that the estimation of unrealistically high instantaneous fishing mortality rates appears to be an emergent property of several crab assessments...These estimates result in ABC recommendations that would remove virtually all legal sized crab from the population. The SSC encourages collaboration among assessment authors to identify the root causes of this common issue and potential solutions and suggests potentially using a hypothesis driven approach...a high priority topic for the crab modeling workshop planned for January 2024.
+<!-- Sep 2023: The root cause of ABC recommendations that would remove all legal-sized crab is the combination of an industry-preferred size larger than the average size at maturity, and an SPR-based harvest control rule. Mature males smaller than the industry-preferred size form a "pool" protected from exploitation. As the separation between industry-preferred size and average size of mature males increases, the more the biomass in this protected pool increases relative to unfished biomass and the less is needed in the vulnerable pool of large males to achieve 35% of unfished MMB. The consequence is that the $F_{OFL}$ calculation results in higher and higher F's on industry-preferred males. For king crab, which do not undergo terminal molt, crab in the protected pool will eventually grow into the vulnerable pool--which somewhat reduces the estimated F's. For opilio and bairdi, because they undergo terminal molt, mature males under the industry-preferred size will never grow out of the protected pool of biomass--thus increasing the estimated F's over what they would be for species with similar population characteristics that did not undergo terminal molt. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2023: The root cause of ABC recommendations that would remove all legal-sized crab is the combination of an industry-preferred size larger than the average size at maturity, and an SPR-based harvest control rule. Mature males smaller than the industry-preferred size form a "pool" protected from exploitation. As the separation between industry-preferred size and average size of mature males increases, the more the biomass in this protected pool increases relative to unfished biomass and the less is needed in the vulnerable pool of large males to achieve 35% of unfished MMB. The consequence is that the $F_{OFL}$ calculation results in higher and higher F's on industry-preferred males. For king crab, which do not undergo terminal molt, crab in the protected pool will eventually grow into the vulnerable pool--which somewhat reduces the estimated F's. For opilio and bairdi, because they undergo terminal molt, mature males under the industry-preferred size will never grow out of the protected pool of biomass--thus increasing the estimated F's over what they would be for species with similar population characteristics that did not undergo terminal molt.
+<!-- The SSC recommends that when "fallback" Tier 4 alternatives are provided, as recommended by the crab Simpler Modelling Workshop, plots that compare the OFLs predicted by the existing status quo Tier 3 model against the OFLs recommended by Tier 4 models for previous years be included. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC recommends that when "fallback" Tier 4 alternatives are provided, as recommended by the crab Simpler Modelling Workshop, plots that compare the OFLs predicted by the existing status quo Tier 3 model against the OFLs recommended by Tier 4 models for previous years be included.
+<!-- Sep 2023: The Tier 4 model does not estimate OFLs for "previous years", which would require developing a retrospective analysis -->
+<!-- capability. If this is a priority, it could be addressed in the future. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2023: The Tier 4 model does not estimate OFLs for "previous years", which would require developing a retrospective analysis
-capability. If this is a priority, it could be addressed in the future.
+<!-- In addition, when estimating biomass for Tier 4 models, the SSC recommends that the authors base these on the whole time -->
+<!-- series or develop justification for a better time block that represents current fishing potential for the stock. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-In addition, when estimating biomass for Tier 4 models, the SSC recommends that the authors base these on the whole time
-series or develop justification for a better time block that represents current fishing potential for the stock.
+<!-- Sep 2023: Results for $B_{MSY}$ calculated using several alternative time blocks are presented. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2023: Results for $B_{MSY}$ calculated using several alternative time blocks are presented.
+<!-- The SSC also recommends that, for "fallback" Tier 4 models, the authors and CPT recommend an appropriate ABC buffer. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC also recommends that, for "fallback" Tier 4 models, the authors and CPT recommend an appropriate ABC buffer.
+<!-- Sep 2023: The author recommends using the cv for terminal year survey biomass from the random walk model as a basis for the ABC -->
+<!-- buffer. The final value could be based on a P\*-like calculation or directly as a fractional buffer (i.e., -->
+<!-- $ABC=(1-cv) \cdot OFL$). -->
 
-#### Response 
+<!-- ### SSC Comment (specific to assessment)  -->
 
-Sep 2023: The author recommends using the cv for terminal year survey biomass from the random walk model as a basis for the ABC
-buffer. The final value could be based on a P\*-like calculation or directly as a fractional buffer (i.e.,
-$ABC=(1-cv) \cdot OFL$).
+<!-- The SSC reiterates its support for transitioning this model, or a simplified version thereof, into the standardized GMACS platform. The SSC feels that transitioning this assessment into GMACS is a higher priority at this point than continued exploration of model alternatives (e.g. 23.02, 23.05) within the existing framework. The SSC further reiterates its recommendation from October 2022 that the GMACS implementation of the Tanner crab model could represent a simplified version of the current model structure, as a foundation upon which additional features may be explored and incorporated sequentially. -->
 
-### SSC Comment (specific to assessment) 
+<!-- #### Response  -->
 
-The SSC reiterates its support for transitioning this model, or a simplified version thereof, into the standardized GMACS platform. The SSC feels that transitioning this assessment into GMACS is a higher priority at this point than continued exploration of model alternatives (e.g. 23.02, 23.05) within the existing framework. The SSC further reiterates its recommendation from October 2022 that the GMACS implementation of the Tanner crab model could represent a simplified version of the current model structure, as a foundation upon which additional features may be explored and incorporated sequentially.
+<!-- Sep 2023: Transitioning the assessment to GMACS is the top priority for development in Fall, 2023. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2023: Transitioning the assessment to GMACS is the top priority for development in Fall, 2023.
+<!-- The SSC requests that a clear justification for the choice of Tier 4 fallback reference time period be provided in the September SAFE document, beyond simple precedent, and that several alternative time periods be considered (each with its own justification). -->
 
-### SSC Comment 
+<!-- #### Response -->
 
-The SSC requests that a clear justification for the choice of Tier 4 fallback reference time period be provided in the September SAFE document, beyond simple precedent, and that several alternative time periods be considered (each with its own justification).
+<!-- Sep 2023: Several time blocks were considered for the Tier 4 averaging time period used to calculate $B_{MSY}$. Justification for using each is discussed. -->
 
-#### Response
+<!-- ### SSC Comment  -->
 
-Sep 2023: Several time blocks were considered for the Tier 4 averaging time period used to calculate $B_{MSY}$. Justification for using each is discussed.
+<!-- The SSC concurs with the CPT that continued exploration of constrained time-varying natural mortality may be appropriate, when paired with external estimation of growth and use of BSFRF data to inform priors on selectivity. This may represent a suitable balance in terms of the added complexity of time-varying natural mortality, against reductions in the complexity of growth and selectivity estimation. However, the SSC recommends that these explorations be conducted using a GMACS version of the assessment model, when successfully implemented. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC concurs with the CPT that continued exploration of constrained time-varying natural mortality may be appropriate, when paired with external estimation of growth and use of BSFRF data to inform priors on selectivity. This may represent a suitable balance in terms of the added complexity of time-varying natural mortality, against reductions in the complexity of growth and selectivity estimation. However, the SSC recommends that these explorations be conducted using a GMACS version of the assessment model, when successfully implemented.
+<!-- Sep 2023: Noted. -->
 
-#### Response 
+<!-- ## CPT comments September 2022 -->
 
-Sep 2023: Noted.
+<!-- ### CPT Comment (specific to assessment)  -->
 
-## CPT comments September 2022
+<!-- The author identified several avenues of research to be pursued in the coming year, including: transitioning to GMACS, completing the BSFRF/NMFS survey selectivity analysis, exploring time-varying natural mortality, investigating non-parametric approaches to selectivity, and a more thorough evaluation of a model that starts in 1982. The CPT was supportive of these pursuits. -->
 
-### CPT Comment (specific to assessment) 
+<!-- #### Response  -->
 
-The author identified several avenues of research to be pursued in the coming year, including: transitioning to GMACS, completing the BSFRF/NMFS survey selectivity analysis, exploring time-varying natural mortality, investigating non-parametric approaches to selectivity, and a more thorough evaluation of a model that starts in 1982. The CPT was supportive of these pursuits.
+<!-- Sep 2023: Models that investigated time-varying M were presented at the May, 2023 CPT meeting. Completing the survey selectivity analysis awaits acquisition of the 2018 BSFRF survey data. Transitioning to GMACS will be top priority following the 2023 assessment; other areas for investigation will be lower priority. -->
 
-#### Response 
+<!-- ### CPT Comment  -->
 
-Sep 2023: Models that investigated time-varying M were presented at the May, 2023 CPT meeting. Completing the survey selectivity analysis awaits acquisition of the 2018 BSFRF survey data. Transitioning to GMACS will be top priority following the 2023 assessment; other areas for investigation will be lower priority.
+<!-- Show plots for jitter analyses that could demonstrate (or rule out) bimodality in management quantities (the author noted that the models presented converged to the MLE over 50% of the time in 800 jitter runs, but diagnostic plots were not presented). -->
 
-### CPT Comment 
+<!-- #### Response  -->
 
-Show plots for jitter analyses that could demonstrate (or rule out) bimodality in management quantities (the author noted that the models presented converged to the MLE over 50% of the time in 800 jitter runs, but diagnostic plots were not presented).
+<!-- Sep 2023: A figure representing jitter diagnostics is presented for Model 22.03b. -->
 
-#### Response 
+<!-- ### CPT Comment  -->
 
-Sep 2023: A figure representing jitter diagnostics is presented for Model 22.03b.
+<!-- Provide a plot of the fits to male and female components separately when they are fit in an aggregated fashion (as in -->
+<!-- 22.03). Are the fits to either sex substantially degraded? -->
 
-### CPT Comment 
+<!-- #### Response  -->
 
-Provide a plot of the fits to male and female components separately when they are fit in an aggregated fashion (as in
-22.03). Are the fits to either sex substantially degraded?
+<!-- Sep 2023: Although this is a reasonable idea, it is currently not possible to provide such a plot. -->
 
-#### Response 
+<!-- ### CPT Comment  -->
 
-Sep 2023: Although this is a reasonable idea, it is currently not possible to provide such a plot.
+<!-- Provide some discussion as to why there was an exceptionally small retrospective pattern in spite of the issues with recruitments that appear and then do not propagate through the population. -->
 
-### CPT Comment 
+<!-- #### Response  -->
 
-Provide some discussion as to why there was an exceptionally small retrospective pattern in spite of the issues with recruitments that appear and then do not propagate through the population.
+<!-- Sep 2023: The small retrospective pattern was with respect to MMB, while the pattern for recruitment was much larger. The larger retrospective pattern for recruitment occurs exactly as a result of the apparent recruitment events disappearing (new data reduces the estimated size of recruitment in any particular year). The small retrospective pattern for MMB is a result of the estimated model dynamics that extend over many cohorts and "damp out" patterns seen in the small size classes in order to better fit patterns seen in the larger size classes. The model places much more emphasis on fitting large size classes better because it fits to survey and fishery *biomass* time series, not abundance time series. -->
 
-#### Response 
+<!-- ### CPT Comment  -->
 
-Sep 2023: The small retrospective pattern was with respect to MMB, while the pattern for recruitment was much larger. The larger retrospective pattern for recruitment occurs exactly as a result of the apparent recruitment events disappearing (new data reduces the estimated size of recruitment in any particular year). The small retrospective pattern for MMB is a result of the estimated model dynamics that extend over many cohorts and "damp out" patterns seen in the small size classes in order to better fit patterns seen in the larger size classes. The model places much more emphasis on fitting large size classes better because it fits to survey and fishery *biomass* time series, not abundance time series.
+<!-- Continue to explore ways to eliminate the overestimates of large crab (the interplay between growth estimates and non-parametric selectivity might be a useful avenue to explore) -->
 
-### CPT Comment 
+<!-- #### Response  -->
 
-Continue to explore ways to eliminate the overestimates of large crab (the interplay between growth estimates and non-parametric selectivity might be a useful avenue to explore)
+<!-- Sep 2023: This suggestion will be explored as part of building a GMACS Tanner crab model. -->
 
-#### Response 
+<!-- ## SSC comments October 2022 -->
 
-Sep 2023: This suggestion will be explored as part of building a GMACS Tanner crab model.
+<!-- ### SSC Comment (general)  -->
 
-## SSC comments October 2022
+<!-- The SSC supports the CPT plans to discuss appropriate model start dates as well as reference periods for $B_{MSY}$ (e.g., SMBKC and PIRKC) at their January 2023 meeting to provide guidance to stock assessment authors. The SSC recommends that the CPT explore a consistent approach across all EBS stocks to use trawl survey data after 1982 when gear and sampling designs were more standardized -->
 
-### SSC Comment (general) 
+<!-- #### Response -->
 
-The SSC supports the CPT plans to discuss appropriate model start dates as well as reference periods for $B_{MSY}$ (e.g., SMBKC and PIRKC) at their January 2023 meeting to provide guidance to stock assessment authors. The SSC recommends that the CPT explore a consistent approach across all EBS stocks to use trawl survey data after 1982 when gear and sampling designs were more standardized
+<!-- Sep 2023: See @sec-SSC-Comm-22-06a. -->
 
-#### Response
+<!-- ### SSC Comment  -->
 
-Sep 2023: See @sec-SSC-Comm-22-06a.
+<!-- The SSC encourages crab authors to continue to move as much of the research and model development as possible to earlier -->
+<!-- in the year, as this would streamline reviews in the fall and facilitate the use of VAST models and inclusion of -->
+<!-- Northern Bering Sea (NBS) survey data into crab assessments. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC encourages crab authors to continue to move as much of the research and model development as possible to earlier
-in the year, as this would streamline reviews in the fall and facilitate the use of VAST models and inclusion of
-Northern Bering Sea (NBS) survey data into crab assessments.
+<!-- Sep 2023: Almost all Tanner crab model development occurs between October following the SSC meeting and the subsequent May CPT -->
+<!-- meeting. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2023: Almost all Tanner crab model development occurs between October following the SSC meeting and the subsequent May CPT
-meeting.
+<!-- The SSC encourages further considerations or ideas on potential cooperative pot surveys for different crab stocks. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC encourages further considerations or ideas on potential cooperative pot surveys for different crab stocks.
+<!-- Sep 2023: This seems like a potential topic for the January CPT meeting. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2023: This seems like a potential topic for the January CPT meeting.
+<!-- The SSC suggests that fitting a range of simpler models and data limited approaches, such as the Tier 4 calculation, can also provide insight into the differences between raw survey observations and integrated assessment model output...The SSC recommends a working group to address the use of simpler models for at least snow crab, Tanner crab and BBRKC. -->
 
-### SSC Comment 
+<!-- #### Response -->
 
-The SSC suggests that fitting a range of simpler models and data limited approaches, such as the Tier 4 calculation, can also provide insight into the differences between raw survey observations and integrated assessment model output...The SSC recommends a working group to address the use of simpler models for at least snow crab, Tanner crab and BBRKC.
+<!-- Sep 2023: The suggested working group was convened in March, 2023 at the AFSC. Methodology for and results from a "fallback" Tier 4 model for Tanner crab are presented. -->
 
-#### Response
+<!-- ### SSC Comment  -->
 
-Sep 2023: The suggested working group was convened in March, 2023 at the AFSC. Methodology for and results from a "fallback" Tier 4 model for Tanner crab are presented.
+<!-- The SSC recommends the formation of a working group to develop a framework for how to estimate the magnitude of unobserved mortality for crab stocks and how these estimations may be utilized in BSAI crab stock assessments. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC recommends the formation of a working group to develop a framework for how to estimate the magnitude of unobserved mortality for crab stocks and how these estimations may be utilized in BSAI crab stock assessments.
+<!-- Sep 2023: The working group has been formed; meetings are scheduled for October. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2023: The working group has been formed; meetings are scheduled for October.
+<!-- The SSC recommends that all crab authors plot length compositions over years with the most recent year at the bottom of -->
+<!-- the plot. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC recommends that all crab authors plot length compositions over years with the most recent year at the bottom of
-the plot.
+<!-- Sep 2023: Not yet addressed. -->
 
-#### Response 
+<!-- ### SSC Comment (specific to assessment)  -->
 
-Sep 2023: Not yet addressed.
+<!-- The SSC highlights the following areas as highest priority for the Tanner crab assessment: 1) transition the Tanner assessment model to GMACS; 2) the investigation of model outputs that better inform State management, especially males of industry-preferred size to ensure proper scaling; 3) The SSC suggests fitting a range of simpler models or data limited approaches; -->
 
-### SSC Comment (specific to assessment) 
+<!-- #### Response  -->
 
-The SSC highlights the following areas as highest priority for the Tanner crab assessment: 1) transition the Tanner assessment model to GMACS; 2) the investigation of model outputs that better inform State management, especially males of industry-preferred size to ensure proper scaling; 3) The SSC suggests fitting a range of simpler models or data limited approaches;
+<!-- Sep 2023: For 1), transition to GMACS will be given the highest priority following the October SSC meeting. For 2), State management occurs on a two-area basis while the assessment model is area-aggregated (a "fleets-as-areas" model incorporating area-specific considerations was previously investigated but fitting the area-specific data was problematic). The correct scaling of (area-aggregated) industry-preferred male abundance in the assessment model depends on correctly estimating survey selectivity and catchability, growth, terminal molt, and natural mortality simultaneously, but this remains problematic due to parameter confounding among these processes. For 3), a Tier 4 model was developed and results are presented in this assessment. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2023: For 1), transition to GMACS will be given the highest priority following the October SSC meeting. For 2), State management occurs on a two-area basis while the assessment model is area-aggregated (a "fleets-as-areas" model incorporating area-specific considerations was previously investigated but fitting the area-specific data was problematic). The correct scaling of (area-aggregated) industry-preferred male abundance in the assessment model depends on correctly estimating survey selectivity and catchability, growth, terminal molt, and natural mortality simultaneously, but this remains problematic due to parameter confounding among these processes. For 3), a Tier 4 model was developed and results are presented in this assessment.
+<!-- The SSC recommends that the CPT review the assessment frequency (see also Stock Prioritization section) for Tanner crab and provide the SSC their recommendation. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC recommends that the CPT review the assessment frequency (see also Stock Prioritization section) for Tanner crab and provide the SSC their recommendation.
+<!-- Sep 2023: An issue for the CPT, but noted here. -->
 
-#### Response 
+<!-- ## CPT comments May 2022 -->
 
-Sep 2023: An issue for the CPT, but noted here.
+<!-- ### CPT Comment (specific to assessment)  -->
 
-## CPT comments May 2022
+<!-- Four models are requested by the CPT for the September CPT meeting: 1) Model 22.01: Base model from last year updated with new data; 2) Model 22.03: updated bycatch estimates for the groundfish fisheries, and fitting to fishery aggregate biomass; 3) modified model 22.06a: Initial size composition in 1982 with a smoothing weight of 0.1, and initial composition parameters estimated on a logit scale, but also including the features of model 22.03; and 4) modified model 22.06a as described above plus bootstrap estimates of input sample sizes. -->
 
-### CPT Comment (specific to assessment) 
+<!-- #### Response  -->
 
-Four models are requested by the CPT for the September CPT meeting: 1) Model 22.01: Base model from last year updated with new data; 2) Model 22.03: updated bycatch estimates for the groundfish fisheries, and fitting to fishery aggregate biomass; 3) modified model 22.06a: Initial size composition in 1982 with a smoothing weight of 0.1, and initial composition parameters estimated on a logit scale, but also including the features of model 22.03; and 4) modified model 22.06a as described above plus bootstrap estimates of input sample sizes.
+<!-- Sep 2023: All requested models were implemented and results are provided in this assessment. The latter two models were numbered as 22.07 and 22.08 because they differ from models presented in May. -->
 
-#### Response 
+<!-- ### CPT Comment  -->
 
-Sep 2023: All requested models were implemented and results are provided in this assessment. The latter two models were numbered as 22.07 and 22.08 because they differ from models presented in May.
+<!-- The CPT also encourages Buck to continue exploring alternative approaches to incorporating the BSFRF survey data in the -->
+<!-- assessment, attempting to model the ADF&G management areas as separate fisheries, and to continue making progress on a -->
+<!-- GMACS implementation for Tanner crab. -->
 
-### CPT Comment 
+<!-- #### Response  -->
 
-The CPT also encourages Buck to continue exploring alternative approaches to incorporating the BSFRF survey data in the
-assessment, attempting to model the ADF&G management areas as separate fisheries, and to continue making progress on a
-GMACS implementation for Tanner crab.
+<!-- Sep 2023: These continue to be areas of active investigation. Implementing a Tanner crab model in GMACS will be given the highest priority following the 2023 assessment. -->
 
-#### Response 
+<!-- ## SSC comments June 2022 -->
 
-Sep 2023: These continue to be areas of active investigation. Implementing a Tanner crab model in GMACS will be given the highest priority following the 2023 assessment.
+<!-- ### SSC Comment (general) {#sec-SSC-Comm-22-06a} -->
 
-## SSC comments June 2022
+<!-- The SSC suggests that the CPT develop guidelines for when to change model start dates. Both BBRKC and Tanner crab assessment authors proposed changes to model start dates with similar, but not identical rationales. While changing start dates may lead to improved model fits to available data and allow for reduced model complexity in terms of removing time blocks for natural mortality or other parameters, there is a potential to lose historical context or the ability to better understand what might have caused model difficulties or demographic changes (e.g., increased mortality events). Thus, the overall goal of these guidelines would be to ensure a full discussion and consistent criteria be applied for proposed changes across stocks into the future. The SSC recommends that these guidelines for start date changes should consider data availability, model complexity, impacts to estimates of the average level and variation in recruitment, loss of historical context and perspective on natural mortality changes and how this would impact short and long-term projections for stock dynamics. -->
 
-### SSC Comment (general) {#sec-SSC-Comm-22-06a}
+<!-- #### Response  -->
 
-The SSC suggests that the CPT develop guidelines for when to change model start dates. Both BBRKC and Tanner crab assessment authors proposed changes to model start dates with similar, but not identical rationales. While changing start dates may lead to improved model fits to available data and allow for reduced model complexity in terms of removing time blocks for natural mortality or other parameters, there is a potential to lose historical context or the ability to better understand what might have caused model difficulties or demographic changes (e.g., increased mortality events). Thus, the overall goal of these guidelines would be to ensure a full discussion and consistent criteria be applied for proposed changes across stocks into the future. The SSC recommends that these guidelines for start date changes should consider data availability, model complexity, impacts to estimates of the average level and variation in recruitment, loss of historical context and perspective on natural mortality changes and how this would impact short and long-term projections for stock dynamics.
+<!-- Sep 2023: The CPT discussed developing general and consistent guidelines on changing model start date at its January 2023 meeting. The issues discussed were very stock-specific and the CPT was unable to make any firm recommendations on general guidelines. -->
 
-#### Response 
+<!-- ### SSC Comment (specific to assessment)  -->
 
-Sep 2023: The CPT discussed developing general and consistent guidelines on changing model start date at its January 2023 meeting. The issues discussed were very stock-specific and the CPT was unable to make any firm recommendations on general guidelines.
+<!-- Even though the estimation of input sample sizes did not perform as expected (it produced even higher sample sizes than default values in the base model), the SSC supports the CPT recommendation to revisit this approach with the revised start date (1982). -->
 
-### SSC Comment (specific to assessment) 
+<!-- #### Response  -->
 
-Even though the estimation of input sample sizes did not perform as expected (it produced even higher sample sizes than default values in the base model), the SSC supports the CPT recommendation to revisit this approach with the revised start date (1982).
+<!-- Sep 2022: Model 22.08 addresses this request, but results remained problematic. The author notes that multinomial likelihoods were used in fitting this model and that it should be reconsidered using the Dirichlet-multinomial likelihood. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2022: Model 22.08 addresses this request, but results remained problematic. The author notes that multinomial likelihoods were used in fitting this model and that it should be reconsidered using the Dirichlet-multinomial likelihood.
+<!-- The SSC commends the authors for proposing two models (22.01 and 22.03) with no parameters hitting bounds and the -->
+<!-- remaining models having only two or three parameters at bounds (depending on smoothing). The SSC recommends continued -->
+<!-- efforts to examine and address the remaining parameters that are still estimated at their bounds. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC commends the authors for proposing two models (22.01 and 22.03) with no parameters hitting bounds and the
-remaining models having only two or three parameters at bounds (depending on smoothing). The SSC recommends continued
-efforts to examine and address the remaining parameters that are still estimated at their bounds.
+<!-- Sep 2022: The author appreciates the SSC comment and notes that remaining parameters at bounds involve limits on -->
+<!-- selectivity-related parameters reflecting knife-edge like selectivity patterns (e.g., retention functions) or full -->
+<!-- selected sizes that would go beyond observed sizes in the data. Implementation of a well-behaved bounding function is an -->
+<!-- area of active (although incomplete) research. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2022: The author appreciates the SSC comment and notes that remaining parameters at bounds involve limits on
-selectivity-related parameters reflecting knife-edge like selectivity patterns (e.g., retention functions) or full
-selected sizes that would go beyond observed sizes in the data. Implementation of a well-behaved bounding function is an
-area of active (although incomplete) research.
+<!-- The SSC supports CPT recommendations to continue exploring alternative approaches to incorporating the BSFRF survey data -->
+<!-- in the assessment, attempting to model the ADF&G management areas as separate fisheries, and to continue making progress -->
+<!-- on a GMACS implementation for Tanner crab. However, the SSC recognizes that there may be benefits of waiting until -->
+<!-- additional improvements in GMACS occur, specifically the adoption of a GMACS model for snow crab. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC supports CPT recommendations to continue exploring alternative approaches to incorporating the BSFRF survey data
-in the assessment, attempting to model the ADF&G management areas as separate fisheries, and to continue making progress
-on a GMACS implementation for Tanner crab. However, the SSC recognizes that there may be benefits of waiting until
-additional improvements in GMACS occur, specifically the adoption of a GMACS model for snow crab.
+<!-- Sep 2022: GMACS models for snow crab have now been adopted, so development of a GMACS version of the Tanner crab model is -->
+<!-- underway. The SSC's other recommendations are appreciated and the author notes that these are active areas of research. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2022: GMACS models for snow crab have now been adopted, so development of a GMACS version of the Tanner crab model is
-underway. The SSC's other recommendations are appreciated and the author notes that these are active areas of research.
+<!-- The SSC also suggests that the CPT develop guidelines for changing model start dates. Both BBRKC and Tanner crab -->
+<!-- assessments proposed changes to their starting dates with similar rationales. Please refer to the General Comments for -->
+<!-- Crab Assessment Authors section above for a more detailed SSC recommendation. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC also suggests that the CPT develop guidelines for changing model start dates. Both BBRKC and Tanner crab
-assessments proposed changes to their starting dates with similar rationales. Please refer to the General Comments for
-Crab Assessment Authors section above for a more detailed SSC recommendation.
+<!-- Sep 2022: See @sec-SSC-Comm-22-06a. -->
 
-#### Response 
+<!-- ## CPT comments January 2022  -->
 
-Sep 2022: See @sec-SSC-Comm-22-06a.
+<!-- None -->
 
-## CPT comments January 2022 
+<!-- ## SSC comments February 2022 -->
 
-None
+<!-- ### SSC Comment (general)  -->
 
-## SSC comments February 2022
+<!-- The SSC supports the CPT general recommendations that all stock assessments include results from the currently accepted -->
+<!-- model with new data (base model) so that changes in model performance can be assessed. Values for management-related -->
+<!-- quantities for all models that may be recommended by the CPT or SSC should also be available. -->
 
-### SSC Comment (general) 
+<!-- #### Response  -->
 
-The SSC supports the CPT general recommendations that all stock assessments include results from the currently accepted
-model with new data (base model) so that changes in model performance can be assessed. Values for management-related
-quantities for all models that may be recommended by the CPT or SSC should also be available.
+<!-- Sep 2023: The author's preferred model, 22.03b (and the only Tier 3 model evaluated for this assessment) is essentially identical -->
+<!-- to the model from last year's assessment (22.03). Consequently, results are compared between 22.03b with data updated -->
+<!-- for 2023 and results for 22.03 from last year's assessment. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2023: The author's preferred model, 22.03b (and the only Tier 3 model evaluated for this assessment) is essentially identical
-to the model from last year's assessment (22.03). Consequently, results are compared between 22.03b with data updated
-for 2023 and results for 22.03 from last year's assessment.
+<!-- The SSC supports the CPT's proposed changes to the terms of reference for SAFE chapters for BSAI crab stocks, including -->
+<!-- efforts to clarify and standardize summary tables that include management performance, status, and catch specifications. -->
+<!-- Specifically, summary tables in the main body of a SAFE chapter for a given stock will provide information for each -->
+<!-- model run. In addition, the SSC recommends that the executive summary of the SAFE chapter will provide information for -->
+<!-- the author recommended model only and the BSAI Crab SAFE Introduction Chapter will provide information for the CPT -->
+<!-- recommended model, specifying if that differs from the author-recommended model. The SSC references its recommendation -->
+<!-- from December 2021 that assessment authors do not change recommendations in documents between the Plan Team and the SSC -->
+<!-- meetings and that deliberations and disagreements over assessment and other recommendations be documented in the Plan -->
+<!-- Team minutes. This ensures that changes between author recommendations and Plan Team recommendations are clearly -->
+<!-- documented and easily tracked. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC supports the CPT's proposed changes to the terms of reference for SAFE chapters for BSAI crab stocks, including
-efforts to clarify and standardize summary tables that include management performance, status, and catch specifications.
-Specifically, summary tables in the main body of a SAFE chapter for a given stock will provide information for each
-model run. In addition, the SSC recommends that the executive summary of the SAFE chapter will provide information for
-the author recommended model only and the BSAI Crab SAFE Introduction Chapter will provide information for the CPT
-recommended model, specifying if that differs from the author-recommended model. The SSC references its recommendation
-from December 2021 that assessment authors do not change recommendations in documents between the Plan Team and the SSC
-meetings and that deliberations and disagreements over assessment and other recommendations be documented in the Plan
-Team minutes. This ensures that changes between author recommendations and Plan Team recommendations are clearly
-documented and easily tracked.
+<!-- Sep 2022: Noted. -->
 
-#### Response 
+<!-- ### SSC Comment  -->
 
-Sep 2022: Noted.
+<!-- The SSC also appreciates the CPT's discussion regarding efforts to develop a standardized table and figure output for -->
+<!-- all SAFE chapters and encourages coordination with Groundfish Plan Teams to, as much as reasonably possible, strive for -->
+<!-- consistency, standardization, and reproducible documentation across all stocks. -->
 
-### SSC Comment 
+<!-- #### Response  -->
 
-The SSC also appreciates the CPT's discussion regarding efforts to develop a standardized table and figure output for
-all SAFE chapters and encourages coordination with Groundfish Plan Teams to, as much as reasonably possible, strive for
-consistency, standardization, and reproducible documentation across all stocks.
+<!-- Sep 2022: Standardization with other stocks will probably remain an issue until the assessment is converted to GMACS. Candidate -->
+<!-- formats for standardized tables and figures have been developed that GMACS models could implement, if found useful. -->
 
-#### Response 
 
-Sep 2022: Standardization with other stocks will probably remain an issue until the assessment is converted to GMACS. Candidate
-formats for standardized tables and figures have been developed that GMACS models could implement, if found useful.
+<!-- references, if not child doc -->
+```{r,eval=!knitr::opts_knit$get("child")&!isPDF,results='asis'}
+  cat("# References {-}\n");
+  cat("::: {#refs}\n");
+  cat(":::\n\n");
+```
+
+<!-- tables, if not child doc and lstTbls is not empty -->
+```{r}
+#| label: tables_Resps
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printTablesSectionFromList.R",package="wtsQMD"));
+```
+
+<!-- figures, if not child doc and lstFigs is not empty -->
+```{r}
+#| label: figures_Resps
+#| eval: !expr '!knitr::opts_knit$get("child")'
+#| results: asis
+  source(system.file("files/printFiguresSectionFromList.R",package="wtsQMD"));
+```

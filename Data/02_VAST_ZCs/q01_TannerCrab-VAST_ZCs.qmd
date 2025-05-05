@@ -171,7 +171,7 @@ params:
 
 ## VAST size compositions {#sec-VAST-ZCs}
 
-Size data from the annual NMFS EBS bottom trawl survey provides important information on the size distribution of Tanner crab on the EBS shelf. Tracking changes in size composition through time allows the Tanner crab assessment model [ e.g., @TannerCrab2024] to estimate growth and natural mortality, determine stock status and recommended harvest levels, and predict legal biomass. To date, the assessment has used design-based estimates of total abundance-at-size in 5-mm size bins from 25 mm to 180 mm to characterize the annual survey size distributions by sex and maturity state for the Tanner crab stock in the EBS. However, model-based methods provide alternative ways to calculate these size distributions. Recently, J. Richar (AFSC-SAP) used `VAST` (the Vector Autogressive Spatiotemporal R package; [@VAST2015; @VAST2016a; @VAST2016c]) to estimate the survey size compositions for males, immature females, and mature females. Here, the results from `VAST` are compared with the design-based size compositions for Tanner crab in the NMFS EBS crab survey data from 1975 to 2024.
+Size data from the annual NMFS EBS bottom trawl survey provides important information on the size distribution of Tanner crab on the EBS shelf. Tracking changes in size composition through time allows the Tanner crab assessment model [ e.g., @TannerCrab2024] to estimate growth and natural mortality, determine stock status and recommended harvest levels, and predict legal biomass. To date, the assessment has used design-based estimates of total abundance-at-size in 5-mm size bins from 25 mm to 180 mm to characterize the annual survey size distributions by sex and maturity state for the Tanner crab stock in the EBS. However, model-based methods provide alternative ways to calculate these size distributions. Recently, J. Richar (AFSC) used the  `VAST` [the Vector Autogressive Spatiotemporal; @VAST2015; @VAST2016a; @VAST2016c] `R` package to estimate survey size compositions for males, immature females, and mature females. Below, the results from `VAST` are compared with the design-based size compositions for Tanner crab in the NMFS EBS crab survey data from 1975 to 2024.
 
 ### Size compositions
 
@@ -221,7 +221,7 @@ While size compositions estimated using the design-based and `VAST` methods gene
 
 ### Total abundance comparisons
 
-Comparisons of the time series of summed size compositions by year and population category better reveal the differences in overall scale between the design-based and `VAST` size compositions ([@fig-VAST-ZCs-TotAbund]). The design-based values can be substantially different from the `VAST`-based values (>20% difference; [@tbl-VAST-ZCs-AbdPctDif]) and are generally larger for all three population categories, although counter-examples (1979, for example) are evident as well.
+Comparisons of the time series of total abundance (i.e., the size compositions summed over size) by year and population category better reveal the differences in overall scale between the design-based and `VAST` size compositions ([@fig-VAST-ZCs-TotAbund]). The design-based values can be substantially different from the `VAST`-based values (>20% difference; [@tbl-VAST-ZCs-AbdPctDif]) and are generally larger for all three population categories, although counter-examples (1979, for example) are evident as well.
 
 ```{r}
 #| label: fig_VAST-ZCs-TotAbund
