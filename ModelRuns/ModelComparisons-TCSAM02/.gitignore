@@ -5,6 +5,7 @@ tables
 *.html
 *.html.md
 *.pdf.md
+*.pdf
 *.tex
 *.aux
 *.log
@@ -14,3 +15,4 @@ tables
 *_ListForTablesInfo.*
 *_files
 *.zip
+!Tables_ModelDescription
