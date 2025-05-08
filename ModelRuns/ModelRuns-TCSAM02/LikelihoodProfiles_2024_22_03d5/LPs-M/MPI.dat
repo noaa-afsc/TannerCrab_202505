@@ -1,4 +1,4 @@
-#--22_03d3: 22_03b + 2013-2018 SBS data + 2023/24 TCF, GF_All, RKF
+#--22_03d5 profiling on pDM[1] (multiplier for immature crab M)
 2023.03.10   #model parameters info version
 #-------------------------------
 # Recruitment parameters
@@ -73,14 +73,14 @@ pM   #base natural mortality rate
    1  #number of bounded parameters
 #           lower  upper  initial param        resample  prior   prior  prior   prior
 #id jitter? bounds bounds  value  scale  phase  values?  weight  type   params  consts  label
-1   OFF   0.135335283   2.718281828   &&value   LOG   -1   OFF   1   none   none      none      base_ln-scale_M      #original initial value: 0.229999993114
+1   OFF   0.135335283   2.718281828   0.229999993114   LOG   -1   OFF   1   none   none      none      base_ln-scale_M      #original initial value: 
 pDM1   #M offset 1
    3  #number of bounded parameters
 #           lower  upper  initial param        resample  prior   prior  prior   prior
 #id jitter? bounds bounds  value  scale  phase  values?  weight  type   params  consts  label
-1   ON   0.2   2   1.02870907324   ARITHMETIC   4   OFF   1   normal    1 0.05      none      multiplier_for_immature_crab      #prior params are mean, stdv. no prior consts.
+1   ON   0.2   2     &&value         ARITHMETIC  -4   OFF   1   normal    1 0.05      none      multiplier_for_immature_crab      #original: 1.02870907324
 2   ON   0.1   1.9   1.34938946888   ARITHMETIC   4   OFF   1   normal    1 0.05      none      multiplier_for_mature_males      #prior params are mean, stdv. no prior consts.
-3   ON   0.1   1.9   1.3415635423   ARITHMETIC   4   OFF   1   normal    1 0.05      none      multiplier_for_mature_females      #prior params are mean, stdv. no prior consts.
+3   ON   0.1   1.9   1.3415635423    ARITHMETIC   4   OFF   1   normal    1 0.05      none      multiplier_for_mature_females      #prior params are mean, stdv. no prior consts.
 pDM2   #M offset 2
    2  #number of bounded parameters
 #           lower  upper  initial param        resample  prior   prior  prior   prior

@@ -4,7 +4,7 @@ author: "William T. Stockhausen"
 institute: "AFSC/NMFS/NOAA"
 date: '`r format(Sys.time(), "%b %e, %Y")`'
 fontsize: 11pt 
-number-sections: true
+number-sections: false
 number-depth: 3
 reference-location: document
 reference-section-title: References
@@ -179,15 +179,11 @@ fill_scale  =ggplot2::scale_fill_hue();
 ```{r LPs-Params-GetResultsParams}
   #--plot parameter profiles
   dfrPds = wtsUtilities::getObj(file.path(dirThs,"rda_dfrParamDiffs.RData"));
-  removeCharacters<-function(x,chars="[]"){
-    x = "pQln[23]"
-    stringr::str_remove_all(x,"\\[|\\]")
-  }
 ```
 
 ```{r}
   ti = paste0(param," (",param_str,") ");
-  rf = paste0("sec-LP-ParDifs-",removeCharacters(param));
+  rf = paste0("sec-LP-ParDifs-",wtsQMD::sanitizeLabels(param));
 ```
 
 ## Likelihood profile results for profiling on `r paste0(ti, " {#",rf,"}")`

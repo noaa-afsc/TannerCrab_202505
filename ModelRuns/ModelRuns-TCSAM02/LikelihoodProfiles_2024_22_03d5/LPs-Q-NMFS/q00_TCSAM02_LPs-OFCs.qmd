@@ -4,7 +4,7 @@ author: "William T. Stockhausen"
 institute: "AFSC/NMFS/NOAA"
 date: '`r format(Sys.time(), "%b %e, %Y")`'
 fontsize: 11pt 
-number-sections: true
+number-sections: false
 number-depth: 3
 reference-location: document
 reference-section-title: References
@@ -73,7 +73,7 @@ params:
   reorderFigures: false  #--issue with finding "range" of figure values (don't use)
   param: "pQ[2]"
   param_str: "NMFS male catchability (1982+)"
-  calcOFCs: true
+  calcOFCs: false
 ---
 <!-- IMPORTANT: if used as a child doc, all chunk labels must be unique within the overall document -->
 
@@ -248,10 +248,11 @@ dfrTs<-dplyr::bind_rows(dfrDCst,dfrNCst) |>
 ```
 
 ```{r}
-#| results: asis
-  title = paste0("## Likelihood profile objective function components results for profiling on ",param," (",param_str,") {#sec-LP-OFCs-",param,"}");
-  cat(title,"\n\n")
+  ti = paste0(param," (",param_str,") ");
+  rf = paste0("sec-LP-ParOFCs-",wtsQMD::sanitizeLabels(param));
 ```
+
+## Likelihood profile results for profiling on `r paste0(ti, " {#",rf,"}")`
 
 ```{r}
 #| label: fig_LPs-OFCs-Tot
@@ -264,7 +265,9 @@ dfrTs<-dplyr::bind_rows(dfrDCst,dfrNCst) |>
         geom_vline(xintercept=as.numeric(cases[1]),linetype=3) +
         geom_vline(xintercept=minDC,linetype=3,colour="cyan") +
         geom_line() +
-        labs(subtitle="total objective function",y="difference from base (>0: worse fit)",x=param) +
+        labs(subtitle="total objective function",
+             y="difference from base (>0: worse fit)",
+             x=param) +
         wtsPlots::getStdTheme();
   lbl = wtsQMD::getLabel();
   cap = paste0('Total objective function.')
@@ -299,7 +302,8 @@ dfrTs<-dplyr::bind_rows(dfrDCst,dfrNCst) |>
           geom_line() +
           geom_point(data=tmp2) +
           labs(subtitle=paste0(ctg,": ",flt),
-               y="difference from base",x=param) +
+               y="difference from base (>0: worse fit)",
+               x=param) +
           wtsPlots::getStdTheme();
     xtra=paste0(ctg,"-",flt)
     lbl = wtsQMD::getLabel(xtra);
@@ -334,7 +338,8 @@ dfrTs<-dplyr::bind_rows(dfrDCst,dfrNCst) |>
           geom_line() +
           geom_point(data=tmp2) +
           labs(subtitle=paste0(ctg),
-               y="difference from base",x=param) +
+               y="difference from base (>0: worse fit)",
+               x=param) +
           wtsPlots::getStdTheme();
     xtra=paste0(ctg)
     lbl = wtsQMD::getLabel(xtra);

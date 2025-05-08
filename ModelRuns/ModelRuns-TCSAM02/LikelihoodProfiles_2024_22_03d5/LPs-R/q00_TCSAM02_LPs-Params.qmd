@@ -4,7 +4,7 @@ author: "William T. Stockhausen"
 institute: "AFSC/NMFS/NOAA"
 date: '`r format(Sys.time(), "%b %e, %Y")`'
 fontsize: 11pt 
-number-sections: true
+number-sections: false
 number-depth: 3
 reference-location: document
 reference-section-title: References
@@ -71,9 +71,9 @@ params:
   testing: false
   reorderTables: false   #--issue with finding "range" of table values  (don't use)
   reorderFigures: false  #--issue with finding "range" of figure values (don't use)
-  param: "pQ[2]"
-  param_str: "NMFS male catchability (1982+)"
-  calcParams: false
+  param: "pLnR[2]"
+  param_str: "mean ln-scale recruitment (1974+)"
+  calcParams: true
 ---
 <!-- IMPORTANT: if used as a child doc, all chunk labels must be unique within the overall document -->
 
@@ -182,10 +182,11 @@ fill_scale  =ggplot2::scale_fill_hue();
 ```
 
 ```{r}
-#| results: asis
- title = paste0("## Likelihood profile results for profiling on ",param," (",param_str,") {#sec-LP-ParDifs-",param,"}");
-  cat(title,"\n\n")
+  ti = paste0(param," (",param_str,") ");
+  rf = paste0("sec-LP-ParDifs-",wtsQMD::sanitizeLabels(param));
 ```
+
+## Likelihood profile results for profiling on `r paste0(ti, " {#",rf,"}")`
 
 ```{r}
 #| label: fig_LPs-ParDifs-
