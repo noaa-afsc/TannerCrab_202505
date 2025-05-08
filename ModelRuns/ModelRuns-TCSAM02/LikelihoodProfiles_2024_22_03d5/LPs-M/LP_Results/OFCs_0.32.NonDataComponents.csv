@@ -1,9 +1,9 @@
 "case","category","type","element","level","wgt","nll","objfun"
 "","penalties","growth","negativeGrowth","1",1e+06,0,0
 "","penalties","growth","negativeGrowth","2",1e+06,0,0
-"","penalties","maturity","smoothness","1",1,1.33132440175,1.33132440175
-"","penalties","maturity","smoothness","2",2,0.375952423027,0.751904846054
-"","penalties","maturity","nondecreasing","1",0,73441020259000,0
+"","penalties","maturity","smoothness","1",1,1.63131387275,1.63131387275
+"","penalties","maturity","smoothness","2",2,0.304285118822,0.608570237645
+"","penalties","maturity","nondecreasing","1",0,196003176803000,0
 "","penalties","maturity","nondecreasing","2",0,0,0
 "","penalties","nonParSelFcns","smoothness","1",100,0,0
 "","penalties","nonParSelFcns","smoothness","2",100,0,0
@@ -17,31 +17,31 @@
 "","penalties","nonParSelFcns","smoothness","10",100,0,0
 "","penalties","nonParSelFcns","smoothness","11",100,0,0
 "","penalties","nonParSelFcns","smoothness","12",100,0,0
-"","penalties","devsSumSq","pDevsLnR","1",10000,1.10521392645e-14,1.10521392645e-10
-"","penalties","devsSumSq","pDevsLnR","2",10000,1.00865271367e-14,1.00865271367e-10
-"","penalties","devsSumSq","pDevsS1","1",10000,2.68326831449e-11,2.68326831449e-07
-"","penalties","devsSumSq","pDevsLnC","1",10000,1.01668140792e-14,1.01668140792e-10
-"","penalties","devsSumSq","pDevsLnC","2",10000,8.08882182861e-18,8.08882182861e-14
-"","penalties","devsSumSq","pDevsLnC","3",10000,4.84184911333e-15,4.84184911333e-11
-"","penalties","devsSumSq","pDevsLnC","4",10000,1.045493869e-15,1.045493869e-11
-"","penalties","F-devs","fisheries","1",0,63.5304424812,0
-"","penalties","F-devs","fisheries","2",0,18.5989305277,0
-"","penalties","F-devs","fisheries","3",0,21.7996760399,0
-"","penalties","F-devs","fisheries","4",0,49.8042757519,0
-"","components","recruitment","recDevs","1",0,3.28494165829,0
-"","components","recruitment","recDevs","2",0,66.3625428819,0
+"","penalties","devsSumSq","pDevsLnR","1",10000,1.60990347161e-18,1.60990347161e-14
+"","penalties","devsSumSq","pDevsLnR","2",10000,3.35636016993e-21,3.35636016993e-17
+"","penalties","devsSumSq","pDevsS1","1",10000,2.38242898295e-09,2.38242898295e-05
+"","penalties","devsSumSq","pDevsLnC","1",10000,4.93484445087e-16,4.93484445087e-12
+"","penalties","devsSumSq","pDevsLnC","2",10000,1.33187095083e-21,1.33187095083e-17
+"","penalties","devsSumSq","pDevsLnC","3",10000,3.25855640953e-15,3.25855640953e-11
+"","penalties","devsSumSq","pDevsLnC","4",10000,3.36938596016e-19,3.36938596016e-15
+"","penalties","F-devs","fisheries","1",0,69.7494199842,0
+"","penalties","F-devs","fisheries","2",0,18.6324202873,0
+"","penalties","F-devs","fisheries","3",0,18.7760148139,0
+"","penalties","F-devs","fisheries","4",0,50.8801800138,0
+"","components","recruitment","recDevs","1",0,1.81249358187,0
+"","components","recruitment","recDevs","2",0,54.5923728707,0
 "","priors","recruitment","pLnR","1",1,0,0
 "","priors","recruitment","pLnR","2",1,0,0
 "","priors","recruitment","pRCV","1",1,0,0
 "","priors","recruitment","pRX","1",1,0,0
 "","priors","recruitment","pRa","1",1,0,0
 "","priors","recruitment","pRb","1",1,0,0
-"","priors","recruitment","pDevsLnR","1",2,23.7181952782,47.4363905563
-"","priors","recruitment","pDevsLnR","2",1,68.9074441644,68.9074441644
+"","priors","recruitment","pDevsLnR","1",2,24.0501849263,48.1003698526
+"","priors","recruitment","pDevsLnR","2",1,66.3130937763,66.3130937763
 "","priors","natural mortality","pM","1",1,0,0
-"","priors","natural mortality","pDM1","1",1,-1.90933368169,-1.90933368169
-"","priors","natural mortality","pDM1","2",1,11.2592077111,11.2592077111
-"","priors","natural mortality","pDM1","3",1,13.9924997985,13.9924997985
+"","priors","natural mortality","pDM1","1",1,90.4032062597,90.4032062597
+"","priors","natural mortality","pDM1","2",1,45.8223644264,45.8223644264
+"","priors","natural mortality","pDM1","3",1,30.4880414727,30.4880414727
 "","priors","natural mortality","pDM2","1",1,0,0
 "","priors","natural mortality","pDM2","2",1,0,0
 "","priors","growth","pGrA","1",1,0,0
@@ -140,12 +140,12 @@
 "","priors","fisheries","pDC2","2",1,0,0
 "","priors","fisheries","pDC2","3",1,0,0
 "","priors","fisheries","pDC2","4",1,0,0
-"","priors","fisheries","pDevsLnC","1",0,103.963737942,0
-"","priors","fisheries","pDevsLnC","2",0,48.0049635902,0
-"","priors","fisheries","pDevsLnC","3",0,68.6655412333,0
-"","priors","fisheries","pDevsLnC","4",0,77.372431748,0
+"","priors","fisheries","pDevsLnC","1",0,110.182715445,0
+"","priors","fisheries","pDevsLnC","2",0,48.0384533499,0
+"","priors","fisheries","pDevsLnC","3",0,65.6418800074,0
+"","priors","fisheries","pDevsLnC","4",0,78.4483360099,0
 "","priors","surveys","pQ","1",1,0,0
-"","priors","surveys","pQ","2",1,14.8209956265,14.8209956265
+"","priors","surveys","pQ","2",1,31.5457914769,31.5457914769
 "","priors","surveys","pQ","3",1,0,0
-"","priors","surveys","pQ","4",1,56.8597183753,56.8597183753
+"","priors","surveys","pQ","4",1,71.9664854355,71.9664854355
 "","priors","surveys","pQ","5",1,0,0
